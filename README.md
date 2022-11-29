@@ -3,7 +3,11 @@ Si sviluppi un sistema informativo, composto da una base di dati relazionale e d
 
 **Per il gruppo da tre**: per ogni libro, è necessario specificare dove può essere acquistato (libreria, online). Un romanzo può avere anche uno o più seguiti. In tal caso, è importante prevedere un’interrogazione che permette di recuperare tutte le librerie (o siti internet) dai quali è possibile acquistare l’intera seriedei libri. Non appena una seriesarà disponibile per l’acquisto da almeno una libreria, il sistemanotificherà la disponibilità all’utente.
 
+
+###LINK Utili
 [ESEMPIO MONDIALE DATABASE DI TUTTI I LIBRI ED ESEMPIO GUI](https://www.jstor.org/action/showAdvancedSearch)
+[DB LIBRI](https://www.kaggle.com/datasets/dylanjcastillo/7k-books-with-metadata)
+[DATA GENERATOR](https://www.onlinedatagenerator.com/)
 
 
 > Mario Penna è _ _ _
