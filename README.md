@@ -8,6 +8,6 @@ Si sviluppi un sistema informativo, composto da una base di dati relazionale e d
 [ESEMPIO MONDIALE DATABASE DI TUTTI I LIBRI ED ESEMPIO GUI](https://www.jstor.org/action/showAdvancedSearch) <br />
 [DB LIBRI](https://www.kaggle.com/datasets/dylanjcastillo/7k-books-with-metadata) <br />
 [DATA GENERATOR](https://www.onlinedatagenerator.com/) <br />
-
+USER DIAGRam ????? : https://i.stack.imgur.com/DHbVr.png
 
 > Mario Penna è _ _ _
