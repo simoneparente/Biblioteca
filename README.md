@@ -9,5 +9,9 @@ Si sviluppi un sistema informativo, composto da una base di dati relazionale e d
 [DB LIBRI](https://www.kaggle.com/datasets/dylanjcastillo/7k-books-with-metadata) <br />
 [DATA GENERATOR](https://www.onlinedatagenerator.com/) <br />
 [USER DIAGRam ?????](https://i.stack.imgur.com/DHbVr.png) <br />
+[ESEMPIO](https://www.medialibrary.it/home/index.aspx) <br />
+
+
+[ISBN-A](https://www.doi.org/factsheets/ISBN-A.html) <br />    ///Per problemi di compatibilità DOI/ISBN , capire come funziona e che metadati da.
 
 > Mario Penna è _ _ _
