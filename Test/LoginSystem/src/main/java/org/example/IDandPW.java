@@ -5,21 +5,19 @@ import java.util.HashMap;
 public class IDandPW
 {
     //hashmap conservano coppie di (ID,valore)
-    HashMap<String,String> logininfo = new HashMap<String,String>();
+    HashMap<String,String> loginInfo = new HashMap<String,String>();
     IDandPW(){
-        logininfo.put("Simone", "Clemente");
-        logininfo.put("Lorenzo", "BigMoney");
-        logininfo.put("Mario", "Pinguino");
-        logininfo.put("Stefano", "MaScopass");
-        logininfo.put("Davide", "acapocchj");
+        loginInfo.put("Simone", "Clemente");
+        loginInfo.put("Lorenzo", "BigMoney");
+        loginInfo.put("Mario", "Pinguino");
+        loginInfo.put("Stefano", "MaScopass");
+        loginInfo.put("Davide", "acapocchj");
     }
     protected HashMap<String, String> getLoginInfo() {
-        return logininfo;
+        return loginInfo;
     }
 
-    public void setLoginInfo(HashMap<String, String> logininfo) {
-        this.logininfo = logininfo;
+    public void setLoginInfo(HashMap<String, String> loginInfo) {
+        this.loginInfo = loginInfo;
     }
-
-
 }

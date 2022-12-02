@@ -17,10 +17,10 @@ public class LoginPage implements ActionListener {
     JLabel userPassLabel = new JLabel("Password:");
     JLabel messageLabel = new JLabel();
 
-    HashMap<String, String> logininfo = new HashMap<String, String>();
+    HashMap<String, String> loginInfo = new HashMap<String, String>();
 
     LoginPage(HashMap<String, String> loginInfoOriginal) {
-        logininfo = loginInfoOriginal;
+        loginInfo = loginInfoOriginal;
 
         userIDLabel.setBounds(50, 100, 200, 25);
         userPassLabel.setBounds(50, 150, 200, 25);
@@ -63,8 +63,8 @@ public class LoginPage implements ActionListener {
             String userID = userIDField.getText();
             String password = String.valueOf(userPassField.getPassword());
 
-            if (logininfo.containsKey(userID)) {
-                if (logininfo.get(userID).equals(password)) {
+            if (loginInfo.containsKey(userID)) {
+                if (loginInfo.get(userID).equals(password)) {
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login Riuscito");
                     frame.dispose();
