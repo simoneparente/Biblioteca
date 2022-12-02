@@ -19,4 +19,3 @@ public class WelcomePage {
         frame.setVisible(true);
     }
 }
-x
