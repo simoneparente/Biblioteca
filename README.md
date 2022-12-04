@@ -10,11 +10,7 @@ Si sviluppi un sistema informativo, composto da una base di dati relazionale e d
 [DATA GENERATOR](https://www.onlinedatagenerator.com/) <br />
 [USER DIAGRam ?????](https://i.stack.imgur.com/DHbVr.png) <br />
 [ESEMPIO](https://www.medialibrary.it/home/index.aspx) <br />
-
+[STARUML FULL FREE](https://gist.github.com/trandaison/40b1d83618ae8e3d2da59df8c395093a)<br />
 
 [ISBN-A](https://www.doi.org/factsheets/ISBN-A.html) /Per problemi di compatibilità DOI/ISBN <br />
-
-[STARUML FREE]
-https://gist.github.com/trandaison/40b1d83618ae8e3d2da59df8c395093a
-[STARUML FREE]
 > Mario Penna è TOP
