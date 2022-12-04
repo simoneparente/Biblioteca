@@ -1930,6 +1930,26 @@
 									"model": {
 										"$ref": "AAAAAAGE3YKGk+DNm10="
 									},
+									"subViews": [
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGE3fjaigD/uJQ=",
+											"_parent": {
+												"$ref": "AAAAAAGE3YKGlODWXSs="
+											},
+											"model": {
+												"$ref": "AAAAAAGE3fjaeAD5WPI="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 2461,
+											"top": 1473,
+											"width": 144.16162109375,
+											"height": 13,
+											"text": "+insert_book(ISBN)",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"left": 2456,
 									"top": 1468,
@@ -1974,7 +1994,7 @@
 							"left": 2456,
 							"top": 1360,
 							"width": 154.16162109375,
-							"height": 118,
+							"height": 131,
 							"nameCompartment": {
 								"$ref": "AAAAAAGE3YKGk+DQ8s8="
 							},
@@ -4721,7 +4741,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 2387,
-									"top": 1397,
+									"top": 1400,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -4742,7 +4762,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 2387,
-									"top": 1382,
+									"top": 1385,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -4762,8 +4782,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2387,
-									"top": 1427,
+									"left": 2386,
+									"top": 1429,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -4782,8 +4802,8 @@
 										"$ref": "AAAAAAGE3bi293tNG8U="
 									},
 									"font": "Arial;13;0",
-									"left": 2318,
-									"top": 1397,
+									"left": 2319,
+									"top": 1399,
 									"width": 53.853515625,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -4806,7 +4826,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 2347,
-									"top": 1383,
+									"top": 1386,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -4826,7 +4846,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 2331,
-									"top": 1424,
+									"top": 1426,
 									"width": 19.5126953125,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -4848,7 +4868,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 2403,
-									"top": 1397,
+									"top": 1401,
 									"width": 53.853515625,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -4869,8 +4889,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2426,
-									"top": 1383,
+									"left": 2427,
+									"top": 1388,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -4889,7 +4909,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 2424,
-									"top": 1424,
+									"top": 1429,
 									"width": 19.5126953125,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -4936,7 +4956,7 @@
 								"$ref": "AAAAAAGE3Yd1Uf8PudE="
 							},
 							"lineStyle": 1,
-							"points": "2319:1418;2455:1418",
+							"points": "2319:1420;2455:1423",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGE3bi293tRA6c="
@@ -5492,6 +5512,27 @@
 							"name": "URL",
 							"type": "String"
 						}
+					],
+					"operations": [
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGE3fjaeAD5WPI=",
+							"_parent": {
+								"$ref": "AAAAAAGE3YKGk+DNm10="
+							},
+							"name": "insert_book",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGE3fl5wQSpHhQ=",
+									"_parent": {
+										"$ref": "AAAAAAGE3fjaeAD5WPI="
+									},
+									"name": "ISBN",
+									"type": ""
+								}
+							]
+						}
 					]
 				},
 				{
@@ -5862,25 +5903,6 @@
 							},
 							"name": "DataOraFine",
 							"type": "DateTime"
-						}
-					]
-				},
-				{
-					"_type": "UMLPrimitiveType",
-					"_id": "AAAAAAGE3a7BOhda/Uo=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "fre",
-					"attributes": [
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAGE3a7sAhgV2ic=",
-							"_parent": {
-								"$ref": "AAAAAAGE3a7BOhda/Uo="
-							},
-							"name": "Attribute1",
-							"type": ""
 						}
 					]
 				},
