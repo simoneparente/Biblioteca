@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  4 DEC 2022 19:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  5 DEC 2022 12:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -296,13 +296,13 @@ Capitolo 1.
 
  (Argomenti/Capitolo2.tex
 Capitolo 2.
-<Immagini/UMLv5.png, id=93, 1175.39125pt x 1157.32375pt>
-File: Immagini/UMLv5.png Graphic file (type png)
-<use Immagini/UMLv5.png>
-Package pdftex.def Info: Immagini/UMLv5.png  used on input line 4.
-(pdftex.def)             Requested size: 352.6201pt x 347.1998pt.
+<Immagini/UMLv6.png, id=93, 1186.4325pt x 1317.92375pt>
+File: Immagini/UMLv6.png Graphic file (type png)
+<use Immagini/UMLv6.png>
+Package pdftex.def Info: Immagini/UMLv6.png  used on input line 4.
+(pdftex.def)             Requested size: 355.9325pt x 395.38017pt.
 
-Overfull \hbox (7.6201pt too wide) in paragraph at lines 4--5
+Overfull \hbox (10.9325pt too wide) in paragraph at lines 4--5
 [] 
  []
 
@@ -312,14 +312,25 @@ Overfull \hbox (7.6201pt too wide) in paragraph at lines 4--5
 
 
 ]
-Overfull \vbox (3.90254pt too high) has occurred while \output is active []
+Overfull \vbox (52.08292pt too high) has occurred while \output is active []
 
- [5 <./Immagini/UMLv5.png>]) [6]
+ [5 <./Immagini/UMLv6.png>]
+<Immagini/UMLRisv1.png, id=102, 1492.57625pt x 1255.69125pt>
+File: Immagini/UMLRisv1.png Graphic file (type png)
+<use Immagini/UMLRisv1.png>
+Package pdftex.def Info: Immagini/UMLRisv1.png  used on input line 21.
+(pdftex.def)             Requested size: 373.14314pt x 313.92204pt.
+
+Overfull \hbox (28.14314pt too wide) in paragraph at lines 21--22
+[] 
+ []
+
+) [6 <./Immagini/UMLRisv1.png>] [7]
 \openout2 = `Argomenti/Capitolo3.aux'.
 
  (Argomenti/Capitolo3.tex
 Capitolo 3.
-) [7
+) [8
 
 
 
@@ -332,17 +343,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: BCDC3105E0EC86D167E3DCC89E652228;2792.
  ) 
 Here is how much of TeX's memory you used:
- 9737 strings out of 475380
- 160566 string characters out of 2776300
+ 9745 strings out of 475380
+ 160741 string characters out of 2776300
  516066 words of memory out of 3000000
- 30972 multiletter control sequences out of 15000+600000
+ 30978 multiletter control sequences out of 15000+600000
  472591 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,6n,77p,425b,445s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on main.pdf (7 pages, 280688 bytes).
+Output written on main.pdf (8 pages, 475463 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 23 named destinations out of 1000 (max. 500000)
- 123 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 137 PDF objects out of 1000 (max. 8388607)
+ 24 named destinations out of 1000 (max. 500000)
+ 128 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -11,6 +11,6 @@
 \contentsline {subsection}{\numberline {2.2.5}Partizione/Accorpamento delle associazioni}{6}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Rimozione delle gerarchie}{6}{subsection.2.2.6}%
 \contentsline {section}{\numberline {2.3}Class Diagram ristrutturato}{6}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Dizionario delle classi}{6}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Dizionario delle associazioni}{6}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Schema logico}{7}{chapter.3}%
+\contentsline {section}{\numberline {2.4}Dizionario delle classi}{7}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Dizionario delle associazioni}{7}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Schema logico}{8}{chapter.3}%
