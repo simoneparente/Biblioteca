@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  2 DEC 2022 18:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  4 DEC 2022 19:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -296,17 +296,30 @@ Capitolo 1.
 
  (Argomenti/Capitolo2.tex
 Capitolo 2.
-) [4
+<Immagini/UMLv5.png, id=93, 1175.39125pt x 1157.32375pt>
+File: Immagini/UMLv5.png Graphic file (type png)
+<use Immagini/UMLv5.png>
+Package pdftex.def Info: Immagini/UMLv5.png  used on input line 4.
+(pdftex.def)             Requested size: 352.6201pt x 347.1998pt.
+
+Overfull \hbox (7.6201pt too wide) in paragraph at lines 4--5
+[] 
+ []
+
+[4
 
 
 
 
 ]
+Overfull \vbox (3.90254pt too high) has occurred while \output is active []
+
+ [5 <./Immagini/UMLv5.png>]) [6]
 \openout2 = `Argomenti/Capitolo3.aux'.
 
  (Argomenti/Capitolo3.tex
 Capitolo 3.
-) [5
+) [7
 
 
 
@@ -319,17 +332,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: BCDC3105E0EC86D167E3DCC89E652228;2792.
  ) 
 Here is how much of TeX's memory you used:
- 9728 strings out of 475380
- 160406 string characters out of 2776300
+ 9737 strings out of 475380
+ 160566 string characters out of 2776300
  516066 words of memory out of 3000000
- 30966 multiletter control sequences out of 15000+600000
+ 30972 multiletter control sequences out of 15000+600000
  472591 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,6n,77p,425b,444s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,6n,77p,425b,445s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on main.pdf (5 pages, 93925 bytes).
+Output written on main.pdf (7 pages, 280688 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 500000)
- 118 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 132 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 500000)
+ 123 words of extra memory for PDF output out of 10000 (max. 10000000)
 
