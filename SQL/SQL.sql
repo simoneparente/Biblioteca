@@ -8,3 +8,9 @@ CREATE TABLE p.Utente
 
     CONSTRAINT PK_Utente PRIMARY KEY (username)
 );
+
+INSERT INTO p.Utente(username, email, password)
+(
+    VALUES ('prova', 'abcd', '1234'),
+           ('prova1','abcd','4321')
+);
