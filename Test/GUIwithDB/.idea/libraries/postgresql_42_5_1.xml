@@ -5,8 +5,5 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <excluded>
-      <root url="jar://$PROJECT_DIR$/../../JDBC/postgresql-42.5.1.jar!/" />
-    </excluded>
   </library>
 </component>
