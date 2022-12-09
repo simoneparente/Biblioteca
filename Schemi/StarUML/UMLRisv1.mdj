@@ -203,7 +203,7 @@
 											"top": 1274,
 											"width": 150.6806640625,
 											"height": 13,
-											"text": "+Autore: NomeAutore",
+											"text": "+Autore: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5660,9 +5660,7 @@
 								"$ref": "AAAAAAGE2bZjxj9J9Rg="
 							},
 							"name": "Autore",
-							"type": {
-								"$ref": "AAAAAAGE3a+WDhkkZyU="
-							}
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
