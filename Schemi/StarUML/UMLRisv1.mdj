@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Main",
+					"name": "org.example.Main",
 					"defaultDiagram": true,
 					"ownedViews": [
 						{
@@ -1456,7 +1456,7 @@
 											"top": 1579,
 											"width": 144.16162109375,
 											"height": 13,
-											"text": "+Indirizzo: IndirizzoCitta",
+											"text": "+Indirizzo: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3559,8 +3559,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 937,
-											"top": 127,
+											"left": 985,
+											"top": 111,
 											"height": 13
 										},
 										{
@@ -3570,8 +3570,8 @@
 												"$ref": "AAAAAAGE4c9JYxkgzt4="
 											},
 											"font": "Arial;13;1",
-											"left": 2085,
-											"top": 1647,
+											"left": 2109,
+											"top": 1639,
 											"width": 151.607421875,
 											"height": 13,
 											"text": "Notifica"
@@ -3584,8 +3584,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 937,
-											"top": 127,
+											"left": 985,
+											"top": 111,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -3598,15 +3598,15 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 937,
-											"top": 127,
+											"left": 985,
+											"top": 111,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 2080,
-									"top": 1640,
+									"left": 2104,
+									"top": 1632,
 									"width": 161.607421875,
 									"height": 25,
 									"stereotypeLabel": {
@@ -3642,8 +3642,8 @@
 												"$ref": "AAAAAAGE4fj31uGdeQ4="
 											},
 											"font": "Arial;13;0",
-											"left": 2085,
-											"top": 1670,
+											"left": 2109,
+											"top": 1662,
 											"width": 151.607421875,
 											"height": 13,
 											"text": "+ID_Notifica: Int {id}",
@@ -3659,8 +3659,8 @@
 												"$ref": "AAAAAAGE4c/SMk4o6xk="
 											},
 											"font": "Arial;13;0",
-											"left": 2085,
-											"top": 1685,
+											"left": 2109,
+											"top": 1677,
 											"width": 151.607421875,
 											"height": 13,
 											"text": "+DataRichiesta: DateTime",
@@ -3668,8 +3668,8 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 2080,
-									"top": 1665,
+									"left": 2104,
+									"top": 1657,
 									"width": 161.607421875,
 									"height": 38
 								},
@@ -3683,8 +3683,8 @@
 										"$ref": "AAAAAAGE4c9JYhka/wY="
 									},
 									"font": "Arial;13;0",
-									"left": 2080,
-									"top": 1703,
+									"left": 2104,
+									"top": 1695,
 									"width": 161.607421875,
 									"height": 10
 								},
@@ -3699,8 +3699,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 468.5,
-									"top": 63.5,
+									"left": 492.5,
+									"top": 55.5,
 									"width": 10,
 									"height": 10
 								},
@@ -3715,16 +3715,16 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 468.5,
-									"top": 63.5,
+									"left": 492.5,
+									"top": 55.5,
 									"width": 10,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 2080,
-							"top": 1640,
+							"left": 2104,
+							"top": 1632,
 							"width": 161.607421875,
 							"height": 73,
 							"nameCompartment": {
@@ -4036,7 +4036,7 @@
 								"$ref": "AAAAAAGE4c9JYxkfl00="
 							},
 							"lineStyle": 1,
-							"points": "2079:1673;1971:1670"
+							"points": "2103:1669;1971:1670"
 						},
 						{
 							"_type": "UMLClassView",
@@ -6097,7 +6097,7 @@
 								"$ref": "AAAAAAGE3YKGk+DNm10="
 							},
 							"name": "Indirizzo",
-							"type": "IndirizzoCitta"
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
