@@ -1,0 +1,80 @@
+Articolo: ID_Articolo, DOI, Titolo, DataPubblicazione, Editore, Disciplina, Formato, Lingua
+ok
+
+Rivista: ID_Rivista, ISBN, Editore, Numero, DataPubblicazione, Formato, Lingua, Curatore
+ok
+
+Conferenza: ID_Conferenza, Indirizzo, StrutturaOspitante, Responsabile, DataOraInizio, DataOraFine
+ok
+
+ArticoloInRivista: Rivista, Articolo
+Rivista -> Rivista(ID_Rivista)
+Articolo -> Articolo(ID_Articolo)
+ok
+
+ArticoloInConferenza: Conferenza, Articolo
+Conferenza -> Conferenza(ID_Conferenza)
+Articolo -> Articolo(ID_Articolo)
+ok
+
+Autore: ID_Autore, Nome, Cognome, DataNascita, Nazionalità
+ok
+
+AutoreArticolo: Autore, Articolo
+Autore -> Autore(ID_Autore)
+Articolo -> Articolo(ID_Articolo)
+ok
+
+Libro: ID_Libro, ISBN, Titolo, DataPubblicazione, Prezzo, Editore, Lingua, Formato, Tipo, Genere, Descrizione
+ok
+
+AutoreLibro: Autore, Libro
+Autore -> Autore(ID_Autore)
+Libro -> Libro(ID_Libro)
+ok
+
+Collana: ID_Collana, Titolo, Descrizione
+ok
+
+LibroInCollana: Collana, Libro
+Collana -> Collana(ID_Collana)
+Libro -> Libro(ID_Libro)
+ok
+
+Presentazione: ID_Presentazione, Indirizzo, Descrizione, DataOraInizio, DataOraFine
+ok
+
+PresentazioneLibro: Presentazione, Libro
+Presentazione -> Presentazione(ID_Presentazione)
+Libro -> Libro(ID_Libro)
+ok
+
+Sequel: Serie, LibroPre, LibroSeq
+Serie -> Serie(ID_Serie)
+LibroPre -> Libro(ID_Libro)
+LibroSeq -> Libro(ID_Libro)
+ok
+
+Serie: ID_Serie, ISSN, Titolo, Descrizione
+
+
+Negozio: ID_Negozio, Nome, PIVA, Indirizzo, NumeroTelefono, URL
+ok
+
+Stock: Negozio, Serie
+Negozio -> Negozio(ID_Negozio)
+Serie -> Serie(ID_Serie)
+ok
+
+Utente: Username, Email, Password
+
+
+Richiesta:ID_Richiesta, Serie, Utente
+Serie -> Serie(ID_Serie)
+Utente -> Utente(Username)
+ok
+
+Notifica: ID_Notifica, DataEmissione, Negozio, Richiesta
+Negozio -> Negozio(ID_Negozio)
+Richiesta -> Richiesta(ID_Richiesta)
+ok
