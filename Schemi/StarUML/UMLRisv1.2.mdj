@@ -6183,7 +6183,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAGE4m4bMsPhO4Y="
 									},
-									"text": "+scritto"
+									"text": "+scrive"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -8329,7 +8329,7 @@
 								"_parent": {
 									"$ref": "AAAAAAGE4m4bMMPdfnY="
 								},
-								"name": "scritto",
+								"name": "scrive",
 								"reference": {
 									"$ref": "AAAAAAGE2bZjxj9J9Rg="
 								},
