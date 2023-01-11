@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af19ea5d-d526-44bd-812c-53c2e2b38634" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/LoginPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +29,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Università/Corsi/Basi di Dati/Esercizi/14-12-2022",
+    "last_opened_file_path": "C:/Università/Corsi/Basi di Dati/GitHub/GUIwithDB",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,6 +76,8 @@
       <workItem from="1670921447620" duration="549000" />
       <workItem from="1670922419120" duration="791000" />
       <workItem from="1670935166927" duration="76000" />
+      <workItem from="1673428820004" duration="126000" />
+      <workItem from="1673429019488" duration="19000" />
     </task>
     <servers />
   </component>

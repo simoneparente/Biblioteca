@@ -97,7 +97,7 @@ CREATE TABLE b.Autore
     CONSTRAINT Autore_PK PRIMARY KEY (ID_Autore)
 );
 
-CREATE TABLE b.AutoreArticolo
+CREATE TABLE b.AutoreLibro
 (
     Autore INTEGER, --FK
     Libro  INTEGER, --FK
