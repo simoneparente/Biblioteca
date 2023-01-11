@@ -29,10 +29,14 @@ public class LoginPage implements ActionListener {
         messageLabel.setFont(new Font(null, Font.ITALIC, 25));
 
         userIDField.setBounds(125, 100, 200, 25);
+        userIDField.addActionListener(this);
+
         userPassField.setBounds(125, 150, 200, 25);
+
 
         loginButton.setBounds(125, 200, 100, 25);
         loginButton.setFocusable(false);
+        loginButton.setEnabled(false);
         loginButton.addActionListener(this);
 
         resetButton.setBounds(225, 200, 100, 25);
@@ -63,53 +67,20 @@ public class LoginPage implements ActionListener {
 
             String userID = userIDField.getText();
             String password = String.valueOf(userPassField.getPassword());
-            /*
-            for(Utente utente: logininfo)
-            {
-                if(utente.getUsername().equals(userID))
-                {
-                    if(utente.getPassword().equals(password))
-                    {
-                        messageLabel.setForeground(Color.green);
-                        messageLabel.setText("Login Riuscito");
-                        frame.dispose();
-                        WelcomePage welcomepage = new WelcomePage(userID);
-                    }
-                    if(!utente.getPassword().equals(password) && utente.getUsername().equals(userID))
-                    {
 
-                    }
-
-                }
-                if(!utente.getUsername().equals(userID))
-                {
-                    messageLabel.setForeground(Color.red);
-                    messageLabel.setText("username non trovato");
-                }
-            }
-             */
             for (Utente x : logininfo) {
-                if(userID.equals(x.getUsername())){
+                if (userID.equals(x.getUsername()) && password.equals(x.getPassword())) {
                     messageLabel.setForeground(Color.green);
-                    messageLabel.setText("Username trovato");
-                    if(password.equals(x.getPassword())){
-                        messageLabel.setForeground(Color.green);
-                        messageLabel.setText("Login Riuscito");
-                        frame.dispose();
-                        WelcomePage welcomepage = new WelcomePage(userID);
-                        break;
-                    }else{
-                        messageLabel.setForeground(Color.red);
-                        messageLabel.setText("Password errata per questo username");
-                        break;
-                    }
-                }else{
+                    messageLabel.setText("Login Riuscito");
+                    frame.dispose();
+                    WelcomePage welcomepage = new WelcomePage(userID);
+                    break;
+                } else {
                     messageLabel.setForeground(Color.red);
-                    messageLabel.setText("Username non trovato");
+                    messageLabel.setText("Username o password errati");
                 }
             }
-
-
+            }
         }
     }
 }

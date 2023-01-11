@@ -1,17 +1,18 @@
+DROP SCHEMA b cascade ;
 CREATE SCHEMA b;
 
 CREATE TABLE b.Libro
 (
-    ID_Libro          INTEGER,
-    ISBN              VARCHAR(13),
-    Titolo            VARCHAR(32),
-    DataPubblicazione DATE,
-    Prezzo            DOUBLE PRECISION,
-    Editore           VARCHAR(64),
-    Lingua            VARCHAR(32),
-    Formato           VARCHAR(32),
-    Tipo              VARCHAR(32),
-    Genere            VARCHAR(32),
+    ID_Libro          INTEGER,     --PK
+    ISBN              VARCHAR(13)       NOT NULL,
+    Titolo            VARCHAR(32)       NOT NULL,
+    DataPubblicazione DATE              NOT NULL,
+    Prezzo            DOUBLE PRECISION  NOT NULL,
+    Editore           VARCHAR(64)       NOT NULL,
+    Lingua            VARCHAR(32)       NOT NULL,
+    Formato           VARCHAR(32)       NOT NULL,
+    Tipo              VARCHAR(32)       NOT NULL,
+    Genere            VARCHAR(32)       NOT NULL,
     Descrizione       VARCHAR(128),
 
     CONSTRAINT Libro_PK PRIMARY KEY (ID_Libro)
@@ -21,39 +22,43 @@ CREATE TABLE b.Articolo
 (
     ID_Articolo       INTEGER, --PK
     DOI               VARCHAR(13),
-    Titolo            VARCHAR(64),
-    DataPubblicazione DATE,
-    Editore           VARCHAR(64),
-    Disciplina        VARCHAR(32),
-    Formato           VARCHAR(32),
-    Lingua            VARCHAR(32),
+    Titolo            VARCHAR(64) NOT NULL,
+    DataPubblicazione DATE        NOT NULL,
+    Editore           VARCHAR(64) NOT NULL,
+    Disciplina        VARCHAR(32) NOT NULL,
+    Formato           VARCHAR(32) NOT NULL,
+    Lingua            VARCHAR(32) NOT NULL,
 
-    CONSTRAINT Articolo_PK PRIMARY KEY (ID_Articolo)
+    CONSTRAINT Articolo_PK PRIMARY KEY (ID_Articolo),
+    CONSTRAINT UNIQUE_DOI UNIQUE (DOI)
 );
 
 
 CREATE TABLE b.Rivista
 (
     ID_Rivista        INTEGER,     --PK
+    Nome              VARCHAR(64) NOT NULL,
+    Numero            INTEGER     NOT NULL,
     ISBN              VARCHAR(13), --o int
-    Editore           VARCHAR(64),
-    Numero            INTEGER,
-    DataPubblicazione DATE,
-    Formato           VARCHAR(32),
-    Lingua            VARCHAR(32),
-    Curatore          VARCHAR(64),
+    Editore           VARCHAR(64) NOT NULL,
+    DataPubblicazione DATE        NOT NULL,
+    Formato           VARCHAR(32) NOT NULL,
+    Lingua            VARCHAR(32) NOT NULL,
+    Curatore          VARCHAR(64) NOT NULL,
 
-    CONSTRAINT Rivista_PK PRIMARY KEY (ID_Rivista)
+    CONSTRAINT Rivista_PK PRIMARY KEY (ID_Rivista),
+    CONSTRAINT UNIQUE_nome_numero UNIQUE (Nome, Numero),
+    CONSTRAINT UNIQUE_ISBN UNIQUE (ISBN)
 );
 
 CREATE TABLE b.Conferenza
 (
     ID_Conferenza      INTEGER, --PK
-    Indirizzo          VARCHAR(64),
-    StrutturaOspitante VARCHAR(32),
-    Responsabile       VARCHAR(32),
-    DataOraInizio      TIMESTAMP,
-    DataOraFine        TIMESTAMP,
+    Indirizzo          VARCHAR(64) NOT NULL,
+    StrutturaOspitante VARCHAR(32) NOT NULL,
+    Responsabile       VARCHAR(32) NOT NULL,
+    DataOraInizio      TIMESTAMP   NOT NULL,
+    DataOraFine        TIMESTAMP, --NOT NULL?
 
     CONSTRAINT Conferenza_PK PRIMARY KEY (ID_Conferenza)
 );
@@ -83,11 +88,11 @@ CREATE TABLE b.ArticoloInConferenza
 
 CREATE TABLE b.Autore
 (
-    ID_Autore   INTEGER,
-    Nome        VARCHAR(32),
+    ID_Autore   INTEGER,  --PK
+    Nome        VARCHAR(32) NOT NULL,
     Cognome     VARCHAR(32),
-    DataNascita DATE,
-    Nazionalità VARCHAR(32),
+    DataNascita DATE NOT NULL,
+    Nazionalità VARCHAR(32) NOT NULL,
 
     CONSTRAINT Autore_PK PRIMARY KEY (ID_Autore)
 );
@@ -106,8 +111,8 @@ CREATE TABLE b.AutoreArticolo
 CREATE TABLE b.Collana
 (
     ID_Collana  INTEGER,
-    Titolo      VARCHAR(32),
-    Descrizione VARCHAR(128),
+    Titolo      VARCHAR(32) NOT NULL,
+    Descrizione VARCHAR(128) NOT NULL,
 
     CONSTRAINT Collana_PK PRIMARY KEY (ID_Collana)
 );
@@ -126,10 +131,10 @@ CREATE TABLE b.LibroInCollana
 CREATE TABLE b.Presentazione
 (
     ID_Presentazione INT,
-    Indirizzo        VARCHAR(64),
-    Descrizione      VARCHAR(128),
-    DataOraInizio    TIMESTAMP,
-    DataOraFine      TIMESTAMP,
+    Indirizzo        VARCHAR(64) NOT NULL,
+    Descrizione      VARCHAR(128) NOT NULL,
+    DataOraInizio    TIMESTAMP NOT NULL,
+    DataOraFine      TIMESTAMP, --NOT NULL?
 
     CONSTRAINT Presentazione_PK PRIMARY KEY (ID_Presentazione)
 );
@@ -148,25 +153,25 @@ CREATE TABLE b.PresentazioneLibro
 CREATE TABLE b.Serie
 (
     ID_Serie    INTEGER,
-    ISSN        VARCHAR(8),
-    Titolo      VARCHAR(32),
-    Descrizione VARCHAR(128),
+    ISSN        VARCHAR(8) UNIQUE,
+    Titolo      VARCHAR(32) NOT NULL,
+    Descrizione VARCHAR(128) NOT NULL,
 
     CONSTRAINT Serie_PK PRIMARY KEY (ID_Serie)
 );
 
+
 CREATE TABLE b.Sequel
 (
     Serie    INTEGER, --FK
-    LibroPre INTEGER, --FK
-    LibroSeq INTEGER, --FK
+    ID_Libro INTEGER, --FK
+    Numero INTEGER,
 
     CONSTRAINT Serie_FK
         FOREIGN KEY (Serie) REFERENCES b.Serie (ID_Serie),
-    CONSTRAINT LibroPRE_FK
-        FOREIGN KEY (LibroPre) REFERENCES b.Libro (ID_Libro),
-    CONSTRAINT LibroSEQ_FK
-        FOREIGN KEY (LibroSeq) REFERENCES b.Libro (ID_Libro)
+    CONSTRAINT Libro_FK
+        FOREIGN KEY (ID_Libro) REFERENCES b.Libro (ID_Libro),
+    CONSTRAINT UNIQUE_numero_serie UNIQUE (Numero, Serie)
 );
 
 CREATE TABLE b.Negozio
@@ -230,4 +235,22 @@ CREATE TABLE b.Notifica
         FOREIGN KEY (Negozio) REFERENCES b.Negozio (ID_Negozio),
     CONSTRAINT Richiesta_FK
         FOREIGN KEY (Richiesta) REFERENCES b.Richiesta (ID_Richiesta)
+);
+
+
+CREATE VIEW b.vistalibri AS
+    SELECT
+
+CREATE OR REPLACE VIEW b.VistaLibriPresentazioni AS
+SELECT id_libro, l.titolo, p.indirizzo
+FROM (b.libro l NATURAL JOIN b.sequel s) ;
+
+
+
+CREATE OR REPLACE TRIGGER insertlibroserie INSTEAD OF INSERT ON b.VistaLibri
+    EXECUTE FUNCTION b.insertlibroserie();
+
+INSERT INTO b.VistaLibri(id_libro, isbn, titolo, datapubblicazione, prezzo, editore, lingua, formato, tipo, genere, descrizione, serie, numero)
+(
+    values (1, '1', 'titolo1', '2019-01-01', 1, 'editore1', 'lingua1', 'formato1', 'tipo1', 'genere1', 'descrizione1', 1, 1)
 )

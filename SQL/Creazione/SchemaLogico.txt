@@ -1,7 +1,7 @@
 Articolo: ID_Articolo, DOI, Titolo, DataPubblicazione, Editore, Disciplina, Formato, Lingua
 ok
 
-Rivista: ID_Rivista, ISBN, Editore, Numero, DataPubblicazione, Formato, Lingua, Curatore
+Rivista: ID_Rivista, Nome, Numero, ISBN, Editore, DataPubblicazione, Formato, Lingua, Curatore
 ok
 
 Conferenza: ID_Conferenza, Indirizzo, StrutturaOspitante, Responsabile, DataOraInizio, DataOraFine
