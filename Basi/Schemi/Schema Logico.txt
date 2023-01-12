@@ -33,13 +33,8 @@ Serie: ID_Serie, TitoloSerie, Libro, LibroSeq
 Libro -> Libro(ID_Libro)
 LibroSeq -> Libro(ID_Libro)
 
+Negozio: ID_Negozio, Nome, Tipo
 
-Negozio: Nome, Tipo, Libro
+Stock: Negozio, Libro
+Negozio -> Negozio(ID_Negozio)
 Libro -> Libro(ID_Libro)
-
-
-
-
-
-
-
