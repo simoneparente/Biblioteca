@@ -19,7 +19,7 @@ Evento -> Evento(ID_Evento)
 Articolo -> Articolo(ID_Articolo)
 
 
-Libro: ID_Libro, Titolo, ISBN, DataPubblicazione, Editore, Titolo, Genere, Lingua, Formato, Prezzo
+Libro: ID_Libro, Titolo, ISBN, DataPubblicazione, Editore, Genere, Lingua, Formato, Prezzo
 
 AutoreLibro: Autore, Libro
 Autore -> Autore(ID_Autore)
@@ -29,9 +29,9 @@ Presentazione: Evento, Libro
 Evento -> Evento(ID_Evento)
 Libro -> Libro(ID_Libro)
 
-Serie: ID_Serie, TitoloSerie, Libro, LibroSeq
+Serie: ID_Serie, TitoloSerie, Libro, LibroSuccessivo
 Libro -> Libro(ID_Libro)
-LibroSeq -> Libro(ID_Libro)
+LibroSuccessivo -> Libro(ID_Libro)
 
 Negozio: ID_Negozio, Nome, Tipo
 
