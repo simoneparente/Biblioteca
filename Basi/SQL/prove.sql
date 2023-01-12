@@ -1,0 +1,1 @@
+INSERT INTO b.autorelibro(id_autore) values(3);

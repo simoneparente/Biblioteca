@@ -27,6 +27,7 @@ CREATE TABLE b.AutoreArticolo(
     ID_Autore          SERIAL,
     ID_Articolo        SERIAL,
 
+    CONSTRAINT PK_AutoreArticolo PRIMARY KEY (ID_Autore, ID_Articolo),
     CONSTRAINT FK_AutoreArticolo_Autore FOREIGN KEY (ID_Autore) REFERENCES b.Autore(ID_Autore),
     CONSTRAINT FK_AutoreArticolo_Articolo FOREIGN KEY (ID_Articolo) REFERENCES b.Articolo(ID_Articolo)
 );
@@ -45,6 +46,7 @@ CREATE TABLE b.ArticoloInRivista(
     ID_Articolo        SERIAL,
     ID_Rivista         SERIAL,
 
+    CONSTRAINT PK_ArticoloInRivista PRIMARY KEY (ID_Articolo, ID_Rivista),
     CONSTRAINT FK_ArticoloInRivista_Articolo FOREIGN KEY (ID_Articolo) REFERENCES b.Articolo(ID_Articolo),
     CONSTRAINT FK_ArticoloInRivista_Rivista FOREIGN KEY (ID_Rivista) REFERENCES b.Rivista(ID_Rivista)
 );
@@ -57,13 +59,14 @@ CREATE TABLE b.Evento(
     DataFine           DATE,
     Responsabile       VARCHAR(128),
 
-    CONSTRAINT PK_Conferenza PRIMARY KEY (ID_Evento)
+    CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento)
 );
 
 CREATE TABLE b.Conferenza(
     Articolo        SERIAL,
     Evento          SERIAL,
 
+    CONSTRAINT PK_Conferenza PRIMARY KEY (Articolo, Evento),
     CONSTRAINT FK_Conferenza_Articolo FOREIGN KEY (Articolo) REFERENCES b.Articolo(ID_Articolo),
     CONSTRAINT FK_Conferenza_Evento FOREIGN KEY (Evento) REFERENCES b.Evento(ID_Evento)
 );
@@ -88,6 +91,7 @@ CREATE TABLE b.AutoreLibro(
     ID_Autore          SERIAL,
     ID_Libro           SERIAL,
 
+    CONSTRAINT PK_AutoreLibro PRIMARY KEY (ID_Autore, ID_Libro),
     CONSTRAINT FK_AutoreLibro_Autore FOREIGN KEY (ID_Autore) REFERENCES b.Autore(ID_Autore),
     CONSTRAINT FK_AutoreLibro_Libro FOREIGN KEY (ID_Libro) REFERENCES b.Libro(ID_Libro)
 );
@@ -96,6 +100,7 @@ CREATE TABLE b.Presentazione(
     Evento             SERIAL,
     Libro              SERIAL,
 
+    CONSTRAINT PK_Presentazione PRIMARY KEY (Evento, Libro),
     CONSTRAINT FK_Presentazione_Evento FOREIGN KEY (Evento) REFERENCES b.Evento(ID_Evento),
     CONSTRAINT FK_Presentazione_Libro FOREIGN KEY (Libro) REFERENCES b.Libro(ID_Libro)
 );
@@ -122,6 +127,7 @@ CREATE TABLE b.Negozio(
 CREATE TABLE b.Stock(
     Negozio            SERIAL,
     Libro              SERIAL,
+    Quantita           INTEGER, -- se quantita=0 la tupla viene eliminata (scoprire come si fa)
 
     CONSTRAINT FK_Stock_Negozio FOREIGN KEY (Negozio) REFERENCES b.Negozio(ID_Negozio),
     CONSTRAINT FK_Stock_Libro FOREIGN KEY (Libro) REFERENCES b.Libro(ID_Libro)
