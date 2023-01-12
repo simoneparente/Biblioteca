@@ -1,10 +1,10 @@
+DROP SCHEMA IF EXISTS b CASCADE;
 CREATE SCHEMA b;
 
 CREATE TABLE b.Articolo(
     ID_Articolo        SERIAL,
     Titolo             VARCHAR(128),
     DOI                VARCHAR(128),
-    Disciplina         VARCHAR(128),
     DataPubblicazione  DATE,
     Editore            VARCHAR(128),
     Lingua             VARCHAR(128),
@@ -80,7 +80,8 @@ CREATE TABLE b.Libro(
     Prezzo             FLOAT,
 
     CONSTRAINT PK_Libro PRIMARY KEY (ID_Libro),
-    CONSTRAINT UK_Libro UNIQUE (ISBN)
+    CONSTRAINT UK_Libro UNIQUE (ISBN),
+    CONSTRAINT CK_Libro CHECK (Prezzo > 0)
 );
 
 CREATE TABLE b.AutoreLibro(
