@@ -1,42 +1,42 @@
 CREATE SCHEMA b;
 
 CREATE TABLE b.Articolo(
-    ID_Articolo       SERIAL,
-    Titolo            VARCHAR(128),
-    DOI               VARCHAR(128),
-    Disciplina        VARCHAR(128),
-    DataPubblicazione DATE,
-    Editore           VARCHAR(128),
-    Lingua            VARCHAR(128),
-    Formato           VARCHAR(128),
+    ID_Articolo        SERIAL,
+    Titolo             VARCHAR(128),
+    DOI                VARCHAR(128),
+    Disciplina         VARCHAR(128),
+    DataPubblicazione  DATE,
+    Editore            VARCHAR(128),
+    Lingua             VARCHAR(128),
+    Formato            VARCHAR(128),
 
     CONSTRAINT PK_Articolo PRIMARY KEY (ID_Articolo),
     CONSTRAINT UK_Articolo UNIQUE (DOI)
 );
 
 CREATE TABLE b.Autore(
-    ID_Autore         SERIAL,
-    Nome              VARCHAR(128),
-    Cognome           VARCHAR(128),
-    DataNascita       DATE,
+    ID_Autore          SERIAL,
+    Nome               VARCHAR(128),
+    Cognome            VARCHAR(128),
+    DataNascita        DATE,
 
     CONSTRAINT PK_Autore PRIMARY KEY (ID_Autore)
 );
 
 CREATE TABLE b.AutoreArticolo(
-    ID_Autore         SERIAL,
-    ID_Articolo       SERIAL,
+    ID_Autore          SERIAL,
+    ID_Articolo        SERIAL,
 
     CONSTRAINT FK_AutoreArticolo_Autore FOREIGN KEY (ID_Autore) REFERENCES b.Autore(ID_Autore),
     CONSTRAINT FK_AutoreArticolo_Articolo FOREIGN KEY (ID_Articolo) REFERENCES b.Articolo(ID_Articolo)
 );
 
 CREATE TABLE b.Rivista(
-    ID_Rivista        SERIAL,
-    Nome              VARCHAR(128),
-    Argomento         VARCHAR(128),
-    DataPubblicazione DATE,
-    Responsabile      VARCHAR(128),
+    ID_Rivista         SERIAL,
+    Nome               VARCHAR(128),
+    Argomento          VARCHAR(128),
+    DataPubblicazione  DATE,
+    Responsabile       VARCHAR(128),
 
     CONSTRAINT PK_Rivista PRIMARY KEY (ID_Rivista)
 );
