@@ -1,4 +1,4 @@
-Articolo: ID_Articolo, Titolo, DOI, Disciplina, DataPubblicazione, Editore, Lingua, Formato
+Articolo: ID_Articolo, Titolo, DOI, DataPubblicazione, Editore, Lingua, Formato
 
 Autore: ID_Autore, Nome, Cognome, DataNascita
 
