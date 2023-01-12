@@ -583,6 +583,7 @@
 											"model": {
 												"$ref": "AAAAAAGFoVAr5nOj80U="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 629,
 											"top": 363,
@@ -638,7 +639,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 629,
-											"top": 378,
+											"top": 363,
 											"width": 150.6806640625,
 											"height": 13,
 											"text": "+DataPubblicazione: Date",
@@ -655,7 +656,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 629,
-											"top": 393,
+											"top": 378,
 											"width": 150.6806640625,
 											"height": 13,
 											"text": "+Editore: String",
@@ -672,7 +673,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 629,
-											"top": 408,
+											"top": 393,
 											"width": 150.6806640625,
 											"height": 13,
 											"text": "+Lingua: String",
@@ -689,7 +690,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 629,
-											"top": 423,
+											"top": 408,
 											"width": 150.6806640625,
 											"height": 13,
 											"text": "+Formato: String",
@@ -700,7 +701,7 @@
 									"left": 624,
 									"top": 313,
 									"width": 160.6806640625,
-									"height": 128
+									"height": 113
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -713,7 +714,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 624,
-									"top": 441,
+									"top": 426,
 									"width": 160.6806640625,
 									"height": 10
 								},
@@ -2524,9 +2525,9 @@
 										"$ref": "AAAAAAGFoYHGQ/hbNxc="
 									},
 									"font": "Arial;13;0",
-									"left": 476,
+									"left": 475,
 									"top": 260,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -2587,9 +2588,9 @@
 										"$ref": "AAAAAAGFoYHGQ/hcVq8="
 									},
 									"font": "Arial;13;0",
-									"left": 514,
+									"left": 513,
 									"top": 189,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
