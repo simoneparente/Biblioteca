@@ -1,0 +1,45 @@
+Articolo: ID_Articolo, Titolo, DOI, Disciplina, DataPubblicazione, Editore, Lingua, Formato
+
+Autore: ID_Autore, Nome, Cognome, DataNascita
+
+AutoreArticolo: Autore, Articlo 
+Autore -> Autore(ID_Autore)
+Articolo -> Articolo(ID_Articolo)
+
+Rivista: ID_Rivista, Nome, Argomento, DataPubblicazione, Responsabile
+
+ArticoloInRivista: Rivista, Articolo
+Rivista -> Rivista(ID_Rivista)
+Articolo -> Articolo(ID_Articolo)
+
+Evento: ID_Evento, Indirizzo, StrutturaOspitante, DataInizio, DataFine, Responsabile
+
+Conferenza: Evento, Articolo
+Evento -> Evento(ID_Evento)
+Articolo -> Articolo(ID_Articolo)
+
+
+Libro: ID_Libro, Titolo, ISBN, DataPubblicazione, Editore, Titolo, Genere, Lingua, Formato, Prezzo
+
+AutoreLibro: Autore, Libro
+Autore -> Autore(ID_Autore)
+Libro -> Libro(ID_Libro)
+
+Presentazione: Evento, Libro
+Evento -> Evento(ID_Evento)
+Libro -> Libro(ID_Libro)
+
+Serie: ID_Serie, TitoloSerie, Libro, LibroSeq
+Libro -> Libro(ID_Libro)
+LibroSeq -> Libro(ID_Libro)
+
+
+Negozio: Nome, Tipo, Libro
+Libro -> Libro(ID_Libro)
+
+
+
+
+
+
+
