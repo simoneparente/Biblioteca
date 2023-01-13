@@ -1,6 +1,6 @@
-PWD c:\Università\Corsi\Basi di Dati\GitHub\Biblioteca\Documentazione\LateX
+PWD c:\Università\Corsi\Basi di Dati\GitHub\Biblioteca\Basi\Documentazione\LateX
 INPUT C:\Users\Simone\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Università\Corsi\Basi di Dati\GitHub\Biblioteca\Documentazione\LateX\main.tex
+INPUT c:\Università\Corsi\Basi di Dati\GitHub\Biblioteca\Basi\Documentazione\LateX\main.tex
 OUTPUT main.log
 INPUT C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex\latex\base\report.cls
 INPUT C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex\latex\base\report.cls
