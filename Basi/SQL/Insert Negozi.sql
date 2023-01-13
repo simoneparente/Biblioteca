@@ -16,6 +16,10 @@ VALUES ('Libreria Nazionale', 'Fisico'),
         ('Libreria della Musica', 'Fisico');
 
 
+INSERT INTO b.view_insertStockLibro(id_negozio, isbn, quantita)
+    VALUES (1,'978-88-17-88000-0', 35),
+           (99,'978-88-17-88000-0', 22);
+
 --Creazione view Stock e libro
 DROP VIEW b.viewstocklibro;
 CREATE OR REPLACE VIEW b.viewStockLibro AS
