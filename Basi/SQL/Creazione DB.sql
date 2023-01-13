@@ -18,7 +18,6 @@ CREATE TABLE b.Autore(
     ID_Autore          SERIAL,
     Nome               VARCHAR(128),
     Cognome            VARCHAR(128),
-    DataNascita        DATE,
 
     CONSTRAINT PK_Autore PRIMARY KEY (ID_Autore)
 );
