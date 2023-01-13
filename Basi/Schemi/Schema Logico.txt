@@ -1,6 +1,6 @@
 Articolo: ID_Articolo, Titolo, DOI, DataPubblicazione, Editore, Lingua, Formato
 
-Autore: ID_Autore, Nome, Cognome, DataNascita
+Autore: ID_Autore, Nome, Cognome
 
 AutoreArticolo: Autore, Articlo 
 Autore -> Autore(ID_Autore)
