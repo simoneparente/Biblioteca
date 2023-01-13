@@ -1,6 +1,6 @@
 --Insert View
 CREATE OR REPLACE VIEW b.viewlibroautore AS
-SELECT titolo, ISBN, concat(nome, ' ', cognome) as AutoreNome_Cognome,datapubblicazione, Editore, Genere, Lingua, Formato
+SELECT titolo, ISBN, concat(nome, ' ', cognome) as Nome_Cognome,datapubblicazione, Editore, Genere, Lingua, Formato
 FROM (b.Libro JOIN b.autorelibro ON libro.id_libro = autorelibro.id_libro)
          JOIN b.autore ON autore.id_autore = autorelibro.id_autore;
 
@@ -52,5 +52,6 @@ CREATE OR REPLACE TRIGGER trig_libroautore
     FOR EACH ROW
 EXECUTE FUNCTION b.ins_libroautore();
 
-INSERT INTO b.viewlibroautore(titolo, datapubblicazione, nome_cognome, isbn)
-values ('Il nome della rosa', '1980-01-01', 'Umberto_Eco,Provo_Provoni,Marco_Marconi,Marco_Marconinnifurhy','cazzoculodiocane');
+--Inserimento dati tramite view
+INSERT INTO b.viewlibroautore (titolo, ISBN, nome_cognome, datapubblicazione, Editore, Genere, Lingua, Formato)
+values ('Il nome della rosa', '978-88-17-88000-0','Umberto_Eco,Provo_Provoni,Marco_Marconi,Marco_Marconinnifurhy', '1980-01-01', 'Mondadori', 'Romanzo', 'Italiano', 'Cartaceo');
