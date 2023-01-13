@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  5 DEC 2022 12:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  12 JAN 2023 17:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Università/Corsi/Basi di Dati/GitHub/Biblioteca/Documentazione/LateX/main.tex"
-(c:/Università/Corsi/Basi di Dati/GitHub/Biblioteca/Documentazione/LateX/main.tex
+**"c:/Università/Corsi/Basi di Dati/GitHub/Biblioteca/Basi/Documentazione/LateX/main.tex"
+(c:/Università/Corsi/Basi di Dati/GitHub/Biblioteca/Basi/Documentazione/LateX/main.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-10-26> (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
 Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
@@ -344,14 +344,14 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  9745 strings out of 475380
- 160741 string characters out of 2776300
+ 160841 string characters out of 2776300
  516066 words of memory out of 3000000
  30978 multiletter control sequences out of 15000+600000
  472591 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,6n,77p,425b,445s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,6n,77p,430b,445s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on main.pdf (8 pages, 475463 bytes).
+Output written on main.pdf (8 pages, 475247 bytes).
 PDF statistics:
  137 PDF objects out of 1000 (max. 8388607)
  24 named destinations out of 1000 (max. 500000)
