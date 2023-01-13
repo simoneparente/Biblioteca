@@ -16,12 +16,8 @@ VALUES ('Libreria Nazionale', 'Fisico'),
         ('Libreria della Musica', 'Fisico');
 
 
-INSERT INTO b.view_insertStockLibro(id_negozio, isbn, quantita)
-    VALUES (1,'978-88-17-88000-0', 35),
-           (99,'978-88-17-88000-0', 22);
-
 --Creazione view Stock e libro
-DROP VIEW b.viewstocklibro;
+--DROP VIEW b.viewstocklibro;
 CREATE OR REPLACE VIEW b.viewStockLibro AS
 SELECT nome as Negozio, tipo, titolo, quantita
 FROM (b.stock JOIN b.negozio on stock.negozio = negozio.id_negozio) JOIN b.libro ON id_libro=stock.libro;
@@ -29,7 +25,6 @@ FROM (b.stock JOIN b.negozio on stock.negozio = negozio.id_negozio) JOIN b.libro
 CREATE VIEW b.view_insertStockLibro AS
 SELECT id_negozio, isbn, quantita
 FROM (b.stock JOIN b.negozio on stock.negozio = negozio.id_negozio) JOIN b.libro ON id_libro=stock.libro;
-
 
 
 CREATE OR REPLACE FUNCTION b.ins_stocklibro() RETURNS TRIGGER AS
@@ -56,3 +51,7 @@ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER triggerStockLibro INSTEAD OF INSERT ON b.view_insertStockLibro FOR EACH ROW
     EXECUTE FUNCTION b.ins_stockLibro();
+
+INSERT INTO b.view_insertStockLibro(id_negozio, isbn, quantita)
+    VALUES (1,'978-88-17-88000-0', 35),
+           (99,'978-88-17-88000-0', 22);
