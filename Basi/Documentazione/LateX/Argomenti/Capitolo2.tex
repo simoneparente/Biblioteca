@@ -12,11 +12,16 @@
         In questa fase andremo a scegliere uno o più attributi atti a identificare univocamente
         le varie entità presenti nello schema precedente, in particolare:
             \begin{enumerate}
-            \item L'entità \textbf{Libro} presenta l'attributo ISBN che rappresenta una possibile chiave primaria
-            \item Per \textbf{Articolo scientifico}, non ritenendo 
-            \item L'entità \textbf{Rivista} 
+            \item L'entità \textbf{Libro} presenta l'attributo ISBN che rappresenta una possibile chiave primaria,
+                  tuttavia è stato scelto di aggiungere un attributo \textit{ID\_Libro} in modo tale da aumentare
+                  la velocità di accesso agli indici.
+            \item Per \textbf{Articolo scientifico} la situazione è analoga, è stato quindi aggiunto un attributo
+                  \textit{ID\_Articolo}.
+            \item Nel caso dell'entità \textbf{Rivista}, la quale presenta un attributo ISSN che è chiave candidata,
+                  di inserire un ulteriore attributo \textit{ID\_Rivista}.
             \item Sarebbe possibile identificare un \textbf{Evento} tramite l
-            \item \textbf{Conferenza}:
+            \item L'entità \textbf{Conferenza} non possiede alcuna chiave candidata, si è ritenuto necessario quindi aggiungere
+                  un attributo 
             \item \textbf{Presentazione}: 
             \item \textbf{Autore}: 
             \item \textbf{Negozio}:

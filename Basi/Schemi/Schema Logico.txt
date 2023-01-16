@@ -6,7 +6,7 @@ AutoreArticolo: Autore, Articlo
 Autore -> Autore(ID_Autore)
 Articolo -> Articolo(ID_Articolo)
 
-Rivista: ID_Rivista, Nome, Argomento, DataPubblicazione, Responsabile
+Rivista: ID_Rivista, ISSN, Nome, Argomento, DataPubblicazione, Responsabile
 
 ArticoloInRivista: Rivista, Articolo
 Rivista -> Rivista(ID_Rivista)
@@ -29,7 +29,7 @@ Presentazione: Evento, Libro
 Evento -> Evento(ID_Evento)
 Libro -> Libro(ID_Libro)
 
-Serie: ID_Serie, TitoloSerie, Libro, LibroSuccessivo
+Serie: ID_Serie, ISBN, TitoloSerie, Libro, LibroSuccessivo
 Libro -> Libro(ID_Libro)
 LibroSuccessivo -> Libro(ID_Libro)
 

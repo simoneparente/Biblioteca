@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  13 JAN 2023 17:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  16 JAN 2023 08:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -331,7 +331,7 @@ Overfull \hbox (10.63136pt too wide) in paragraph at lines 4--5
 <Immagini/UMLris_v1_0.png, id=109, 1215.54124pt x 900.36375pt>
 File: Immagini/UMLris_v1_0.png Graphic file (type png)
 <use Immagini/UMLris_v1_0.png>
-Package pdftex.def Info: Immagini/UMLris_v1_0.png  used on input line 34.
+Package pdftex.def Info: Immagini/UMLris_v1_0.png  used on input line 39.
 (pdftex.def)             Requested size: 303.88457pt x 225.09038pt.
  [5]) [6 <./Immagini/UMLris_v1_0.png>]
 \openout2 = `Argomenti/Capitolo3.aux'.
@@ -351,17 +351,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: BCDC3105E0EC86D167E3DCC89E652228;2792.
  ) 
 Here is how much of TeX's memory you used:
- 10239 strings out of 475380
- 167144 string characters out of 2776300
+ 10243 strings out of 475380
+ 167191 string characters out of 2776300
  528665 words of memory out of 3000000
- 31443 multiletter control sequences out of 15000+600000
- 472591 words of font info for 39 fonts, out of 8000000 for 9000
+ 31446 multiletter control sequences out of 15000+600000
+ 472937 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,6n,77p,430b,446s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on main.pdf (7 pages, 329566 bytes).
+<C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on main.pdf (7 pages, 342342 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
+ 164 PDF objects out of 1000 (max. 8388607)
  43 named destinations out of 1000 (max. 500000)
  128 words of extra memory for PDF output out of 10000 (max. 10000000)
 
