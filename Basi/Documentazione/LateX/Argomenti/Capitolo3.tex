@@ -1,2 +1,153 @@
 \chapter{Schema logico}
 
+%INIZIO ARTICOLO%
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Articolo}: \underline{ID\_Articolo}, Titolo, DOI, DataPubblicazione, Editore, Lingua, Formato
+    }%
+}
+
+\vspace{0.6cm}
+
+%FINE ARTICOLO%
+
+
+%INIZIO AUTORE%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Autore}: \underline{ID\_Autore}, Nome, Cognome
+    }%
+}
+
+\vspace{0.6cm}
+%FINE AUTORE%
+
+
+%INIZIO RIVISTA%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Rivista}: \underline{ID\_Rivista}, ISSN, Nome, Argomento, DataPubblicazione, Responsabile
+    }%
+}
+
+\vspace{0.6cm}
+
+%FINE RIVISTA%
+
+
+%INIZIO AUTOREARTICOLO%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{AutoreArticolo}: \textit{\underline{Autore, Articolo}}
+    }%
+}
+
+\textit{Autore} $\hookrightarrow$ Autore(ID\_Autore)
+
+\textit{Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
+
+\vspace{0.6cm}
+
+%FINE AUTOREARTICOLO%
+
+
+%INIZIO ARTICOLOINRIVISTA%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{ArticoloInRivista}: \textit{\underline{Rivista, Articolo}}
+    }%
+}
+
+\textit{Rivista} $\hookrightarrow$ Rivista(ID\_Rivista)
+
+\textit{Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
+
+\vspace{0.6cm}
+%FINE ARTICOLOINRIVISTA%
+
+
+%INIZIO EVENTO%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Evento}: \underline{ID\_Evento}, Indirizzo, StrutturaOspitante, DataInizio, DataFine, Responsabile
+    }%
+}
+
+\vspace{0.6cm}
+
+%FINE EVENTO%
+
+%INIZIO CONFERENZA%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Conferenza}: \textit{\underline{Evento, Articolo}}
+    }%
+}
+
+\textit{Evento} $\hookrightarrow$ Evento(ID\_Evento)
+
+\textit{Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
+
+\vspace{0.6cm}
+
+%FINE CONFERENZA%
+
+%INIZIO LIBRO%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Libro}: \underline{ID\_Libro}, Titolo, ISBN, DataPubblicazione, Editore, Genere, Lingua, Formato, Prezzo
+    }%
+}
+
+\vspace{0.6cm}
+
+%FINE LIBRO%
+
+%INIZIO AUTORELIBRO%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{AutoreLibro}: \textit{\underline{Autore, Libro}}
+    }%
+}
+\textit{Autore} $\hookrightarrow$ Autore(ID\_Autore)
+\textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+
+\vspace{0.6cm}
+%FINE AUTORELIBRO%
+
+
+%INIZIO PRESENTAZIONE%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Presentazione}: \textit{\underline{Evento, Libro}}
+    }%
+}
+\textit{Evento} $\hookrightarrow$ Evento(ID\_Evento)
+
+\textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+
+\vspace{0.6cm}
+%FINE PRESENTAZIONE%
+
+
+%INIZIO SERIE%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Serie}: \underline{ID\_Serie}, ISSN, Titolo, \textit{Libro}, \textit{LibroSuccessivo}
+    }%
+}
+
+\textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+\textit{LibroSuccessivo} $\hookrightarrow$ Libro(ID\_Libro)
+
+%FINE SERIE%
