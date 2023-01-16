@@ -115,9 +115,9 @@ CREATE TABLE b.Serie(
 );
 
 CREATE TABLE b.LibroINSerie(
-    ID_Serie           SERIAL,
-    Libro              SERIAL,
-    LibroSuccessivo    SERIAL,
+    ID_Serie           INTEGER,
+    Libro              INTEGER,
+    LibroSuccessivo    INTEGER,
 
     CONSTRAINT FK_Serie_Libro FOREIGN KEY (Libro) REFERENCES b.Libro(ID_Libro),
     CONSTRAINT FK_Serie_LibroSuccessivo FOREIGN KEY (LibroSuccessivo) REFERENCES b.Libro(ID_Libro)
