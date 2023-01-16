@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  16 JAN 2023 15:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  16 JAN 2023 15:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -403,22 +403,22 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 160--165
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 175--180
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 177--182
 [] 
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 187--192
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 189--194
 [] 
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 203--208
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 205--210
 [] 
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 216--221
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 218--223
 [] 
  []
 
@@ -438,7 +438,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  72i,7n,77p,430b,446s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\Simone\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (8 pages, 256392 bytes).
+Output written on main.pdf (8 pages, 256433 bytes).
 PDF statistics:
  179 PDF objects out of 1000 (max. 8388607)
  42 named destinations out of 1000 (max. 500000)
