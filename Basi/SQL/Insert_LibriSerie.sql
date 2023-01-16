@@ -10,9 +10,7 @@ SELECT l.titolo,
        l.Formato,
        s.nome                         as NOME_Serie_di_Appartenenza,
        s.ISSN                         as ISSN_Serie_di_Appartenenza
-FROM (((b.libro as l JOIN b.autorelibro as al ON l.id_libro = al.id_libro) JOIN b.autore as a
-       ON al.id_autore = a.id_autore) JOIN b.libroinserie as ls ON l.id_libro = ls.libro)
-         JOIN b.serie as s ON ls.id_serie = s.id_serie;
+FROM b.libro as l, b.serie as s, b.autore as a;
 
 CREATE OR REPLACE FUNCTION b.tfun_LibroaAutoreSerie() RETURNS TRIGGER AS
 $$
