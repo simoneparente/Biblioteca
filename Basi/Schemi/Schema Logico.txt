@@ -29,7 +29,7 @@ Presentazione: Evento, Libro
 Evento -> Evento(ID_Evento)
 Libro -> Libro(ID_Libro)
 
-Serie: ID_Serie, ISBN, TitoloSerie, Libro, LibroSuccessivo
+Serie: ID_Serie,ISSN, TitoloSerie, Libro, LibroSuccessivo
 Libro -> Libro(ID_Libro)
 LibroSuccessivo -> Libro(ID_Libro)
 
@@ -38,3 +38,13 @@ Negozio: ID_Negozio, Nome, Tipo
 Stock: Negozio, Libro
 Negozio -> Negozio(ID_Negozio)
 Libro -> Libro(ID_Libro)
+
+
+------------------
+
+
+Utente: ID_Utente, Username, Password
+
+Notifica: ID_Utente, ID_Serie, Disponibilità
+ID_Utente -> Utente(ID_Utente)
+ID_Serie -> Serie(ID_Serie)
