@@ -29,7 +29,7 @@ Presentazione: Evento, Libro
 Evento -> Evento(ID_Evento)
 Libro -> Libro(ID_Libro)
 
-Serie: ID_Serie,ISSN, TitoloSerie, Libro, LibroSuccessivo
+Serie: ID_Serie,ISSN, Nome, Libro, LibroSuccessivo
 Libro -> Libro(ID_Libro)
 LibroSuccessivo -> Libro(ID_Libro)
 
@@ -45,6 +45,6 @@ Libro -> Libro(ID_Libro)
 
 Utente: ID_Utente, Username, Password
 
-Notifica: ID_Utente, ID_Serie, Disponibilità
+Richiesta: ID_Utente, ID_Serie, Disponibilità
 ID_Utente -> Utente(ID_Utente)
 ID_Serie -> Serie(ID_Serie)

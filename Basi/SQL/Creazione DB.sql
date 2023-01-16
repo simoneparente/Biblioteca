@@ -33,6 +33,7 @@ CREATE TABLE b.AutoreArticolo(
 
 CREATE TABLE b.Rivista(
     ID_Rivista         SERIAL,
+    ISSN               VARCHAR(128),
     Nome               VARCHAR(128),
     Argomento          VARCHAR(128),
     DataPubblicazione  DATE,
@@ -106,7 +107,8 @@ CREATE TABLE b.Presentazione(
 
 CREATE TABLE b.Serie(
     ID_Serie           SERIAL,
-    TitoloSerie        VARCHAR(128),
+    ISSN               VARCHAR(128),
+    Nome               VARCHAR(128),
     Libro              SERIAL,
     LibroSuccessivo    SERIAL,
 
@@ -130,4 +132,23 @@ CREATE TABLE b.Stock(
 
     CONSTRAINT FK_Stock_Negozio FOREIGN KEY (Negozio) REFERENCES b.Negozio(ID_Negozio),
     CONSTRAINT FK_Stock_Libro FOREIGN KEY (Libro) REFERENCES b.Libro(ID_Libro)
+);
+
+CREATE TABLE b.Utente(
+    ID_Utente          SERIAL,
+    Username              VARCHAR(128),
+    Password           VARCHAR(128),
+
+    CONSTRAINT PK_Utente PRIMARY KEY (ID_Utente),
+    CONSTRAINT UK_Utente UNIQUE (Username)
+);
+
+CREATE TABLE b.Richiesta(
+    ID_Utente         SERIAL,
+    ID_Serie          SERIAL,
+    Disponibilità     BOOLEAN,
+
+    CONSTRAINT PK_Richiesta PRIMARY KEY (ID_Utente, ID_Serie),
+    CONSTRAINT FK_Richiesta_Utente FOREIGN KEY (ID_Utente) REFERENCES b.Utente(ID_Utente),
+    CONSTRAINT FK_Richiesta_Serie FOREIGN KEY (ID_Serie) REFERENCES b.Serie(ID_Serie)
 );
