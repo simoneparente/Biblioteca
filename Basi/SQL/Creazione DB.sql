@@ -142,7 +142,7 @@ CREATE TABLE b.Stock(
 
 CREATE TABLE b.Utente(
     ID_Utente          SERIAL,
-    Username              VARCHAR(128),
+    Username           VARCHAR(128),
     Password           VARCHAR(128),
 
     CONSTRAINT PK_Utente PRIMARY KEY (ID_Utente),
