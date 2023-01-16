@@ -109,10 +109,16 @@ CREATE TABLE b.Serie(
     ID_Serie           SERIAL,
     ISSN               VARCHAR(128),
     Nome               VARCHAR(128),
+
+    CONSTRAINT PK_Serie PRIMARY KEY (ID_Serie),
+    CONSTRAINT UK_Serie UNIQUE (ISSN)
+);
+
+CREATE TABLE b.LibroINSerie(
+    ID_Serie           SERIAL,
     Libro              SERIAL,
     LibroSuccessivo    SERIAL,
 
-    CONSTRAINT PK_Serie PRIMARY KEY (ID_Serie),
     CONSTRAINT FK_Serie_Libro FOREIGN KEY (Libro) REFERENCES b.Libro(ID_Libro),
     CONSTRAINT FK_Serie_LibroSuccessivo FOREIGN KEY (LibroSuccessivo) REFERENCES b.Libro(ID_Libro)
 );

@@ -29,7 +29,9 @@ Presentazione: Evento, Libro
 Evento -> Evento(ID_Evento)
 Libro -> Libro(ID_Libro)
 
-Serie: ID_Serie,ISSN, Nome, Libro, LibroSuccessivo
+Serie: ID_Serie, ISSN, Nome
+
+LibroINSerie: ID_Serie, Libro, LibroSuccessivo
 Libro -> Libro(ID_Libro)
 LibroSuccessivo -> Libro(ID_Libro)
 
