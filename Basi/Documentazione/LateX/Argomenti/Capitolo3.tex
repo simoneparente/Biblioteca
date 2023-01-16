@@ -117,7 +117,9 @@
         \textbf{AutoreLibro}: \textit{\underline{Autore, Libro}}
     }%
 }
+
 \textit{Autore} $\hookrightarrow$ Autore(ID\_Autore)
+
 \textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
 
 \vspace{0.6cm}
@@ -131,6 +133,7 @@
         \textbf{Presentazione}: \textit{\underline{Evento, Libro}}
     }%
 }
+
 \textit{Evento} $\hookrightarrow$ Evento(ID\_Evento)
 
 \textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
@@ -143,11 +146,81 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{Serie}: \underline{ID\_Serie}, ISSN, Titolo, \textit{Libro}, \textit{LibroSuccessivo}
+        \textbf{Serie}: \underline{ID\_Serie}, ISSN, Nome
+    }%
+}
+
+\vspace{0.6cm}
+
+%FINE SERIE%
+
+
+%INIZIO LIBROINSERIE%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{LibroInSerie}: \underline{ID\_Serie}, \textit{Libro}, \textit{LibroSuccessivo}
     }%
 }
 
 \textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+
 \textit{LibroSuccessivo} $\hookrightarrow$ Libro(ID\_Libro)
 
-%FINE SERIE%
+\vspace{0.6cm}
+%FINE LIBROINSERIE
+
+%INIZIO NEGOZIO%
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Negozio}: \underline{ID\_Negozio}, Nome, Tipo
+    }%
+}
+
+\vspace{0.6cm}
+%FINE NEGOZIO
+
+
+%INIZIO STOCK
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Stock}: \underline{\textit{Negozio, Libro}}
+    }%
+}
+
+\textit{Negozio} $\hookrightarrow$ Negozio(ID\_Negozio)
+
+\textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+
+\vspace{0.6cm}
+%FINE STOCK
+
+
+%INIZIO UTENTE
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Utente}: \underline{ID\_Utente}, Username, Password
+    }%
+}
+
+\vspace{0.6cm}
+
+%FINE UTENTE
+
+
+%INIZIO RICHIESTA
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Richiesta}: \underline{\textit{Utente, Serie}}, Disponibilità
+    }%
+}
+
+\textit{Utente} $\hookrightarrow$ Utente(ID\_Utente)
+
+\textit{Serie} $\hookrightarrow$ Serie(ID\_Serie)
+
+%FINE RICHIESTA
