@@ -59,7 +59,8 @@ CREATE TABLE b.Evento(
     DataFine           DATE,
     Responsabile       VARCHAR(128),
 
-    CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento)
+    CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento),
+    CONSTRAINT UK_Evento UNIQUE (Indirizzo, StrutturaOspitante, DataInizio, DataFine, Responsabile)
 );
 
 CREATE TABLE b.Conferenza(
