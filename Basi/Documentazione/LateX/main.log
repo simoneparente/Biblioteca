@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  18 JAN 2023 12:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  18 JAN 2023 12:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -351,15 +351,7 @@ File: Immagini/SchemaRistrutturato.png Graphic file (type png)
 <use Immagini/SchemaRistrutturato.png>
 Package pdftex.def Info: Immagini/SchemaRistrutturato.png  used on input line 51.
 (pdftex.def)             Requested size: 341.5251pt x 233.62224pt.
- [6 <./Immagini/SchemaRistrutturato.png>]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 55.
-
-
-LaTeX Warning: Float too large for page by 438.95189pt on input line 79.
-
-) [7] [8]
+ [6 <./Immagini/SchemaRistrutturato.png>] [7] [8]) [9]
 \openout2 = `Argomenti/Capitolo3.aux'.
 
  (Argomenti/Capitolo3.tex
@@ -409,7 +401,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 117--122
 [] 
  []
 
-[9
+[10
 
 
 
@@ -449,7 +441,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 220--225
 [] 
  []
 
-) [10] (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux))
+) [11] (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -457,17 +449,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: CF919B48602A519F9C2349C61EFD3ED1;2807.
  ) 
 Here is how much of TeX's memory you used:
- 10348 strings out of 475380
- 168914 string characters out of 2776300
- 551678 words of memory out of 3000000
+ 10349 strings out of 475380
+ 168921 string characters out of 2776300
+ 550679 words of memory out of 3000000
  31545 multiletter control sequences out of 15000+600000
  473272 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,77p,565b,450s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,10n,77p,563b,549s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\Simone\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (10 pages, 410109 bytes).
+Output written on main.pdf (11 pages, 410995 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 45 named destinations out of 1000 (max. 500000)
+ 194 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
  128 words of extra memory for PDF output out of 10000 (max. 10000000)
 
