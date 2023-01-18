@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  18 JAN 2023 12:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  18 JAN 2023 12:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -216,70 +216,52 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip49
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
-Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
-\LTleft=\skip50
-\LTright=\skip51
-\LTpre=\skip52
-\LTpost=\skip53
-\LTchunksize=\count281
-\LTcapwidth=\dimen161
-\LT@head=\box51
-\LT@firsthead=\box52
-\LT@foot=\box53
-\LT@lastfoot=\box54
-\LT@gbox=\box55
-\LT@cols=\count282
-\LT@rows=\count283
-\c@LT@tables=\count284
-\c@LT@chunks=\count285
-\LT@p@ftn=\toks19
 ) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count286
-\l__pdf_internal_box=\box56
+\l__color_backend_stack_int=\count281
+\l__pdf_internal_box=\box51
 ) (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
  (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count287
-\scratchdimen=\dimen162
-\scratchbox=\box57
-\nofMPsegments=\count288
-\nofMParguments=\count289
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count290
-\MPscratchDim=\dimen163
-\MPnumerator=\count291
-\makeMPintoPDFobject=\count292
-\everyMPtoPDFconversion=\toks21
+\scratchcounter=\count282
+\scratchdimen=\dimen161
+\scratchbox=\box52
+\nofMPsegments=\count283
+\nofMParguments=\count284
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count285
+\MPscratchDim=\dimen162
+\MPnumerator=\count286
+\makeMPintoPDFobject=\count287
+\everyMPtoPDFconversion=\toks20
 ) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \it@ocap on input line 11.
-LaTeX Info: Redefining \it@ccap on input line 11.
+LaTeX Info: Redefining \it@ocap on input line 10.
+LaTeX Info: Redefining \it@ccap on input line 10.
 
 
 File italian.ldf warning: 
@@ -287,9 +269,9 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 11.
+italian.ldf    on input line 10.
 
-Package hyperref Info: Link coloring OFF on input line 11.
+Package hyperref Info: Link coloring OFF on input line 10.
 (main.out) (main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -297,12 +279,12 @@ Package hyperref Info: Link coloring OFF on input line 11.
 <Immagini/FedericoII.png, id=59, 134.75343pt x 139.27031pt>
 File: Immagini/FedericoII.png Graphic file (type png)
 <use Immagini/FedericoII.png>
-Package pdftex.def Info: Immagini/FedericoII.png  used on input line 14.
+Package pdftex.def Info: Immagini/FedericoII.png  used on input line 13.
 (pdftex.def)             Requested size: 86.25pt x 89.14117pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 18.
+(Font)              using `OT1/cmr/bx/n' instead on input line 17.
 
 [1
 
@@ -351,15 +333,15 @@ File: Immagini/SchemaRistrutturato.png Graphic file (type png)
 <use Immagini/SchemaRistrutturato.png>
 Package pdftex.def Info: Immagini/SchemaRistrutturato.png  used on input line 51.
 (pdftex.def)             Requested size: 341.5251pt x 233.62224pt.
- [6 <./Immagini/SchemaRistrutturato.png>]
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 55.
+               Default added (so using `tbp') on input line 57.
 
 
-LaTeX Warning: Float too large for page by 438.95189pt on input line 79.
+LaTeX Warning: Float too large for page by 426.95189pt on input line 81.
 
-) [7] [8]
+) [6 <./Immagini/SchemaRistrutturato.png>] [7]
 \openout2 = `Argomenti/Capitolo3.aux'.
 
  (Argomenti/Capitolo3.tex
@@ -409,7 +391,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 117--122
 [] 
  []
 
-[9
+[8
 
 
 
@@ -449,7 +431,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 220--225
 [] 
  []
 
-) [10] (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux))
+) [9] (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -457,17 +439,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: CF919B48602A519F9C2349C61EFD3ED1;2807.
  ) 
 Here is how much of TeX's memory you used:
- 10348 strings out of 475380
- 168914 string characters out of 2776300
- 551678 words of memory out of 3000000
- 31545 multiletter control sequences out of 15000+600000
+ 10247 strings out of 475380
+ 167352 string characters out of 2776300
+ 546666 words of memory out of 3000000
+ 31449 multiletter control sequences out of 15000+600000
  473272 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,77p,565b,450s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,15n,77p,565b,450s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\Simone\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (10 pages, 410109 bytes).
+Output written on main.pdf (9 pages, 409466 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 45 named destinations out of 1000 (max. 500000)
+ 185 PDF objects out of 1000 (max. 8388607)
+ 43 named destinations out of 1000 (max. 500000)
  128 words of extra memory for PDF output out of 10000 (max. 10000000)
 
