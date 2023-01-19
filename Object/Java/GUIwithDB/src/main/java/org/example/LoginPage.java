@@ -7,7 +7,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class LoginPage implements ActionListener {
-    JFrame frame = new JFrame();
+    JFrame 
+            frame = new JFrame();
+
+    String path="src\\main\\resources\\icona.jpg";
 
     JButton loginButton = new JButton("Login");
     JButton resetButton = new JButton("Reset");
@@ -29,14 +32,10 @@ public class LoginPage implements ActionListener {
         messageLabel.setFont(new Font(null, Font.ITALIC, 25));
 
         userIDField.setBounds(125, 100, 200, 25);
-        userIDField.addActionListener(this);
-
         userPassField.setBounds(125, 150, 200, 25);
-
 
         loginButton.setBounds(125, 200, 100, 25);
         loginButton.setFocusable(false);
-        loginButton.setEnabled(false);
         loginButton.addActionListener(this);
 
         resetButton.setBounds(225, 200, 100, 25);
@@ -52,6 +51,7 @@ public class LoginPage implements ActionListener {
         frame.add(resetButton);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setIconImage(new ImageIcon(path).getImage());
         frame.setSize(500, 500);
         frame.setLayout(null);
         frame.setVisible(true);
@@ -67,20 +67,53 @@ public class LoginPage implements ActionListener {
 
             String userID = userIDField.getText();
             String password = String.valueOf(userPassField.getPassword());
+            /*
+            for(Utente utente: logininfo)
+            {
+                if(utente.getUsername().equals(userID))
+                {
+                    if(utente.getPassword().equals(password))
+                    {
+                        messageLabel.setForeground(Color.green);
+                        messageLabel.setText("Login Riuscito");
+                        frame.dispose();
+                        WelcomePage welcomepage = new WelcomePage(userID);
+                    }
+                    if(!utente.getPassword().equals(password) && utente.getUsername().equals(userID))
+                    {
 
-            for (Utente x : logininfo) {
-                if (userID.equals(x.getUsername()) && password.equals(x.getPassword())) {
-                    messageLabel.setForeground(Color.green);
-                    messageLabel.setText("Login Riuscito");
-                    frame.dispose();
-                    WelcomePage welcomepage = new WelcomePage(userID);
-                    break;
-                } else {
+                    }
+
+                }
+                if(!utente.getUsername().equals(userID))
+                {
                     messageLabel.setForeground(Color.red);
-                    messageLabel.setText("Username o password errati");
+                    messageLabel.setText("username non trovato");
                 }
             }
+             */
+            for (Utente x : logininfo) {
+                if(userID.equals(x.getUsername())){
+                    messageLabel.setForeground(Color.green);
+                    messageLabel.setText("Username trovato");
+                    if(password.equals(x.getPassword())){
+                        messageLabel.setForeground(Color.green);
+                        messageLabel.setText("Login Riuscito");
+                        frame.dispose();
+                        WelcomePage welcomepage = new WelcomePage(userID);
+                        break;
+                    }else{
+                        messageLabel.setForeground(Color.red);
+                        messageLabel.setText("Password errata per questo username");
+                        break;
+                    }
+                }else{
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText("Username non trovato");
+                }
             }
+
+
         }
     }
 }

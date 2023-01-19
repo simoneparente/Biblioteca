@@ -49,7 +49,7 @@ public class UtenteDAO {
         }
     }
 
-    //metodo che l'uetnte che ha un determinato username
+    //restituisce i dati di un utente dato il suo username
     public Utente getUtenteByUsername (String username) throws Exception{
         Utente utente = new Utente();
 
