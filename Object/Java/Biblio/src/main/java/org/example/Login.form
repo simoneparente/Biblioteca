@@ -83,7 +83,16 @@
           <autoscrolls value="true"/>
         </properties>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="e2c3f" class="javax.swing.JLabel" binding="immagineLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
       </grid>
     </children>
   </grid>

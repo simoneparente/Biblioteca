@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Login {
-    private JFrame loginFrame;
     private JPanel rootPanel;
     private JPanel userPanel;
     private JPanel imagePanel;
@@ -14,20 +13,35 @@ public class Login {
     private JButton annullaButton;
     private JButton okButton;
     private JButton registerNowButton;
+    private JLabel immagineLabel;
     private JButton ok;
-    private JLabel immagine;
 
-    Login(String nome){
-        immagine.setIcon(new ImageIcon(""));
+    Login(){
+        JFrame loginFrame = new JFrame();
 
-        loginFrame.setName(nome);
+        immagineLabel.setIcon(new ImageIcon("src/Immagini/logo.png"));
+
         loginFrame.setBounds(100,100, 360, 480);
         loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         loginFrame.setContentPane(rootPanel);
         loginFrame.setVisible(true);
 
 
-        ok.addActionListener(new ActionListener() {
+        registerNowButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginFrame.dispose();
+                new RegisterGUI();
+
+            }
+        });
+        okButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        annullaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
