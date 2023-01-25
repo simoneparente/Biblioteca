@@ -12,6 +12,7 @@ public class Login {
     private JLabel immagine;
     private JTextField textField1;
     private JPasswordField passwordField1;
+    private JButton registerButton;
 
     Login(String nome){
         immagine.setIcon(new ImageIcon(""));
