@@ -11064,6 +11064,40 @@
 									"subViews": [
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGF4+LB99jfKxM=",
+											"_parent": {
+												"$ref": "AAAAAAGF3yclUUVJSQM="
+											},
+											"model": {
+												"$ref": "AAAAAAGF4+LB49imDrA="
+											},
+											"font": "Arial;13;0",
+											"left": 1389,
+											"top": 862,
+											"width": 162.2080078125,
+											"height": 13,
+											"text": "+Logo: JPanel",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGF4+It+7QsEWA=",
+											"_parent": {
+												"$ref": "AAAAAAGF3yclUUVJSQM="
+											},
+											"model": {
+												"$ref": "AAAAAAGF4+It4rPzkyA="
+											},
+											"font": "Arial;13;0",
+											"left": 1389,
+											"top": 877,
+											"width": 162.2080078125,
+											"height": 13,
+											"text": "+UsernameLabel: JLabel",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAGF3yeJMl4iP2o=",
 											"_parent": {
 												"$ref": "AAAAAAGF3yclUUVJSQM="
@@ -11073,10 +11107,27 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1389,
-											"top": 862,
+											"top": 892,
 											"width": 162.2080078125,
 											"height": 13,
 											"text": "+Username: JTextField",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGF4+JiILpjZSU=",
+											"_parent": {
+												"$ref": "AAAAAAGF3yclUUVJSQM="
+											},
+											"model": {
+												"$ref": "AAAAAAGF4+JiEroqYHs="
+											},
+											"font": "Arial;13;0",
+											"left": 1389,
+											"top": 907,
+											"width": 162.2080078125,
+											"height": 13,
+											"text": "+PasswordLabel: JLabel",
 											"horizontalAlignment": 0
 										},
 										{
@@ -11090,7 +11141,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1389,
-											"top": 877,
+											"top": 922,
 											"width": 162.2080078125,
 											"height": 13,
 											"text": "+password: JPasswordField",
@@ -11107,7 +11158,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1389,
-											"top": 892,
+											"top": 937,
 											"width": 162.2080078125,
 											"height": 13,
 											"text": "+LoginButton: JButton",
@@ -11124,7 +11175,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1389,
-											"top": 907,
+											"top": 952,
 											"width": 162.2080078125,
 											"height": 13,
 											"text": "+goToRegister: JButton",
@@ -11135,7 +11186,7 @@
 									"left": 1384,
 									"top": 857,
 									"width": 172.2080078125,
-									"height": 68
+									"height": 113
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -11148,7 +11199,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1384,
-									"top": 925,
+									"top": 970,
 									"width": 172.2080078125,
 									"height": 10
 								},
@@ -11190,7 +11241,7 @@
 							"left": 1384,
 							"top": 832,
 							"width": 172.2080078125,
-							"height": 118,
+							"height": 148,
 							"nameCompartment": {
 								"$ref": "AAAAAAGF3yclUEVEN2k="
 							},
@@ -11830,7 +11881,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1492,
-									"top": 968,
+									"top": 998,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -11851,7 +11902,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1505,
-									"top": 971,
+									"top": 1001,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -11872,7 +11923,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1464,
-									"top": 964,
+									"top": 994,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -11981,7 +12032,7 @@
 							"tail": {
 								"$ref": "AAAAAAGF3yclUEVD2S8="
 							},
-							"points": "1477:949;1477:1080;1264:1080;1264:1224",
+							"points": "1477:979;1477:1080;1264:1080;1264:1224",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGF3yvZ9N8upgI="
@@ -14493,12 +14544,39 @@
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
+							"_id": "AAAAAAGF4+LB49imDrA=",
+							"_parent": {
+								"$ref": "AAAAAAGF3yclUEVB2VY="
+							},
+							"name": "Logo",
+							"type": "JPanel"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGF4+It4rPzkyA=",
+							"_parent": {
+								"$ref": "AAAAAAGF3yclUEVB2VY="
+							},
+							"name": "UsernameLabel",
+							"type": "JLabel"
+						},
+						{
+							"_type": "UMLAttribute",
 							"_id": "AAAAAAGF3yeJJl3pE6s=",
 							"_parent": {
 								"$ref": "AAAAAAGF3yclUEVB2VY="
 							},
 							"name": "Username",
 							"type": "JTextField"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGF4+JiEroqYHs=",
+							"_parent": {
+								"$ref": "AAAAAAGF3yclUEVB2VY="
+							},
+							"name": "PasswordLabel",
+							"type": "JLabel"
 						},
 						{
 							"_type": "UMLAttribute",
