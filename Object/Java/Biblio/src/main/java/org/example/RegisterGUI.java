@@ -1,6 +1,10 @@
 package org.example;
 
+import com.formdev.flatlaf.*;
+
 import javax.swing.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class RegisterGUI {
     private JTextField usernameField;
@@ -17,6 +21,7 @@ public class RegisterGUI {
     private JButton registratiButton;
 
     RegisterGUI(){
+        FlatIntelliJLaf.setup();
         logoLabel.setIcon(new ImageIcon("src/Immagini/logo.png"));
         JFrame frame = new JFrame("Register");
         frame.setBounds(100, 100, 360, 480);
@@ -24,5 +29,16 @@ public class RegisterGUI {
         frame.setContentPane(outerPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        passwordField1.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    //==click registrati;
+                }
+                else {
+                super.keyPressed(e);
+            }
+        }
+        });
     }
 }
