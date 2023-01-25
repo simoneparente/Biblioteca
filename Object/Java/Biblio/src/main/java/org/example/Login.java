@@ -21,7 +21,10 @@ public class Login {
         immagine.setIcon(new ImageIcon(""));
 
         loginFrame.setName(nome);
-        loginFrame.setBounds(100,100, 720, 480);
+        loginFrame.setBounds(100,100, 360, 480);
+        loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loginFrame.setContentPane(rootPanel);
+        loginFrame.setVisible(true);
 
 
         ok.addActionListener(new ActionListener() {
