@@ -6,10 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Biblio" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="provaBiblio" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>
