@@ -9,5 +9,7 @@ public class Main {
         FlatDarkLaf.setup();
         mc = new MainController();
         mc.openGUI(mc.getLoginView().getName());
+        //mc.openGUI("Search");
+        //mc.openGUI(mc.getLoginView().getName());
     }
 }

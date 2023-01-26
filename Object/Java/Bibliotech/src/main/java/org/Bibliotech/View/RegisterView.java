@@ -14,7 +14,6 @@ public class RegisterView extends GeneralView {
     private JPanel imagePanel;
     private JPanel contentPanel;
     private JButton annullaButton;
-    private JButton loginButton;
     private JButton registratiButton;
     private JTextField usernameTextField;
     private JButton homeButton;
@@ -66,7 +65,7 @@ public class RegisterView extends GeneralView {
                         UtenteController c = new UtenteController();
                         if (c.registraUtente(username, password)) {
                             JOptionPane.showMessageDialog(null, "Utente registrato con successo");
-                            mc.switchGUI("login", "register");
+                            mc.switchGUI(mc.getLoginView().getName(), mc.getRegisterView().getName());
                         }
                     }
                 }
