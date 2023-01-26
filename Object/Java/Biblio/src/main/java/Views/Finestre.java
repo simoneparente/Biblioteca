@@ -19,7 +19,8 @@ public class Finestre extends JFrame {
         this.setTitle(nome);
         this.setIconImage(iconaFinestre.getImage());
         this.setSize(375, 480);
-        //this.setResizable(false);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
         this.setContentPane(rootPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         return this;
