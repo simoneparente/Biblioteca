@@ -23,17 +23,17 @@ public class RegisterView extends GeneralView {
     public RegisterView(){
         imageLabel.setIcon(logoIcon);
         imagePanel.setSize(360,250);
-        newView("register", rootPanel);
+        newView("Register", rootPanel);
         homeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mc.switchGUI("login", "register");
+                mc.switchGUI("Login", "Register");
             }
         });
         annullaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mc.switchGUI("login", "register");
+                mc.switchGUI("Login", "Register");
             }
         });
         showPWBox.addActionListener(new ActionListener() {

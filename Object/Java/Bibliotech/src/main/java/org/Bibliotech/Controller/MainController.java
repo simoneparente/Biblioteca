@@ -32,13 +32,13 @@ public class MainController {
 
     public void openGUI(String guiToShow){
         switch(guiToShow){
-            case "login":
+            case "Login":
                 loginView.showView();
                 break;
-            case "register":
+            case "Register":
                 registerView.showView();
                 break;
-            case "search":
+            case "Search":
                 searchView.showView();
                 break;
             default:
@@ -49,12 +49,12 @@ public class MainController {
 
     public void switchGUI(String guiToShow, String guiToHide){
         switch(guiToShow){
-            case "login":
+            case "Login":
                 switch(guiToHide){
-                    case "register":
+                    case "Register":
                         registerView.hideView();
                         break;
-                    case "search":
+                    case "Search":
                         searchView.hideView();
                         break;
                     default:
@@ -63,12 +63,12 @@ public class MainController {
                 }
                 loginView.showView();
                 break;
-            case "register":
+            case "Register":
                 switch(guiToHide){
-                    case "login":
+                    case "Login":
                         loginView.hideView();
                         break;
-                    case "search":
+                    case "Search":
                         searchView.hideView();
                         break;
                     default:
@@ -77,12 +77,12 @@ public class MainController {
                 }
                 registerView.showView();
                 break;
-            case "search":
+            case "Search":
                 switch(guiToHide){
-                    case "login":
+                    case "Login":
                         loginView.hideView();
                         break;
-                    case "register":
+                    case "Register":
                         registerView.hideView();
                         break;
                     default:

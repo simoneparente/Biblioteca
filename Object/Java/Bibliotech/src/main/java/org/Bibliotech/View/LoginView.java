@@ -22,7 +22,7 @@ public class LoginView extends GeneralView {
     public LoginView(){
         imageLabel.setIcon(logoIcon);
         imagePanel.setSize(360,250);
-        newView("login", rootPanel);
+        newView("Login", rootPanel);
         registratiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
