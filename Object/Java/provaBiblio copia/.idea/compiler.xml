@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="provaBiblio" />
         <module name="BiblioTech" />
+        <module name="provaBiblio copia" />
       </profile>
     </annotationProcessing>
   </component>
