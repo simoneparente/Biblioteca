@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="provaBiblio" />
+        <module name="provaBiblio_davide_old" />
       </profile>
     </annotationProcessing>
   </component>
