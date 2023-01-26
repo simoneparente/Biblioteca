@@ -1,16 +1,24 @@
 package Views;
 
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
+import javax.tools.Tool;
 import java.awt.*;
 import java.io.File;
+import java.net.URL;
 
 public class Finestre extends JFrame {
+    final Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
+    final URL imageResource = Main.class.getClassLoader().getResource("src/main/Immagini/iconaFinestre.png");
+    final Image image = defaultToolkit.getImage("src/main/Immagini/iconaFinestre.png"   );
+    final Taskbar taskbar = Taskbar.getTaskbar();
     String nome;
     //ImageIcon icona = new ImageIcon("src/Immagini/icon_bianco_arancione.png");
-    ImageIcon iconaFinestre = new ImageIcon("src/main/Immagini/iconaFinestre.png");
+    ImageIcon iconaFinestre = new ImageIcon(image);
     JPanel rootPanel;
-
     ImageIcon logoIcon= new ImageIcon("src/main/Immagini/logoIcon.png");
+
     //Crea nuova finestra (chiamare con NomeClasseFiglia.new_Finestra("NomeObject.nome", nomeObject.panelEsterno))
     public JFrame new_Finestra(String nome_in, JPanel rootPanel_in)
     {
@@ -18,6 +26,13 @@ public class Finestre extends JFrame {
         rootPanel= rootPanel_in;
         this.setTitle(nome);
         this.setIconImage(iconaFinestre.getImage());
+        try{
+            taskbar.setIconImage(image);
+        } catch (final UnsupportedOperationException u){
+            System.out.println("L'OS non supporta Taskbar");
+        } catch (final SecurityException e){
+            System.out.printf("Eccezzione TaskBar");
+        }
         this.setSize(375, 480);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
