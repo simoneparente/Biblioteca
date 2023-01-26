@@ -8,8 +8,8 @@ public class ConnessioneDB{
     private static ConnessioneDB instance;
     public Connection connection = null;
     private String nome = "postgres";
-    private String password = "password";
-    private String url = "jdbc:postgresql://localhost:5433/postgres"; // postgres è il nome del database
+    private String password = "1234";
+    private String url = "jdbc:postgresql://localhost:5432/postgres"; // postgres è il nome del database
     private String driver = "org.postgresql.Driver";
 
     private ConnessioneDB() throws SQLException {
