@@ -33,8 +33,7 @@ public class RegisterView extends GeneralView {
         annullaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                usernameTextField.setText("");
-                passwordField.setText("");
+                mc.switchGUI("login", "register");
             }
         });
         showPWBox.addActionListener(new ActionListener() {
