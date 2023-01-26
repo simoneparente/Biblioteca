@@ -2,6 +2,7 @@ package org.Bibliotech.View;
 
 import javax.swing.*;
 import java.awt.*;
+import com.formdev.flatlaf.FlatDarkLaf;
 
 public class GeneralView extends JFrame {
     String nome;
@@ -16,6 +17,8 @@ public class GeneralView extends JFrame {
     ImageIcon logoIcon= new ImageIcon("src/main/Immagini/logoIcon.png");
 
     public JFrame newView(String nome, JPanel rootPanel){
+        FlatDarkLaf.setup();
+
         this.nome = nome;
         this.setTitle(nome);
         this.setIconImage(iconaFinestre.getImage());
@@ -26,7 +29,7 @@ public class GeneralView extends JFrame {
             System.out.printf("Eccezione TaskBar");
         }
         this.setSize(375, 480);
-        this.setResizable(false);
+        //this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setContentPane(rootPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

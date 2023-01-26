@@ -6,6 +6,7 @@ public class Main {
     public static MainController mc;
     public static void main(String[] args) {
         mc = new MainController();
+        //mc.openGUI("Search");
         mc.openGUI(mc.getLoginView().getName());
     }
 }

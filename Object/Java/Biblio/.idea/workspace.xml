@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1172c55-4e1c-45ca-bd0f-8065a0474f71" name="Changes" comment="RegisterGUI aggiunta (mancano i listener)">
-      <change beforePath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/View/LoginViewForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/View/LoginViewForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/LoginView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/LoginView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/LoginView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/LoginView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/LoginView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/LoginView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/LoginView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/LoginView.class" afterDir="false" />
+    <list default="true" id="b1172c55-4e1c-45ca-bd0f-8065a0474f71" name="Changes" comment="rimossa variabile inutilizzata e tolto sout exception">
+      <change afterPath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/View/SearchViewForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/View/GeneralView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/View/GeneralView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/View/SearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/src/main/java/org/Bibliotech/View/SearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/GeneralView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/GeneralView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/SearchView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Bibliotech/target/classes/org/Bibliotech/View/SearchView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../provaBiblio/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../provaBiblio/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
