@@ -10,7 +10,6 @@ import java.net.URL;
 
 public class Finestre extends JFrame {
     final Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
-    final URL imageResource = Main.class.getClassLoader().getResource("src/main/Immagini/iconaFinestre.png");
     final Image image = defaultToolkit.getImage("src/main/Immagini/iconaFinestre.png"   );
     final Taskbar taskbar = Taskbar.getTaskbar();
     String nome;
@@ -29,7 +28,6 @@ public class Finestre extends JFrame {
         try{
             taskbar.setIconImage(image);
         } catch (final UnsupportedOperationException u){
-            System.out.println("L'OS non supporta Taskbar");
         } catch (final SecurityException e){
             System.out.printf("Eccezzione TaskBar");
         }
