@@ -31,6 +31,8 @@ public class GeneralView extends JFrame {
         this.setContentPane(rootPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
+
+
         return this;
     }
 

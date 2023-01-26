@@ -18,8 +18,11 @@ public class RegisterView extends GeneralView {
     private JButton homeButton;
     private JPasswordField passwordField;
     private JCheckBox showPWBox;
+    private JLabel imageLabel;
 
     public RegisterView(){
+        imageLabel.setIcon(logoIcon);
+        imagePanel.setSize(360,250);
         newView("register", rootPanel);
         homeButton.addActionListener(new ActionListener() {
             @Override

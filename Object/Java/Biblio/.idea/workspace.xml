@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b1172c55-4e1c-45ca-bd0f-8065a0474f71" name="Changes" comment="RegisterGUI aggiunta (mancano i listener)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiblioTech/src/main/java/org/Bibliotech/View/GeneralView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiblioTech/src/main/java/org/Bibliotech/View/GeneralView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiblioTech/src/main/java/org/Bibliotech/View/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiblioTech/src/main/java/org/Bibliotech/View/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiblioTech/src/main/java/org/Bibliotech/View/LoginViewForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/../BiblioTech/src/main/java/org/Bibliotech/View/LoginViewForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiblioTech/target/classes/org/Bibliotech/View/GeneralView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../BiblioTech/target/classes/org/Bibliotech/View/GeneralView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

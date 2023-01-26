@@ -1,7 +1,5 @@
 package org.Bibliotech.View;
 
-import org.Bibliotech.Controller.MainController;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,17 +17,17 @@ public class LoginView extends GeneralView {
     private JPanel contentPanel;
     private JPasswordField passwordField;
     private JCheckBox mostraPasswordCheckBox;
+    private JLabel imageLabel;
 
     public LoginView(){
+        imageLabel.setIcon(logoIcon);
+        imagePanel.setSize(360,250);
         newView("login", rootPanel);
-
         registratiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mc.switchGUI(mc.getRegisterView().getName(), getName());
             }
-
-
         });
         annullaButton.addActionListener(new ActionListener() {
             @Override
