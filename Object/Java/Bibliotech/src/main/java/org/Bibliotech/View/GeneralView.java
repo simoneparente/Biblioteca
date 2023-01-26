@@ -17,8 +17,6 @@ public class GeneralView extends JFrame {
     ImageIcon logoIcon= new ImageIcon("src/main/Immagini/logoIcon.png");
 
     public JFrame newView(String nome, JPanel rootPanel){
-        FlatDarkLaf.setup();
-
         this.nome = nome;
         this.setTitle(nome);
         this.setIconImage(iconaFinestre.getImage());
