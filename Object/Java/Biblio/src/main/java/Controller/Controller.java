@@ -9,6 +9,7 @@ public class Controller {
 
     public Controller() {
         LoginView loginView = new LoginView();
+
         loginView.show_Finestra();
     }
 

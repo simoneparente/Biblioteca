@@ -1,19 +1,25 @@
 package Views;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
 
 public class Finestre extends JFrame {
     String nome;
-    ImageIcon icona = new ImageIcon("src/Immagini/icona.png");
+    //ImageIcon icona = new ImageIcon("src/Immagini/icon_bianco_arancione.png");
+    ImageIcon iconaFinestre = new ImageIcon("src/main/Immagini/iconaFinestre.png");
     JPanel rootPanel;
+
+    ImageIcon logoIcon= new ImageIcon("src/main/Immagini/logoIcon.png");
     //Crea nuova finestra (chiamare con NomeClasseFiglia.new_Finestra("NomeObject.nome", nomeObject.panelEsterno))
     public JFrame new_Finestra(String nome_in, JPanel rootPanel_in)
     {
         nome = nome_in;
         rootPanel= rootPanel_in;
         this.setTitle(nome);
-        this.setIconImage(icona.getImage());
-        this.setSize(360, 480);
+        this.setIconImage(iconaFinestre.getImage());
+        this.setSize(375, 480);
+        //this.setResizable(false);
         this.setContentPane(rootPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         return this;
@@ -28,5 +34,11 @@ public class Finestre extends JFrame {
     public void close_Finestra()
     {
         this.setVisible(false);
+    }
+    public JFrame getFrame(){
+        return this;
+    }
+    public JPanel getRootPanel(){
+        return rootPanel;
     }
 }
