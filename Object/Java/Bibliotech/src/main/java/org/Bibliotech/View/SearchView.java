@@ -1,6 +1,8 @@
 package org.Bibliotech.View;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SearchView extends GeneralView{
     private JPanel rootPanel;
@@ -16,6 +18,12 @@ public class SearchView extends GeneralView{
         imageLabel.setIcon(logoIcon);
         searchButton.setIcon(glassIconImage);
         imagePanel.setSize(360,250);
-        newView("Search", rootPanel);
+        JFrame frame = newView("Search", rootPanel);
+        filtriButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    setSize(750,480);
+                }
+        });
     }
 }

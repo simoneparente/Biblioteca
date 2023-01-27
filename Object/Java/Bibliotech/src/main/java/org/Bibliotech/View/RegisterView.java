@@ -65,7 +65,7 @@ public class RegisterView extends GeneralView {
                         UtenteController c = new UtenteController();
                         if (c.registraUtente(username, password)) {
                             JOptionPane.showMessageDialog(null, "Utente registrato con successo");
-                            mc.switchGUI(mc.getLoginView().getName(), mc.getRegisterView().getName());
+                            mc.switchGUI(mc.getSearchView().getName(), mc.getRegisterView().getName());
                         }
                     }
                 }
