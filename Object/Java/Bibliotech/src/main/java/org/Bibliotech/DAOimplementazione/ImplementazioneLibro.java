@@ -2,7 +2,6 @@ package org.Bibliotech.DAOimplementazione;
 
 import org.Bibliotech.ConnessioneDB;
 import org.Bibliotech.DAO.LibroDao;
-import org.Bibliotech.Model.Autore;
 import org.Bibliotech.Model.Libri;
 import org.Bibliotech.Model.Libro;
 
@@ -10,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ImplementazioneLibro implements LibroDao {
 
@@ -24,7 +22,7 @@ public class ImplementazioneLibro implements LibroDao {
     }
 
     @Override
-    public boolean addLibro(String titolo, ArrayList<Autore> autori, String genere, String editore, String dataPubblicazione, String isbn, String formato, String lingua, double prezzo) {
+    public boolean addLibro(String titolo, String autori, String genere, String editore, String dataPubblicazione, String isbn, String formato, String lingua, double prezzo) {
         String addLibroQuery= "INSERT INTO b.libro (titolo, genere, editore, data_pubblicazione, isbn, formato, lingua, prezzo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(addLibroQuery);

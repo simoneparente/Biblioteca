@@ -1,11 +1,9 @@
 package org.Bibliotech.DAO;
 import org.Bibliotech.Model.Libro;
-import org.Bibliotech.Model.Autore;
 import org.Bibliotech.Model.Libri;
-import java.util.ArrayList;
 
 public interface LibroDao {
-    public boolean addLibro(String titolo, ArrayList<Autore> autori, String genere, String editore, String dataPubblicazione, String isbn, String formato, String lingua, double prezzo);
+    public boolean addLibro(String titolo, String autori, String genere, String editore, String dataPubblicazione, String isbn, String formato, String lingua, double prezzo);
     public Libri getLibri();
     public Libro getLibroByIsbn(String isbn);
     public Libri getLibriByTitolo(String titolo);
