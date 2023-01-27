@@ -39,18 +39,17 @@ public class ImplementazioneUtente implements UtenteDao{
     }
     @Override
     public boolean addUser(String username, String password) {
-        boolean esito = false;
         String addUserQuery = "INSERT INTO b.Utente (Username, Password) VALUES (?, ?)";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(addUserQuery);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             preparedStatement.executeUpdate();
-            esito = true;
+            return true;
         }catch(SQLException e){
             e.printStackTrace();
+            return false;
         }
-        return esito;
     }
 
 
