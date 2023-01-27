@@ -46,9 +46,7 @@ public class ImplementazioneUtente implements UtenteDao{
             return true;
         }catch(SQLException e){
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
-
-
 }
