@@ -21,7 +21,6 @@ public class ImplementazioneUtente implements UtenteDao{
 
     @Override
     public boolean checkLogin(String username, String password) {
-        boolean esito = false;
         String checkLoginQuery = "SELECT * FROM b.Utente WHERE Username = ? AND Password = ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(checkLoginQuery);
@@ -29,28 +28,26 @@ public class ImplementazioneUtente implements UtenteDao{
             preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
-                esito = true;
+                return true;
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
-
-        return esito;
+        return false;
     }
     @Override
     public boolean addUser(String username, String password) {
-        boolean esito = false;
         String addUserQuery = "INSERT INTO b.Utente (Username, Password) VALUES (?, ?)";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(addUserQuery);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             preparedStatement.executeUpdate();
-            esito = true;
+            return true;
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return esito;
+        return false;
     }
 
 

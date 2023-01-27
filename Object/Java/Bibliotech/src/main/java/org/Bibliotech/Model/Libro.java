@@ -12,6 +12,8 @@ public class Libro {
     private String dataPubblicazione;
     private String isbn;
     private String formato;
+
+    private String lingua;
     private double prezzo;
 
     public Libro(String titolo,
@@ -20,6 +22,7 @@ public class Libro {
                  String dataPubblicazione,
                  String isbn,
                  String formato,
+                 String lingua,
                  double prezzo) {
         this.titolo = titolo;
         this.autori = autori;
@@ -28,6 +31,7 @@ public class Libro {
         this.dataPubblicazione = dataPubblicazione;
         this.isbn = isbn;
         this.formato = formato;
+        this.lingua = lingua;
         this.prezzo = prezzo;
     }
 
@@ -50,6 +54,13 @@ public class Libro {
         return autoriString.substring(0, autoriString.length() - 2);
     }
 
+    public String getLingua() {
+        return lingua;
+    }
+
+    public void setLingua(String lingua) {
+        this.lingua = lingua;
+    }
     public void setAutori(ArrayList<Autore> autori) {
         this.autori = autori;
     }

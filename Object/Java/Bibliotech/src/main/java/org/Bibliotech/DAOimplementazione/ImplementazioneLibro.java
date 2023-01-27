@@ -7,6 +7,7 @@ import org.Bibliotech.Model.Libri;
 import org.Bibliotech.Model.Libro;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,10 +23,23 @@ public class ImplementazioneLibro implements LibroDao {
     }
 
     @Override
-    public boolean addLibro(String titolo, ArrayList<Autore> autori, String genere,
-                            String editore, String dataPubblicazione, String isbn,
-                            String formato, double prezzo) {
-        String addLibroQuery
+    public boolean addLibro(String titolo, ArrayList<Autore> autori, String genere, String editore, String dataPubblicazione, String isbn, String formato, String lingua, double prezzo) {
+        String addLibroQuery= "INSERT INTO libro (titolo, genere, editore, data_pubblicazione, isbn, formato, lingua, prezzo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(addLibroQuery);
+            preparedStatement.setString(1, titolo);
+            preparedStatement.setString(2, genere);
+            preparedStatement.setString(3, editore);
+            preparedStatement.setString(4, dataPubblicazione);
+            preparedStatement.setString(5, isbn);
+            preparedStatement.setString(6, formato);
+            preparedStatement.setString(7, lingua);
+            preparedStatement.setDouble(8, prezzo);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
     }
 
     @Override
@@ -45,6 +59,11 @@ public class ImplementazioneLibro implements LibroDao {
 
     @Override
     public Libri getLibriByAutore(String autore) {
+        return null;
+    }
+
+    @Override
+    public Libri getLibriByLingua(String lingua) {
         return null;
     }
 
