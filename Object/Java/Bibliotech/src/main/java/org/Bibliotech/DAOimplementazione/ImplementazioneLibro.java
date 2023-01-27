@@ -174,46 +174,236 @@ public class ImplementazioneLibro implements LibroDao {
     @Override
     public Libri getLibriByEditore(String editore) {
         Libri libri = new Libri();
+        String getLibriByEditoreQuery = "SELECT * FROM b.libro WHERE editore LIKE '%'?'%'";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByEditoreQuery);
+            preparedStatement.setString(1, editore);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
     @Override
     public Libri getLibriByRangeDataPubblicazione(String dataPubblicazioneMin, String dataPubblicazioneMax) {
-        return null;
+        Libri libri = new Libri();
+        String getLibriByRangeDataPubblicazioneQuery = "SELECT * FROM b.libro WHERE datapubblicazione BETWEEN ? AND ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByRangeDataPubblicazioneQuery);
+            preparedStatement.setString(1, dataPubblicazioneMin);
+            preparedStatement.setString(2, dataPubblicazioneMax);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libri;
     }
 
     @Override
     public Libri getLibriByDataPubblicazioneMin(String dataPubblicazioneMin) {
-        return null;
+        Libri libri = new Libri();
+        String getLibriByDataPubblicazioneMinQuery = "SELECT * FROM b.libro WHERE datapubblicazione >= ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByDataPubblicazioneMinQuery);
+            preparedStatement.setString(1, dataPubblicazioneMin);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libri;
     }
 
     @Override
     public Libri getLibriByDataPubblicazioneMax(String dataPubblicazioneMax) {
-        return null;
+        Libri libri = new Libri();
+        String getLibriByDataPubblicazioneMaxQuery = "SELECT * FROM b.libro WHERE datapubblicazione <= ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByDataPubblicazioneMaxQuery);
+            preparedStatement.setString(1, dataPubblicazioneMax);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libri;
     }
 
     @Override
-    public Libri getLibriByFormato(String formato) {
-        return null;
+    public Libri getLibriByFormato(String formato) {  //da aggiungere possibile implementazione checkbox
+        Libri libri = new Libri();
+        String getLibriByFormatoQuery = "SELECT * FROM b.libro WHERE formato = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByFormatoQuery);
+            preparedStatement.setString(1, formato);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libri;
     }
 
     @Override
     public Libri getLibriByRangePrezzo(double min, double max) {
-        return null;
+        Libri libri = new Libri();
+        String getLibriByRangePrezzoQuery = "SELECT * FROM b.libro WHERE prezzo BETWEEN ? AND ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByRangePrezzoQuery);
+            preparedStatement.setDouble(1, min);
+            preparedStatement.setDouble(2, max);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libri;
     }
 
     @Override
     public Libri getLibriByPrezzoMin(double prezzoMin) {
-        return null;
+        Libri libri = new Libri();
+        String getLibriByPrezzoMinQuery = "SELECT * FROM b.libro WHERE prezzo >= ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByPrezzoMinQuery);
+            preparedStatement.setDouble(1, prezzoMin);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libri;
     }
 
     @Override
     public Libri getLibriByPrezzoMax(double prezzoMax) {
-        return null;
+        Libri libri = new Libri();
+        String getLibriByPrezzoMaxQuery = "SELECT * FROM b.libro WHERE prezzo <= ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByPrezzoMaxQuery);
+            preparedStatement.setDouble(1, prezzoMax);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libri;
     }
 
     @Override
     public Libri getLibriByGenere(String genere) {
-        return null;
+        Libri libri = new Libri();
+        String getLibriByGenereQuery = "SELECT * FROM b.libro WHERE genere = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(getLibriByGenereQuery);
+            preparedStatement.setString(1, genere);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libri;
     }
 }
