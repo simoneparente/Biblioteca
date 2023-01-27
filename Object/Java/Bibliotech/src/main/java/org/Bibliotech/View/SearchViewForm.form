@@ -73,14 +73,6 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="6717d" class="javax.swing.JTextField" binding="textField3" default-binding="true">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
           <component id="4f5d" class="javax.swing.JCheckBox" binding="dataDiPubblicazioneCheckBox" default-binding="true">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -135,13 +127,15 @@
             </constraints>
             <properties/>
           </component>
-          <component id="35080" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="35080" class="javax.swing.JTextField" binding="minprezzoBox">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="Minimo"/>
+            </properties>
           </component>
           <component id="40d97" class="javax.swing.JCheckBox" binding="prezzoCheckBox" default-binding="true">
             <constraints>
@@ -151,9 +145,27 @@
               <text value="Prezzo"/>
             </properties>
           </component>
-          <component id="61d0" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="61d0" class="javax.swing.JTextField" binding="maxprezzoBox">
             <constraints>
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Massimo"/>
+            </properties>
+          </component>
+          <component id="e395a" class="javax.swing.JTextField" binding="maxDataP">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="291d" class="javax.swing.JTextField" binding="minDataP">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
