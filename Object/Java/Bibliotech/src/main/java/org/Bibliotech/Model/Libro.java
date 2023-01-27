@@ -15,7 +15,8 @@ public class Libro {
 
     private String lingua;
     private double prezzo;
-
+    public Libro() {
+    }
     public Libro(String titolo,
                  ArrayList<Autore> autori,
                  String genere, String editore,
