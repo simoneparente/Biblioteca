@@ -26,12 +26,12 @@ public class GeneralView extends JFrame {
         } catch (final SecurityException e){
             System.out.printf("Eccezione TaskBar");
         }
-        this.setSize(375, 480);
-        //this.setResizable(false);
+        this.setSize(720, 480);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setContentPane(rootPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.pack();
+        //this.pack();
 
 
         return this;

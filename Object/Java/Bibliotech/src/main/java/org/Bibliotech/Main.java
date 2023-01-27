@@ -8,8 +8,8 @@ public class Main {
     public static void main(String[] args) {
         FlatDarkLaf.setup();
         mc = new MainController();
-        mc.openGUI(mc.getLoginView().getName());
-        //mc.openGUI("Search");
+        //mc.openGUI(mc.getLoginView().getName());
+        mc.openGUI("Search");
         //mc.openGUI(mc.getLoginView().getName());
     }
 }
