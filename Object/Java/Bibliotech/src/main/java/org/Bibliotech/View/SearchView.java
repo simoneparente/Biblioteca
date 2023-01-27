@@ -12,6 +12,11 @@ public class SearchView extends GeneralView{
     private JTextField searchField;
     private JButton filtriButton;
     private JButton searchButton;
+    private JPanel filtriPanel;
+    private JCheckBox checkBox1;
+    private JCheckBox checkBox2;
+    private JCheckBox checkBox3;
+    private JCheckBox checkBox4;
 
     public SearchView(){
         ImageIcon glassIconImage = new ImageIcon("src/main/Immagini/glassIcon.png");
