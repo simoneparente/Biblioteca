@@ -21,6 +21,10 @@ public class Autore {
         return cognome;
     }
 
+    public String getNomeCognome() {
+        return nome + " " + cognome;
+    }
+
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }

@@ -11,7 +11,6 @@ public interface LibroDao {
     public Libri getLibriByTitolo(String titolo);
     public Libri getLibriByAutore(String autore);
     public Libri getLibriByLingua(String lingua);
-    public Libri getLibriByAutori(ArrayList<Autore> autori);
     public Libri getLibriByEditore(String editore);
     public Libri getLibriByRangeDataPubblicazione(String dataPubblicazioneMin, String dataPubblicazioneMax);
     public Libri getLibriByDataPubblicazioneMin(String dataPubblicazioneMin);
