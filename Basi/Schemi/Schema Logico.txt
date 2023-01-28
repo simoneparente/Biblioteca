@@ -51,5 +51,3 @@ Utente: ID_Utente, Username, Password
 Richiesta: ID_Utente, ID_Serie, Disponibilità
 ID_Utente -> Utente(ID_Utente)
 ID_Serie -> Serie(ID_Serie)
-
-INSERT INTO VIEW DATI EVENTO COCAT(DOI ARTICOLI)
