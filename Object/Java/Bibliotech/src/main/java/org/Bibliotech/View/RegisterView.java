@@ -65,7 +65,7 @@ public class RegisterView extends GeneralView {
                 boolean checkPasswordMatch=checkPasswordMatch(password, confermaPassword);
                 boolean checkUserInDatabase=c.checkUserExistInDatabase(username);
                 //System.out.println("blankflags: "+blanksFlag);
-                System.out.println("match: "+checkPasswordMatch);
+                //System.out.println("match: "+checkPasswordMatch);
                 if(!blanksFlag){
                     JOptionPane.showMessageDialog(null, "Controllare i campi in rosso");
                 }
