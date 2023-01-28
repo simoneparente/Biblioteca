@@ -1,10 +1,7 @@
 package org.Bibliotech.View;
 
 import javax.swing.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class SearchView extends GeneralView{
     private JPanel rootPanel;
@@ -27,13 +24,20 @@ public class SearchView extends GeneralView{
     private JTextField maxprezzoBox;
     private JTextField maxDataP;
     private JTextField minDataP;
+    private String[] formati={"Cartaceo", "Digitale", "Audiolibro"};
 
     public SearchView(){
+        setFields(false);
+
+
         ImageIcon glassIconImage = new ImageIcon("src/main/Immagini/glassIcon.png");
         imageLabel.setIcon(logoIcon);
         searchButton.setIcon(glassIconImage);
         imagePanel.setSize(720,240);
         filtriPanel.setVisible(false);
+        formatoBox.addItem("Cartaceo");
+        formatoBox.addItem("Digitale");
+        formatoBox.addItem("Audiolibro");
         JFrame frame = newView("Search", rootPanel);
 
         filtriButton.addMouseListener(new MouseAdapter() {
@@ -47,7 +51,7 @@ public class SearchView extends GeneralView{
             @Override
             public void focusGained(FocusEvent e) {
                 super.focusGained(e);
-                if(!minprezzoBox.getText().toString().chars().allMatch(Character::isDigit)){
+                if(!minprezzoBox.getText().chars().allMatch(Character::isDigit)){
                     minprezzoBox.setText("");
                 }
             }
@@ -64,7 +68,7 @@ public class SearchView extends GeneralView{
             @Override
             public void focusGained(FocusEvent e) {
                 super.focusGained(e);
-                if(!maxprezzoBox.getText().toString().chars().allMatch(Character::isDigit)){
+                if(!maxprezzoBox.getText().chars().allMatch(Character::isDigit)){
                     maxprezzoBox.setText("");
                 }
             }
@@ -78,5 +82,47 @@ public class SearchView extends GeneralView{
 
             }
         });
+        autoreCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                autoreField.setEnabled(autoreCheckBox.isSelected());
+            }
+        });
+        genereCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                genereField.setEnabled(genereCheckBox.isSelected());
+            }
+        });
+        dataDiPubblicazioneCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                minDataP.setEnabled(dataDiPubblicazioneCheckBox.isSelected());
+                maxDataP.setEnabled(dataDiPubblicazioneCheckBox.isSelected());
+            }
+        });
+        formatoCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                formatoBox.setEnabled(formatoCheckBox.isSelected());
+            }
+        });
+        prezzoCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                minprezzoBox.setEnabled(prezzoCheckBox.isSelected());
+                maxprezzoBox.setEnabled(prezzoCheckBox.isSelected());
+            }
+        });
+    }
+
+    private void setFields(boolean mode) {
+        autoreField.setEnabled(mode);
+        genereField.setEnabled(mode);
+        formatoBox.setEnabled(mode);
+        minprezzoBox.setEnabled(mode);
+        maxprezzoBox.setEnabled(mode);
+        minDataP.setEnabled(mode);
+        maxDataP.setEnabled(mode);
     }
 }
