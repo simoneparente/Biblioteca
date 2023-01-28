@@ -24,7 +24,6 @@ public class SearchView extends GeneralView{
     private JTextField maxprezzoBox;
     private JTextField maxDataP;
     private JTextField minDataP;
-    private String[] formati={"Cartaceo", "Digitale", "Audiolibro"};
 
     public SearchView(){
         setFields(false);
@@ -40,13 +39,7 @@ public class SearchView extends GeneralView{
         formatoBox.addItem("Audiolibro");
         JFrame frame = newView("Search", rootPanel);
 
-        filtriButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                filtriPanel.setVisible(!filtriPanel.isShowing()); //ogni volta che clicchi apre o chiude filtriPanel
-            }
-        });
+
         minprezzoBox.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -109,6 +102,18 @@ public class SearchView extends GeneralView{
             public void itemStateChanged(ItemEvent e) {
                 minprezzoBox.setEnabled(prezzoCheckBox.isSelected());
                 maxprezzoBox.setEnabled(prezzoCheckBox.isSelected());
+            }
+        });
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        filtriButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filtriPanel.setVisible(!filtriPanel.isShowing());
             }
         });
     }

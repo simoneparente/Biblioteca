@@ -31,6 +31,12 @@ public class ImplementazioneUtente implements UtenteDao{
             return true; //non so se va bene !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }
+
+    @Override
+    public boolean checkUserExistenceInDB(String username) {
+        return false;
+    }
+
     @Override
     public boolean checkLogin(String username, String password) {
         String checkLoginQuery = "SELECT * FROM b.Utente WHERE Username = ? AND Password = ?";
