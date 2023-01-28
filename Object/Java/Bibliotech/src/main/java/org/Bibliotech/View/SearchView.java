@@ -55,7 +55,6 @@ public class SearchView extends GeneralView{
                     minprezzoBox.setText("");
                 }
             }
-
             @Override
             public void focusLost(FocusEvent e) {
                 super.focusLost(e);
@@ -72,14 +71,12 @@ public class SearchView extends GeneralView{
                     maxprezzoBox.setText("");
                 }
             }
-
             @Override
             public void focusLost(FocusEvent e) {
                 super.focusLost(e);
                 if(maxprezzoBox.getText().isBlank()){
                     maxprezzoBox.setText("Massimo");
                 }
-
             }
         });
         autoreCheckBox.addItemListener(new ItemListener() {

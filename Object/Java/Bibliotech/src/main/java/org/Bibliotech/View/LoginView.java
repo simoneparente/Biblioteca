@@ -36,7 +36,6 @@ public class LoginView extends GeneralView {
             public void actionPerformed(ActionEvent e) {
                 usernameTextField.setText("");
                 passwordField.setText("");
-
             }
         });
         mostraPasswordCheckBox.addActionListener(new ActionListener() {
