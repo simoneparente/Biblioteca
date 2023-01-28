@@ -39,7 +39,6 @@ public class SearchView extends GeneralView{
         formatoBox.addItem("Audiolibro");
         JFrame frame = newView("Search", rootPanel);
 
-
         minprezzoBox.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -72,6 +71,21 @@ public class SearchView extends GeneralView{
                 }
             }
         });
+
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        filtriButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filtriPanel.setVisible(!filtriPanel.isShowing());
+            }
+        });
+
         autoreCheckBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -104,18 +118,7 @@ public class SearchView extends GeneralView{
                 maxprezzoBox.setEnabled(prezzoCheckBox.isSelected());
             }
         });
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-        filtriButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                filtriPanel.setVisible(!filtriPanel.isShowing());
-            }
-        });
     }
 
     private void setFields(boolean mode) {
