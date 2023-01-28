@@ -79,6 +79,9 @@ public class RegisterView extends GeneralView {
                         JOptionPane.showMessageDialog(null, "Utente " + username + " registrato con successo");
                         mc.switchGUI(mc.getSearchView().getName(), mc.getLoginView().getName());
                     }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Le password non corrispondono");
+                    }
                 }
             }
         });
