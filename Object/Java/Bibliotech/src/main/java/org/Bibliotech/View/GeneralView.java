@@ -2,20 +2,16 @@ package org.Bibliotech.View;
 
 import javax.swing.*;
 import java.awt.*;
-import com.formdev.flatlaf.FlatDarkLaf;
 
 public class GeneralView extends JFrame {
     String nome;
     JPanel rootPanel;
-
     //TaskBar
     final Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
     final Image image = defaultToolkit.getImage("src/main/Immagini/iconaFinestre.png"   );
     final Taskbar taskbar = Taskbar.getTaskbar();
-
     ImageIcon iconaFinestre = new ImageIcon(image);
     ImageIcon logoIcon= new ImageIcon("src/main/Immagini/logoIcon.png");
-
     public JFrame newView(String nome, JPanel rootPanel){
         this.nome = nome;
         this.setTitle(nome);
@@ -32,11 +28,8 @@ public class GeneralView extends JFrame {
         this.setContentPane(rootPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //this.pack();
-
-
         return this;
     }
-
     public String getName() {
         return this.nome;
     }

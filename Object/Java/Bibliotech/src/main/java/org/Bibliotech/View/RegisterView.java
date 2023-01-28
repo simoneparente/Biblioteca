@@ -39,6 +39,7 @@ public class RegisterView extends GeneralView {
             public void actionPerformed(ActionEvent e) {
                 usernameTextField.setText("");
                 passwordField.setText("");
+                confermaPasswordField.setText("");
             }
         });
         showPWBox.addActionListener(new ActionListener() {
@@ -53,7 +54,6 @@ public class RegisterView extends GeneralView {
                 }
             }
         });
-
         registratiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -109,8 +109,6 @@ public class RegisterView extends GeneralView {
             }
         });*/
     }
-
-
     private boolean checkPasswordMatch(String password, String confermaPassword) {
         if(password.equals(confermaPassword) && (!password.isBlank() && !confermaPassword.isBlank())) return true;
         else {

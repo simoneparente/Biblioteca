@@ -32,6 +32,7 @@ public class ImplementazioneUtente implements UtenteDao{
         }
     }
 
+    //Simone a cosa serve???
     @Override
     public boolean checkUserExistenceInDB(String username) {
         return false;
