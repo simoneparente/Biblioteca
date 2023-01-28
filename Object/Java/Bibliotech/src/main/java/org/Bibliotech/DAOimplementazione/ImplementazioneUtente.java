@@ -19,6 +19,24 @@ public class ImplementazioneUtente implements UtenteDao{
         }
     }
 
+    public boolean checkUserExistInDatabase(String username){
+        String checkUserExistInDatabase="SELECT * FROM b.utente WHERE username= ?";
+        try{
+            PreparedStatement checkUserExistInDatabaseQuery= connection.prepareStatement(checkUserExistInDatabase);
+            checkUserExistInDatabaseQuery.setString(1, username);
+            ResultSet rs=checkUserExistInDatabaseQuery.executeQuery();
+            return rs.next(); //se non esiste ritorna false, se esiste ritorna true
+        } catch (SQLException e){
+            e.printStackTrace();
+            return true; //non so se va bene !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }
+    }
+
+    @Override
+    public boolean checkUserExistenceInDB(String username) {
+        return false;
+    }
+
     @Override
     public boolean checkLogin(String username, String password) {
         String checkLoginQuery = "SELECT * FROM b.Utente WHERE Username = ? AND Password = ?";

@@ -13,4 +13,7 @@ public class UtenteController {
     public boolean loginUtente(String username, String password) {
         return utente.checkLogin(username, password);
     }
+
+    public boolean checkUserExistInDatabase(String username){ return utente.checkUserExistInDatabase(username);}
+  //se non esiste ritorna false, se esiste ritorna true
 }
