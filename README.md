@@ -1,18 +1,25 @@
-# Biblioteca
-Si sviluppi un sistema informativo, composto da una base di dati relazionale e da un applicativo Java dotato di GUI (Swing o JavaFX), per la gestione di una biblioteca digitale. Gli elementi che possono essere inclusi nella biblioteca digitali sono di due tipi: articoli scientifici (o pubblicazioni) e libri (didattici o romanzi). Per ognuno di essi, devono essere specificati il titolo, l’anno di pubblicazione, l’autore (o gli autori), l’editore e definire le modalità di fruizione (cartaceo, digitale o audiolibro).Per i libri è importante definire la data di uscita del libro e la sala/libreria in cui è fatta una eventuale presentazione. Un libro può anche far parte di una collana, la quale può raggruppare tutte le pubblicazioni che condividono una determinata caratteristica (non tutti i libri fanno parte di collane). Per le pubblicazioni, andare a definire in quale rivista (nome, argomento, anno di pubblicazione, responsabile della rivista) o in quale conferenza (luogo della conferenza, data di inizio e data fine conferenza, struttura organizzatrice e responsabile) è stato pubblicato.
+# 📚 Progetto BDOO 2022/23: BiblIOtech
 
-**Per il gruppo da tre**: per ogni libro, è necessario specificare dove può essere acquistato (libreria, online). Un romanzo può avere anche uno o più seguiti. In tal caso, è importante prevedere un’interrogazione che permette di recuperare tutte le librerie (o siti internet) dai quali è possibile acquistare l’intera serie dei libri. Non appena una serie sarà disponibile per l’acquisto da almeno una libreria, il sistema notificherà la disponibilità all’utente.
+#### ↬ "Basi Di Dati": **_Progettazione e sviluppo di una Base di Dati per la gestione di una Biblioteca Online** 
+#### ↬ "Object-Oriention": **_Progettazione e sviluppo di un applicativo in Java dotato di GUI per la gestione di una Biblioteca Online_** 
 
-Bisogna capire come gestire la notifica di disponibilità di un'intera serie
+## 📑 *Organizzazione e Scelte Progettuali*
 
+- Tutta la documentazione sarà prodotta in Latex
+- Per la fase di modellazione si utilizzerà l'applicativo StarUML (file .mdj)
+- La condivisione del materiale avverrà tramite GitHub
+- Per la Base di Dati utilizzeremo il DBMS PostgreSQL
+- L'ambiente di sviluppo per l'applicativo sarà IntelliJ Idea
 
-## LINK Utili <br />
-[ESEMPIO MONDIALE DATABASE DI TUTTI I LIBRI ED ESEMPIO GUI](https://www.jstor.org/action/showAdvancedSearch) <br />
-[DB LIBRI](https://www.kaggle.com/datasets/dylanjcastillo/7k-books-with-metadata) <br />
-[DATA GENERATOR](https://www.onlinedatagenerator.com/) <br />
-[USER DIAGRam ?????](https://i.stack.imgur.com/DHbVr.png) <br />
-[ESEMPIO](https://www.medialibrary.it/home/index.aspx) <br />
-[STARUML FULL FREE](https://gist.github.com/trandaison/40b1d83618ae8e3d2da59df8c395093a)<br />
+## ©️ *Contribuenti*
+👨‍💼  Mario Penna
 
-[ISBN-A](https://www.doi.org/factsheets/ISBN-A.html) /Per problemi di compatibilità DOI/ISBN <br />
-> Mario Penna è TOP
+🙎‍♂️  Simone Parente Martone
+
+🙎‍♂️  Davide Santi
+
+## 🏬 *Info*
+- Università degli Studi di Napoli: "Federico II" 
+- Dipartimento di Ingegneria Elettrica e delle Tecnologie dell'Informazione
+- Corso di Laurea in Informatica
+- I docenti: Prof. P. Tramontana e Prof. S. Barra
