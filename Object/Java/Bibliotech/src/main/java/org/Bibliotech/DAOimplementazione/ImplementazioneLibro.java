@@ -21,6 +21,8 @@ public class ImplementazioneLibro implements LibroDao {
         }
     }
 
+
+    //Si deve modificare, le aggiunte noi le facciamo da una view
     @Override
     public boolean addLibro(String titolo, String autori, String genere, String editore, String dataPubblicazione, String isbn, String formato, String lingua, double prezzo) {
         String addLibroQuery= "INSERT INTO b.libro (titolo, genere, editore, data_pubblicazione, isbn, formato, lingua, prezzo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

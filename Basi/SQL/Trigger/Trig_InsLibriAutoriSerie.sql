@@ -96,7 +96,7 @@ CREATE OR REPLACE TRIGGER trig_LibroaAutoreSerie
     INSTEAD OF INSERT
     ON b.viewLibroaAutoreSerie
     FOR EACH ROW
-EXECUTE FUNCTION b.tfun_LibroaAutoreSerie();
+EXECUTE FUNCTION b.tfun_libroautoreserie();
 
 --Insert View
 INSERT INTO b.viewLibroaAutoreSerie (titolo, ISBN, nome_cognome, datapubblicazione, editore, genere, lingua, formato,

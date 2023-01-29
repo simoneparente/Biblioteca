@@ -248,7 +248,7 @@ EXECUTE FUNCTION b.tfun_articoloAutore();
 ------------------------------------------------------------------------------------------------------------------------
 --Trigger Insert Conferenze
 ------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE VIEW b.viewEventoCONF AS
+CREATE OR REPLACE VIEW b.ins_evento_conferenza AS
 SELECT e.indirizzo,
        e.strutturaospitante,
        e.datainizio,
@@ -299,7 +299,7 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trigEventoCONF
     INSTEAD OF INSERT
-    ON b.viewEventoCONF
+    ON b.ins_evento_conferenza
     FOR EACH ROW
 EXECUTE FUNCTION b.tfunEventoCONF();
 ------------------------------------------------------------------------------------------------------------------------
@@ -308,7 +308,7 @@ EXECUTE FUNCTION b.tfunEventoCONF();
 ------------------------------------------------------------------------------------------------------------------------
 --Trigger Insert Libri, Autori e Serie
 ------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE VIEW b.viewLibroaAutoreSerie AS
+CREATE OR REPLACE VIEW b.ins_libro_autore_serie AS
 SELECT l.titolo,
        l.ISBN,
        concat(a.nome, ' ', a.cognome) as Nome_Cognome,
@@ -403,9 +403,9 @@ end;
 
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER trig_LibroaAutoreSerie
+CREATE OR REPLACE TRIGGER trig_LibroAutoreSerie
     INSTEAD OF INSERT
-    ON b.viewLibroaAutoreSerie
+    ON b.ins_libro_autore_serie
     FOR EACH ROW
 EXECUTE FUNCTION b.tfun_LibroaAutoreSerie();
 ------------------------------------------------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ EXECUTE FUNCTION b.tfun_LibroaAutoreSerie();
 ------------------------------------------------------------------------------------------------------------------------
 --Trigger Insert Presentazioni
 ------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE VIEW b.viewEventoPresentazione AS
+CREATE OR REPLACE VIEW b.ins_evento_presentazione AS
 SELECT l.ISBN, e.Indirizzo, e.StrutturaOspitante, e.DataInizio, e.DataFine, e.Responsabile
 FROM (b.evento as e NATURAL JOIN b.presentazione as p)
          JOIN b.libro as l ON p.libro = l.ID_Libro;
@@ -454,7 +454,7 @@ $$
 --Creazione Trigger
 CREATE OR REPLACE TRIGGER trig_presentazione
     INSTEAD OF INSERT
-    ON b.viewEventoPresentazione
+    ON b.ins_evento_presentazione
     FOR EACH ROW
 EXECUTE FUNCTION b.ins_presentazione();
 ------------------------------------------------------------------------------------------------------------------------
@@ -462,7 +462,7 @@ EXECUTE FUNCTION b.ins_presentazione();
 ------------------------------------------------------------------------------------------------------------------------
 --Trigger Insert Stock Negozi
 ------------------------------------------------------------------------------------------------------------------------
-CREATE VIEW b.view_insertStockLibro AS
+CREATE VIEW b.ins_stock_Libro AS
 SELECT id_negozio, isbn, quantita
 FROM (b.stock JOIN b.negozio on stock.negozio = negozio.id_negozio)
          JOIN b.libro ON id_libro = stock.libro;
@@ -496,7 +496,7 @@ $$
 
 CREATE OR REPLACE TRIGGER triggerStockLibro
     INSTEAD OF INSERT
-    ON b.view_insertStockLibro
+    ON b.ins_stock_Libro
     FOR EACH ROW
 EXECUTE FUNCTION b.ins_stockLibro();
 ------------------------------------------------------------------------------------------------------------------------
