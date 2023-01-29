@@ -2,7 +2,7 @@ DROP SCHEMA IF EXISTS b CASCADE;
 CREATE SCHEMA b;
 
 ------------------------------------------------------------------------------------------------------------------------
---Creazione tabelle
+                                                --Creazione tabelle
 ------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE b.Articolo
 (
@@ -159,6 +159,10 @@ CREATE TABLE b.Stock
     CONSTRAINT FK_Stock_Libro FOREIGN KEY (Libro) REFERENCES b.Libro (ID_Libro)
 );
 
+------------------------------------------------------------------------------------------------------------------------
+                    --Tabelle per la gestione delle notifiche di disponibilità di un libro
+------------------------------------------------------------------------------------------------------------------------
+
 CREATE TABLE b.Utente
 (
     ID_Utente SERIAL,
@@ -179,23 +183,29 @@ CREATE TABLE b.Richiesta
     CONSTRAINT FK_Richiesta_Utente FOREIGN KEY (ID_Utente) REFERENCES b.Utente (ID_Utente),
     CONSTRAINT FK_Richiesta_Serie FOREIGN KEY (ID_Serie) REFERENCES b.Serie (ID_Serie)
 );
+
+------------------------------------------------------------------------------------------------------------------------
+                    --Tabella Jolly con campo text per le insert multiple
+------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE b.Jolly
+(
+    Text  TEXT
+);
 ------------------------------------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------------------------------------
 --Trigger Insert Articoli ed Autori
 ------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE VIEW b.ins_articolo_autore AS
-SELECT doi,
-       titolo,
-       concat(au.nome, '_', au.cognome) as nome_cognome,
-       datapubblicazione,
-       editore,
-       lingua,
-       formato
-FROM (b.articolo ar JOIN b.autorearticolo auar ON ar.id_articolo = auar.id_articolo) ar_aur
-         JOIN b.autore au ON au.id_autore = ar_aur.id_autore;
-
+CREATE OR REPLACE VIEW b.ins_libro_autore AS
+    SELECT doi,
+           titolo,
+           TEXT                 as AutoriNome_Cognome,
+           datapubblicazione,
+           editore,
+           lingua,
+           formato
+    FROM b.articolo, b.jolly;
 
 CREATE OR REPLACE FUNCTION b.tfun_articoloAutore() RETURNS TRIGGER AS
 $$
@@ -249,13 +259,13 @@ EXECUTE FUNCTION b.tfun_articoloAutore();
 --Trigger Insert Conferenze
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_evento_conferenza AS
-SELECT e.indirizzo,
-       e.strutturaospitante,
-       e.datainizio,
-       e.datafine,
-       e.responsabile,
-       a.doi as Doi_Articoli_Presentati
-FROM b.articolo as a,
+SELECT indirizzo,
+       strutturaospitante,
+       datainizio,
+       datafine,
+       responsabile,
+       TEXT                 as Doi_Articoli_Presentati
+FROM b.jolly,
      b.evento as e;
 
 --CREATE TFUNZIONE
@@ -311,18 +321,18 @@ EXECUTE FUNCTION b.tfunEventoCONF();
 CREATE OR REPLACE VIEW b.ins_libro_autore_serie AS
 SELECT l.titolo,
        l.ISBN,
-       concat(a.nome, ' ', a.cognome) as AutoriNome_Cognome,
+       j.TEXT                         as AutoriNome_Cognome,
        l.datapubblicazione,
        l.Editore,
        l.Genere,
        l.Lingua,
        l.Formato,
-       l.Prezzo
+       l.Prezzo,
        s.nome                         as NOME_Serie_di_Appartenenza,
        s.ISSN                         as ISSN_Serie_di_Appartenenza
 FROM b.libro as l,
      b.serie as s,
-     b.autore as a;
+     b.jolly as j;
 
 CREATE OR REPLACE FUNCTION b.tfun_LibroaAutoreSerie() RETURNS TRIGGER AS
 $$
@@ -416,9 +426,13 @@ EXECUTE FUNCTION b.tfun_LibroaAutoreSerie();
 --Trigger Insert Presentazioni
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_evento_presentazione AS
-SELECT l.ISBN, e.Indirizzo, e.StrutturaOspitante, e.DataInizio, e.DataFine, e.Responsabile
-FROM (b.evento as e NATURAL JOIN b.presentazione as p)
-         JOIN b.libro as l ON p.libro = l.ID_Libro;
+SELECT l.ISBN,
+       e.Indirizzo,
+       e.StrutturaOspitante,
+       e.DataInizio,
+       e.DataFine,
+       e.Responsabile
+FROM b.evento as e, b.libro as l;
 
 --Creazione FTrigger
 CREATE OR REPLACE FUNCTION b.ins_presentazione()
@@ -464,9 +478,10 @@ EXECUTE FUNCTION b.ins_presentazione();
 --Trigger Insert Stock Negozi
 ------------------------------------------------------------------------------------------------------------------------
 CREATE VIEW b.ins_stock_Libro AS
-SELECT id_negozio, isbn, quantita
-FROM (b.stock JOIN b.negozio on stock.negozio = negozio.id_negozio)
-         JOIN b.libro ON id_libro = stock.libro;
+SELECT negozio              as id_negozio,
+       isbn,
+       quantita
+FROM b.libro, b.stock;
 
 
 CREATE OR REPLACE FUNCTION b.ins_stocklibro() RETURNS TRIGGER AS
