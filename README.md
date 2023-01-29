@@ -12,11 +12,11 @@
 - L'ambiente di sviluppo per l'applicativo sarà IntelliJ Idea
 
 ## ©️ *Contribuenti*
-👨‍💼  Mario Penna
+🧑🏻‍💼  [Mario Penna](https://www.instagram.com/bickpenna/)
 
-🙎‍♂️  Simone Parente Martone
+🧑🏻‍💻  [Simone Parente Martone](https://github.com/simoneparente)
 
-🙎‍♂️  Davide Santi
+🧑🏻‍💻  [Davide Santi](https://github.com/davidesanti)
 
 ## 🏬 *Info*
 - Università degli Studi di Napoli: "Federico II" 
