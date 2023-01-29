@@ -311,12 +311,13 @@ EXECUTE FUNCTION b.tfunEventoCONF();
 CREATE OR REPLACE VIEW b.ins_libro_autore_serie AS
 SELECT l.titolo,
        l.ISBN,
-       concat(a.nome, ' ', a.cognome) as Nome_Cognome,
+       concat(a.nome, ' ', a.cognome) as AutoriNome_Cognome,
        l.datapubblicazione,
        l.Editore,
        l.Genere,
        l.Lingua,
        l.Formato,
+       l.Prezzo
        s.nome                         as NOME_Serie_di_Appartenenza,
        s.ISSN                         as ISSN_Serie_di_Appartenenza
 FROM b.libro as l,
@@ -338,9 +339,9 @@ BEGIN
         RAISE NOTICE 'Libro già presente';
     ELSE
         --Inserimento libro
-        INSERT INTO b.libro(titolo, ISBN, datapubblicazione, Editore, Genere, Lingua, Formato)
+        INSERT INTO b.libro(titolo, ISBN, datapubblicazione, Editore, Genere, Lingua, Formato, Prezzo)
         VALUES (NEW.titolo, NEW.ISBN, NEW.datapubblicazione, NEW.editore, NEW.datapubblicazione, NEW.lingua,
-                New.Formato);
+                New.Formato, NEW.prezzo);
         --Inserimento Autori
         FOR i IN 1..nautori
             LOOP
