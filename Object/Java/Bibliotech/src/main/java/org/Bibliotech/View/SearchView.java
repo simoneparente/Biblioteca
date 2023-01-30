@@ -2,6 +2,7 @@ package org.Bibliotech.View;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.awt.event.*;
 import java.util.ArrayList;
 import org.Bibliotech.Controller.FiltriController;
@@ -34,18 +35,20 @@ public class SearchView extends GeneralView{
     private JTable resultTable;
     private JCheckBox editoreCheckBox;
     private JComboBox editoreComboBox;
+    private JScrollPane resultPane;
 
     private FiltriController fc;
     
     public SearchView(){
         fc = new FiltriController();
-        setupFields();
+        setupFields("libro");
         ImageIcon glassIconImage = new ImageIcon("src/main/Immagini/glassIcon.png");
         imageLabel.setIcon(logoIcon);
         searchButton.setIcon(glassIconImage);
         imagePanel.setSize(720,240);
         filtriPanel.setVisible(false);
-        resultPanel.setVisible(false);
+        resultPane.setVisible(true);
+        resultTable.setVisible(true);
         JFrame frame = newView("Search", rootPanel);
         this.setSize(720, 560);
 
@@ -87,18 +90,22 @@ public class SearchView extends GeneralView{
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JTable resultTable = new JTable();
-                ArrayList<String> columnNames = fc.getColumns();
-                DefaultTableModel model = new DefaultTableModel();
-                model.setColumnIdentifiers(fc.getColumns().toArray());
-                for (String s : columnNames) {
-                    model.addColumn(s);
+                    DefaultTableModel model = new DefaultTableModel();
+                    ArrayList<String> columns = fc.getColumns("view_libro_autore_prezzo"); //dovrà diventare una variabile ed essere definita in base a reasourceSelectorBox
+                    resultTable.setModel(model);
+
+                    TableColumnModel cols = resultTable.getColumnModel();
+                    cols.getColumn(0);
+                    cols.getColumn(1);
+                    cols.getColumn(2);
+                    cols.getColumn(3);
+                    cols.getColumn(4);
+                    cols.getColumn(5);
+                    cols.getColumn(6);
+                    cols.getColumn(7);
+                    //resultPane.setVisible(true);
                 }
 
-
-
-
-            }
         });
 
         filtriButton.addActionListener(new ActionListener() {

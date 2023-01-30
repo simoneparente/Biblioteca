@@ -41,7 +41,7 @@ public class ImplementazioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getGenereLibri() {
         ArrayList<String> generi = new ArrayList<>();
-        String getGenereQuery = "SELECT DISTINCT FROM b.libro";
+        String getGenereQuery = "SELECT DISTINCT genere FROM b.libro";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getGenereQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -215,9 +215,9 @@ public class ImplementazioneFiltri implements FiltriDao {
         return presentatoIn;
     }
 
-    public ArrayList<String> getColumns(){
+    public ArrayList<String> getColumns(String nomeTable){
         ArrayList<String> columns = new ArrayList<>();
-        String getColumnsQuery = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'view_libro_autore_prezzo'";
+        String getColumnsQuery = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME =" +  "'" + nomeTable + "'";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getColumnsQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -225,7 +225,7 @@ public class ImplementazioneFiltri implements FiltriDao {
                 columns.add(rs.getString("COLUMN_NAME"));
             }
         } catch(SQLException e){
-
+            e.printStackTrace();
         }
         return columns;
     }

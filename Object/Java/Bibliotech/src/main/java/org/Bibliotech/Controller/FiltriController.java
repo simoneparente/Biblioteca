@@ -24,8 +24,7 @@ public class FiltriController {
     public ArrayList<String> leggiLingueLibri(){
         return filtri.getLinguaLibri();
     }
-    
 
-    public ArrayList<String> getColumns() { return filtri.getColumns();//nomi colonne table
+    public ArrayList<String> getColumns(String nomeTable) { return filtri.getColumns(nomeTable);
     }
 }
