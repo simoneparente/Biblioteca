@@ -19,6 +19,9 @@ INSERT INTO b.ins_libro_autore_serie (titolo, ISBN, autorinome_cognome, datapubb
 VALUES ('Il Signore degli Anelli 1', '978-88-17-88000-0', 'J.R.R._Tolkien', '1954-07-29', 'Mondadori', 'Fantasy',
          'Italiano', 'Ebook', 'Il Signore degli Anelli', '978-88-04-58339-8');
 
+INSERT INTO b.ins_presentazione(isbn, indirizzo, strutturaospitante, datainizio, datafine, responsabile)
+VALUES ('978-88-17-88000-0', 'Via Roma 1', 'Mondadori', '2020-12-31', '2021-12-31', 'Mario Rossi');
+
 --Insert Stock
 INSERT INTO b.ins_stock_libro(id_negozio, isbn, quantita)
     VALUES (1,'978-88-17-88000-0', 35),
@@ -31,3 +34,4 @@ VALUES ('978-88-04-58339-8', 'Il Signore degli Anelli', 'Fantasy', '1954-07-29',
 --Insert Articolo Conferenza
 INSERT INTO b.ins_conferenza (indirizzo, strutturaospitante, datainizio, datafine, responsabile, doi_articoli_presentati)
 VALUES ('Via Roma 1', 'Casa Editrice', '2018-01-01', '2018-01-01', 'Mario Rossi', '10.1101/2027.12.31 10.1101/2031.12.31');
+
