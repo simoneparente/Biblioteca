@@ -2,16 +2,20 @@ package org.Bibliotech.Controller;
 
 import org.Bibliotech.View.*;
 
+import javax.xml.transform.Result;
+
 public class MainController {
 
     LoginView loginView;
     RegisterView registerView;
     SearchView searchView;
+    ResultView resultView;
 
     public MainController(){
         loginView = new LoginView();
         registerView = new RegisterView();
         searchView = new SearchView();
+        resultView= new ResultView();
     }
 
     public LoginView getLoginView() {
@@ -24,6 +28,9 @@ public class MainController {
 
     public SearchView getSearchView() {
         return searchView;
+    }
+    public ResultView getResultView() {
+        return resultView;
     }
 
     public void setSearchView(SearchView searchView) {
@@ -41,13 +48,16 @@ public class MainController {
             case "Search":
                 searchView.showView();
                 break;
+            case "Result":
+                resultView.showView();
+                break;
             default:
                 System.out.println("Error: No such GUI");
                 break;
         }
     }
 
-    public void switchGUI(String guiToShow, String guiToHide){
+    public void switchGUI(String guiToShow, String guiToHide){ //aggiungere switch gui result
         switch(guiToShow){
             case "Login":
                 switch(guiToHide){
@@ -56,6 +66,9 @@ public class MainController {
                         break;
                     case "Search":
                         searchView.hideView();
+                        break;
+                    case "Result":
+                        resultView.hideView();
                         break;
                     default:
                         System.out.println("Error: No such GUI");
@@ -71,11 +84,31 @@ public class MainController {
                     case "Search":
                         searchView.hideView();
                         break;
+                    case "Result":
+                        resultView.hideView();
+                        break;
                     default:
                         System.out.println("Error: No such GUI");
                         break;
                 }
                 registerView.showView();
+                break;
+            case "Result":
+                switch(guiToHide){
+                    case "Search":
+                        searchView.hideView();
+                        break;
+                    case "Login":
+                        loginView.hideView();
+                        break;
+                    case "Register":
+                        registerView.hideView();
+                        break;
+                    default:
+                        System.out.println("Error: No such GUI");
+                        break;
+                }
+                resultView.showView();
                 break;
             case "Search":
                 switch(guiToHide){
@@ -84,6 +117,9 @@ public class MainController {
                         break;
                     case "Register":
                         registerView.hideView();
+                        break;
+                    case "Result":
+                        resultView.hideView();
                         break;
                     default:
                         System.out.println("Error: No such GUI");

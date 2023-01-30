@@ -1,11 +1,10 @@
 package org.Bibliotech.View;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import java.awt.event.*;
 import java.util.ArrayList;
 import org.Bibliotech.Controller.FiltriController;
+import static org.Bibliotech.Main.mc;
 
 public class SearchView extends GeneralView{
     private JPanel rootPanel;
@@ -36,6 +35,8 @@ public class SearchView extends GeneralView{
     private JCheckBox editoreCheckBox;
     private JComboBox editoreComboBox;
     private JScrollPane resultPane;
+    private JCheckBox presentatoInCheckBox;
+    private JComboBox presentatoInComboBox;
 
     private FiltriController fc;
     
@@ -87,21 +88,43 @@ public class SearchView extends GeneralView{
             }
         });
 
+        minDataP.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                if(!minDataP.getText().chars().allMatch(Character::isDigit)){
+                    minDataP.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                if(minDataP.getText().isBlank()){
+                    minDataP.setText("Da anno");
+                }
+            }
+        });
+        maxDataP.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                if(!maxDataP.getText().chars().allMatch(Character::isDigit)){
+                    maxDataP.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                if(maxDataP.getText().isBlank()){
+                    maxDataP.setText("A anno");
+                }
+            }
+        });
+
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel model = new DefaultTableModel();
-                    ArrayList<String> columns = fc.getColumns("view_libro_autore_prezzo"); //dovrà diventare una variabile ed essere definita in base a reasourceSelectorBox
-                    for(String s : columns){
-                        model.addColumn(s);
-                    }
-                    resultTable.setModel(model);
-
-                    TableColumnModel cols = resultTable.getColumnModel();
-                for (int i = 0; i < cols.getColumnCount(); i++) {
-                    cols.getColumn(i).setPreferredWidth(100);
-                }
-                    //resultPane.setVisible(true);
+                mc.switchGUI(mc.getResultView().getName(), "");
                 }
 
         });
@@ -158,6 +181,7 @@ public class SearchView extends GeneralView{
                 String risorsaSelezionata = reasourceSelectorBox.getSelectedItem().toString();
                 switch (risorsaSelezionata) {
                     case "Libro":
+
                         break;
                     case "Aritcolo":
                         break;
@@ -176,6 +200,12 @@ public class SearchView extends GeneralView{
                 String risorsaSelezionata = reasourceSelectorBox.getSelectedItem().toString();
             }
         });
+        presentatoInCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                presentatoInComboBox.setEnabled(presentatoInCheckBox.isSelected());
+            }
+        });
     }
     private void fillFilters(String risorsaSelezionata){
         ArrayList<String> autori = fc.leggiAutoriLibri();
@@ -183,6 +213,7 @@ public class SearchView extends GeneralView{
         ArrayList<String> generi = fc.leggiGeneriLibri();
         ArrayList<String> formati = fc.leggiFormatiLibri();
         ArrayList<String> editori = fc.leggiEditoriLibri();
+        ArrayList<String> presentatoIn = fc.leggiPresentatoInLibri();
 
         for (String nome : autori) {
             autoreComboBox.addItem(nome);
@@ -199,6 +230,9 @@ public class SearchView extends GeneralView{
         for (String editore : editori) {
             editoreComboBox.addItem(editore);
         }
+        for (String presentato : presentatoIn) {
+            presentatoInComboBox.addItem(presentato);
+        }
     }
 
     private void disableFields(String risorsaSelezionata){
@@ -211,6 +245,7 @@ public class SearchView extends GeneralView{
         minDataP.setEnabled(false);
         maxDataP.setEnabled(false);
         editoreComboBox.setEnabled(false);
+        presentatoInComboBox.setEnabled(false);
     }
 
     private void setupFields(String RisorsaSelezionata) {
