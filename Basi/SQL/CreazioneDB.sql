@@ -197,7 +197,7 @@ CREATE TABLE b.Jolly
 ------------------------------------------------------------------------------------------------------------------------
 --Trigger Insert Articoli ed Autori
 ------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE VIEW b.ins_libro_autore AS
+CREATE OR REPLACE VIEW b.ins_articolo_autore AS
     SELECT doi,
            titolo,
            TEXT                 as AutoriNome_Cognome, --nome1_cognome1@nome2_cognome2@nome3_cognome3

@@ -12,8 +12,8 @@ public class LibroController {
         libro = new ImplementazioneLibro();
     }
 
-    public void  aggiungiLibro(String titolo, String autori, String genere, String editore, String dataPubblicazione, String isbn, String formato, String lingua, double prezzo){
-        libro.addLibro(titolo, autori, genere, editore, dataPubblicazione, isbn, formato, lingua, prezzo);
+    public boolean addLibro(String titolo, String isbn, String autorinome_cognome, String dataPubblicazione, String editore, String genere, String lingua, String formato, double prezzo, String nome_serie_di_appartnenza, String issn_serie_di_appartenenza){
+        return libro.addLibro(titolo, isbn, autorinome_cognome, dataPubblicazione, editore, genere, lingua, formato, prezzo, nome_serie_di_appartnenza, issn_serie_di_appartenenza);
     }
     public Libri leggiLibri(){
         return libro.getLibri();

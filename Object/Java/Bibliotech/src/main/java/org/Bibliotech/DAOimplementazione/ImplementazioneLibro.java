@@ -24,18 +24,21 @@ public class ImplementazioneLibro implements LibroDao {
 
     //Si deve modificare, le aggiunte noi le facciamo da una view
     @Override
-    public boolean addLibro(String titolo, String autori, String genere, String editore, String dataPubblicazione, String isbn, String formato, String lingua, double prezzo) {
-        String addLibroQuery= "INSERT INTO b.libro (titolo, genere, editore, data_pubblicazione, isbn, formato, lingua, prezzo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public boolean addLibro(String titolo, String isbn, String autorinome_cognome, String dataPubblicazione, String editore, String genere, String lingua, String formato, double prezzo, String nome_serie_di_appartnenza, String issn_serie_di_appartenenza){
+        String addLibroQuery= "INSERT INTO b.ins_libro_autore_serie (titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo, nome_serie_di_appartnenza, issn_serie_di_appartenenza ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(addLibroQuery);
             preparedStatement.setString(1, titolo);
-            preparedStatement.setString(2, genere);
-            preparedStatement.setString(3, editore);
+            preparedStatement.setString(2, isbn);
+            preparedStatement.setString(3, autorinome_cognome);
             preparedStatement.setString(4, dataPubblicazione);
-            preparedStatement.setString(5, isbn);
-            preparedStatement.setString(6, formato);
+            preparedStatement.setString(5, editore);
+            preparedStatement.setString(6, genere);
             preparedStatement.setString(7, lingua);
-            preparedStatement.setDouble(8, prezzo);
+            preparedStatement.setString(8, formato);
+            preparedStatement.setDouble(9, prezzo);
+            preparedStatement.setString(10, nome_serie_di_appartnenza);
+            preparedStatement.setString(11, issn_serie_di_appartenenza);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -121,7 +124,9 @@ public class ImplementazioneLibro implements LibroDao {
     @Override
     public Libri getLibriByAutore(String autore) {
         Libri libri = new Libri();
-        String getLibriByAutoreQuery = "SELECT * FROM b.viewlibroautoreserie WHERE nome_cognome LIKE '%'?'%'";
+        String getLibriByAutoreQuery = "SELECT *" +
+                                       "FROM (b.libro NATURAL JOIN b.autorelibro) JOIN b.autore ON b.autorelibro.id_autore = b.autore.id_autore" +
+                                       "WHERE nome LIKE '%'?'%' AND cognome LIKE '%'?'%'";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(getLibriByAutoreQuery);
             preparedStatement.setString(1, autore);
@@ -277,7 +282,7 @@ public class ImplementazioneLibro implements LibroDao {
     }
 
     @Override
-    public Libri getLibriByFormato(String formato) {  //da aggiungere possibile implementazione checkbox
+    public Libri getLibriByFormato(String formato) {
         Libri libri = new Libri();
         String getLibriByFormatoQuery = "SELECT * FROM b.libro WHERE formato = ?";
         try {
@@ -384,7 +389,7 @@ public class ImplementazioneLibro implements LibroDao {
     @Override
     public Libri getLibriByGenere(String genere) {
         Libri libri = new Libri();
-        String getLibriByGenereQuery = "SELECT * FROM b.libro WHERE genere = ?";
+        String getLibriByGenereQuery = "SELECT * FROM b.libro WHERE genere LIKE '%'?'%'";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(getLibriByGenereQuery);
             preparedStatement.setString(1, genere);
