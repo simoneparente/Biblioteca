@@ -40,7 +40,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="fd3e" class="javax.swing.JComboBox" binding="ReasourceSelectorBox">
+          <component id="fd3e" class="javax.swing.JComboBox" binding="reasourceSelectorBox">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -182,9 +182,15 @@
             </constraints>
             <properties/>
           </component>
-          <component id="6aead" class="javax.swing.JComboBox" binding="autoreComboBox">
+          <component id="6aead" class="javax.swing.JComboBox" binding="autoreNomeComboBox">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="58c92" class="javax.swing.JComboBox" binding="autoreCognomeComboBox">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>

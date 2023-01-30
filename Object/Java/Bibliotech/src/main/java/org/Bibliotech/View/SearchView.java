@@ -1,7 +1,7 @@
 package org.Bibliotech.View;
 
 import javax.swing.*;
-import javax.swing.table.TableColumn;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.util.ArrayList;
 import org.Bibliotech.Controller.FiltriController;
@@ -26,9 +26,8 @@ public class SearchView extends GeneralView{
     private JTextField maxprezzoBox;
     private JTextField maxDataP;
     private JTextField minDataP;
-    private JComboBox ReasourceSelectorBox;
+    private JComboBox reasourceSelectorBox;
     private JComboBox autoreComboBox;
-    private JComboBox autoreCognomeComboBox;
     private JCheckBox linguaCheckBox;
     private JComboBox linguaComboBox;
     private JPanel resultPanel;
@@ -49,6 +48,7 @@ public class SearchView extends GeneralView{
         resultPanel.setVisible(false);
         JFrame frame = newView("Search", rootPanel);
         this.setSize(720, 560);
+
 
 
         minprezzoBox.addFocusListener(new FocusAdapter() {
@@ -87,16 +87,19 @@ public class SearchView extends GeneralView{
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-            //if(searchField.getText().isBlank()){
-            //    JOptionPane.showMessageDialog(null, "Inserire un testo di ricerca");
-            //}
-            //else{
-                TableColumn column = new TableColumn();
-                column.setHeaderValue("Titolo");
-                resultPanel.setVisible(true);
-                resultTable.addColumn(column);
-                resultTable.setValueAt("Titolo", 0, 0);
+                JTable resultTable = new JTable();
+                ArrayList<String> columnNames = fc.getColumns();
+                DefaultTableModel model = new DefaultTableModel();
+                model.setColumnIdentifiers(fc.getColumns().toArray());
+                for (String s : columnNames) {
+                    model.addColumn(s);
+                    System.out.println(s);
+                }
+
+
+                //resultTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+
+
             //}
             }
         });
@@ -147,9 +150,26 @@ public class SearchView extends GeneralView{
                 linguaComboBox.setEnabled(linguaCheckBox.isSelected());
             }
         });
+        reasourceSelectorBox.addActionListener(new ActionListener() { //selettore risorsa da cercare
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String risorsaSelezionata = reasourceSelectorBox.getSelectedItem().toString();
+                switch (risorsaSelezionata) {
+                    case "Libro":
+                        break;
+                    case "Aritcolo":
+                        break;
+                }
+            }
+        });
+        editoreCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                editoreComboBox.setEnabled(editoreCheckBox.isSelected());
+            }
+        });
     }
-
-    private void setFields(boolean mode) {
+    private void fillFilters(){
         ArrayList<String> autori = fc.leggiAutori();
         ArrayList<String> lingue = fc.leggiLingue();
         ArrayList<String> generi = fc.leggiGeneri();
@@ -171,14 +191,22 @@ public class SearchView extends GeneralView{
         for (String editore : editori) {
             editoreComboBox.addItem(editore);
         }
+    }
 
-        autoreComboBox.setEnabled(mode);
-        linguaComboBox.setEnabled(mode);
-        genereComboBox.setEnabled(mode);
-        formatoBox.setEnabled(mode);
-        minprezzoBox.setEnabled(mode);
-        maxprezzoBox.setEnabled(mode);
-        minDataP.setEnabled(mode);
-        maxDataP.setEnabled(mode);
+    private void disableFields(){
+        autoreComboBox.setEnabled(false);
+        linguaComboBox.setEnabled(false);
+        genereComboBox.setEnabled(false);
+        formatoBox.setEnabled(false);
+        minprezzoBox.setEnabled(false);
+        maxprezzoBox.setEnabled(false);
+        minDataP.setEnabled(false);
+        maxDataP.setEnabled(false);
+        editoreComboBox.setEnabled(false);
+    }
+
+    private void setupFields(boolean mode) {
+        disableFields();
+        fillFilters();
     }
 }
