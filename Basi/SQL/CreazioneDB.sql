@@ -2,7 +2,7 @@ DROP SCHEMA IF EXISTS b CASCADE;
 CREATE SCHEMA b;
 
 ------------------------------------------------------------------------------------------------------------------------
-                                                --Creazione tabelle
+--Creazione tabelle
 ------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE b.Articolo
 (
@@ -10,6 +10,7 @@ CREATE TABLE b.Articolo
     Titolo            VARCHAR(128),
     DOI               VARCHAR(128),
     DataPubblicazione DATE,
+    Disciplina        VARCHAR(128),
     Editore           VARCHAR(128),
     Lingua            VARCHAR(128),
     Formato           VARCHAR(128),
@@ -160,7 +161,7 @@ CREATE TABLE b.Stock
 );
 
 ------------------------------------------------------------------------------------------------------------------------
-                    --Tabelle per la gestione delle notifiche di disponibilità di un libro
+--Tabelle per la gestione delle notifiche di disponibilità di un libro
 ------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE b.Utente
@@ -185,11 +186,11 @@ CREATE TABLE b.Richiesta
 );
 
 ------------------------------------------------------------------------------------------------------------------------
-                            --Tabella Jolly con campo text per le insert multiple
+--Tabella Jolly con campo text per le insert multiple
 ------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE b.Jolly
 (
-    Text  TEXT
+    Text TEXT
 );
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -198,16 +199,18 @@ CREATE TABLE b.Jolly
 --Trigger Insert Articoli ed Autori
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_articolo_autore AS
-    SELECT doi,
-           titolo,
-           TEXT                 as AutoriNome_Cognome, --nome1_cognome1@nome2_cognome2@nome3_cognome3
-           datapubblicazione,
-           editore,
-           lingua,
-           formato
-    FROM b.articolo, b.jolly;
+SELECT doi,
+       titolo,
+       TEXT as AutoriNome_Cognome, --'nome1 cognome1, nome2 cognome2'
+       datapubblicazione,
+       disciplina,
+       editore,
+       lingua,
+       formato
+FROM b.articolo,
+     b.jolly;
 
-CREATE OR REPLACE FUNCTION b.tfun_ArticoloAutore() RETURNS TRIGGER AS
+CREATE OR REPLACE FUNCTION b.ftrig_ArticoloAutore() RETURNS TRIGGER AS
 $$
 DECLARE
     autori         text[]= string_to_array(NEW.autorinome_cognome, ' ');
@@ -219,8 +222,8 @@ BEGIN
     IF EXISTS(SELECT * FROM b.articolo WHERE titolo = NEW.titolo AND datapubblicazione = NEW.datapubblicazione) THEN
         RAISE NOTICE 'Articolo già presente';
     ELSE
-        INSERT INTO b.articolo(titolo, doi, datapubblicazione, editore, lingua, formato)
-        VALUES (NEW.titolo, NEW.doi, NEW.datapubblicazione, NEW.editore, NEW.lingua, New.Formato);
+        INSERT INTO b.articolo(titolo, doi, datapubblicazione, disciplina, editore, lingua, formato)
+        VALUES (NEW.titolo, NEW.doi, NEW.datapubblicazione, NEW.disciplina, NEW.editore, NEW.lingua, New.Formato);
 
         --Insert autori
         FOR i IN 1..n_autori
@@ -253,45 +256,117 @@ CREATE OR REPLACE TRIGGER trig_ArticoloAutore
     INSTEAD OF INSERT
     ON b.ins_articolo_autore
     FOR EACH ROW
-EXECUTE FUNCTION b.tfun_ArticoloAutore();
+EXECUTE FUNCTION b.ftrig_ArticoloAutore();
 ------------------------------------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------------------------------------
---Trigger Insert Conferenze
+                                          --Trigger Insert Riviste
 ------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE VIEW b.ins_evento_conferenza AS
+CREATE OR REPLACE VIEW b.ins_rivista AS
+    SELECT issn,
+           nome,
+           argomento,
+           datapubblicazione,
+           responsabile,
+           text as Doi_Articoli_Pubblicati --Più articoli (DOI1 DOI2)
+FROM b.rivista, b.jolly;
+
+CREATE OR REPLACE FUNCTION b.ftrig_rivista() RETURNS TRIGGER AS
+$$
+    DECLARE
+    articoli    text[]  := string_to_array(NEW.Doi_Articoli_Pubblicati, '@');
+    narticoli   INTEGER := array_length(articoli, 1);
+    newarticolo b.articolo.id_articolo%TYPE;
+    newrivista  b.rivista.ID_Rivista%TYPE;
+    vcheck      INTEGER:=0;
+    BEGIN
+        FOR i IN 1..narticoli LOOP
+            newarticolo = (SELECT id_articolo FROM b.articolo WHERE doi = articoli[i]);
+            --Controllo se l'articolo esiste
+            IF NOT EXISTS(SELECT * FROM b.articolo WHERE doi = articoli[i]) THEN
+                RAISE NOTICE 'Articolo {%} non presente', articoli[i];
+                vcheck := 1;
+            --Controllo se l'articolo è già presente in una conferenza
+            ELSEIF EXISTS(SELECT * FROM b.conferenza WHERE articolo = newarticolo) THEN
+                RAISE NOTICE 'Articolo {%} già presente in una conferenza', articoli[i];
+                vcheck := 2;
+            END IF;
+        END LOOP;
+
+        IF (vcheck = 1) THEN
+            RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO INESISTENTI ';
+        ELSIF (vcheck = 2) THEN
+            RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA CONFERENZA ';
+        ELSE
+            --Inserisco la rivista
+            INSERT INTO b.rivista (nome, issn, argomento, datapubblicazione, responsabile)
+            VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.responsabile);
+
+            --Recupero l'id della rivista appena inserita
+            SELECT id_rivista INTO newrivista FROM b.rivista WHERE nome = NEW.nome AND issn = NEW.issn;
+
+            --Inserisco gli articoli nella rivista
+            FOR i IN 1..narticoli LOOP
+                SELECT id_articolo INTO newarticolo FROM b.articolo WHERE doi = articoli[i]; --recupero id articolo
+                INSERT INTO b.articoloinrivista (id_articolo, id_rivista)
+                VALUES (newarticolo, newrivista);
+            END LOOP;
+        END IF;
+        RETURN NEW;
+    END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER trig_Rivista
+    INSTEAD OF INSERT
+    ON b.ins_rivista
+    FOR EACH ROW
+EXECUTE FUNCTION b.ftrig_rivista();
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+                                        --Trigger Insert Conferenze
+------------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE VIEW b.ins_conferenza AS
 SELECT indirizzo,
        strutturaospitante,
        datainizio,
        datafine,
        responsabile,
-       TEXT                 as Doi_Articoli_Presentati --Più articoli separati da @ (es:DOI1@DOI2)
+       TEXT as Doi_Articoli_Presentati --Più articoli separati da @ (es:DOI1@DOI2)
 FROM b.jolly,
      b.evento as e;
 
-CREATE OR REPLACE FUNCTION b.tfun_EventoConferenza() RETURNS TRIGGER AS
+CREATE OR REPLACE FUNCTION b.ftrig_conferenza() RETURNS TRIGGER AS
 $$
 DECLARE
-    articoli    text[]  := string_to_array(NEW.Doi_Articoli_Presentati, '@');
+    articoli    text[]  := string_to_array(NEW.Doi_Articoli_Presentati, ' ');
     narticoli   INTEGER := array_length(articoli, 1);
     newarticolo b.articolo.id_articolo%TYPE;
     newevento   b.evento.ID_Evento%TYPE;
     vcheck      INTEGER := 0;
 BEGIN
-    --Verifico che tutti gli articoli esistano
     FOR i IN 1..narticoli
         LOOP
+            newarticolo = (SELECT id_articolo FROM b.articolo WHERE doi = articoli[i]);
+            --Controllo se l'articolo esiste
             IF NOT EXISTS(SELECT * FROM b.articolo WHERE doi = articoli[i]) THEN
                 vcheck = 1;
-            end if;
+                RAISE NOTICE 'Articolo {%} non presente', articoli[i];
+            --Controllo se l'articolo è già presente in una rivista
+            ELSEIF EXISTS(SELECT * FROM b.articoloinrivista WHERE id_articolo = newarticolo) THEN
+                vcheck = 2;
+                RAISE NOTICE 'Articolo {%} già presente in una rivista', articoli[i];
+            END IF;
         end loop;
 
-    --Se non esistono tutti gli articoli non inserisco l'evento
-    IF (vcheck != 0) THEN
+    IF (vcheck = 1) THEN
         RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO INESISTENTI';
-    ELSE  --Se tutti gli articoli esistono inserisco l'evento
-        INSERT INTO evento (indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
+    ELSEIF (vcheck = 2) THEN
+        RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA RIVISTA';
+    ELSE --Se tutti gli articoli esistono inserisco l'evento
+        INSERT INTO b.evento (indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
         VALUES (NEW.indirizzo, NEW.strutturaospitante, NEW.datainizio, NEW.datafine, NEW.responsabile);
 
         --Recupero l'id dell'evento appena inserito
@@ -306,18 +381,20 @@ BEGIN
         --Inserisco le conferenze per ogni articolo
         FOR i IN 1..narticoli
             LOOP
-                newarticolo = (SELECT id_articolo FROM b.articolo WHERE doi = articoli[i]); --Recupero l'id dell'articolo
-                INSERT INTO conferenza (articolo, evento) VALUES (newarticolo, newevento);
+                newarticolo =
+                        (SELECT id_articolo FROM b.articolo WHERE doi = articoli[i]); --Recupero l'id dell'articolo
+                INSERT INTO b.conferenza (articolo, evento) VALUES (newarticolo, newevento);
             end loop;
     END IF;
+    RETURN NEW;
 end
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trig_Evento_Conferenza
+CREATE TRIGGER trig_conferenza
     INSTEAD OF INSERT
-    ON b.ins_evento_conferenza
+    ON b.ins_conferenza
     FOR EACH ROW
-EXECUTE FUNCTION b.tfun_EventoConferenza();
+EXECUTE FUNCTION b.ftrig_conferenza();
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -327,20 +404,20 @@ EXECUTE FUNCTION b.tfun_EventoConferenza();
 CREATE OR REPLACE VIEW b.ins_libro_autore_serie AS
 SELECT l.titolo,
        l.ISBN,
-       j.TEXT                         as AutoriNome_Cognome, --'nome1_cognome1@nome2_cognome2@nome3_cognome3'
+       j.TEXT as AutoriNome_Cognome, --'Nome1_Cognome1 Nome2_Cognome2'
        l.datapubblicazione,
        l.Editore,
        l.Genere,
        l.Lingua,
        l.Formato,
        l.Prezzo,
-       s.nome                         as NOME_Serie_di_Appartenenza,
-       s.ISSN                         as ISSN_Serie_di_Appartenenza
+       s.nome as NOME_Serie_di_Appartenenza,
+       s.ISSN as ISSN_Serie_di_Appartenenza
 FROM b.libro as l,
      b.serie as s,
      b.jolly as j;
 
-CREATE OR REPLACE FUNCTION b.tfun_LibroaAutoreSerie() RETURNS TRIGGER AS
+CREATE OR REPLACE FUNCTION b.ftrig_LibroaAutoreSerie() RETURNS TRIGGER AS
 $$
 DECLARE
     autori         text[]  := string_to_array(NEW.Autorinome_cognome, ' ');
@@ -373,7 +450,7 @@ BEGIN
 
                 --Aggiorno la tabella autorelibro
                 INSERT INTO b.autorelibro(id_autore, id_libro)
-                SELECT a.id_autore, l.id_libro  -- Trasformo l'ISNN in un ID e recupero l'ID dell'autore
+                SELECT a.id_autore, l.id_libro -- Trasformo l'ISNN in un ID e recupero l'ID dell'autore
                 FROM b.autore as a,
                      b.libro as l
                 WHERE a.nome = autore_nome
@@ -426,12 +503,12 @@ CREATE OR REPLACE TRIGGER trig_LibroAutoreSerie
     INSTEAD OF INSERT
     ON b.ins_libro_autore_serie
     FOR EACH ROW
-EXECUTE FUNCTION b.tfun_LibroaAutoreSerie();
+EXECUTE FUNCTION b.ftrig_LibroaAutoreSerie();
 ------------------------------------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------------------------------------
-                                            --Trigger Insert Presentazioni
+--Trigger Insert Presentazioni
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_presentazione AS
 SELECT l.ISBN,
@@ -440,7 +517,8 @@ SELECT l.ISBN,
        e.DataInizio,
        e.DataFine,
        e.Responsabile
-FROM b.evento as e, b.libro as l;
+FROM b.evento as e,
+     b.libro as l;
 
 CREATE OR REPLACE FUNCTION b.ftrig_presentazione()
     RETURNS trigger AS
@@ -454,11 +532,11 @@ BEGIN
                            JOIN b.libro as l ON p.libro = l.ID_Libro
                   WHERE ISBN = NEW.ISBN) THEN
         RAISE NOTICE 'Esista già una presentazione per questo libro!! Presentazione non inserita';
-    ELSE  --Inserisco la presentazione
+    ELSE --Inserisco la presentazione
         INSERT INTO b.evento (indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
         VALUES (NEW.Indirizzo, NEW.StrutturaOspitante, NEW.DataInizio, NEW.DataFine, NEW.Responsabile);
-        INSERT INTO b.presentazione (evento, libro)  --Inserisco la presentazione
-        SELECT e.ID_evento, l.ID_libro   --Trasformo l'ISBN in un ID e recupero l'ID dell'evento
+        INSERT INTO b.presentazione (evento, libro) --Inserisco la presentazione
+        SELECT e.ID_evento, l.ID_libro --Trasformo l'ISBN in un ID e recupero l'ID dell'evento
         FROM b.evento e,
              b.libro l
         WHERE l.ISBN = NEW.ISBN
@@ -484,10 +562,11 @@ EXECUTE FUNCTION b.ftrig_presentazione();
 --Trigger Insert Stock Negozi
 ------------------------------------------------------------------------------------------------------------------------
 CREATE VIEW b.ins_stock_Libro AS
-SELECT negozio              as id_negozio,
+SELECT negozio as id_negozio,
        isbn,
        quantita
-FROM b.libro, b.stock;
+FROM b.libro,
+     b.stock;
 
 CREATE OR REPLACE FUNCTION b.ftrig_stocklibro() RETURNS TRIGGER AS
 $$
@@ -504,7 +583,8 @@ BEGIN
         IF EXISTS(SELECT * FROM b.stock WHERE stock.negozio = NEW.id_negozio AND stock.libro = v_idlibro) THEN
             UPDATE b.stock
             SET quantita=quantita + NEW.quantita
-            WHERE negozio = NEW.id_negozio AND stock.libro = v_idlibro;
+            WHERE negozio = NEW.id_negozio
+              AND stock.libro = v_idlibro;
         ELSE --se non esiste la creo
             INSERT INTO b.stock values (NEW.id_negozio, v_idlibro, NEW.quantita);
         end if;
