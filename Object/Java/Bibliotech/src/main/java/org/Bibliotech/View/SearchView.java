@@ -40,6 +40,7 @@ public class SearchView extends GeneralView{
         JFrame frame = newView("Search", rootPanel);
         this.setSize(720, 560);
 
+
         minprezzoBox.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -130,6 +131,10 @@ public class SearchView extends GeneralView{
     }
 
     private void setFields(boolean mode) {
+                
+
+
+
         autoreNomeComboBox.setEnabled(mode);
         autoreCognomeComboBox.setEnabled(mode);
         linguaComboBox.setEnabled(mode);
@@ -139,5 +144,8 @@ public class SearchView extends GeneralView{
         maxprezzoBox.setEnabled(mode);
         minDataP.setEnabled(mode);
         maxDataP.setEnabled(mode);
+
+
+
     }
 }
