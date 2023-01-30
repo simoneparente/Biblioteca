@@ -24,7 +24,27 @@ public class FiltriController {
     public ArrayList<String> leggiLingueLibri(){
         return filtri.getLinguaLibri();
     }
-
+    public ArrayList<String> leggiPresentatoInLibri(){
+        return filtri.getPresentatoInLibro();
+    }
+    public ArrayList<String> leggiAutoriArticoli(){
+        return filtri.getAutoriArticoli();
+    }
+    public ArrayList<String> leggiDisciplineArticoli(){
+        return filtri.getDisciplinaArticoli();
+    }
+    public ArrayList<String> leggiEditoriArticoli(){
+        return filtri.getEditoreArticoli();
+    }
+    public ArrayList<String> leggiFormatiArticoli(){
+        return filtri.getFormatoArticoli();
+    }
+    public ArrayList<String> leggiLingueArticoli(){
+        return filtri.getLinguaArticoli();
+    }
+    public ArrayList<String> leggiPresentatoInArticoli(){
+        return filtri.getPresentatoInArticoli();
+    }
     public ArrayList<String> getColumns(String nomeTable) { return filtri.getColumns(nomeTable);
     }
 }
