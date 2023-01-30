@@ -20,36 +20,21 @@ public class ImplementazioneFiltri implements FiltriDao {
             e.printStackTrace();
         }
     }
+
     @Override
-    public ArrayList<String> getNomeAutori() {
-        ArrayList<String> nomiAutori = new ArrayList<>();
-        String getNomeAutoriQuery = "SELECT DISTINCT nome FROM b.autore";
+    public ArrayList<String> getAutori() {
+        ArrayList<String> autori = new ArrayList<>();
+        String getAutoriQuery = "SELECT DISTINCT nome, cognome FROM b.autore";
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getNomeAutoriQuery);
+            PreparedStatement preparedStatement = connection.prepareStatement(getAutoriQuery);
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
-                nomiAutori.add(rs.getString("nome"));
+                autori.add(rs.getString("nome") + " " + rs.getString("cognome"));
             }
         } catch(SQLException e){
 
         }
-        return nomiAutori;
-    }
-
-    @Override
-    public ArrayList<String> getCognomeAutori() {
-        ArrayList<String> cognomiAutori = new ArrayList<>();
-        String getCognomeAutoriQuery = "SELECT DISTINCT cognome FROM b.autore";
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getCognomeAutoriQuery);
-            ResultSet rs = preparedStatement.executeQuery();
-            while(rs.next()){
-                cognomiAutori.add(rs.getString("cognome"));
-            }
-        } catch(SQLException e){
-
-        }
-        return cognomiAutori;
+        return autori;
     }
 
     @Override

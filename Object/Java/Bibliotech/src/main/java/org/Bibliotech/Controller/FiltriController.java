@@ -9,11 +9,8 @@ public class FiltriController {
     public FiltriController(){
         filtri = new ImplementazioneFiltri();
     }
-    public ArrayList<String> leggiNomeAutori(){
-        return filtri.getNomeAutori();
-    }
-    public ArrayList<String> leggiCognomeAutori(){
-        return filtri.getCognomeAutori();
+    public ArrayList<String> leggiAutori(){
+        return filtri.getAutori();
     }
     public ArrayList<String> leggiGeneri(){
         return filtri.getGenere();

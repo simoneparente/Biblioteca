@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public interface FiltriDao {
 
-    public ArrayList<String> getNomeAutori();
-    public ArrayList<String> getCognomeAutori();
+    public ArrayList<String> getAutori();
     public ArrayList<String> getGenere();
     public ArrayList<String> getLingua();
     public ArrayList<String> getEditore();

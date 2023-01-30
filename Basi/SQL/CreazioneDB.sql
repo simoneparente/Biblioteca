@@ -69,7 +69,7 @@ CREATE TABLE b.Evento
     Responsabile       VARCHAR(128),
 
     CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento),
-    CONSTRAINT CK_Date CHECK (DataInizio < DataFine),
+    CONSTRAINT CK_Date CHECK (DataInizio <= DataFine),
     CONSTRAINT UK_Evento UNIQUE (Indirizzo, StrutturaOspitante, DataInizio, DataFine, Responsabile)
 );
 

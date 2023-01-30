@@ -27,7 +27,7 @@ public class SearchView extends GeneralView{
     private JTextField maxDataP;
     private JTextField minDataP;
     private JComboBox ReasourceSelectorBox;
-    private JComboBox autoreNomeComboBox;
+    private JComboBox autoreComboBox;
     private JComboBox autoreCognomeComboBox;
     private JCheckBox linguaCheckBox;
     private JComboBox linguaComboBox;
@@ -111,8 +111,7 @@ public class SearchView extends GeneralView{
         autoreCheckBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                autoreNomeComboBox.setEnabled(autoreCheckBox.isSelected());
-                autoreCognomeComboBox.setEnabled(autoreCheckBox.isSelected());
+                autoreComboBox.setEnabled(autoreCheckBox.isSelected());
             }
         });
         genereCheckBox.addItemListener(new ItemListener() {
@@ -151,18 +150,14 @@ public class SearchView extends GeneralView{
     }
 
     private void setFields(boolean mode) {
-        ArrayList<String> nomiAutori = fc.leggiNomeAutori();
-        ArrayList<String> cognomiAutori = fc.leggiCognomeAutori();
+        ArrayList<String> autori = fc.leggiAutori();
         ArrayList<String> lingue = fc.leggiLingue();
         ArrayList<String> generi = fc.leggiGeneri();
         ArrayList<String> formati = fc.leggiFormati();
         ArrayList<String> editori = fc.leggiEditori();
 
-        for (String nome : nomiAutori) {
-            autoreNomeComboBox.addItem(nome);
-        }
-        for (String cognome : cognomiAutori) {
-            autoreCognomeComboBox.addItem(cognome);
+        for (String nome : autori) {
+            autoreComboBox.addItem(nome);
         }
         for (String lingua : lingue) {
             linguaComboBox.addItem(lingua);
@@ -177,8 +172,7 @@ public class SearchView extends GeneralView{
             editoreComboBox.addItem(editore);
         }
 
-        autoreNomeComboBox.setEnabled(mode);
-        autoreCognomeComboBox.setEnabled(mode);
+        autoreComboBox.setEnabled(mode);
         linguaComboBox.setEnabled(mode);
         genereComboBox.setEnabled(mode);
         formatoBox.setEnabled(mode);

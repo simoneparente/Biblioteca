@@ -16,7 +16,7 @@ values ('10.1101/2020.12.31', 'La scoperta delle proteine', 'Mario_Rossi Giusepp
 --Insert Libro Autore Serie
 INSERT INTO b.ins_libro_autore_serie (titolo, ISBN, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato,
                                      nome_serie_di_appartenenza, issn_serie_di_appartenenza)
-VALUES ('Il Signore degli Anelli 1', '978-88-04-58343-8', 'J.R.R._Tolkien', '1954-07-29', 'Mondadori', 'Fantasy',
+VALUES ('Il Signore degli Anelli 1', '978-88-17-88000-0', 'J.R.R._Tolkien', '1954-07-29', 'Mondadori', 'Fantasy',
          'Italiano', 'Ebook', 'Il Signore degli Anelli', '978-88-04-58339-8');
 
 --Insert Presentazione
