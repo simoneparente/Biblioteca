@@ -19,19 +19,7 @@ public class ImplementazioneLibro implements LibroDao {
             e.printStackTrace();
         }
     }
-
-
-        private Connection connection;
-        public ImplementazioneLibro() {
-            try {
-                connection= ConnessioneDB.getInstance().connection;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-    //Si deve modificare, le aggiunte noi le facciamo da una view
+    
     @Override
     public boolean addLibro(String titolo, String isbn, String autorinome_cognome, String dataPubblicazione, String editore, String genere, String lingua, String formato, double prezzo, String nome_serie_di_appartnenza, String issn_serie_di_appartenenza){
         String addLibroQuery= "INSERT INTO b.ins_libro_autore_serie (titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo, nome_serie_di_appartnenza, issn_serie_di_appartenenza ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
