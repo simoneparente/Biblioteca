@@ -92,17 +92,15 @@ public class SearchView extends GeneralView{
             public void actionPerformed(ActionEvent e) {
                     DefaultTableModel model = new DefaultTableModel();
                     ArrayList<String> columns = fc.getColumns("view_libro_autore_prezzo"); //dovrà diventare una variabile ed essere definita in base a reasourceSelectorBox
+                    for(String s : columns){
+                        model.addColumn(s);
+                    }
                     resultTable.setModel(model);
 
                     TableColumnModel cols = resultTable.getColumnModel();
-                    cols.getColumn(0);
-                    cols.getColumn(1);
-                    cols.getColumn(2);
-                    cols.getColumn(3);
-                    cols.getColumn(4);
-                    cols.getColumn(5);
-                    cols.getColumn(6);
-                    cols.getColumn(7);
+                for (int i = 0; i < cols.getColumnCount(); i++) {
+                    cols.getColumn(i).setPreferredWidth(100);
+                }
                     //resultPane.setVisible(true);
                 }
 
