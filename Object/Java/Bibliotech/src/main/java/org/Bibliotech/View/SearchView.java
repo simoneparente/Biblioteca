@@ -1,6 +1,7 @@
 package org.Bibliotech.View;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -87,16 +88,17 @@ public class SearchView extends GeneralView{
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-            //if(searchField.getText().isBlank()){
-            //    JOptionPane.showMessageDialog(null, "Inserire un testo di ricerca");
-            //}
-            //else{
-                TableColumn column = new TableColumn();
-                column.setHeaderValue("Titolo");
-                resultPanel.setVisible(true);
-                resultTable.addColumn(column);
-                resultTable.setValueAt("Titolo", 0, 0);
+                JTable resultTable = new JTable();
+                ArrayList<String> columnNames = fc.getColumns();
+                DefaultTableModel model = new DefaultTableModel();
+                model.setColumnIdentifiers(fc.getColumns().toArray());
+                for (String s : columnNames) {
+                    model.addColumn(s);
+                    System.out.println(s);
+                }
+                //resultTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+
+
             //}
             }
         });

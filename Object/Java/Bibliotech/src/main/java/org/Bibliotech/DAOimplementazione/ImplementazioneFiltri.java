@@ -100,4 +100,19 @@ public class ImplementazioneFiltri implements FiltriDao {
         }
         return formati;
     }
+
+    public ArrayList<String> getColumns(){
+        ArrayList<String> columns = new ArrayList<>();
+        String getColumnsQuery = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'view_libro_autore_prezzo'";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getColumnsQuery);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                columns.add(rs.getString("COLUMN_NAME"));
+            }
+        } catch(SQLException e){
+
+        }
+        return columns;
+    }
 }

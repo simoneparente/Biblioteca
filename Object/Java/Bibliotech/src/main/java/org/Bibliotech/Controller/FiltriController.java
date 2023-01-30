@@ -2,6 +2,7 @@ package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneFiltri;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FiltriController {
@@ -25,4 +26,6 @@ public class FiltriController {
         return filtri.getLingua();
     }
 
+    public ArrayList<String> getColumns() { return filtri.getColumns();
+    }
 }
