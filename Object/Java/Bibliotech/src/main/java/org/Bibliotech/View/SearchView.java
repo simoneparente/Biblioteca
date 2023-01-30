@@ -24,6 +24,7 @@ public class SearchView extends GeneralView{
     private JTextField maxprezzoBox;
     private JTextField maxDataP;
     private JTextField minDataP;
+    private JComboBox ReasourceSelectorBox;
 
     public SearchView(){
         setFields(false);
