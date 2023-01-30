@@ -5,14 +5,12 @@ import java.util.ArrayList;
 public class Libro {
     private String titolo;
     private ArrayList<Autore> autori;
-
     private String autoriString = "";
     private String genere;
     private String editore;
     private String dataPubblicazione;
     private String isbn;
     private String formato;
-
     private String lingua;
     private double prezzo;
     public Libro() {
