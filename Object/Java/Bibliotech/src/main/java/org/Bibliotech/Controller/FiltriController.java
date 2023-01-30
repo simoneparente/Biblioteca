@@ -11,19 +11,19 @@ public class FiltriController {
         filtri = new ImplementazioneFiltri();
     }
     public ArrayList<String> leggiAutori(){
-        return filtri.getAutoriLibri();
+        return filtri.getAutori();
     }
     public ArrayList<String> leggiGeneri(){
-        return filtri.getGeneriLibri();
+        return filtri.getGenere();
     }
     public ArrayList<String> leggiEditori(){
-        return filtri.getEditoriLibri();
+        return filtri.getEditore();
     }
     public ArrayList<String> leggiFormati(){
-        return filtri.getFormatiLibri();
+        return filtri.getFormato();
     }
     public ArrayList<String> leggiLingue(){
-        return filtri.getLingueLibri();
+        return filtri.getLingua();
     }
 
     public ArrayList<String> getColumns() { return filtri.getColumns();

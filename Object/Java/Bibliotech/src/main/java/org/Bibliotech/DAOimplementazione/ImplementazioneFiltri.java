@@ -22,9 +22,9 @@ public class ImplementazioneFiltri implements FiltriDao {
     }
 
     @Override
-    public ArrayList<String> getAutoriLibri() {
+    public ArrayList<String> getAutori() {
         ArrayList<String> autori = new ArrayList<>();
-        String getAutoriQuery = "SELECT DISTINCT a.nome, a.cognome FROM (b.libro as l NATURAL JOIN b.autorelibro as al) JOIN b.autore as a on al.id_autore = a.id_autore ORDER BY cognome, nome";
+        String getAutoriQuery = "SELECT DISTINCT nome, cognome FROM b.autore";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getAutoriQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -38,9 +38,9 @@ public class ImplementazioneFiltri implements FiltriDao {
     }
 
     @Override
-    public ArrayList<String> getGeneriLibri() {
+    public ArrayList<String> getGenere() {
         ArrayList<String> generi = new ArrayList<>();
-        String getGenereQuery = "SELECT DISTINCT FROM b.libro ORDER BY genere";
+        String getGenereQuery = "SELECT DISTINCT FROM b.libro";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getGenereQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -54,9 +54,9 @@ public class ImplementazioneFiltri implements FiltriDao {
     }
 
     @Override
-    public ArrayList<String> getLingueLibri() {
+    public ArrayList<String> getLingua() {
         ArrayList<String> lingue = new ArrayList<>();
-        String getLinguaQuery = "SELECT DISTINCT lingua FROM b.libro ORDER BY lingua";
+        String getLinguaQuery = "SELECT DISTINCT lingua FROM b.libro";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getLinguaQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -70,10 +70,9 @@ public class ImplementazioneFiltri implements FiltriDao {
     }
 
     @Override
-    public ArrayList<String> getEditoriLibri
-            () {
+    public ArrayList<String> getEditore() {
         ArrayList<String> editori = new ArrayList<>();
-        String getEditoreQuery = "SELECT DISTINCT editore FROM b.libro ORDER BY editore";
+        String getEditoreQuery = "SELECT DISTINCT editore FROM b.libro";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getEditoreQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -87,9 +86,9 @@ public class ImplementazioneFiltri implements FiltriDao {
     }
 
     @Override
-    public ArrayList<String> getFormatiLibri() {
+    public ArrayList<String> getFormato() {
         ArrayList<String> formati = new ArrayList<>();
-        String getFormatoQuery = "SELECT DISTINCT formato FROM b.libro ORDER BY formato";
+        String getFormatoQuery = "SELECT DISTINCT formato FROM b.libro";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getFormatoQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -110,54 +109,10 @@ public class ImplementazioneFiltri implements FiltriDao {
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
                 columns.add(rs.getString("COLUMN_NAME"));
-
-    @Override
-    public ArrayList<String> getAutoriArticoli() {
-        ArrayList<String> autori = new ArrayList<>();
-        String getAutoriQuery = "SELECT DISTINCT au.nome, au.cognome FROM (b.articolo as ar NATURAL JOIN b.autorearticolo as aa ) JOIN b.autore as au on aa.id_autore = au.id_autore ORDER BY cognome, nome";
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getAutoriQuery);
-            ResultSet rs = preparedStatement.executeQuery();
-            while(rs.next()){
-                autori.add(rs.getString("nome") + " " + rs.getString("cognome"));
             }
         } catch(SQLException e){
 
         }
         return columns;
-
-        return autori;
-    }
-
-    @Override
-    public ArrayList<String> getLinguaArticoli() {
-        ArrayList<String> lingue = new ArrayList<>();
-        String getLinguaQuery = "SELECT DISTINCT lingua FROM b.articolo ORDER BY lingua";
-        return lingue;
-    }
-
-    @Override
-    public ArrayList<String> getFormatoArticoli() {
-        ArrayList<String> formati = new ArrayList<>();
-        String getFormatoQuery = "SELECT DISTINCT formato FROM b.articolo ORDER BY formato";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(getFormatoQuery);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                formati.add(rs.getString("formato"));
-            }
-        } catch (SQLException e) {
-        }
-        return formati;
-    }
-
-    @Override
-    public ArrayList<String> getRivisteArticoli() {
-        ArrayList<String> riviste = new ArrayList<>();
-        String getRivistaQuery = "SELECT DISTINCT r.nome FROM (b.articoloinrivista AS ar NATURAL b.rivista AS r) ORDER BY r.nome";
-        return riviste;
     }
 }
-} catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
