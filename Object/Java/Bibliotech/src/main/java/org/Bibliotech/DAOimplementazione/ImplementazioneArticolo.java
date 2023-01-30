@@ -22,8 +22,8 @@ public class ImplementazioneArticolo implements ArticoloDao {
         }
     }
     @Override
-    public boolean addArticolo(String doi, String titolo, String autorinome_cognome, String dataPubblicazione, String editore, String lingua, String formato) {
-        String addArticoloQuery = "INSERT INTO b.ins_articolo_autore (doi, titolo, autorinome_cognome, dataPubblicazione, editore, lingua, formato) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public boolean addArticolo(String doi, String titolo, String autorinome_cognome, String dataPubblicazione, String editore, String lingua, String formato, String disciplina) {
+        String addArticoloQuery = "INSERT INTO b.ins_articolo_autore (doi, titolo, autorinome_cognome, dataPubblicazione, editore, lingua, formato, disciplina) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(addArticoloQuery);
             preparedStatement.setString(1, doi);
@@ -33,12 +33,14 @@ public class ImplementazioneArticolo implements ArticoloDao {
             preparedStatement.setString(5, editore);
             preparedStatement.setString(6, lingua);
             preparedStatement.setString(7, formato);
+            preparedStatement.setString(8, disciplina);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
+
 
     @Override
     public Articoli getArticoli() {
@@ -54,13 +56,14 @@ public class ImplementazioneArticolo implements ArticoloDao {
                 articolo.setDataPubblicazione(resultSet.getString("dataPubblicazione"));
                 articolo.setEditore(resultSet.getString("editore"));
                 articolo.setLingua(resultSet.getString("lingua"));
+                articolo.setDisciplina(resultSet.getString("disciplina"));
                 articolo.setFormato(resultSet.getString("formato"));
                 articoli.addArticolo(articolo);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -83,7 +86,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -106,7 +109,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -131,7 +134,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -154,7 +157,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -177,7 +180,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -200,7 +203,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -223,7 +226,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -246,7 +249,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
 
     @Override
@@ -269,6 +272,30 @@ public class ImplementazioneArticolo implements ArticoloDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return articoli;
     }
+
+    @Override
+    public Articoli getArticoliByDisciplina(String disciplina) {
+        Articoli articoli = new Articoli();
+        String getArticoliByDisciplinaQuery = "SELECT * FROM b.articolo WHERE disciplina = ?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getArticoliByDisciplinaQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Articolo articolo = new Articolo();
+                articolo.setDoi(resultSet.getString("doi"));
+                articolo.setTitolo(resultSet.getString("titolo"));
+                articolo.setDataPubblicazione(resultSet.getString("dataPubblicazione"));
+                articolo.setEditore(resultSet.getString("editore"));
+                articolo.setLingua(resultSet.getString("lingua"));
+                articolo.setFormato(resultSet.getString("formato"));
+                articoli.addArticolo(articolo);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return articoli;
+    }
+
 }
