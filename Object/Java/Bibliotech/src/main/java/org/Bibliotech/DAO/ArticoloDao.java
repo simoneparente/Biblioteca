@@ -3,7 +3,7 @@ package org.Bibliotech.DAO;
 import org.Bibliotech.Model.Articoli;
 
 public interface ArticoloDao {
-    public boolean addArticolo(String doi, String titolo, String autorinome_cognome, String dataPubblicazione, String editore, String lingua, String formato);
+    public boolean addArticolo(String doi, String titolo, String autorinome_cognome, String dataPubblicazione, String editore, String lingua, String disciplina, String formato);
     public Articoli getArticoli();
     public Articoli getArticoloByDoi(String doi);
     public Articoli getArticoliByTitolo(String titolo);
@@ -14,4 +14,5 @@ public interface ArticoloDao {
     public Articoli getArticoliByDataPubblicazioneMin(String dataPubblicazioneMin);
     public Articoli getArticoliByDataPubblicazioneMax(String dataPubblicazioneMax);
     public Articoli getArticoliByFormato(String formato);
+    public Articoli getArticoliByDisciplina(String disciplina);
 }

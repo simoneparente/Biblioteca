@@ -101,4 +101,23 @@ public class Articoli {
         }
         return articoliByLingua;
     }
+
+    public Articoli getArticoliByDisciplina(String disciplina) {
+        Articoli articoliByDisciplina = new Articoli();
+        for (Articolo articolo : articoli) {
+            if (articolo.getDisciplina().toLowerCase().contains(disciplina.toLowerCase())) {
+                articoliByDisciplina.addArticolo(articolo);
+            }
+        }
+        return articoliByDisciplina;
+    }
+    public Articoli getArticoliByFormato(String formato) {
+        Articoli articoliByFormato = new Articoli();
+        for (Articolo articolo : articoli) {
+            if (articolo.getFormato().toLowerCase().contains(formato.toLowerCase())) {
+                articoliByFormato.addArticolo(articolo);
+            }
+        }
+        return articoliByFormato;
+    }
 }

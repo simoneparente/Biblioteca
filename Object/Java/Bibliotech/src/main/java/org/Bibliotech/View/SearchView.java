@@ -39,7 +39,7 @@ public class SearchView extends GeneralView{
     
     public SearchView(){
         fc = new FiltriController();
-        setFields(false);
+        setupFields();
         ImageIcon glassIconImage = new ImageIcon("src/main/Immagini/glassIcon.png");
         imageLabel.setIcon(logoIcon);
         searchButton.setIcon(glassIconImage);
@@ -93,14 +93,11 @@ public class SearchView extends GeneralView{
                 model.setColumnIdentifiers(fc.getColumns().toArray());
                 for (String s : columnNames) {
                     model.addColumn(s);
-                    System.out.println(s);
                 }
 
 
-                //resultTable.getColumnModel().getColumn(0).setPreferredWidth(100);
 
 
-            //}
             }
         });
 
@@ -168,6 +165,12 @@ public class SearchView extends GeneralView{
                 editoreComboBox.setEnabled(editoreCheckBox.isSelected());
             }
         });
+        reasourceSelectorBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String risorsaSelezionata = reasourceSelectorBox.getSelectedItem().toString();
+            }
+        });
     }
     private void fillFilters(){
         ArrayList<String> autori = fc.leggiAutori();
@@ -205,7 +208,7 @@ public class SearchView extends GeneralView{
         editoreComboBox.setEnabled(false);
     }
 
-    private void setupFields(boolean mode) {
+    private void setupFields() {
         disableFields();
         fillFilters();
     }

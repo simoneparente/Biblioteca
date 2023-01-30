@@ -11,6 +11,7 @@ public class Articolo {
     private String doi;
     private String lingua;
     private String formato;
+    private String disciplina;
     private String rivista;
 
 
@@ -20,6 +21,8 @@ public class Articolo {
                     String editore,
                     String doi,
                     String lingua,
+                    String formato,
+                    String disciplina,
                     String rivista) {
         this.titolo = titolo;
         this.autori = autori;
@@ -27,6 +30,8 @@ public class Articolo {
         this.editore = editore;
         this.doi = doi;
         this.lingua = lingua;
+        this.formato = formato;
+        this.disciplina = disciplina;
         this.rivista = rivista;
     }
 
@@ -82,6 +87,19 @@ public class Articolo {
     }
     public void setFormato(String formato) {
         this.formato = formato;
+    }
+
+    public String getDisciplina() {
+        return disciplina;
+    }
+    public void setDisciplina(String disciplina) {
+        this.disciplina = disciplina;
+    }
+    public String getRivista() {
+        return rivista;
+    }
+    public void setRivista(String rivista) {
+        this.rivista = rivista;
     }
 
 }
