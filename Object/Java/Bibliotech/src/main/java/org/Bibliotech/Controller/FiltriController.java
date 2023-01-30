@@ -15,16 +15,16 @@ public class FiltriController {
     public ArrayList<String> leggiCognomeAutori(){
         return filtri.getCognomeAutori();
     }
-    public ArrayList<String> leggiGenere(){
+    public ArrayList<String> leggiGeneri(){
         return filtri.getGenere();
     }
-    public ArrayList<String> leggiEditore(){
+    public ArrayList<String> leggiEditori(){
         return filtri.getEditore();
     }
-    public ArrayList<String> leggiFormato(){
+    public ArrayList<String> leggiFormati(){
         return filtri.getFormato();
     }
-    public ArrayList<String> leggiLingua(){
+    public ArrayList<String> leggiLingue(){
         return filtri.getLingua();
     }
 

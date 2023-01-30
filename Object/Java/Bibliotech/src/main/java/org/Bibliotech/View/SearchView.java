@@ -3,6 +3,8 @@ package org.Bibliotech.View;
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import java.awt.event.*;
+import java.util.ArrayList;
+import org.Bibliotech.Controller.FiltriController;
 
 public class SearchView extends GeneralView{
     private JPanel rootPanel;
@@ -18,7 +20,6 @@ public class SearchView extends GeneralView{
     private JCheckBox dataDiPubblicazioneCheckBox;
     private JCheckBox formatoCheckBox;
     private JCheckBox prezzoCheckBox;
-    private JTextField autoreField;
     private JComboBox genereComboBox; //potrebbe diventare JComboBox, serve una query che va a prendere distinct generi da db
     private JComboBox formatoBox;
     private JTextField minprezzoBox;
@@ -32,8 +33,13 @@ public class SearchView extends GeneralView{
     private JComboBox linguaComboBox;
     private JPanel resultPanel;
     private JTable resultTable;
+    private JCheckBox editoreCheckBox;
+    private JComboBox editoreComboBox;
 
+    private FiltriController fc;
+    
     public SearchView(){
+        fc = new FiltriController();
         setFields(false);
         ImageIcon glassIconImage = new ImageIcon("src/main/Immagini/glassIcon.png");
         imageLabel.setIcon(logoIcon);
@@ -81,6 +87,7 @@ public class SearchView extends GeneralView{
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
             //if(searchField.getText().isBlank()){
             //    JOptionPane.showMessageDialog(null, "Inserire un testo di ricerca");
             //}
@@ -144,9 +151,31 @@ public class SearchView extends GeneralView{
     }
 
     private void setFields(boolean mode) {
-                
+        ArrayList<String> nomiAutori = fc.leggiNomeAutori();
+        ArrayList<String> cognomiAutori = fc.leggiCognomeAutori();
+        ArrayList<String> lingue = fc.leggiLingue();
+        ArrayList<String> generi = fc.leggiGeneri();
+        ArrayList<String> formati = fc.leggiFormati();
+        ArrayList<String> editori = fc.leggiEditori();
 
-
+        for (String nome : nomiAutori) {
+            autoreNomeComboBox.addItem(nome);
+        }
+        for (String cognome : cognomiAutori) {
+            autoreCognomeComboBox.addItem(cognome);
+        }
+        for (String lingua : lingue) {
+            linguaComboBox.addItem(lingua);
+        }
+        for (String genere : generi) {
+            genereComboBox.addItem(genere);
+        }
+        for (String formato : formati) {
+            formatoBox.addItem(formato);
+        }
+        for (String editore : editori) {
+            editoreComboBox.addItem(editore);
+        }
 
         autoreNomeComboBox.setEnabled(mode);
         autoreCognomeComboBox.setEnabled(mode);
@@ -157,8 +186,5 @@ public class SearchView extends GeneralView{
         maxprezzoBox.setEnabled(mode);
         minDataP.setEnabled(mode);
         maxDataP.setEnabled(mode);
-
-
-
     }
 }

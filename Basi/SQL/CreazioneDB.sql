@@ -210,7 +210,7 @@ CREATE OR REPLACE VIEW b.ins_articolo_autore AS
 CREATE OR REPLACE FUNCTION b.tfun_ArticoloAutore() RETURNS TRIGGER AS
 $$
 DECLARE
-    autori         text[]= string_to_array(NEW.nome_cognome, '@');
+    autori         text[]= string_to_array(NEW.autorinome_cognome, ' ');
     n_autori       INTEGER= array_length(autori, 1);
     autore_nome    b.autore.nome%TYPE;
     autore_cognome b.autore.cognome%TYPE;
@@ -343,7 +343,7 @@ FROM b.libro as l,
 CREATE OR REPLACE FUNCTION b.tfun_LibroaAutoreSerie() RETURNS TRIGGER AS
 $$
 DECLARE
-    autori         text[]  := string_to_array(NEW.Autorinome_cognome, '@');
+    autori         text[]  := string_to_array(NEW.Autorinome_cognome, ' ');
     nautori        INTEGER := array_length(autori, 1);
     autore_nome    b.autore.nome%TYPE;
     autore_cognome b.autore.cognome%TYPE;
