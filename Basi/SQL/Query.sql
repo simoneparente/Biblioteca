@@ -1,4 +1,3 @@
-CREATE VIEW b.view_libro_autore_prezzo AS
 SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo
 FROM (b.libro as l NATURAL JOIN b.autorelibro as al) JOIN b.autore as a on al.id_autore = a.id_autore;
 
