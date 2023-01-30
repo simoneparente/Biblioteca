@@ -1,6 +1,7 @@
 package org.Bibliotech.View;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.awt.event.*;
 
 public class SearchView extends GeneralView{
@@ -29,6 +30,8 @@ public class SearchView extends GeneralView{
     private JComboBox autoreCognomeComboBox;
     private JCheckBox linguaCheckBox;
     private JComboBox linguaComboBox;
+    private JPanel resultPanel;
+    private JTable resultTable;
 
     public SearchView(){
         setFields(false);
@@ -37,6 +40,7 @@ public class SearchView extends GeneralView{
         searchButton.setIcon(glassIconImage);
         imagePanel.setSize(720,240);
         filtriPanel.setVisible(false);
+        resultPanel.setVisible(false);
         JFrame frame = newView("Search", rootPanel);
         this.setSize(720, 560);
 
@@ -76,7 +80,16 @@ public class SearchView extends GeneralView{
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            //if(searchField.getText().isBlank()){
+            //    JOptionPane.showMessageDialog(null, "Inserire un testo di ricerca");
+            //}
+            //else{
+                TableColumn column = new TableColumn();
+                column.setHeaderValue("Titolo");
+                resultPanel.setVisible(true);
+                resultTable.addColumn(column);
+                resultTable.setValueAt("Titolo", 0, 0);
+            //}
             }
         });
 
