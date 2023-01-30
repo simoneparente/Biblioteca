@@ -18,24 +18,27 @@ public class SearchView extends GeneralView{
     private JCheckBox formatoCheckBox;
     private JCheckBox prezzoCheckBox;
     private JTextField autoreField;
-    private JTextField genereField; //potrebbe diventare JComboBox, serve una query che va a prendere distinct generi da db
+    private JComboBox genereComboBox; //potrebbe diventare JComboBox, serve una query che va a prendere distinct generi da db
     private JComboBox formatoBox;
     private JTextField minprezzoBox;
     private JTextField maxprezzoBox;
     private JTextField maxDataP;
     private JTextField minDataP;
     private JComboBox ReasourceSelectorBox;
+    private JComboBox autoreNomeComboBox;
+    private JComboBox autoreCognomeComboBox;
+    private JCheckBox linguaCheckBox;
+    private JComboBox linguaComboBox;
 
     public SearchView(){
         setFields(false);
-
-
         ImageIcon glassIconImage = new ImageIcon("src/main/Immagini/glassIcon.png");
         imageLabel.setIcon(logoIcon);
         searchButton.setIcon(glassIconImage);
         imagePanel.setSize(720,240);
         filtriPanel.setVisible(false);
         JFrame frame = newView("Search", rootPanel);
+        this.setSize(720, 560);
 
         minprezzoBox.addFocusListener(new FocusAdapter() {
             @Override
@@ -87,13 +90,14 @@ public class SearchView extends GeneralView{
         autoreCheckBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                autoreField.setEnabled(autoreCheckBox.isSelected());
+                autoreNomeComboBox.setEnabled(autoreCheckBox.isSelected());
+                autoreCognomeComboBox.setEnabled(autoreCheckBox.isSelected());
             }
         });
         genereCheckBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                genereField.setEnabled(genereCheckBox.isSelected());
+                genereComboBox.setEnabled(genereCheckBox.isSelected());
             }
         });
         dataDiPubblicazioneCheckBox.addItemListener(new ItemListener() {
@@ -117,11 +121,19 @@ public class SearchView extends GeneralView{
             }
         });
 
+        linguaCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                linguaComboBox.setEnabled(linguaCheckBox.isSelected());
+            }
+        });
     }
 
     private void setFields(boolean mode) {
-        autoreField.setEnabled(mode);
-        genereField.setEnabled(mode);
+        autoreNomeComboBox.setEnabled(mode);
+        autoreCognomeComboBox.setEnabled(mode);
+        linguaComboBox.setEnabled(mode);
+        genereComboBox.setEnabled(mode);
         formatoBox.setEnabled(mode);
         minprezzoBox.setEnabled(mode);
         maxprezzoBox.setEnabled(mode);

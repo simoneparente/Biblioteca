@@ -27,7 +27,7 @@ public class ImplementaioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getCognomeAutori() {
         ArrayList<String> cognomiAutori = new ArrayList<>();
-        return cognomiAutori
+        return cognomiAutori;
     }
 
     @Override
