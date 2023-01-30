@@ -88,6 +88,39 @@ public class SearchView extends GeneralView{
             }
         });
 
+        minDataP.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                if(!minDataP.getText().chars().allMatch(Character::isDigit)){
+                    minDataP.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                if(minDataP.getText().isBlank()){
+                    minDataP.setText("Da anno");
+                }
+            }
+        });
+        maxDataP.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                if(!maxDataP.getText().chars().allMatch(Character::isDigit)){
+                    maxDataP.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                if(maxDataP.getText().isBlank()){
+                    maxDataP.setText("A anno");
+                }
+            }
+        });
+
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
