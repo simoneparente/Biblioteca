@@ -104,9 +104,15 @@
           </component>
           <component id="5e6a1" class="javax.swing.JComboBox" binding="formatoBox">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <model>
+                <item value="Cartaceo&#9;"/>
+                <item value="Digitale"/>
+                <item value="Audiolibro"/>
+              </model>
+            </properties>
           </component>
           <component id="90329" class="javax.swing.JCheckBox" binding="autoreCheckBox" default-binding="true">
             <constraints>

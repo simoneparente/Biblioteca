@@ -35,9 +35,6 @@ public class SearchView extends GeneralView{
         searchButton.setIcon(glassIconImage);
         imagePanel.setSize(720,240);
         filtriPanel.setVisible(false);
-        formatoBox.addItem("Cartaceo");
-        formatoBox.addItem("Digitale");
-        formatoBox.addItem("Audiolibro");
         JFrame frame = newView("Search", rootPanel);
 
         minprezzoBox.addFocusListener(new FocusAdapter() {
