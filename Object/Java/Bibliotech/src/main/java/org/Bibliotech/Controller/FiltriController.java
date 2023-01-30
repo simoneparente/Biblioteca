@@ -2,7 +2,6 @@ package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneFiltri;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FiltriController {
@@ -10,22 +9,23 @@ public class FiltriController {
     public FiltriController(){
         filtri = new ImplementazioneFiltri();
     }
-    public ArrayList<String> leggiAutori(){
-        return filtri.getAutori();
+    public ArrayList<String> leggiAutoriLibri(){
+        return filtri.getAutoriLibri();
     }
-    public ArrayList<String> leggiGeneri(){
-        return filtri.getGenere();
+    public ArrayList<String> leggiGeneriLibri(){
+        return filtri.getGenereLibri();
     }
-    public ArrayList<String> leggiEditori(){
-        return filtri.getEditore();
+    public ArrayList<String> leggiEditoriLibri(){
+        return filtri.getEditoreLibri();
     }
-    public ArrayList<String> leggiFormati(){
-        return filtri.getFormato();
+    public ArrayList<String> leggiFormatiLibri(){
+        return filtri.getFormatoLibri();
     }
-    public ArrayList<String> leggiLingue(){
-        return filtri.getLingua();
+    public ArrayList<String> leggiLingueLibri(){
+        return filtri.getLinguaLibri();
     }
+    
 
-    public ArrayList<String> getColumns() { return filtri.getColumns();
+    public ArrayList<String> getColumns() { return filtri.getColumns();//nomi colonne table
     }
 }

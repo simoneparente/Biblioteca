@@ -4,9 +4,17 @@ import java.util.ArrayList;
 
 public interface FiltriDao {
 
-    public ArrayList<String> getAutori();
-    public ArrayList<String> getGenere();
-    public ArrayList<String> getLingua();
-    public ArrayList<String> getEditore();
-    public ArrayList<String> getFormato();
+    public ArrayList<String> getAutoriLibri();
+    public ArrayList<String> getGenereLibri();
+    public ArrayList<String> getLinguaLibri();
+    public ArrayList<String> getEditoreLibri();
+    public ArrayList<String> getFormatoLibri();
+    public ArrayList<String> getPresentatoInLibro();
+    public ArrayList<String> getAutoriArticoli();
+    public ArrayList<String> getDisciplinaArticoli();
+    public ArrayList<String> getLinguaArticoli();
+    public ArrayList<String> getEditoreArticoli();
+    public ArrayList<String> getFormatoArticoli();
+    public ArrayList<String> getPresentatoInArticoli();
+
 }

@@ -172,12 +172,12 @@ public class SearchView extends GeneralView{
             }
         });
     }
-    private void fillFilters(){
-        ArrayList<String> autori = fc.leggiAutori();
-        ArrayList<String> lingue = fc.leggiLingue();
-        ArrayList<String> generi = fc.leggiGeneri();
-        ArrayList<String> formati = fc.leggiFormati();
-        ArrayList<String> editori = fc.leggiEditori();
+    private void fillFilters(String risorsaSelezionata){
+        ArrayList<String> autori = fc.leggiAutoriLibri();
+        ArrayList<String> lingue = fc.leggiLingueLibri();
+        ArrayList<String> generi = fc.leggiGeneriLibri();
+        ArrayList<String> formati = fc.leggiFormatiLibri();
+        ArrayList<String> editori = fc.leggiEditoriLibri();
 
         for (String nome : autori) {
             autoreComboBox.addItem(nome);
@@ -196,7 +196,7 @@ public class SearchView extends GeneralView{
         }
     }
 
-    private void disableFields(){
+    private void disableFields(String risorsaSelezionata){
         autoreComboBox.setEnabled(false);
         linguaComboBox.setEnabled(false);
         genereComboBox.setEnabled(false);
@@ -208,8 +208,8 @@ public class SearchView extends GeneralView{
         editoreComboBox.setEnabled(false);
     }
 
-    private void setupFields() {
-        disableFields();
-        fillFilters();
+    private void setupFields(String RisorsaSelezionata) {
+        disableFields(RisorsaSelezionata);
+        fillFilters(RisorsaSelezionata);
     }
 }
