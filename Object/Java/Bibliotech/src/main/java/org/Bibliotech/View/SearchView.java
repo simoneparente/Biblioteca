@@ -6,6 +6,7 @@ import javax.swing.table.TableColumnModel;
 import java.awt.event.*;
 import java.util.ArrayList;
 import org.Bibliotech.Controller.FiltriController;
+import static org.Bibliotech.Main.mc;
 
 public class SearchView extends GeneralView{
     private JPanel rootPanel;
@@ -89,19 +90,8 @@ public class SearchView extends GeneralView{
 
         searchButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel model = new DefaultTableModel();
-                    ArrayList<String> columns = fc.getColumns("view_libro_autore_prezzo"); //dovrà diventare una variabile ed essere definita in base a reasourceSelectorBox
-                    for(String s : columns){
-                        model.addColumn(s);
-                    }
-                    resultTable.setModel(model);
-
-                    TableColumnModel cols = resultTable.getColumnModel();
-                for (int i = 0; i < cols.getColumnCount(); i++) {
-                    cols.getColumn(i).setPreferredWidth(100);
-                }
-                    //resultPane.setVisible(true);
+            public void actionPerformed(ActionEvent e) { //da modificare
+                mc.switchGUI(mc.getResultView().getName(), "");
                 }
 
         });
