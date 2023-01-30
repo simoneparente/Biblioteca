@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ImplementazioneLibro implements LibroDao {
-
     private Connection connection;
     public ImplementazioneLibro() {
         try {
@@ -20,9 +19,6 @@ public class ImplementazioneLibro implements LibroDao {
             e.printStackTrace();
         }
     }
-
-
-    //Si deve modificare, le aggiunte noi le facciamo da una view
     @Override
     public boolean addLibro(String titolo, String isbn, String autorinome_cognome, String dataPubblicazione, String editore, String genere, String lingua, String formato, double prezzo, String nome_serie_di_appartnenza, String issn_serie_di_appartenenza){
         String addLibroQuery= "INSERT INTO b.ins_libro_autore_serie (titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo, nome_serie_di_appartnenza, issn_serie_di_appartenenza ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -124,9 +120,9 @@ public class ImplementazioneLibro implements LibroDao {
     @Override
     public Libri getLibriByAutore(String autore) {
         Libri libri = new Libri();
-        String getLibriByAutoreQuery = "SELECT *" +
-                                       "FROM (b.libro NATURAL JOIN b.autorelibro) JOIN b.autore ON b.autorelibro.id_autore = b.autore.id_autore" +
-                                       "WHERE nome LIKE '%'?'%' AND cognome LIKE '%'?'%'";
+        String getLibriByAutoreQuery = "SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo" +
+                                       "FROM (b.libro as l NATURAL JOIN b.autorelibro as al) JOIN b.autore as a on al.id_autore = a.id_autore" +
+                                       "WHERE a.nome = ? AND a.cognome = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(getLibriByAutoreQuery);
             preparedStatement.setString(1, autore);
