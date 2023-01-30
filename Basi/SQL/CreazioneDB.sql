@@ -600,3 +600,12 @@ CREATE OR REPLACE TRIGGER trig_StockLibro
     FOR EACH ROW
 EXECUTE FUNCTION b.ftrig_stocklibro();
 ------------------------------------------------------------------------------------------------------------------------
+
+ 
+------------------------------------------------------------------------------------------------------------------------
+                                            --View Utili
+------------------------------------------------------------------------------------------------------------------------
+--View Libri con autore e prezzo
+CREATE VIEW b.view_libro_autore_prezzo AS
+SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo
+FROM (b.libro as l NATURAL JOIN b.autorelibro as al) JOIN b.autore as a on al.id_autore = a.id_autore;
