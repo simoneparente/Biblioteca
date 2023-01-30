@@ -12,14 +12,14 @@ import java.sql.SQLException;
 
 public class ImplementazioneLibro implements LibroDao {
 
-    private Connection connection;
-    public ImplementazioneLibro() {
-        try {
-            connection= ConnessioneDB.getInstance().connection;
-        } catch (SQLException e) {
-            e.printStackTrace();
+        private Connection connection;
+        public ImplementazioneLibro() {
+            try {
+                connection= ConnessioneDB.getInstance().connection;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
 
     //Si deve modificare, le aggiunte noi le facciamo da una view

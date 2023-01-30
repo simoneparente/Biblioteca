@@ -18,7 +18,6 @@ public class LibroController {
     public Libri leggiLibri(){
         return libro.getLibri();
     }
-
     public Libri leggiLibriByTitolo(String titolo){
         return libro.getLibriByTitolo(titolo);
     }
