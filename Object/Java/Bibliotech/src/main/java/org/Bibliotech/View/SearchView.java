@@ -169,8 +169,7 @@ public class SearchView extends GeneralView{
             }
         });
     }
-
-    private void setFields(boolean mode) {
+    private void fillFilters(){
         ArrayList<String> autori = fc.leggiAutori();
         ArrayList<String> lingue = fc.leggiLingue();
         ArrayList<String> generi = fc.leggiGeneri();
@@ -192,15 +191,22 @@ public class SearchView extends GeneralView{
         for (String editore : editori) {
             editoreComboBox.addItem(editore);
         }
+    }
 
-        autoreComboBox.setEnabled(mode);
-        linguaComboBox.setEnabled(mode);
-        genereComboBox.setEnabled(mode);
-        formatoBox.setEnabled(mode);
-        minprezzoBox.setEnabled(mode);
-        maxprezzoBox.setEnabled(mode);
-        minDataP.setEnabled(mode);
-        maxDataP.setEnabled(mode);
-        editoreComboBox.setEnabled(mode);
+    private void disableFields(){
+        autoreComboBox.setEnabled(false);
+        linguaComboBox.setEnabled(false);
+        genereComboBox.setEnabled(false);
+        formatoBox.setEnabled(false);
+        minprezzoBox.setEnabled(false);
+        maxprezzoBox.setEnabled(false);
+        minDataP.setEnabled(false);
+        maxDataP.setEnabled(false);
+        editoreComboBox.setEnabled(false);
+    }
+
+    private void setupFields(boolean mode) {
+        disableFields();
+        fillFilters();
     }
 }
