@@ -14,28 +14,19 @@ public class SearchViewSerie extends View {
     private JButton searchButton;
     private JButton filtriButton;
     private JCheckBox editoreCheckBox;
-    private JCheckBox genereCheckBox;
     private JCheckBox linguaCheckBox;
     private JComboBox editoreComboBox;
-    private JComboBox genereComboBox;
     private JComboBox linguaComboBox;
     private JTextField dataDaField;
     private JTextField dataAField;
     private JComboBox formatoComboBox;
-    private JTextField minPrezzoField;
-    private JTextField maxPrezzoField;
     private JCheckBox dataPubblicazioneCheckBox;
     private JCheckBox formatoCheckBox;
-    private JCheckBox prezzoCheckBox;
     private JPanel editorePanel;
-    private JPanel generePanel;
     private JPanel linguaPanel;
     private JPanel dataPubblicazionePanel;
     private JPanel formatoPanel;
-    private JPanel prezzoPanel;
     private JComboBox filtroRisorseComboBox;
-    private JCheckBox serieCheckBox;
-    private JComboBox serieComboBox;
 
     SearchViewSerie(){
         super(nome);
