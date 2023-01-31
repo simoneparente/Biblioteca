@@ -2,13 +2,13 @@ DROP SCHEMA IF EXISTS b CASCADE;
 CREATE SCHEMA b;
 
 ------------------------------------------------------------------------------------------------------------------------
---Creazione tabelle
+                                                --Creazione tabelle
 ------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE b.Articolo
 (
     ID_Articolo       SERIAL,
     Titolo            VARCHAR(128),
-    DOI               VARCHAR(128),
+    DOI               DOI,
     DataPubblicazione DATE,
     Disciplina        VARCHAR(128),
     Editore           VARCHAR(128),
@@ -63,6 +63,7 @@ CREATE TABLE b.ArticoloInRivista
 CREATE TABLE b.Evento
 (
     ID_Evento          SERIAL,
+    Nome               VARCHAR(128),
     Indirizzo          VARCHAR(128),
     StrutturaOspitante VARCHAR(128),
     DataInizio         DATE,
@@ -329,7 +330,9 @@ EXECUTE FUNCTION b.ftrig_rivista();
                                         --Trigger Insert Conferenze
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_conferenza AS
-SELECT indirizzo,
+SELECT
+       nome,
+       indirizzo,
        strutturaospitante,
        datainizio,
        datafine,
@@ -366,13 +369,14 @@ BEGIN
     ELSEIF (vcheck = 2) THEN
         RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA RIVISTA';
     ELSE --Se tutti gli articoli esistono inserisco l'evento
-        INSERT INTO b.evento (indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
-        VALUES (NEW.indirizzo, NEW.strutturaospitante, NEW.datainizio, NEW.datafine, NEW.responsabile);
+        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
+        VALUES (NEW.nome, NEW.indirizzo, NEW.strutturaospitante, NEW.datainizio, NEW.datafine, NEW.responsabile);
 
         --Recupero l'id dell'evento appena inserito
         newevento = (SELECT id_evento
                      FROM b.evento
-                     WHERE indirizzo = NEW.indirizzo
+                     WHERE nome = NEW.nome
+                       AND indirizzo = NEW.indirizzo
                        AND strutturaospitante = NEW.strutturaospitante
                        AND datainizio = NEW.datainizio
                        AND datafine = NEW.datafine
@@ -399,7 +403,7 @@ EXECUTE FUNCTION b.ftrig_conferenza();
 
 
 ------------------------------------------------------------------------------------------------------------------------
---Trigger Insert Libri, Autori e Serie
+                                   --Trigger Insert Libri, Autori e Serie
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_libro_autore_serie AS
 SELECT l.titolo,
@@ -508,10 +512,11 @@ EXECUTE FUNCTION b.ftrig_LibroaAutoreSerie();
 
 
 ------------------------------------------------------------------------------------------------------------------------
---Trigger Insert Presentazioni
+                                        --Trigger Insert Presentazioni
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_presentazione AS
 SELECT l.ISBN,
+       e.nome,
        e.Indirizzo,
        e.StrutturaOspitante,
        e.DataInizio,
@@ -533,13 +538,14 @@ BEGIN
                   WHERE ISBN = NEW.ISBN) THEN
         RAISE NOTICE 'Esista già una presentazione per questo libro!! Presentazione non inserita';
     ELSE --Inserisco la presentazione
-        INSERT INTO b.evento (indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
-        VALUES (NEW.Indirizzo, NEW.StrutturaOspitante, NEW.DataInizio, NEW.DataFine, NEW.Responsabile);
+        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
+        VALUES (NEW.nome, NEW.Indirizzo, NEW.StrutturaOspitante, NEW.DataInizio, NEW.DataFine, NEW.Responsabile);
         INSERT INTO b.presentazione (evento, libro) --Inserisco la presentazione
         SELECT e.ID_evento, l.ID_libro --Trasformo l'ISBN in un ID e recupero l'ID dell'evento
         FROM b.evento e,
              b.libro l
         WHERE l.ISBN = NEW.ISBN
+          AND e.nome = NEW.nome
           AND e.indirizzo = NEW.Indirizzo
           AND e.strutturaospitante = NEW.StrutturaOspitante
           AND e.datainizio = NEW.DataInizio
@@ -609,3 +615,18 @@ EXECUTE FUNCTION b.ftrig_stocklibro();
 CREATE VIEW b.view_libro_autore_prezzo AS
 SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo
 FROM (b.libro as l NATURAL JOIN b.autorelibro as al) JOIN b.autore as a on al.id_autore = a.id_autore;
+
+--View Articoli con Autore
+CREATE VIEW b.view_articolo_autore AS
+SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, au.nome, au.cognome
+FROM (b.articolo as a NATURAL JOIN b.autorearticolo as aa) JOIN b.autore as au on aa.id_autore = au.id_autore;
+
+--View Articoli con Riviste
+CREATE VIEW b.view_articolo_rivista AS
+SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, r.nome as titolo_rivista
+FROM (b.articolo as a NATURAL JOIN b.articoloinrivista as ar) JOIN b.rivista as r on ar.id_rivista = r.id_rivista;
+
+--View Articolo con Confereza
+CREATE VIEW b.view_articolo_conferenza AS
+SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, e.nome as titolo_conferenza
+FROM (b.articolo as a NATURAL JOIN b.conferenza as c) JOIN b.evento as e on c.evento = e.id_evento;

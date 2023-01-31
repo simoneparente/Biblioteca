@@ -1,15 +1,14 @@
 package org.Bibliotech.Controller;
 
-import org.Bibliotech.DAOimplementazione.ImplementazioneLibro;
-import org.Bibliotech.Model.Autore;
+import org.Bibliotech.DAOimplementazione.ImplementazioneLibro1;
 import org.Bibliotech.Model.Libri;
 import org.Bibliotech.Model.Libro;
 
 public class LibroController {
-    ImplementazioneLibro libro;
+    ImplementazioneLibro1 libro;
 
     public LibroController() {
-        libro = new ImplementazioneLibro();
+        libro = new ImplementazioneLibro1();
     }
 
     public boolean addLibro(String titolo, String isbn, String autorinome_cognome, String dataPubblicazione, String editore, String genere, String lingua, String formato, double prezzo, String nome_serie_di_appartnenza, String issn_serie_di_appartenenza){
