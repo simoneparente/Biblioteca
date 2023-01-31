@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static org.Bibliotech.Main.mc;
 
 public class RegisterView extends View {
 private static final String nome = "RegisterView";
