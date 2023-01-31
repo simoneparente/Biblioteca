@@ -19,5 +19,9 @@ public class ResultView extends View{
         }
         return instance;
     }
+
+    public String getViewName(){
+        return nome;
+    }
 }
 

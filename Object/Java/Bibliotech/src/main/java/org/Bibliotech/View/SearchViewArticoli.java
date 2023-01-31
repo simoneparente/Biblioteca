@@ -57,4 +57,8 @@ public class SearchViewArticoli extends View {
     public static void main(String[] args){
         SearchViewArticoli svl = getInstance();
     }
+    public String getViewName(){
+        return nome;
+    }
+
 }
