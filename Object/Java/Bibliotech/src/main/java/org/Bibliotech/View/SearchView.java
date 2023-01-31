@@ -10,22 +10,20 @@ public class SearchView extends View{
     private JPanel logoPanel;
     private JLabel logoLabel;
     private JPanel contentPanel;
+    private JTextField searchField;
+    private JButton cercaButton;
+    private JButton filtriButton;
+    private JPanel filtriPanel;
+    private JComboBox autoreComboBox;
+
     SearchView(){
         super(nome);
         logoPanel.setSize(360, 250);
         this.setContentPane(rootPanel);
         logoLabel.setIcon(logoLabelIcon);
     }
-
-    public static SearchView getInstance(){
-        if(instance == null){
-            instance = new SearchView();
-        }
-        return instance;
-    }
-
     public static void main(String[] args){
-        getInstance();
+        SearchView sv = new SearchView();
     }
 
 }

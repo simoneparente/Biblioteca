@@ -18,7 +18,7 @@ public class View extends JFrame{
     private JLabel logoLabel;
     View(String nome){
         FlatDarkLaf.setup();
-        this.setName("Bibliotech");
+        //this.setName("Bibliotech"); cosa fai?
         this.nomeView = nome; //nome della view passato al costruttore
         this.setTitle(nomeView); //nome visualizzato sul JFrame
         this.setIconImage(iconaFinestre.getImage()); //icona del JFrame
