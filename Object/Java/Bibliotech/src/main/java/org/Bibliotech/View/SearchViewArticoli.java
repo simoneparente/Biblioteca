@@ -2,8 +2,8 @@ package org.Bibliotech.View;
 
 import javax.swing.*;
 
-public class SearchViewLibri extends View{
-    private static SearchViewLibri instance;
+public class SearchViewArticoli extends View {
+    private static SearchViewArticoli instance;
     private static final String nome="Search";
     private JPanel rootPanel;
     private JPanel logoPanel;
@@ -15,17 +15,16 @@ public class SearchViewLibri extends View{
     private JButton filtriButton;
     private JCheckBox autoreCheckBox;
     private JCheckBox editoreCheckBox;
-    private JCheckBox genereCheckBox;
+    private JCheckBox disciplinaCheckBox;
     private JCheckBox linguaCheckBox;
     private JComboBox autoreComboBox;
     private JComboBox editoreComboBox;
-    private JComboBox genereComboBox;
+    private JComboBox disciplinaComboBox;
     private JComboBox linguaComboBox;
     private JTextField dataDaField;
     private JTextField dataAField;
     private JComboBox formatoComboBox;
-    private JTextField minPrezzoField;
-    private JTextField maxPrezzoField;
+    private JComboBox maxPrezzoField;
     private JCheckBox dataPubblicazioneCheckBox;
     private JCheckBox formatoCheckBox;
     private JCheckBox prezzoCheckBox;
@@ -37,25 +36,25 @@ public class SearchViewLibri extends View{
     private JPanel formatoPanel;
     private JPanel prezzoPanel;
     private JComboBox filtroRisorseComboBox;
-    private JCheckBox serieCheckBox;
-    private JComboBox serieComboBox;
+    private JCheckBox conferenzaCheckBox;
+    private JComboBox conferenzaComboBox;
 
-    SearchViewLibri(){
+    SearchViewArticoli(){
         super(nome);
         super.setSize(720, 640);
         logoPanel.setSize(360, 250);
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
-        filtriPanel.setVisible(true);
+        filtriPanel.setVisible(false);
         logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
     }
 
-    public static SearchViewLibri getInstance(){
+    public static SearchViewArticoli getInstance(){
         if(instance == null){
-            instance = new SearchViewLibri();
+            instance = new SearchViewArticoli();
         }
         return instance;
     }
     public static void main(String[] args){
-        SearchViewLibri svl = getInstance();
+        SearchViewArticoli svl = getInstance();
     }
 }

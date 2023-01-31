@@ -2,8 +2,8 @@ package org.Bibliotech.View;
 
 import javax.swing.*;
 
-public class SearchViewLibri extends View{
-    private static SearchViewLibri instance;
+public class SearchViewSerie extends View {
+    private static SearchViewSerie instance;
     private static final String nome="Search";
     private JPanel rootPanel;
     private JPanel logoPanel;
@@ -13,11 +13,9 @@ public class SearchViewLibri extends View{
     private JTextField searchField;
     private JButton searchButton;
     private JButton filtriButton;
-    private JCheckBox autoreCheckBox;
     private JCheckBox editoreCheckBox;
     private JCheckBox genereCheckBox;
     private JCheckBox linguaCheckBox;
-    private JComboBox autoreComboBox;
     private JComboBox editoreComboBox;
     private JComboBox genereComboBox;
     private JComboBox linguaComboBox;
@@ -29,7 +27,6 @@ public class SearchViewLibri extends View{
     private JCheckBox dataPubblicazioneCheckBox;
     private JCheckBox formatoCheckBox;
     private JCheckBox prezzoCheckBox;
-    private JPanel autorePanel;
     private JPanel editorePanel;
     private JPanel generePanel;
     private JPanel linguaPanel;
@@ -40,7 +37,7 @@ public class SearchViewLibri extends View{
     private JCheckBox serieCheckBox;
     private JComboBox serieComboBox;
 
-    SearchViewLibri(){
+    SearchViewSerie(){
         super(nome);
         super.setSize(720, 640);
         logoPanel.setSize(360, 250);
@@ -49,13 +46,13 @@ public class SearchViewLibri extends View{
         logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
     }
 
-    public static SearchViewLibri getInstance(){
+    public static SearchViewSerie getInstance(){
         if(instance == null){
-            instance = new SearchViewLibri();
+            instance = new SearchViewSerie();
         }
         return instance;
     }
     public static void main(String[] args){
-        SearchViewLibri svl = getInstance();
+        SearchViewSerie svl = getInstance();
     }
 }

@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class View extends JFrame{
-    private String nomeView;
     final ImageIcon logoLabelIcon = new ImageIcon("src/main/Immagini/logoIcon.png");
     final Taskbar taskbar = Taskbar.getTaskbar();  //TaskBar per mac
     final Toolkit defaultToolkit = Toolkit.getDefaultToolkit(); //TaskBar per mac
@@ -19,8 +18,7 @@ public class View extends JFrame{
     View(String nome){
         FlatDarkLaf.setup();
         //this.setName("Bibliotech"); cosa fai?
-        this.nomeView = nome; //nome della view passato al costruttore
-        this.setTitle(nomeView); //nome visualizzato sul JFrame
+        this.setTitle(nome); //nome visualizzato sul JFrame
         this.setIconImage(iconaFinestre.getImage()); //icona del JFrame
         this.setSize(720,480); //dimensione del JFrame
         this.setVisible(true);
