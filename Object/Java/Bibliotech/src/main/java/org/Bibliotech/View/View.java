@@ -32,6 +32,7 @@ public class View extends JFrame{
             System.out.printf("Eccezione TaskBar");
         }
     }
+
     public void showView(){
         this.setVisible(true);
     }
