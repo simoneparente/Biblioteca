@@ -8,7 +8,7 @@ CREATE TABLE b.Articolo
 (
     ID_Articolo       SERIAL,
     Titolo            VARCHAR(128),
-    DOI               DOI,
+    DOI               VARCHAR(128),
     DataPubblicazione DATE,
     Disciplina        VARCHAR(128),
     Editore           VARCHAR(128),
@@ -46,6 +46,7 @@ CREATE TABLE b.Rivista
     Argomento         VARCHAR(128),
     DataPubblicazione DATE,
     Responsabile      VARCHAR(128),
+    Prezzo            FLOAT,
 
     CONSTRAINT PK_Rivista PRIMARY KEY (ID_Rivista)
 );
@@ -270,6 +271,7 @@ CREATE OR REPLACE VIEW b.ins_rivista AS
            argomento,
            datapubblicazione,
            responsabile,
+           prezzo,
            text as Doi_Articoli_Pubblicati --Più articoli (DOI1 DOI2)
 FROM b.rivista, b.jolly;
 
@@ -301,8 +303,8 @@ $$
             RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA CONFERENZA ';
         ELSE
             --Inserisco la rivista
-            INSERT INTO b.rivista (nome, issn, argomento, datapubblicazione, responsabile)
-            VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.responsabile);
+            INSERT INTO b.rivista (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
+            VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.responsabile, NEW.prezzo);
 
             --Recupero l'id della rivista appena inserita
             SELECT id_rivista INTO newrivista FROM b.rivista WHERE nome = NEW.nome AND issn = NEW.issn;
