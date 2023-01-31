@@ -20,8 +20,8 @@ public class LibroController {
     public Libri leggiLibriByTitolo(String titolo){
         return libro.getLibriByTitolo(titolo);
     }
-    public Libri leggiLibriByAutore(String autore){
-        return libro.getLibriByAutore(autore);
+    public Libri leggiLibriByAutore(String autorenome, String autorecognome){
+        return libro.getLibriByAutore(autorenome, autorecognome);
     }
     public Libri leggiLibriByGenere(String genere){
         return libro.getLibriByGenere(genere);
