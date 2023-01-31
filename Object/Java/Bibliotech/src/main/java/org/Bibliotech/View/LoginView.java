@@ -37,4 +37,8 @@ public class LoginView extends View{
     public static void main(String[] args){
         getInstance();
     }
+
+    public String getViewName(){
+        return nome;
+    }
 }

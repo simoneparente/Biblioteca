@@ -34,4 +34,7 @@ public class RegisterView extends View{
     public static void main(String[] args){
         RegisterView rv = getInstance();
     }
+    public String getViewName(){
+        return nome;
+    }
 }
