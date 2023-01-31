@@ -133,5 +133,64 @@ public class ImplementazioneLibro implements org.Bibliotech.DAO.LibroDao {
         return getLibri(getLibroByRangeDataPubblicazioneQuery, dataPubblicazioneMIN, dataPubblicazioneMAX);
     }
     @Override
-    public Libri get
+    public Libri getLibriByDataPubblicazioneMin(String dataPubblicazioneMIN) {
+        String getLibroByDataPubblicazioneMINQuery = "SELECT * FROM b.libro WHERE datapubblicazione >= ?";
+        return getLibri(getLibroByDataPubblicazioneMINQuery, dataPubblicazioneMIN);
+    }
+    @Override
+    public Libri getLibriByDataPubblicazioneMax(String dataPubblicazioneMAX) {
+        String getLibroByDataPubblicazioneMAXQuery = "SELECT * FROM b.libro WHERE datapubblicazione <= ?";
+        return getLibri(getLibroByDataPubblicazioneMAXQuery, dataPubblicazioneMAX);
+    }
+    @Override
+    public Libri getLibriByEditore(String editore) {
+        String getLibroByEditoreQuery = "SELECT * FROM b.libro WHERE editore = ?";
+        return getLibri(getLibroByEditoreQuery, editore);
+    }
+    @Override
+    public Libri getLibriByGenere(String genere) {
+        String getLibroByGenereQuery = "SELECT * FROM b.libro WHERE genere = ?";
+        return getLibri(getLibroByGenereQuery, genere);
+    }
+    @Override
+    public Libri getLibriByLingua(String lingua) {
+        String getLibroByLinguaQuery = "SELECT * FROM b.libro WHERE lingua = ?";
+        return getLibri(getLibroByLinguaQuery, lingua);
+    }
+    @Override
+    public Libri getLibriByFormato(String formato) {
+        String getLibroByFormatoQuery = "SELECT * FROM b.libro WHERE formato = ?";
+        return getLibri(getLibroByFormatoQuery, formato);
+    }
+    @Override
+    public Libri getLibriByRangePrezzo(double prezzoMIN, double prezzoMAX) {
+        String getLibroByRangePrezzoQuery = "SELECT * FROM b.libro WHERE prezzo BETWEEN ? AND ?";
+        String prezzoMn = String.valueOf(prezzoMIN);
+        String prezzoMx = String.valueOf(prezzoMAX);
+        return getLibri(getLibroByRangePrezzoQuery, prezzoMn, prezzoMx);
+    }
+    @Override
+    public Libri getLibriByPrezzoMin(double prezzoMIN) {
+        String getLibroByPrezzoMINQuery = "SELECT * FROM b.libro WHERE prezzo >= ?";
+        String prezzo = String.valueOf(prezzoMIN);
+        return getLibri(getLibroByPrezzoMINQuery, prezzo);
+    }
+    @Override
+    public Libri getLibriByPrezzoMax(double prezzoMAX) {
+        String getLibroByPrezzoMAXQuery = "SELECT * FROM b.libro WHERE prezzo <= ?";
+        String prezzo = String.valueOf(prezzoMAX);
+        return getLibri(getLibroByPrezzoMAXQuery, prezzo);
+    }
+
+    //Get tramite altre tabelle
+    @Override
+    public Libri getLibriByAutore(String nome, String cognome){
+        String getLibroByAutoreQuery = "SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo FROM b.view_libro_autore WHERE nome = ? AND cognome = ?";
+        return getLibri(getLibroByAutoreQuery, nome, cognome);
+    }
+    @Override
+    public Libri getLibriBySerie(String nome, String cognome){
+        String getLibroBySerieQuery = "SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo FROM b.view_libro_serie WHERE nome_serie = ?";
+        return getLibri(getLibroBySerieQuery, nome, cognome);
+    }
 }

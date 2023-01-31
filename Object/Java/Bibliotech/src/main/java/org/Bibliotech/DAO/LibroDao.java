@@ -23,6 +23,6 @@ public interface LibroDao {
     public Libri getLibriByPrezzoMax(double prezzoMax);
 
     //Attributi Tabelle Multiple
-    public Libri getLibriByAutore(String autore);
+    public Libri getLibriByAutore(String nome, String cognome);
     public Libri getLibriBySerie(String nome_serie_di_appartenenza, String issn_serie_di_appartenenza);
 }

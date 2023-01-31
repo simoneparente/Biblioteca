@@ -611,10 +611,15 @@ EXECUTE FUNCTION b.ftrig_stocklibro();
 ------------------------------------------------------------------------------------------------------------------------
                                             --View Utili
 ------------------------------------------------------------------------------------------------------------------------
---View Libri con autore e prezzo
-CREATE VIEW b.view_libro_autore_prezzo AS
-SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo
+--View Libri con autore
+CREATE VIEW b.view_libro_autore AS
+SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, a.nome, a.cognome
 FROM (b.libro as l NATURAL JOIN b.autorelibro as al) JOIN b.autore as a on al.id_autore = a.id_autore;
+
+--View Libri con Serie
+CREATE VIEW b.view_libro_serie AS
+SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, s.nome as nome_serie
+FROM (b.libro as l NATURAL JOIN b.libroinserie as ls) JOIN b.serie as s on ls.id_serie = s.id_serie;
 
 --View Articoli con Autore
 CREATE VIEW b.view_articolo_autore AS
