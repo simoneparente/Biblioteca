@@ -53,7 +53,7 @@ public class LibroController {
     public Libri leggiLibriByPrezzoMax(double prezzoMax){
         return libro.getLibriByPrezzoMax(prezzoMax);
     }
-    public Libro leggiLibriByIsbn(String isbn){
+    public Libri leggiLibriByIsbn(String isbn){
         return libro.getLibroByIsbn(isbn);
     }
 }
