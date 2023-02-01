@@ -6,6 +6,6 @@ import org.Bibliotech.Controller.*;
 public class Main {
     public static void main(String[] args) {
         FlatDarkLaf.setup();
-        Controller controller = new Controller();
+        Controller controller= Controller.getInstance();
     }
 }

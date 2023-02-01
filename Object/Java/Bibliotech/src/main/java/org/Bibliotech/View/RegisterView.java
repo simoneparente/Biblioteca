@@ -1,13 +1,13 @@
 package org.Bibliotech.View;
 
 
-import org.Bibliotech.Controller.Controller;
-import org.Bibliotech.Controller.UtenteController;
+import org.Bibliotech.Controller.RegisterController;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 
 public class RegisterView extends View {
@@ -23,7 +23,7 @@ private static final String nome = "RegisterView";
     private JLabel passwordLabel;
     private JPasswordField confermaPasswordField;
     private JLabel confermaPasswordLabel;
-    private JCheckBox mostraPasswordChechBox;
+    private JCheckBox mostraPasswordCheckBox;
     private JPanel fieldsPanel;
     private JButton registratiButton;
     private JButton annullaButton;
@@ -35,7 +35,19 @@ private static final String nome = "RegisterView";
         registratiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.getInstance().register(usernameField, passwordField, confermaPasswordField);
+                RegisterController.getInstance().register(usernameField, passwordField, confermaPasswordField);
+            }
+        });
+        mostraPasswordCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (mostraPasswordCheckBox.isSelected()) {
+                    passwordField.setEchoChar((char) 0);
+                    confermaPasswordField.setEchoChar((char) 0);
+                } else {
+                    passwordField.setEchoChar('•');
+                    confermaPasswordField.setEchoChar('•');
+                }
             }
         });
     }

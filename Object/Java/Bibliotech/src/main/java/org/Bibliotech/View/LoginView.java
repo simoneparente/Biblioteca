@@ -1,6 +1,10 @@
 package org.Bibliotech.View;
 
+import org.Bibliotech.Controller.LoginController;
+
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class LoginView extends View{
     static final String nome="Login";
@@ -25,6 +29,50 @@ public class LoginView extends View{
         logoPanel.setSize(360, 250);
         this.setContentPane(rootPanel);
         logoLabel.setIcon(logoLabelIcon);
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginController.getInstance().login(usernameField, passwordField);
+            }
+        });
+        registratiLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                LoginController.getInstance().switchView(RegisterView.getInstance(), LoginView.getInstance());
+            }
+        });
+        registratiLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                registratiLabel.setBorder(BorderFactory.createLineBorder(Color.decode("#F39524"), 1));
+            }
+        });
+        registratiLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                registratiLabel.setBorder(null);
+            }
+        });
+        mostraPasswordCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (mostraPasswordCheckBox.isSelected()) {
+                    passwordField.setEchoChar((char) 0);
+                } else {
+                    passwordField.setEchoChar('•');
+                }
+            }
+        });
+        annullaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                usernameField.setText("");
+                passwordField.setText("");
+            }
+        });
     }
 
 
