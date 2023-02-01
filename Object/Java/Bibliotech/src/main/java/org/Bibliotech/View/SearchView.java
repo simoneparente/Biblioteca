@@ -112,228 +112,111 @@ public class SearchView extends View {
 
         logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
 
-        filtriCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (filtriCheckBox.isSelected()) {
-                    if (risorsaComboBox.getSelectedItem().equals("")) {
-                        JOptionPane.showMessageDialog(null, "Selezionare una risorsa");
-                        filtriCheckBox.setSelected(false);
-                    } else {
-                        ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
-                        filtriCheckBox.setSelected(false);
-                    }
+        filtriCheckBox.addActionListener(e -> {
+            if (filtriCheckBox.isSelected()) {
+                if (risorsaComboBox.getSelectedItem().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Selezionare una risorsa");
+                    filtriCheckBox.setSelected(false);
                 } else {
-                    setFiltriInvisibili();
+                    ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
+                    filtriCheckBox.setSelected(false);
                 }
+            } else {
+                setFiltriInvisibili();
             }
         });
         //LISTENER CHECKBOX FILTRI LIBRI
         //------------------------------------------------------------------------------------------
         //aggiunge un listener alla risorsaComboBox che, quando viene selezionata una risorsa, ricarica i filtri
-        risorsaComboBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (e.getStateChange() == ItemEvent.SELECTED && filtriCheckBox.isSelected()) {
-                    ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
-                } else if (e.getStateChange() == ItemEvent.SELECTED && !filtriCheckBox.isSelected()) {
-                    setFiltriInvisibili();
-                }
+        risorsaComboBox.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED && filtriCheckBox.isSelected()) {
+                ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
+            } else if (e.getStateChange() == ItemEvent.SELECTED && !filtriCheckBox.isSelected()) {
+                setFiltriInvisibili();
             }
         });
         //aggiunge un listener al searchButton che, quando viene premuto, apre la ResultView, implementare ricerca
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        searchButton.addActionListener(e -> {
+            if(searchField.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Inserire qualcosa da cercare");
+            }
+            else {
                 Controller.getInstance().switchView(ResultView.getInstance(), null);
                 SearchView.super.setLocationRelativeTo(ResultView.getInstance());
             }
         });
         //aggiunge un listener al autoreLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        autoreLibroCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                autoreLibroComboBox.setEnabled(autoreLibroCheckBox.isSelected());
-            }
-        });
+        autoreLibroCheckBox.addActionListener(e -> autoreLibroComboBox.setEnabled(autoreLibroCheckBox.isSelected()));
         //aggiunge un listener al editoreLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        editoreLibroCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editoreLibroComboBox.setEnabled(editoreLibroCheckBox.isSelected());
-            }
-        });
+        editoreLibroCheckBox.addActionListener(e -> editoreLibroComboBox.setEnabled(editoreLibroCheckBox.isSelected()));
         //aggiunge un listener al genereLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        genereLibroCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                genereLibroComboBox.setEnabled(genereLibroCheckBox.isSelected());
-            }
-        });
+        genereLibroCheckBox.addActionListener(e -> genereLibroComboBox.setEnabled(genereLibroCheckBox.isSelected()));
         //aggiunge un listener al linguaLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        linguaLibroCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                linguaLibroComboBox.setEnabled(linguaLibroCheckBox.isSelected());
-            }
-        });
+        linguaLibroCheckBox.addActionListener(e -> linguaLibroComboBox.setEnabled(linguaLibroCheckBox.isSelected()));
         //aggiunge un listener al dataPubblicazioneLibroCheckBox che, quando viene selezionato, abilita/disabilita i relativi JTextField
-        dataPubblicazioneLibroCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dataDaLibroField.setEnabled(dataPubblicazioneLibroCheckBox.isSelected());
-                dataALibroField.setEnabled(dataPubblicazioneLibroCheckBox.isSelected());
-            }
+        dataPubblicazioneLibroCheckBox.addActionListener(e -> {
+            dataDaLibroField.setEnabled(dataPubblicazioneLibroCheckBox.isSelected());
+            dataALibroField.setEnabled(dataPubblicazioneLibroCheckBox.isSelected());
         });
         //aggiunge un listener al formatoLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        formatoLibroCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                formatoLibroComboBox.setEnabled(formatoLibroCheckBox.isSelected());
-            }
-        });
+        formatoLibroCheckBox.addActionListener(e -> formatoLibroComboBox.setEnabled(formatoLibroCheckBox.isSelected()));
         //aggiunge un listener al prezzoLibroCheckBox che, quando viene selezionato, abilita/disabilita i relativi JTextField
-        prezzoLibroCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                prezzoDaLibroField.setEnabled(prezzoLibroCheckBox.isSelected());
-                prezzoALibroField.setEnabled(prezzoLibroCheckBox.isSelected());
-            }
+        prezzoLibroCheckBox.addActionListener(e -> {
+            prezzoDaLibroField.setEnabled(prezzoLibroCheckBox.isSelected());
+            prezzoALibroField.setEnabled(prezzoLibroCheckBox.isSelected());
         });
         //aggiunge un listener al serieLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        serieLibroCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                serieLibroComboBox.setEnabled(serieLibroCheckBox.isSelected());
-            }
-        });
+        serieLibroCheckBox.addActionListener(e -> serieLibroComboBox.setEnabled(serieLibroCheckBox.isSelected()));
         //LISTENER CHECKBOX FILTRI ARTICOLI
         //------------------------------------------------------------------------------------------
         //aggiunge un listener al autoreArticoloCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        autoreArticoloCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                autoreArticoloComboBox.setEnabled(autoreArticoloCheckBox.isSelected());
-            }
-        });
+        autoreArticoloCheckBox.addActionListener(e -> autoreArticoloComboBox.setEnabled(autoreArticoloCheckBox.isSelected()));
         //aggiunge un listener al editoreArticoloCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        editoreArticoloCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editoreArticoloComboBox.setEnabled(editoreArticoloCheckBox.isSelected());
-            }
-        });
+        editoreArticoloCheckBox.addActionListener(e -> editoreArticoloComboBox.setEnabled(editoreArticoloCheckBox.isSelected()));
         //aggiunge un listener al disciplinaArticoloCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        disciplinaArticoloCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                disciplinaArticoloComboBox.setEnabled(disciplinaArticoloCheckBox.isSelected());
-            }
-        });
-        linguaArticoloCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                linguaArticoloComboBox.setEnabled(linguaArticoloCheckBox.isSelected());
-            }
-        });
+        disciplinaArticoloCheckBox.addActionListener(e -> disciplinaArticoloComboBox.setEnabled(disciplinaArticoloCheckBox.isSelected()));
+        linguaArticoloCheckBox.addActionListener(e -> linguaArticoloComboBox.setEnabled(linguaArticoloCheckBox.isSelected()));
         //aggiunge un listener al dataPubblicazioneArticoloCheckBox che, quando viene selezionato, abilita/disabilita i relativi JTextField
-        dataPubblicazioneArticoloCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dataPubblicazioneDaArticoloComboBox.setEnabled(dataPubblicazioneArticoloCheckBox.isSelected());
-                dataPubblicazioneAArticoloComboBox.setEnabled(dataPubblicazioneArticoloCheckBox.isSelected());
-            }
+        dataPubblicazioneArticoloCheckBox.addActionListener(e -> {
+            dataPubblicazioneDaArticoloComboBox.setEnabled(dataPubblicazioneArticoloCheckBox.isSelected());
+            dataPubblicazioneAArticoloComboBox.setEnabled(dataPubblicazioneArticoloCheckBox.isSelected());
         });
         //aggiunge un listener al formatoArticoloCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        formatoArticoloCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                formatoArticoloComboBox.setEnabled(formatoArticoloCheckBox.isSelected());
-            }
-        });
+        formatoArticoloCheckBox.addActionListener(e -> formatoArticoloComboBox.setEnabled(formatoArticoloCheckBox.isSelected()));
         //aggiunge un listener al rivistaArticoloCheckBox che, quando viene selezionato, abilita/disabilita i relativi JTextField
-        rivistaArticoloCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                rivistaArticoloComboBox.setEnabled(rivistaArticoloCheckBox.isSelected());
-            }
-        });
+        rivistaArticoloCheckBox.addActionListener(e -> rivistaArticoloComboBox.setEnabled(rivistaArticoloCheckBox.isSelected()));
         //aggiunge un listener al conferenzaArticoloCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        conferenzaArticoloCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                conferenzaArticoloComboBox.setEnabled(conferenzaArticoloCheckBox.isSelected());
-            }
-        });
+        conferenzaArticoloCheckBox.addActionListener(e -> conferenzaArticoloComboBox.setEnabled(conferenzaArticoloCheckBox.isSelected()));
         //LISTENER CHECKBOX FILTRI RIVISTE
         //------------------------------------------------------------------------------------------
         //aggiunge un listener al argomentoRivisteCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        argomentoRivisteCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                argomentoRivisteComboBox.setEnabled(argomentoRivisteCheckBox.isSelected());
-            }
-        });
+        argomentoRivisteCheckBox.addActionListener(e -> argomentoRivisteComboBox.setEnabled(argomentoRivisteCheckBox.isSelected()));
         //aggiunge un listener al linguaRivisteCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        linguaRivisteCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                linguaRivisteComboBox.setEnabled(linguaRivisteCheckBox.isSelected());
-            }
-        });
-        dataPubblicazioneRivisteCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dataPubblicazioneDaRivisteComboBox.setEnabled(dataPubblicazioneRivisteCheckBox.isSelected());
-                dataPubblicazioneARivisteComboBox.setEnabled(dataPubblicazioneRivisteCheckBox.isSelected());
-            }
+        linguaRivisteCheckBox.addActionListener(e -> linguaRivisteComboBox.setEnabled(linguaRivisteCheckBox.isSelected()));
+        dataPubblicazioneRivisteCheckBox.addActionListener(e -> {
+            dataPubblicazioneDaRivisteComboBox.setEnabled(dataPubblicazioneRivisteCheckBox.isSelected());
+            dataPubblicazioneARivisteComboBox.setEnabled(dataPubblicazioneRivisteCheckBox.isSelected());
         });
         //aggiunge un listener al formatoRivisteCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        formatoRivisteCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                formatoRivisteComboBox.setEnabled(formatoRivisteCheckBox.isSelected());
-            }
-        });
+        formatoRivisteCheckBox.addActionListener(e -> formatoRivisteComboBox.setEnabled(formatoRivisteCheckBox.isSelected()));
         //aggiunge un listener al prezzoRivisteCheckBox che, quando viene selezionato, abilita/disabilita i relativi JTextField
-        prezzoRivisteCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                prezzoDaRivisteField.setEnabled(prezzoRivisteCheckBox.isSelected());
-                prezzoARivisteField.setEnabled(prezzoRivisteCheckBox.isSelected());
-            }
+        prezzoRivisteCheckBox.addActionListener(e -> {
+            prezzoDaRivisteField.setEnabled(prezzoRivisteCheckBox.isSelected());
+            prezzoARivisteField.setEnabled(prezzoRivisteCheckBox.isSelected());
         });
         //LISTENER CHECKBOX FILTRI SERIE
         //------------------------------------------------------------------------------------------
         //aggiunge un listener al editoreSerieCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        editoreSerieCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editoreSerieComboBox.setEnabled(editoreSerieCheckBox.isSelected());
-            }
-        });
+        editoreSerieCheckBox.addActionListener(e -> editoreSerieComboBox.setEnabled(editoreSerieCheckBox.isSelected()));
         //aggiunge un listener al linguaSerieCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        linguaSerieCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                linguaSerieComboBox.setEnabled(linguaSerieCheckBox.isSelected());
-            }
-        });
+        linguaSerieCheckBox.addActionListener(e -> linguaSerieComboBox.setEnabled(linguaSerieCheckBox.isSelected()));
         //aggiunge un listener al dataPubblicazioneSerieCheckBox che, quando viene selezionato, abilita/disabilita i relativi JTextField
-        dataPubblicazioneSerieCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dataDaSerieField.setEnabled(dataPubblicazioneSerieCheckBox.isSelected());
-                dataASerieField.setEnabled(dataPubblicazioneSerieCheckBox.isSelected());
-            }
+        dataPubblicazioneSerieCheckBox.addActionListener(e -> {
+            dataDaSerieField.setEnabled(dataPubblicazioneSerieCheckBox.isSelected());
+            dataASerieField.setEnabled(dataPubblicazioneSerieCheckBox.isSelected());
         });
         //aggiunge un listener al formatoSerieCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        formatoSerieCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                formatoSerieComboBox.setEnabled(formatoSerieCheckBox.isSelected());
-            }
-        });
+        formatoSerieCheckBox.addActionListener(e -> formatoSerieComboBox.setEnabled(formatoSerieCheckBox.isSelected()));
     }
 
     private void setFieldsDisabled() { //NON è COMPLETO
