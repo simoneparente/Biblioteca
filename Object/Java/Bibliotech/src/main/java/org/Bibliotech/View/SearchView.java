@@ -90,19 +90,19 @@ public class SearchView extends View {
     private JCheckBox filtriCheckBox;
     private JButton searchButton;
     private JPanel filtriSeriePanel;
-    private JCheckBox editoreCheckBox;
-    private JCheckBox linguaCheckBox;
-    private JCheckBox dataPubblicazioneCheckBox;
-    private JCheckBox formatoCheckBox;
-    private JPanel editorePanel;
-    private JComboBox editoreComboBox;
-    private JPanel linguaPanel;
-    private JComboBox linguaComboBox;
-    private JPanel dataPubblicazionePanel;
-    private JTextField dataDaField;
-    private JTextField dataAField;
-    private JPanel formatoPanel;
-    private JComboBox formatoComboBox;
+    private JCheckBox editoreSerieCheckBox;
+    private JCheckBox linguaSerieCheckBox;
+    private JCheckBox dataPubblicazioneSerieCheckBox;
+    private JCheckBox formatoSerieCheckBox;
+    private JPanel editoreSeriePanel;
+    private JComboBox editoreSerieComboBox;
+    private JPanel linguaSeriePanel;
+    private JComboBox linguaSerieComboBox;
+    private JPanel dataPubblicazioneSeriePanel;
+    private JTextField dataDaSerieField;
+    private JTextField dataASerieField;
+    private JPanel formatoSeriePanel;
+    private JComboBox formatoSerieComboBox;
 
     public SearchView() {
         super(nome);
@@ -148,9 +148,12 @@ public class SearchView extends View {
     }
 
     private void setFieldsFalse() { //NON è COMPLETO
-        autoreLibroComboBox.setVisible(false);
-        editoreLibroComboBox.setVisible(false);
-        genereLibroComboBox.setVisible(false);
+        autoreLibroComboBox.setEnabled(false);
+        editoreLibroComboBox.setEnabled(false);
+        genereLibroComboBox.setEnabled(false);
+        linguaLibroComboBox.setEnabled(false);
+        dataDaLibroField.setEnabled(false);
+        dataALibroField.setEnabled(false);
 
 
     }

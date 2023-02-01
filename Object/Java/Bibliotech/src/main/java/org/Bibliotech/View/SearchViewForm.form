@@ -668,7 +668,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="11bc9" class="javax.swing.JCheckBox" binding="editoreCheckBox" default-binding="true">
+          <component id="11bc9" class="javax.swing.JCheckBox" binding="editoreSerieCheckBox">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -676,7 +676,7 @@
               <text value="Editore"/>
             </properties>
           </component>
-          <component id="cc855" class="javax.swing.JCheckBox" binding="linguaCheckBox" default-binding="true">
+          <component id="cc855" class="javax.swing.JCheckBox" binding="linguaSerieCheckBox">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -684,7 +684,7 @@
               <text value="Lingua"/>
             </properties>
           </component>
-          <component id="92212" class="javax.swing.JCheckBox" binding="dataPubblicazioneCheckBox">
+          <component id="92212" class="javax.swing.JCheckBox" binding="dataPubblicazioneSerieCheckBox">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -692,7 +692,7 @@
               <text value="Data Pubblicazione"/>
             </properties>
           </component>
-          <component id="844bd" class="javax.swing.JCheckBox" binding="formatoCheckBox">
+          <component id="844bd" class="javax.swing.JCheckBox" binding="formatoSerieCheckBox">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -700,7 +700,7 @@
               <text value="Formato"/>
             </properties>
           </component>
-          <grid id="405af" binding="editorePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="405af" binding="editoreSeriePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -708,7 +708,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="8b488" class="javax.swing.JComboBox" binding="editoreComboBox">
+              <component id="8b488" class="javax.swing.JComboBox" binding="editoreSerieComboBox">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -718,7 +718,7 @@
               </component>
             </children>
           </grid>
-          <grid id="eb00c" binding="linguaPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="eb00c" binding="linguaSeriePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -726,7 +726,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="77557" class="javax.swing.JComboBox" binding="linguaComboBox">
+              <component id="77557" class="javax.swing.JComboBox" binding="linguaSerieComboBox">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -736,7 +736,7 @@
               </component>
             </children>
           </grid>
-          <grid id="16529" binding="dataPubblicazionePanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="16529" binding="dataPubblicazioneSeriePanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -744,7 +744,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="79f69" class="javax.swing.JTextField" binding="dataDaField">
+              <component id="79f69" class="javax.swing.JTextField" binding="dataDaSerieField">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -752,7 +752,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="92ab2" class="javax.swing.JTextField" binding="dataAField">
+              <component id="92ab2" class="javax.swing.JTextField" binding="dataASerieField">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -762,7 +762,7 @@
               </component>
             </children>
           </grid>
-          <grid id="54941" binding="formatoPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="54941" binding="formatoSeriePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -770,7 +770,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="85ad3" class="javax.swing.JComboBox" binding="formatoComboBox">
+              <component id="85ad3" class="javax.swing.JComboBox" binding="formatoSerieComboBox">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
