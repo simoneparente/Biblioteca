@@ -1,6 +1,10 @@
 package org.Bibliotech.View;
 
+import org.Bibliotech.Controller.Controller;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SearchViewSerie extends View {
     private static SearchViewSerie instance;
@@ -35,6 +39,13 @@ public class SearchViewSerie extends View {
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
         filtriPanel.setVisible(true);
         logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Controller.getInstance().switchView(ResultView.getInstance(), null);
+                SearchViewSerie.super.setLocationRelativeTo(ResultView.getInstance());
+            }
+        });
     }
 
     public static SearchViewSerie getInstance(){
@@ -42,8 +53,5 @@ public class SearchViewSerie extends View {
             instance = new SearchViewSerie();
         }
         return instance;
-    }
-    public static void main(String[] args){
-        SearchViewSerie svl = getInstance();
     }
 }

@@ -21,7 +21,7 @@ public class View extends JFrame{
         this.setTitle(nome); //nome visualizzato sul JFrame
         this.setIconImage(iconaFinestre.getImage()); //icona del JFrame
         this.setSize(720,480); //dimensione del JFrame
-        this.setVisible(true);
+        this.setVisible(false);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,4 +39,10 @@ public class View extends JFrame{
     public void hideView(){
         this.setVisible(false);
     }
+
+    int adjustSearchPosition() {
+        this.setLocation(this.getX() + (ResultView.getInstance().getWidth())/2, this.getY());
+        return DISPOSE_ON_CLOSE;
+    }
+
 }
