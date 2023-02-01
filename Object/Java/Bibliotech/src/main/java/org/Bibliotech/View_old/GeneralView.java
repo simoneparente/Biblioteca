@@ -1,4 +1,4 @@
-package org.Bibliotech.View;
+package org.Bibliotech.View_old;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ public class GeneralView extends JFrame {
     JPanel rootPanel;
     //TaskBar
     final Toolkit defaultToolkit = Toolkit.getDefaultToolkit();
-    final Image image = defaultToolkit.getImage("src/main/Immagini/iconaFinestre.png"   );
+    final Image image = defaultToolkit.getImage("src/main/Immagini/iconaFinestre.png");
     final Taskbar taskbar = Taskbar.getTaskbar();
     ImageIcon iconaFinestre = new ImageIcon(image);
     ImageIcon logoIcon= new ImageIcon("src/main/Immagini/logoIcon.png");

@@ -1,8 +1,6 @@
 package org.Bibliotech.Controller;
 
-import org.Bibliotech.View.*;
-
-import javax.xml.transform.Result;
+import org.Bibliotech.View_old.*;
 
 public class MainController {
 
@@ -12,10 +10,6 @@ public class MainController {
     ResultView resultView;
 
     public MainController(){
-        loginView = new LoginView();
-        registerView = new RegisterView();
-        searchView = new SearchView();
-        resultView= new ResultView();
     }
 
     public LoginView getLoginView() {

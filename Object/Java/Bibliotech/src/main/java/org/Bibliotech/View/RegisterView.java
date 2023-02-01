@@ -1,152 +1,40 @@
 package org.Bibliotech.View;
 
-import org.Bibliotech.Controller.UtenteController;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import static org.Bibliotech.Main.mc;
-
-public class RegisterView extends GeneralView {
-
+public class RegisterView extends View{
+    private static RegisterView instance;
+    static final String nome="Register";
+    private JPanel logoPanel;
+    private JPanel contentPanel; //panel che contiene tutti i componenti della view
+    private JLabel logoLabel;
     private JPanel rootPanel;
-    private JPanel imagePanel;
-    private JPanel contentPanel;
-    private JButton annullaButton;
-    private JButton registratiButton;
-    private JTextField usernameTextField;
-    private JButton homeButton;
-    private JPasswordField passwordField;
-    private JCheckBox showPWBox;
-    private JLabel imageLabel;
+    private JTextField usernameField;
     private JPasswordField confermaPasswordField;
-    private JLabel confermaPasswordLabel;
+    private JPasswordField passwordField1;
+    private JCheckBox mostraPasswordChechBox;
+    private JPanel fieldsPanel;
+    private JButton registratiButton;
+    private JButton annullaButton;
+    private JLabel usernameLabel;
 
-    public RegisterView() {
-        imageLabel.setIcon(logoIcon);
-        imagePanel.setSize(360, 250);
-        newView("Register", rootPanel);
-        homeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mc.switchGUI(mc.getLoginView().getName(), mc.getRegisterView().getName());
-            }
-        });
-        annullaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                usernameTextField.setText("");
-                passwordField.setText("");
-                confermaPasswordField.setText("");
-            }
-        });
-        showPWBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (showPWBox.isSelected()) {
-                    passwordField.setEchoChar((char) 0);
-                    confermaPasswordField.setEchoChar((char) 0);
-                } else {
-                    passwordField.setEchoChar('•');
-                    confermaPasswordField.setEchoChar('•');
-                }
-            }
-        });
-        registratiButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = usernameTextField.getText();
-                String password = String.valueOf(passwordField.getPassword());
-                String confermaPassword = String.valueOf(confermaPasswordField.getPassword());
-                UtenteController c = new UtenteController();
-                boolean blanksFlag = checkFields(username, password, confermaPassword); //true=tutto ok, false=problema
-                boolean checkPasswordMatch=checkPasswordMatch(password, confermaPassword);
-                boolean checkUserInDatabase=c.checkUserExistInDatabase(username);
-                //System.out.println("blankflags: "+blanksFlag);
-                //System.out.println("match: "+checkPasswordMatch);
-                if(!blanksFlag){
-                    JOptionPane.showMessageDialog(null, "Controllare i campi in rosso");
-                }
-                else if(checkUserInDatabase){
-                    JOptionPane.showMessageDialog(usernameTextField, "Username già in uso, sceglierne un altro.");
-
-                }
-                else {
-                    if (checkPasswordMatch) {
-                        c.registraUtente(username, password);
-                        JOptionPane.showMessageDialog(null, "Utente " + username + " registrato con successo");
-                        mc.switchGUI(mc.getSearchView().getName(), mc.getLoginView().getName());
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null, "Le password non corrispondono");
-                    }
-                }
-            }
-        });
-        /*registratiButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = usernameTextField.getText();
-                String password = String.valueOf(passwordField.getPassword());
-                if (username.isBlank()) {
-                    JOptionPane.showMessageDialog(null, "Inserisci un username valido");
-                } else {
-                    //probabile aggiunta di trigger o controllo per user gia in db
-                    JOptionPane.showMessageDialog(null, "Username valido");
-                    if (password.isBlank()) {
-                        JOptionPane.showMessageDialog(null, "Inserisci una password valida");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "User e Password validi");
-                        UtenteController c = new UtenteController();
-                        if (c.registraUtente(username, password)) {
-                            JOptionPane.showMessageDialog(null, "Utente registrato con successo");
-                            mc.switchGUI(mc.getSearchView().getName(), mc.getRegisterView().getName());
-                        }
-                    }
-                }
-            }
-        });*/
-    }
-    private boolean checkPasswordMatch(String password, String confermaPassword) {
-        if(password.equals(confermaPassword) && (!password.isBlank() && !confermaPassword.isBlank())) return true;
-        else {
-            passwordField.setBackground(Color.red);
-            confermaPasswordField.setBackground(Color.red);
-            return false;
-        }
+    RegisterView() {
+        super(nome); //nome della view passato al costruttore
+        logoPanel.setSize(360, 250);
+        this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
+        logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
     }
 
-    //controlla che tutte le stringhe non siano vuote o composte da soli whitespaces, ritorna false se almeno di loro è
-    // vuoto o contiene solo whitespaces, inoltre cambia colore dei JTextField in rosso se non hanno caratteri al
-    //loro interno, in caso contrario li setta al loro colore di default
-    private boolean checkFields(String username, String password, String confermaPassword) {
-        boolean userFlag=username.isBlank();
-        boolean passwordFlag=password.isBlank();
-        boolean confermaPasswordFlag=confermaPassword.isBlank();
-
-        if (userFlag) {
-            usernameTextField.setBackground(Color.red);
-        } else {
-            usernameTextField.setBackground(UIManager.getColor("JTextField.background"));
+    public static RegisterView getInstance(){
+        if(instance == null){
+            instance = new RegisterView();
         }
-
-        if (passwordFlag) {
-            passwordField.setBackground(Color.red);
-        } else {
-            passwordField.setBackground(UIManager.getColor("JTextField.background"));
-        }
-
-        if (confermaPasswordFlag) {
-            confermaPasswordField.setBackground(Color.red);
-        } else {
-            confermaPasswordField.setBackground(UIManager.getColor("JTextField.background"));
-        }
-
-        if(!userFlag && !passwordFlag && !confermaPasswordFlag){
-            return true;
-        }
-        else return false;
+        return instance;
+    }
+    public static void main(String[] args){
+        RegisterView rv = getInstance();
+    }
+    public String getViewName(){
+        return nome;
     }
 }
