@@ -184,15 +184,13 @@ public class ImplementazioneLibro implements org.Bibliotech.DAO.LibroDao {
 
     //Get tramite altre tabelle
     @Override
-    public Libri getLibriByAutore(String nomeCognome){
-        String nome = nomeCognome.split(" ")[0];
-        String cognome = nomeCognome.split(" ")[1];
+    public Libri getLibriByAutore(String nome, String cognome){
         String getLibroByAutoreQuery = "SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo FROM b.view_libro_autore WHERE nome = ? AND cognome = ?";
         return getLibri(getLibroByAutoreQuery, nome, cognome);
     }
     @Override
-    public Libri getLibriBySerie(String nome){
+    public Libri getLibriBySerie(String nome, String cognome){
         String getLibroBySerieQuery = "SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo FROM b.view_libro_serie WHERE nome_serie = ?";
-        return getLibri(getLibroBySerieQuery, nome);
+        return getLibri(getLibroBySerieQuery, nome, cognome);
     }
 }

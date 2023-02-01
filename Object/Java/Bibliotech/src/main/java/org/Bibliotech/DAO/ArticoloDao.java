@@ -20,7 +20,7 @@ public interface ArticoloDao {
     public Articoli getArticoliByFormato(String formato);
 
     //Attributi Tabelle Multiple
-    public Articoli getArticoliByAutore(String nomeCognome);
+    public Articoli getArticoliByAutore(String nome, String cognome);
     public Articoli getArticoliByRivista(String rivista);
     public Articoli getArticoliByConferenza(String conferenza);
 }

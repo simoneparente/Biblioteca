@@ -161,9 +161,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
 
     //Get tramite altre tabelle
     @Override
-    public Articoli getArticoliByAutore(String nomeCognome){
-        String nome = nomeCognome.split(" ")[0];
-        String cognome = nomeCognome.split(" ")[1];
+    public Articoli getArticoliByAutore(String nome, String cognome){
         String getArticoloByAutoreQuery = "SELECT DISTINCT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato FROM view_articolo_autore a WHERE au.nome = ? AND au.cognome = ?";
         return getArticoli(getArticoloByAutoreQuery, nome, cognome);
     }
