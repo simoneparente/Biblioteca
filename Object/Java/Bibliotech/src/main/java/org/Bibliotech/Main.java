@@ -6,8 +6,6 @@ import org.Bibliotech.View.SearchView;
 
 public class Main {
     public static void main(String[] args) {
-        FlatDarkLaf.setup();
-
         Controller controller= Controller.getInstance();
     }
 }

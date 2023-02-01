@@ -42,8 +42,7 @@ public class SearchViewSerie extends View {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.getInstance().switchView(ResultView.getInstance(), null);
-                SearchViewSerie.super.setLocationRelativeTo(ResultView.getInstance());
+
             }
         });
     }

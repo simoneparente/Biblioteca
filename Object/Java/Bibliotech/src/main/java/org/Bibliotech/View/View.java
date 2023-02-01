@@ -20,7 +20,7 @@ public class View extends JFrame{
         //this.setName("Bibliotech"); cosa fai?
         this.setTitle(nome); //nome visualizzato sul JFrame
         this.setIconImage(iconaFinestre.getImage()); //icona del JFrame
-        this.setSize(720,480); //dimensione del JFrame
+        this.setSize(720,560); //dimensione del JFrame
         this.setVisible(false);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

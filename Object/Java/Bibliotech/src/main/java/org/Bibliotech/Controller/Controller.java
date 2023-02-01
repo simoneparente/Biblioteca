@@ -10,7 +10,7 @@ public class Controller {
     private static Controller instance;
 
     public Controller() {
-        switchView(SearchView.getInstance(), null);
+        switchView(LoginView.getInstance(), null);
         //switchView(LoginView.getInstance(), null); default sarà questo
     }
 
