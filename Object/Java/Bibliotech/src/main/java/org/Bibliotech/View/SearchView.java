@@ -119,7 +119,6 @@ public class SearchView extends View {
                     filtriCheckBox.setSelected(false);
                 } else {
                     ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
-                    filtriCheckBox.setSelected(false);
                 }
             } else {
                 setFiltriInvisibili();
