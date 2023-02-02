@@ -2,7 +2,7 @@ package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
 import org.Bibliotech.View.LoginView;
-import org.Bibliotech.View.SearchViewLibri;
+import org.Bibliotech.View.SearchView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +27,7 @@ public class LoginController extends Controller{
             ImplementazioneUtente iu=new ImplementazioneUtente();
             if(iu.checkLogin(username, password)){
                 JOptionPane.showMessageDialog(null, "Login effettuato");
-                switchView(SearchViewLibri.getInstance(), LoginView.getInstance());
+                switchView(SearchView.getInstance(), LoginView.getInstance());
             }
             else{
                 JOptionPane.showMessageDialog(null, "Username o password errati");

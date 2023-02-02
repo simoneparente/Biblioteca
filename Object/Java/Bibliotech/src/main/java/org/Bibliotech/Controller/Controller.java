@@ -1,9 +1,7 @@
 package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
-import org.Bibliotech.View.LoginView;
-import org.Bibliotech.View.RegisterView;
-import org.Bibliotech.View.View;
+import org.Bibliotech.View.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +11,7 @@ public class Controller {
 
     public Controller() {
         switchView(LoginView.getInstance(), null);
+        //switchView(LoginView.getInstance(), null); default sarà questo
     }
 
     public static Controller getInstance() {
