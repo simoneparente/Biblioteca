@@ -45,6 +45,8 @@ CREATE TABLE b.Rivista
     Nome              VARCHAR(128),
     Argomento         VARCHAR(128),
     DataPubblicazione DATE,
+    Lingua            VARCHAR(128),
+    Formato           VARCHAR(128),
     Responsabile      VARCHAR(128),
     Prezzo            FLOAT,
 
@@ -270,6 +272,8 @@ CREATE OR REPLACE VIEW b.ins_rivista AS
            nome,
            argomento,
            datapubblicazione,
+           lingua,
+           formato,
            responsabile,
            prezzo,
            text as Doi_Articoli_Pubblicati --Più articoli (DOI1 DOI2)
@@ -303,7 +307,7 @@ $$
             RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA CONFERENZA ';
         ELSE
             --Inserisco la rivista
-            INSERT INTO b.rivista (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
+            INSERT INTO b.rivista (nome, issn, argomento, datapubblicazione, lingua, formato, responsabile, prezzo)
             VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.responsabile, NEW.prezzo);
 
             --Recupero l'id della rivista appena inserita
@@ -613,6 +617,9 @@ EXECUTE FUNCTION b.ftrig_stocklibro();
 ------------------------------------------------------------------------------------------------------------------------
                                             --View Utili
 ------------------------------------------------------------------------------------------------------------------------
+
+
+                                            --View Libri
 --View Libri con autore
 CREATE VIEW b.view_libro_autore AS
 SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, a.nome, a.cognome
@@ -623,6 +630,8 @@ CREATE VIEW b.view_libro_serie AS
 SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, s.nome as nome_serie
 FROM (b.libro as l NATURAL JOIN b.libroinserie as ls) JOIN b.serie as s on ls.id_serie = s.id_serie;
 
+
+                                           --View Articoli
 --View Articoli con Autore
 CREATE VIEW b.view_articolo_autore AS
 SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, au.nome, au.cognome
