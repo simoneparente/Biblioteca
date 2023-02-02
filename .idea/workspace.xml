@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db2a16fc-5ff2-4131-a346-734066ad4c37" name="Changes" comment="" />
+    <list default="true" id="db2a16fc-5ff2-4131-a346-734066ad4c37" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/75e07324-5bec-4d6e-b0ee-abcf9fe2226e/storage_v2/_src_/database/postgres.edMnLQ/schema/b.YgAAAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/75e07324-5bec-4d6e-b0ee-abcf9fe2226e/storage_v2/_src_/database/postgres.edMnLQ/schema/b.YgAAAA.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Basi/SQL/CreazioneDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Basi/SQL/CreazioneDB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Basi/SQL/InserimentiVari.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Basi/SQL/InserimentiVari.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Basi/SQL/Others/cose_utili.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Basi/SQL/Others/cose_utili.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Basi/SQL/Trigger/Trig_InsLibriAutoriSerie.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Basi/SQL/Trigger/Trig_InsLibriAutoriSerie.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/Controller/FiltriController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/Controller/FiltriController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/DAOimplementazione/ImplementazioneFiltri.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/DAOimplementazione/ImplementazioneFiltri.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/View/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/View/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/View/ResultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/View/ResultView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/View/SearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/src/main/java/org/Bibliotech/View/SearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/Controller/FiltriController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/Controller/FiltriController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/DAOimplementazione/ImplementazioneFiltri.class" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/DAOimplementazione/ImplementazioneFiltri.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView.class" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/LoginView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/SearchView.class" beforeDir="false" afterPath="$PROJECT_DIR$/Object/Java/Bibliotech/target/classes/org/Bibliotech/View/SearchView.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

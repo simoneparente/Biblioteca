@@ -5,7 +5,15 @@ import org.Bibliotech.DAOimplementazione.ImplementazioneFiltri;
 import java.util.ArrayList;
 
 public class FiltriController {
+    private static FiltriController instance=null;
     ImplementazioneFiltri filtri;
+
+    public static FiltriController getInstance() {
+        if (instance == null) {
+            instance = new FiltriController();
+        }
+        return instance;
+    }
     public FiltriController(){
         filtri = new ImplementazioneFiltri();
     }

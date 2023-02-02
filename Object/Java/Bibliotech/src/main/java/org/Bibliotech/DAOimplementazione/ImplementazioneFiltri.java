@@ -217,9 +217,10 @@ public class ImplementazioneFiltri implements FiltriDao {
 
     public ArrayList<String> getColumns(String nomeTable){
         ArrayList<String> columns = new ArrayList<>();
-        String getColumnsQuery = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME =" +  "'" + nomeTable + "'";
+        String getColumnsQuery = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getColumnsQuery);
+            preparedStatement.setString(1, nomeTable);
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
                 columns.add(rs.getString("COLUMN_NAME"));

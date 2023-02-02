@@ -3,6 +3,7 @@ package org.Bibliotech.View;
 import org.Bibliotech.Controller.Controller;
 
 import javax.swing.*;
+import javax.xml.transform.Result;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -140,8 +141,17 @@ public class SearchView extends View {
                 JOptionPane.showMessageDialog(null, "Inserire qualcosa da cercare");
             }
             else {
-                Controller.getInstance().switchView(ResultView.getInstance(), null);
-                SearchView.super.setLocationRelativeTo(ResultView.getInstance());
+                Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
+                SearchView.super.setLocationRelativeTo(null); //centra la SearchView rispetto al monitor
+                int searchViewX = SearchView.getInstance().getX(); //ottiene la posizione della SearchView
+                int searchViewY = SearchView.getInstance().getY(); //ottiene la posizione della SearchView
+                int searchViewW = SearchView.getInstance().getWidth(); //ottiene la larghezza della SearchView
+                int x; //variabile che conterrà la posizione x della ResultView
+                SearchView.getInstance().setLocation(searchViewX-searchViewW/2, searchViewY); //centra la SearchView rispetto alla ResultView
+                ResultView.getInstance().setLocation(SearchView.getInstance().getX()+searchViewW,searchViewY); //centra la ResultView rispetto alla SearchView
+                ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase());
+
+
             }
         });
         //aggiunge un listener al autoreLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
