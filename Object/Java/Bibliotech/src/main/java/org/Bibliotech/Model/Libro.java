@@ -13,8 +13,7 @@ public class Libro {
     private String formato;
     private String lingua;
     private double prezzo;
-    public Libro() {
-    }
+    public Libro() {}
     public Libro(String titolo,
                  ArrayList<Autore> autori,
                  String genere, String editore,
@@ -111,7 +110,6 @@ public class Libro {
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
     }
-
 }
 
 

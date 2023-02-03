@@ -35,8 +35,7 @@ public class Articolo {
         this.rivista = rivista;
     }
 
-    public Articolo() {
-    }
+    public Articolo() {}
 
     public String getTitolo() {
         return titolo;

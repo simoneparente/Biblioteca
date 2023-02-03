@@ -6,6 +6,8 @@ public class Utente {
         this.username = username;
         this.password = password;
     }
+
+    //Sta roba non serve
     public void setUsername(String username) {
         this.username = username;
     }

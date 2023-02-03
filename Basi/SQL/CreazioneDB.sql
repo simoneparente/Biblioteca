@@ -642,6 +642,7 @@ FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar) JOIN b.riviste as 
 CREATE VIEW b.view_Articoli_conferenza AS
 SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, e.nome as titolo_conferenza
 FROM (b.Articoli as a NATURAL JOIN b.conferenza as c) JOIN b.evento as e on c.evento = e.id_evento;
+------------------------------------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------------------------------------
