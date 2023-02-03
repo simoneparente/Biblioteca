@@ -2,7 +2,6 @@ package org.Bibliotech.DAOimplementazione;
 
 import org.Bibliotech.ConnessioneDB;
 import org.Bibliotech.DAO.FiltriDao;
-import org.checkerframework.checker.units.qual.A;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
