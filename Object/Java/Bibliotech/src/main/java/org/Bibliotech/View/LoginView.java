@@ -18,7 +18,6 @@ public class LoginView extends View{
     private JPasswordField passwordField;
     private JCheckBox mostraPasswordCheckBox;
     private JButton loginButton;
-    private JCheckBox mostraPasswordChechBox;
     private JPanel fieldsPanel;
     private JButton annullaButton;
     private JLabel registratiLabel;
@@ -29,12 +28,7 @@ public class LoginView extends View{
         logoPanel.setSize(360, 250);
         this.setContentPane(rootPanel);
         logoLabel.setIcon(logoLabelIcon);
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LoginController.getInstance().login(usernameField, passwordField);
-            }
-        });
+        loginButton.addActionListener(e -> LoginController.getInstance().login(usernameField, passwordField));
         registratiLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -56,22 +50,16 @@ public class LoginView extends View{
                 registratiLabel.setBorder(null);
             }
         });
-        mostraPasswordCheckBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (mostraPasswordCheckBox.isSelected()) {
-                    passwordField.setEchoChar((char) 0);
-                } else {
-                    passwordField.setEchoChar('•');
-                }
+        mostraPasswordCheckBox.addItemListener(e -> {
+            if (mostraPasswordCheckBox.isSelected()) {
+                passwordField.setEchoChar((char) 0);
+            } else {
+                passwordField.setEchoChar('•');
             }
         });
-        annullaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                usernameField.setText("");
-                passwordField.setText("");
-            }
+        annullaButton.addActionListener(e -> {
+            usernameField.setText("");
+            passwordField.setText("");
         });
     }
 

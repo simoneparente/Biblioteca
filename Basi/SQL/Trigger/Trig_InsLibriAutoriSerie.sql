@@ -19,7 +19,7 @@ DECLARE
     nautori        INTEGER := array_length(autori, 1);
     autore_nome    b.autore.nome%TYPE;
     autore_cognome b.autore.cognome%TYPE;
-    newLibro       b.libro.ID_Libro%TYPE;
+    newLibro       b.libri.ID_Libro%TYPE;
     newSerie       b.serie.ID_Serie%TYPE;
 BEGIN
     --RAISE NOTICE 'nautori{%}', nautori;

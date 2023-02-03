@@ -3,8 +3,8 @@ package org.Bibliotech.Model;
 import java.util.ArrayList;
 
 public class Articolo {
-    private ArrayList<Autore> autori;
     private String titolo;
+    private ArrayList<Autore> autori;
     private String autoriString = "";
     private String dataPubblicazione;
     private String editore;
@@ -35,7 +35,8 @@ public class Articolo {
         this.rivista = rivista;
     }
 
-    public Articolo() {}
+    public Articolo() {
+    }
 
     public String getTitolo() {
         return titolo;
@@ -87,6 +88,7 @@ public class Articolo {
     public void setFormato(String formato) {
         this.formato = formato;
     }
+
     public String getDisciplina() {
         return disciplina;
     }
