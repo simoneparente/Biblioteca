@@ -45,8 +45,6 @@ CREATE TABLE b.Riviste
     Nome              VARCHAR(128),
     Argomento         VARCHAR(128),
     DataPubblicazione DATE,
-    Lingua            VARCHAR(128),
-    Formato           VARCHAR(128),
     Responsabile      VARCHAR(128),
     Prezzo            FLOAT,
 
@@ -271,9 +269,7 @@ CREATE OR REPLACE VIEW b.ins_riviste AS
 SELECT issn,
        nome,
        argomento,
-       datapubblicazione,
-       lingua,
-       formato,
+       datapubblicazione,,
        responsabile,
        prezzo,
        text as Doi_Articoli_Pubblicati --Più articoli (DOI1 DOI2)
@@ -309,8 +305,8 @@ BEGIN
         RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA CONFERENZA ';
     ELSE
         --Inserisco la riviste
-        INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, lingua, formato, responsabile, prezzo)
-        VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.lingua, NEW.formato, NEW.responsabile,
+        INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
+        VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.responsabile,
                 NEW.prezzo);
 
         --Recupero l'id della riviste appena inserita
