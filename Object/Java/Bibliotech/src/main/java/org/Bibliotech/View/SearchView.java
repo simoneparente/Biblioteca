@@ -6,10 +6,7 @@ import org.Bibliotech.Model.Autore;
 
 import javax.swing.*;
 import javax.xml.transform.Result;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class SearchView extends View {
@@ -115,6 +112,7 @@ public class SearchView extends View {
         setFiltriInvisibili();
         setFieldsDisabled();
         fillAllComboBoxes();
+        ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
 
 
 
@@ -135,8 +133,11 @@ public class SearchView extends View {
         //------------------------------------------------------------------------------------------
         //aggiunge un listener alla risorsaComboBox che, quando viene selezionata una risorsa, ricarica i filtri
         risorsaComboBox.addItemListener(e -> {
-            if (e.getStateChange() == ItemEvent.SELECTED && filtriCheckBox.isSelected()) {
-                ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
+                if(filtriCheckBox.isSelected()) {
+                    ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
+                }
             } else if (e.getStateChange() == ItemEvent.SELECTED && !filtriCheckBox.isSelected()) {
                 setFiltriInvisibili();
             }
@@ -262,6 +263,34 @@ public class SearchView extends View {
 
         //aggiunge un listener al formatoSerieCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
         formatoSerieCheckBox.addActionListener(e -> formatoSerieComboBox.setEnabled(formatoSerieCheckBox.isSelected()));
+        searchField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                searchField.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                if(searchField.getText().equals("")) {
+                    ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
+                }
+            }
+        });
+    }
+
+    private void ricaricaSearchField(String risorsa) {
+        switch(risorsa){
+            case "Libri" -> searchField.setText("Cerca un libro...");
+            case "Serie" -> searchField.setText("Cerca una serie...");
+            case "Articoli" -> searchField.setText("Cerca un articolo...");
+            case "Riviste" -> searchField.setText("Cerca una rivista...");
+            default -> {
+                searchField.setText("Selezionare una risorsa...");
+            }
+        }
+
     }
 
     private void setFieldsDisabled() { //NON è COMPLETO

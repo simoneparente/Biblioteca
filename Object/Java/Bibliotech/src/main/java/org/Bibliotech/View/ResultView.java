@@ -45,7 +45,8 @@ public class ResultView extends View{
         return instance;
     }
 
-    public void updateTable(String nomeTabella){
+    public void updateTable(String nomeTabellaIn){
+        String nomeTabella="resultview_"+nomeTabellaIn;
         emptyTable();
         FiltriController fc = FiltriController.getInstance();
         DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
