@@ -2,7 +2,7 @@ DROP SCHEMA IF EXISTS b CASCADE;
 CREATE SCHEMA b;
 
 ------------------------------------------------------------------------------------------------------------------------
-                                                --Creazione tabelle
+--Creazione tabelle
 ------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE b.Articoli
 (
@@ -265,63 +265,67 @@ EXECUTE FUNCTION b.ftrig_ArticoliAutore();
 
 
 ------------------------------------------------------------------------------------------------------------------------
-                                          --Trigger Insert Riviste
+--Trigger Insert Riviste
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_riviste AS
-    SELECT issn,
-           nome,
-           argomento,
-           datapubblicazione,
-           lingua,
-           formato,
-           responsabile,
-           prezzo,
-           text as Doi_Articoli_Pubblicati --Più articoli (DOI1 DOI2)
-FROM b.riviste, b.jolly;
+SELECT issn,
+       nome,
+       argomento,
+       datapubblicazione,
+       lingua,
+       formato,
+       responsabile,
+       prezzo,
+       text as Doi_Articoli_Pubblicati --Più articoli (DOI1 DOI2)
+FROM b.riviste,
+     b.jolly;
 
 CREATE OR REPLACE FUNCTION b.ftrig_riviste() RETURNS TRIGGER AS
 $$
-    DECLARE
+DECLARE
     articoli    text[]  := string_to_array(NEW.Doi_Articoli_Pubblicati, '@');
     narticoli   INTEGER := array_length(articoli, 1);
     newArticoli b.Articoli.id_Articoli%TYPE;
     newriviste  b.riviste.ID_Riviste%TYPE;
-    vcheck      INTEGER:=0;
-    BEGIN
-        FOR i IN 1..narticoli LOOP
+    vcheck      INTEGER := 0;
+BEGIN
+    FOR i IN 1..narticoli
+        LOOP
             newArticoli = (SELECT id_Articoli FROM b.Articoli WHERE doi = articoli[i]);
             --Controllo se l'Articoli esiste
             IF NOT EXISTS(SELECT * FROM b.Articoli WHERE doi = articoli[i]) THEN
                 RAISE NOTICE 'Articoli {%} non presente', articoli[i];
                 vcheck := 1;
-            --Controllo se l'Articoli è già presente in una conferenza
+                --Controllo se l'Articoli è già presente in una conferenza
             ELSEIF EXISTS(SELECT * FROM b.conferenza WHERE Articoli = newArticoli) THEN
                 RAISE NOTICE 'Articoli {%} già presente in una conferenza', articoli[i];
                 vcheck := 2;
             END IF;
         END LOOP;
 
-        IF (vcheck = 1) THEN
-            RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO INESISTENTI ';
-        ELSIF (vcheck = 2) THEN
-            RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA CONFERENZA ';
-        ELSE
-            --Inserisco la riviste
-            INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, lingua, formato, responsabile, prezzo)
-            VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.lingua, NEW.formato, NEW.responsabile, NEW.prezzo);
+    IF (vcheck = 1) THEN
+        RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO INESISTENTI ';
+    ELSIF (vcheck = 2) THEN
+        RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA CONFERENZA ';
+    ELSE
+        --Inserisco la riviste
+        INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, lingua, formato, responsabile, prezzo)
+        VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.lingua, NEW.formato, NEW.responsabile,
+                NEW.prezzo);
 
-            --Recupero l'id della riviste appena inserita
-            SELECT id_riviste INTO newriviste FROM b.riviste WHERE nome = NEW.nome AND issn = NEW.issn;
+        --Recupero l'id della riviste appena inserita
+        SELECT id_riviste INTO newriviste FROM b.riviste WHERE nome = NEW.nome AND issn = NEW.issn;
 
-            --Inserisco gli articoli nella riviste
-            FOR i IN 1..narticoli LOOP
+        --Inserisco gli articoli nella riviste
+        FOR i IN 1..narticoli
+            LOOP
                 SELECT id_Articoli INTO newArticoli FROM b.Articoli WHERE doi = articoli[i]; --recupero id Articoli
                 INSERT INTO b.Articoliinriviste (id_Articoli, id_riviste)
                 VALUES (newArticoli, newriviste);
             END LOOP;
-        END IF;
-        RETURN NEW;
-    END;
+    END IF;
+    RETURN NEW;
+END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER trig_Riviste
@@ -333,11 +337,10 @@ EXECUTE FUNCTION b.ftrig_riviste();
 
 
 ------------------------------------------------------------------------------------------------------------------------
-                                        --Trigger Insert Conferenze
+--Trigger Insert Conferenze
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_conferenza AS
-SELECT
-       nome,
+SELECT nome,
        indirizzo,
        strutturaospitante,
        datainizio,
@@ -363,7 +366,7 @@ BEGIN
             IF NOT EXISTS(SELECT * FROM b.Articoli WHERE doi = articoli[i]) THEN
                 vcheck = 1;
                 RAISE NOTICE 'Articoli {%} non presente', articoli[i];
-            --Controllo se l'Articoli è già presente in una riviste
+                --Controllo se l'Articoli è già presente in una riviste
             ELSEIF EXISTS(SELECT * FROM b.Articoliinriviste WHERE id_Articoli = newArticoli) THEN
                 vcheck = 2;
                 RAISE NOTICE 'Articoli {%} già presente in una riviste', articoli[i];
@@ -375,7 +378,8 @@ BEGIN
     ELSEIF (vcheck = 2) THEN
         RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA RIVISTe';
     ELSE --Se tutti gli articoli esistono inserisco l'evento
-        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
+        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine,
+                              responsabile) --Inserisco l'evento
         VALUES (NEW.nome, NEW.indirizzo, NEW.strutturaospitante, NEW.datainizio, NEW.datafine, NEW.responsabile);
 
         --Recupero l'id dell'evento appena inserito
@@ -409,7 +413,7 @@ EXECUTE FUNCTION b.ftrig_conferenza();
 
 
 ------------------------------------------------------------------------------------------------------------------------
-                                   --Trigger Insert Libri, Autori e Serie
+--Trigger Insert Libri, Autori e Serie
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_libri_autore_serie AS
 SELECT l.titolo,
@@ -518,7 +522,7 @@ EXECUTE FUNCTION b.ftrig_LibriaAutoreSerie();
 
 
 ------------------------------------------------------------------------------------------------------------------------
-                                        --Trigger Insert Presentazioni
+--Trigger Insert Presentazioni
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE VIEW b.ins_presentazione AS
 SELECT l.ISBN,
@@ -544,7 +548,8 @@ BEGIN
                   WHERE ISBN = NEW.ISBN) THEN
         RAISE NOTICE 'Esista già una presentazione per questo libri!! Presentazione non inserita';
     ELSE --Inserisco la presentazione
-        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
+        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine,
+                              responsabile) --Inserisco l'evento
         VALUES (NEW.nome, NEW.Indirizzo, NEW.StrutturaOspitante, NEW.DataInizio, NEW.DataFine, NEW.Responsabile);
         INSERT INTO b.presentazione (evento, libri) --Inserisco la presentazione
         SELECT e.ID_evento, l.ID_libri --Trasformo l'ISBN in un ID e recupero l'ID dell'evento
@@ -615,7 +620,7 @@ EXECUTE FUNCTION b.ftrig_stocklibri();
 
 
 ------------------------------------------------------------------------------------------------------------------------
-                                       --Funzioni Applicativo
+--Funzioni Applicativo
 ------------------------------------------------------------------------------------------------------------------------
 
 --Funzione che restituisce la disponibilità di un libro in un negozio
@@ -665,12 +670,83 @@ BEGIN
 END;
 $$
     LANGUAGE plpgsql;
+
+--Funzione che restituisce una stringa con i nomi degli autori di un libro
+CREATE OR REPLACE FUNCTION b.getAutoriByLibro(inputIdLibro b.libri.id_libri%TYPE) RETURNS TEXT AS
+$$
+DECLARE
+    returnAutori     TEXT;
+    cursore CURSOR FOR (SELECT nome, cognome
+                        FROM (b.autore a NATURAL JOIN b.autorelibri al)
+                                 JOIN b.libri l ON l.id_libri = al.id_libri
+                        WHERE l.id_libri = inputIdLibro);
+    dimensioneAutori INTEGER= (SELECT COUNT(*)
+                               FROM (b.autore a NATURAL JOIN b.autorelibri al)
+                                        JOIN b.libri l ON l.id_libri = al.id_libri
+                               WHERE l.id_libri = inputIdLibro);
+    autoreNome       b.autore.nome%TYPE;
+    autoreCognome    b.autore.cognome%TYPE;
+    controllo        bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
+BEGIN
+    OPEN cursore;
+    FOR b IN 1..dimensioneAutori
+        LOOP
+            FETCH cursore INTO autoreNome, autoreCognome;
+            if controllo IS false THEN
+                returnAutori = autoreNome || ' ' || autoreCognome;
+                controllo = true;
+            else
+                returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
+            end if;
+        END LOOP;
+    CLOSE cursore;
+    return returnAutori;
+END;
+$$
+    LANGUAGE plpgsql;
+
+
+--Funzione che restituisce una stringa con i nomi degli autori di un articolo
+CREATE OR REPLACE FUNCTION b.getAutoriByArticolo(inputIdArticolo b.articoli.id_articoli%TYPE) RETURNS TEXT AS
+$$
+DECLARE
+    autoreNome       b.autore.nome%TYPE;
+    autoreCognome    b.autore.cognome%TYPE;
+    returnAutori     TEXT;
+    controllo        bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
+    cursore cursor for (SELECT nome, cognome
+                        FROM (b.autore a NATURAL JOIN b.autorearticoli aa)
+                                 JOIN b.articoli ar ON ar.id_articoli = aa.id_articoli
+                        WHERE ar.id_articoli = inputIdArticolo);
+    dimensioneAutori INTEGER= (SELECT COUNT(*)
+                               FROM (b.autore a NATURAL JOIN b.autorearticoli aa)
+                                        JOIN b.articoli ar ON ar.id_articoli = aa.id_articoli
+                               WHERE ar.id_articoli = inputIdArticolo);
+BEGIN
+    open cursore;
+    FOR b IN 1..dimensioneAutori
+        LOOP
+            FETCH cursore INTO autoreNome, autoreCognome;
+            if controllo IS false THEN
+                returnAutori = autoreNome || ' ' || autoreCognome;
+                controllo = true;
+            else
+                returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
+            end if;
+        END LOOP;
+    CLOSE cursore;
+    return returnAutori;
+end;
+$$ LANGUAGE plpgsql;
 ------------------------------------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------------------------------------
-                                        --View Result Applicativo
+--View Result Applicativo
 ------------------------------------------------------------------------------------------------------------------------
+
+--Result View Libri
+CREATE VIEW b.resultView_libri AS
 SELECT distinct titolo,
                 b.getAutoriByLibro(l.id_libri) AS Autore,
                 editore,
@@ -678,39 +754,89 @@ SELECT distinct titolo,
                 lingua,
                 formato,
                 b.getDisponibilita(l.id_libri)
-FROM (b.libri l JOIN b.autorelibri al ON l.id_libri = al.id_libri)
-         JOIN b.autore a ON a.id_autore = al.id_autore;
+FROM b.libri l;
+
+CREATE VIEW b.resultView_articoli AS
+SELECT distinct titolo,
+                b.getAutoriByArticolo(a.id_articoli),
+                lingua,
+                formato,
+                editore
+FROM b.articoli a;
 
 ------------------------------------------------------------------------------------------------------------------------
 
 
-
 ------------------------------------------------------------------------------------------------------------------------
-                                            --View Utili
+--View Utili
 ------------------------------------------------------------------------------------------------------------------------
 
 --View Libri con autore
 CREATE VIEW b.view_libri_autore AS
-SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, a.nome, a.cognome
-FROM (b.libri as l NATURAL JOIN b.autorelibri as al) JOIN b.autore as a on al.id_autore = a.id_autore;
+SELECT l.titolo,
+       l.isbn,
+       l.datapubblicazione,
+       l.editore,
+       l.genere,
+       l.lingua,
+       l.formato,
+       l.prezzo,
+       a.nome,
+       a.cognome
+FROM (b.libri as l NATURAL JOIN b.autorelibri as al)
+         JOIN b.autore as a on al.id_autore = a.id_autore;
 
 --View Libri con Serie
 CREATE VIEW b.view_libri_serie AS
-SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, s.nome as nome_serie
-FROM (b.libri as l NATURAL JOIN b.libriinserie as ls) JOIN b.serie as s on ls.id_serie = s.id_serie;
+SELECT l.titolo,
+       l.isbn,
+       l.datapubblicazione,
+       l.editore,
+       l.genere,
+       l.lingua,
+       l.formato,
+       l.prezzo,
+       s.nome as nome_serie
+FROM (b.libri as l NATURAL JOIN b.libriinserie as ls)
+         JOIN b.serie as s on ls.id_serie = s.id_serie;
 
 --View Articoli con Autore
 CREATE VIEW b.view_Articoli_autore AS
-SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, au.nome, au.cognome
-FROM (b.Articoli as a NATURAL JOIN b.autoreArticoli as aa) JOIN b.autore as au on aa.id_autore = au.id_autore;
+SELECT a.titolo,
+       a.doi,
+       a.datapubblicazione,
+       a.disciplina,
+       a.editore,
+       a.lingua,
+       a.formato,
+       au.nome,
+       au.cognome
+FROM (b.Articoli as a NATURAL JOIN b.autoreArticoli as aa)
+         JOIN b.autore as au on aa.id_autore = au.id_autore;
 
 --View Articoli con Riviste
 CREATE VIEW b.view_Articoli_riviste AS
-SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, r.nome as titolo_riviste
-FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar) JOIN b.riviste as r on ar.id_riviste = r.id_riviste;
+SELECT a.titolo,
+       a.doi,
+       a.datapubblicazione,
+       a.disciplina,
+       a.editore,
+       a.lingua,
+       a.formato,
+       r.nome as titolo_riviste
+FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar)
+         JOIN b.riviste as r on ar.id_riviste = r.id_riviste;
 
 --View Articoli con Confereza
 CREATE VIEW b.view_Articoli_conferenza AS
-SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, e.nome as titolo_conferenza
-FROM (b.Articoli as a NATURAL JOIN b.conferenza as c) JOIN b.evento as e on c.evento = e.id_evento;
+SELECT a.titolo,
+       a.doi,
+       a.datapubblicazione,
+       a.disciplina,
+       a.editore,
+       a.lingua,
+       a.formato,
+       e.nome as titolo_conferenza
+FROM (b.Articoli as a NATURAL JOIN b.conferenza as c)
+         JOIN b.evento as e on c.evento = e.id_evento;
 ------------------------------------------------------------------------------------------------------------------------
