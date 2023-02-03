@@ -45,6 +45,8 @@ CREATE TABLE b.Riviste
     Nome              VARCHAR(128),
     Argomento         VARCHAR(128),
     DataPubblicazione DATE,
+    Lingua            VARCHAR(128),
+    Formato           VARCHAR(128),
     Responsabile      VARCHAR(128),
     Prezzo            FLOAT,
 
@@ -270,6 +272,8 @@ CREATE OR REPLACE VIEW b.ins_riviste AS
            nome,
            argomento,
            datapubblicazione,
+           lingua,
+           formato,
            responsabile,
            prezzo,
            text as Doi_Articoli_Pubblicati --Più articoli (DOI1 DOI2)
@@ -303,8 +307,8 @@ $$
             RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA CONFERENZA ';
         ELSE
             --Inserisco la riviste
-            INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
-            VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.responsabile, NEW.prezzo);
+            INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, lingua, formato, responsabile, prezzo)
+            VALUES (NEW.nome, NEW.issn, NEW.argomento, NEW.datapubblicazione, NEW.lingua, NEW.formato, NEW.responsabile, NEW.prezzo);
 
             --Recupero l'id della riviste appena inserita
             SELECT id_riviste INTO newriviste FROM b.riviste WHERE nome = NEW.nome AND issn = NEW.issn;
@@ -613,6 +617,7 @@ EXECUTE FUNCTION b.ftrig_stocklibri();
 ------------------------------------------------------------------------------------------------------------------------
                                             --View Utili
 ------------------------------------------------------------------------------------------------------------------------
+
 --View Libri con autore
 CREATE VIEW b.view_libri_autore AS
 SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, a.nome, a.cognome
@@ -637,3 +642,56 @@ FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar) JOIN b.riviste as 
 CREATE VIEW b.view_Articoli_conferenza AS
 SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, e.nome as titolo_conferenza
 FROM (b.Articoli as a NATURAL JOIN b.conferenza as c) JOIN b.evento as e on c.evento = e.id_evento;
+
+
+------------------------------------------------------------------------------------------------------------------------
+                                       --Funzioni Applicativo
+------------------------------------------------------------------------------------------------------------------------
+
+--Funzione che restituisce la disponibilità di un libro in un negozio
+CREATE OR REPLACE FUNCTION b.getDisponibilita(inputLibro b.libri.id_libri%TYPE) RETURNS boolean AS
+$$
+DECLARE
+BEGIN
+    IF EXISTS(SELECT * FROM b.stock s WHERE s.libri = inputLibro) THEN
+        return true;
+    else
+        return false;
+    end if;
+END;
+$$
+    LANGUAGE plpgsql;
+
+--Funzione che restituisce una stringa con i nomi degli autori di un libro
+CREATE OR REPLACE FUNCTION b.getAutoriByLibro(inputIdLibro b.libri.id_libri%TYPE) RETURNS TEXT AS
+$$
+DECLARE
+    returnAutori     TEXT;
+    cursore CURSOR FOR (SELECT nome, cognome
+                        FROM (b.autore a NATURAL JOIN b.autorelibri al)
+                                 JOIN b.libri l ON l.id_libri = al.id_libri
+                        WHERE l.id_libri = inputIdLibro);
+    dimensioneAutori INTEGER= (SELECT COUNT(*)
+                               FROM (b.autore a NATURAL JOIN b.autorelibri al)
+                                        JOIN b.libri l ON l.id_libri = al.id_libri
+                               WHERE l.id_libri = inputIdLibro);
+    autoreNome       b.autore.nome%TYPE;
+    autoreCognome    b.autore.cognome%TYPE;
+    controllo        bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
+BEGIN
+    OPEN cursore;
+    FOR b IN 1..dimensioneAutori
+        LOOP
+            FETCH cursore INTO autoreNome, autoreCognome;
+            if controllo IS false THEN
+                returnAutori = autoreNome || ' ' || autoreCognome;
+                controllo = true;
+            else
+                returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
+            end if;
+        END LOOP;
+    CLOSE cursore;
+    return returnAutori;
+END;
+$$
+    LANGUAGE plpgsql;

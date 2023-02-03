@@ -1,5 +1,5 @@
 --Insert Articolo Autore
-INSERT INTO b.ins_articolo_autore(doi, titolo, autorinome_cognome, datapubblicazione, disciplina, editore, lingua,
+INSERT INTO b.ins_articoli_autore(doi, titolo, autorinome_cognome, datapubblicazione, disciplina, editore, lingua,
                                   formato)
 values ('10.1101/2020.12.31', 'La scoperta delle proteine', 'Mario_Rossi Giuseppe_Bianchi', '2020-12-31', 'Natura',
         'Nature Publishing Group', 'Italiano', 'Cartaceo'),
@@ -49,7 +49,7 @@ VALUES (1, '978-88-04-58339-8', 35),
        (1, '978-88-17-88000-0', 22);
 
 --Insert Articolo Rivista
-INSERT INTO b.ins_rivista (issn, nome, argomento, datapubblicazione, responsabile, doi_articoli_pubblicati)
+INSERT INTO b.ins_riviste (issn, nome, argomento, datapubblicazione, responsabile, doi_articoli_pubblicati)
 VALUES ('978-88-04-58339-8', 'Il Signore degli Anelli', 'Fantasy', '1954-07-29', 'J.R.R._Tolkien',
         '10.1101/2020.12.31 10.1101/2021.12.31');
 
@@ -58,4 +58,3 @@ INSERT INTO b.ins_conferenza (indirizzo, strutturaospitante, datainizio, datafin
                               doi_articoli_presentati)
 VALUES ('Via Roma 1', 'Casa Editrice', '2018-01-01', '2018-01-01', 'Mario Rossi',
         '10.1101/2027.12.31 10.1101/2031.12.31');
-
