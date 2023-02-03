@@ -46,6 +46,7 @@ public class ResultView extends View{
     }
 
     public void updateTable(String nomeTabella){
+        emptyTable();
         FiltriController fc = FiltriController.getInstance();
         DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
         model.setRowCount(0);
@@ -55,5 +56,12 @@ public class ResultView extends View{
             System.out.println(column);
         }
     }
+
+    private void emptyTable() {
+        DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
+        model.setRowCount(0);
+        model.setColumnCount(0);
+    }
 }
+
 
