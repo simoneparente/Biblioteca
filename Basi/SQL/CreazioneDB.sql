@@ -279,7 +279,7 @@ FROM b.riviste,
 CREATE OR REPLACE FUNCTION b.ftrig_riviste() RETURNS TRIGGER AS
 $$
 DECLARE
-    articolip    text[]  := string_to_array(NEW.Doi_Articoli_Pubblicati, ' ');
+    articolip   text[]  := string_to_array(NEW.Doi_Articoli_Pubblicati, ' ');
     narticoli   INTEGER := array_length(articolip, 1);
     newArticoli b.Articoli.id_Articoli%TYPE;
     newriviste  b.riviste.ID_Riviste%TYPE;
@@ -349,12 +349,12 @@ FROM b.jolly,
 CREATE OR REPLACE FUNCTION b.ftrig_conferenza() RETURNS TRIGGER AS
 $$
 DECLARE
-    articolip    text[]  := string_to_array(NEW.Doi_Articoli_Presentati, ' ');
+    articolip   text[]  := string_to_array(NEW.Doi_Articoli_Presentati, ' ');
     narticoli   INTEGER := array_length(articolip, 1);
     newArticoli b.Articoli.id_Articoli%TYPE;
     newevento   b.evento.ID_Evento%TYPE;
     vcheck      INTEGER := 0;
-    nome text;
+    nome        text;
 BEGIN
     FOR i IN 1..narticoli
         LOOP
@@ -377,20 +377,21 @@ BEGIN
     ELSE --Se tutti gli articoli esistono inserisco l'evento
         nome = NEW.nome;
         RAISE NOTICE 'Inserisco l''evento';
-        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
+        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine,
+                              responsabile) --Inserisco l'evento
         VALUES (NEW.nome, NEW.indirizzo, NEW.strutturaospitante, NEW.datainizio, NEW.datafine, NEW.responsabile);
         RAISE NOTICE 'Evento inserito con successo';
 
         --Recupero l'id dell'evento appena inserito
-         newevento = (SELECT id_evento
-                      FROM b.evento e
-                      WHERE e.nome = NEW.nome
-                        AND indirizzo = NEW.indirizzo
-                        AND strutturaospitante = NEW.strutturaospitante
-                        AND datainizio = NEW.datainizio
-                        AND datafine = NEW.datafine
-                        AND responsabile = NEW.responsabile);
-         RAISE NOTICE 'Evento inserito con successo con id {%}', newevento;
+        newevento = (SELECT id_evento
+                     FROM b.evento e
+                     WHERE e.nome = NEW.nome
+                       AND indirizzo = NEW.indirizzo
+                       AND strutturaospitante = NEW.strutturaospitante
+                       AND datainizio = NEW.datainizio
+                       AND datafine = NEW.datafine
+                       AND responsabile = NEW.responsabile);
+        RAISE NOTICE 'Evento inserito con successo con id {%}', newevento;
 
         --Inserisco le conferenze per ogni Articoli
         FOR i IN 1..narticoli
@@ -623,6 +624,37 @@ EXECUTE FUNCTION b.ftrig_stocklibri();
 --Funzioni Applicativo
 ------------------------------------------------------------------------------------------------------------------------
 
+--Funzione che restituisc la disponibilità di una serie in un negozio
+
+CREATE OR REPLACE FUNCTION b.getDisponibilitaSerie(inputSerieISSN b.Serie.ISSN%TYPE) RETURNS boolean AS
+$$
+DECLARE
+    scorrilibri  b.libri.id_libri%TYPE;
+    cursoreLibri CURSOR FOR (SELECT id_libri
+                             FROM (b.libri l NATURAL JOIN b.libriinserie ls)
+                                      JOIN b.serie s ON s.id_serie = ls.id_serie
+                             WHERE ISSN = inputSerieISSN);
+    nScorriLibri INTEGER := (SELECT count(*)
+                             FROM (b.libri l NATURAL JOIN b.libriinserie ls)
+                                      JOIN b.serie s ON s.id_serie = ls.id_serie
+                             WHERE ISSN = inputSerieISSN);
+BEGIN
+    OPEN cursorelibri;
+    FOR i IN 1..nScorriLibri
+        LOOP
+            FETCH cursoreLibri INTO scorrilibri;
+            if NOT b.getDisponibilita(scorrilibri) THEN
+                CLOSE cursoreLibri;
+                return false;
+            end if;
+        end loop;
+    CLOSE cursoreLibri;
+    return true;
+end;
+$$
+    LANGUAGE plpgsql;
+
+
 --Funzione che restituisce la disponibilità di un libro in un negozio
 CREATE OR REPLACE FUNCTION b.getDisponibilita(inputLibro b.libri.id_libri%TYPE) RETURNS boolean AS
 $$
@@ -727,15 +759,16 @@ FROM (b.libri as l NATURAL JOIN b.autorelibri as al)
 
 --View Libri con Serie
 CREATE VIEW b.view_libri_serie AS
-SELECT l.titolo,
-       l.isbn,
-       l.datapubblicazione,
-       l.editore,
-       l.genere,
-       l.lingua,
-       l.formato,
-       l.prezzo,
-       s.nome as nome_serie
+SELECT DISTINCT l.titolo,
+                l.isbn,
+                l.datapubblicazione,
+                l.editore,
+                l.genere,
+                l.lingua,
+                l.formato,
+                l.prezzo,
+                s.nome as nome_serie,
+                ISSN
 FROM (b.libri as l NATURAL JOIN b.libriinserie as ls)
          JOIN b.serie as s on ls.id_serie = s.id_serie;
 
@@ -793,7 +826,7 @@ SELECT distinct titolo,
                 prezzo,
                 lingua,
                 formato,
-                b.getDisponibilita(l.id_libri)
+                b.getDisponibilita(l.id_libri) AS Disponibilità
 FROM b.libri l;
 
 --Result View Articoli
@@ -807,10 +840,11 @@ FROM b.articoli a;
 
 --Result View Serie
 CREATE VIEW b.resultView_serie AS
-SELECT distinct nome_serie as nome,
+SELECT distinct nome_serie                    as nome,
                 editore,
                 lingua,
-                formato
+                formato,
+                b.getDisponibilitaSerie(issn) AS Disponibilità
 FROM b.view_libri_serie;
 
 --Result View Riviste
@@ -822,3 +856,4 @@ SELECT distinct titolo_riviste as nome,
                 formato
 FROM b.view_articoli_riviste;
 ------------------------------------------------------------------------------------------------------------------------
+
