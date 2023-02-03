@@ -236,7 +236,7 @@ public class ImplementazioneFiltri implements FiltriDao {
             PreparedStatement preparedStatement = connection.prepareStatement(getConferenzeQuery);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                conferenze.add(rs.getString("strutturaospitante") + " " + rs.getString("datainizio"));
+                conferenze.add(rs.getString("titolo_conferenza"));
             }
         }
         catch (SQLException e){
@@ -264,7 +264,7 @@ public class ImplementazioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getLingueRiviste() {
         ArrayList<String> lingue = new ArrayList<>();
-        String getLingueQuery = "SELECT DISTINCT lingua FROM b.riviste";
+        String getLingueQuery = "SELECT DISTINCT lingua FROM b.view_articoli_riviste";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getLingueQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -280,7 +280,7 @@ public class ImplementazioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getFormatiRiviste() {
         ArrayList<String> formati = new ArrayList<>();
-        String getFormatiQuery = "SELECT DISTINCT formato FROM b.riviste";
+        String getFormatiQuery = "SELECT DISTINCT formato FROM b.view_articoli_riviste";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getFormatiQuery);
             ResultSet rs = preparedStatement.executeQuery();

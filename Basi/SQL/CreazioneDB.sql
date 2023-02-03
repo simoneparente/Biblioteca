@@ -387,8 +387,8 @@ BEGIN
 
         --Recupero l'id dell'evento appena inserito
          newevento = (SELECT id_evento
-                      FROM b.evento
-                      WHERE nome = NEW.nome
+                      FROM b.evento e
+                      WHERE e.nome = NEW.nome
                         AND indirizzo = NEW.indirizzo
                         AND strutturaospitante = NEW.strutturaospitante
                         AND datainizio = NEW.datainizio
