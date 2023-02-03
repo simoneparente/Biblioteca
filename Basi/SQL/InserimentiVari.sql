@@ -58,3 +58,8 @@ INSERT INTO b.ins_conferenza (indirizzo, strutturaospitante, datainizio, datafin
                               doi_articoli_presentati)
 VALUES ('Via Roma 1', 'Casa Editrice', '2018-01-01', '2018-01-01', 'Mario Rossi',
         '10.1101/2027.12.31 10.1101/2031.12.31');
+
+INSERT INTO b.evento (nome, datainizio, datafine, indirizzo, strutturaospitante, responsabile)
+values ('Conferenza', '2019-01-01', '2019-01-01', 'Via Roma 1', 'Casa Editrice', 'Mario Rossi');
+
+SELECT id_evento FROM b.evento WHERE nome = 'Conferenza' AND datainizio = '2019-01-01' AND datafine = '2019-01-01' AND indirizzo = 'Via Roma 1' AND strutturaospitante = 'Casa Editrice' AND responsabile = 'Mario Rossi';

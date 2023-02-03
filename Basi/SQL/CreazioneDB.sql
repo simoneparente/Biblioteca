@@ -353,50 +353,54 @@ FROM b.jolly,
 CREATE OR REPLACE FUNCTION b.ftrig_conferenza() RETURNS TRIGGER AS
 $$
 DECLARE
-    articoli    text[]  := string_to_array(NEW.Doi_Articoli_Presentati, ' ');
-    narticoli   INTEGER := array_length(articoli, 1);
+    articolip    text[]  := string_to_array(NEW.Doi_Articoli_Presentati, ' ');
+    narticoli   INTEGER := array_length(articolip, 1);
     newArticoli b.Articoli.id_Articoli%TYPE;
     newevento   b.evento.ID_Evento%TYPE;
     vcheck      INTEGER := 0;
+    nome text;
 BEGIN
     FOR i IN 1..narticoli
         LOOP
-            newArticoli = (SELECT id_Articoli FROM b.Articoli WHERE doi = articoli[i]);
+            newArticoli = (SELECT id_Articoli FROM b.Articoli WHERE doi = articolip[i]);
             --Controllo se l'Articoli esiste
-            IF NOT EXISTS(SELECT * FROM b.Articoli WHERE doi = articoli[i]) THEN
+            IF NOT EXISTS(SELECT * FROM b.Articoli WHERE doi = articolip[i]) THEN
                 vcheck = 1;
-                RAISE NOTICE 'Articoli {%} non presente', articoli[i];
+                RAISE NOTICE 'Articoli {%} non presente', articolip[i];
                 --Controllo se l'Articoli è già presente in una riviste
             ELSEIF EXISTS(SELECT * FROM b.Articoliinriviste WHERE id_Articoli = newArticoli) THEN
                 vcheck = 2;
-                RAISE NOTICE 'Articoli {%} già presente in una riviste', articoli[i];
+                RAISE NOTICE 'Articoli {%} già presente in una riviste', articolip[i];
             END IF;
         end loop;
 
     IF (vcheck = 1) THEN
         RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO INESISTENTI';
     ELSEIF (vcheck = 2) THEN
-        RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA RIVISTe';
+        RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA RIVISTE';
     ELSE --Se tutti gli articoli esistono inserisco l'evento
-        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine,
-                              responsabile) --Inserisco l'evento
+        nome = NEW.nome;
+        RAISE NOTICE 'Inserisco l''evento';
+        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine, responsabile) --Inserisco l'evento
         VALUES (NEW.nome, NEW.indirizzo, NEW.strutturaospitante, NEW.datainizio, NEW.datafine, NEW.responsabile);
+        RAISE NOTICE 'Evento inserito con successo';
 
         --Recupero l'id dell'evento appena inserito
-        newevento = (SELECT id_evento
-                     FROM b.evento
-                     WHERE nome = NEW.nome
-                       AND indirizzo = NEW.indirizzo
-                       AND strutturaospitante = NEW.strutturaospitante
-                       AND datainizio = NEW.datainizio
-                       AND datafine = NEW.datafine
-                       AND responsabile = NEW.responsabile);
+         newevento = (SELECT id_evento
+                      FROM b.evento
+                      WHERE nome = NEW.nome
+                        AND indirizzo = NEW.indirizzo
+                        AND strutturaospitante = NEW.strutturaospitante
+                        AND datainizio = NEW.datainizio
+                        AND datafine = NEW.datafine
+                        AND responsabile = NEW.responsabile);
+         RAISE NOTICE 'Evento inserito con successo con id {%}', newevento;
 
         --Inserisco le conferenze per ogni Articoli
         FOR i IN 1..narticoli
             LOOP
                 newArticoli =
-                        (SELECT id_Articoli FROM b.Articoli WHERE doi = articoli[i]); --Recupero l'id dell'Articoli
+                        (SELECT id_Articoli FROM b.Articoli WHERE doi = articolip[i]); --Recupero l'id dell'Articoli
                 INSERT INTO b.conferenza (Articoli, evento) VALUES (newArticoli, newevento);
             end loop;
     END IF;

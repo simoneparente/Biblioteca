@@ -20,3 +20,6 @@ INSERT INTO b.players (id, about, age) VALUES (generate_series(1, 1000),  repeat
 
 INSERT INTO b.ins_libro_autore_serie(titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo, nome_serie_di_appartenenza, issn_serie_di_appartenenza)
 VALUES ()
+
+
+
