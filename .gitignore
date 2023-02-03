@@ -12,3 +12,7 @@ Basi/SQL/.DS_Store
 Basi/SQL/Trigger/.DS_Store
 Basi/.idea/Basi.iml
 Basi/.idea/Basi.iml
+*.class
+*.iml
+*.iml
+Object/Java/Bibliotech/.idea/Bibliotech.iml

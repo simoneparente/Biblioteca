@@ -17,7 +17,6 @@ public class View extends JFrame{
     private JLabel logoLabel;
     View(String nome){
         FlatDarkLaf.setup();
-        //this.setName("Bibliotech"); cosa fai?
         this.setTitle(nome); //nome visualizzato sul JFrame
         this.setIconImage(iconaFinestre.getImage()); //icona del JFrame
         this.setSize(720,560); //dimensione del JFrame
