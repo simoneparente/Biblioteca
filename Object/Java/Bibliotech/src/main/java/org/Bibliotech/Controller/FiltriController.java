@@ -32,9 +32,7 @@ public class FiltriController {
     public ArrayList<String> leggiLingueLibri(){
         return filtri.getLinguaLibri();
     }
-    public ArrayList<String> leggiPresentatoInLibri(){
-        return filtri.getPresentatoInLibro();
-    }
+    public ArrayList<String> leggiSerieLibri() { return filtri.getSerieLibri();}
     public ArrayList<String> leggiAutoriArticoli(){
         return filtri.getAutoriArticoli();
     }
@@ -50,9 +48,15 @@ public class FiltriController {
     public ArrayList<String> leggiLingueArticoli(){
         return filtri.getLinguaArticoli();
     }
-    public ArrayList<String> leggiPresentatoInArticoli(){
-        return filtri.getPresentatoInArticoli();
-    }
-    public ArrayList<String> getColumns(String nomeTable) { return filtri.getColumns(nomeTable);
-    }
+    public ArrayList<String> leggiRivisteArticoli(){return filtri.getRivistaArticoli();}
+    public ArrayList<String> leggiConferenzeArticoli(){return filtri.getConferenzeArticoli();}
+    public ArrayList<String> leggiArgomentiRiviste(){return filtri.getArgomentiRiviste();}
+    public ArrayList<String> leggiLingueRiviste(){return filtri.getLingueRiviste();}
+    public ArrayList<String> leggiFormatiRiviste(){return filtri.getFormatiRiviste();}
+    public ArrayList<String> leggiEditoriSerie(){return filtri.getEditoriSerie();}
+    public ArrayList<String> leggiLingueSerie(){return filtri.getLingueSerie();}
+    public ArrayList<String> leggiFormatiSerie(){return filtri.getFormatiSerie();}
+    public ArrayList<String> getColumns(String nomeTable) { return filtri.getColumns(nomeTable);}
+
+
 }

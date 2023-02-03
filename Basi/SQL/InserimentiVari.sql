@@ -39,7 +39,6 @@ VALUES ('Il Signore degli Anelli 1', '978-88-17-88000-0', 'J.R.R._Tolkien ciao_f
 INSERT INTO b.ins_presentazione(isbn, indirizzo, strutturaospitante, datainizio, datafine, responsabile)
 VALUES ('978-88-17-88000-0', 'Via Roma 1', 'Mondadori', '2020-12-31', '2021-12-31', 'Mario Rossi');
 
-
 --INSERT NEGOZI
 INSERT INTO b.negozio(nome, tipo)
 VALUES  ('NEGOEIFJDOFSKID', 'Fisico');
@@ -54,7 +53,7 @@ VALUES ('978-88-04-58339-8', 'Il Signore degli Anelli', 'Fantasy', '1954-07-29',
         '10.1101/2020.12.31 10.1101/2021.12.31');
 
 --Insert Articolo Conferenza
-INSERT INTO b.ins_conferenza (indirizzo, strutturaospitante, datainizio, datafine, responsabile,
+INSERT INTO b.ins_conferenza (nome,indirizzo, strutturaospitante, datainizio, datafine, responsabile,
                               doi_articoli_presentati)
-VALUES ('Via Roma 1', 'Casa Editrice', '2018-01-01', '2018-01-01', 'Mario Rossi',
+VALUES ('culo','Via Roma 1', 'Casa Editrice', '2018-01-01', '2018-01-01', 'Mario Rossi',
         '10.1101/2027.12.31 10.1101/2031.12.31');
