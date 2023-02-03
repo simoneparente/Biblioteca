@@ -283,22 +283,22 @@ FROM b.riviste,
 CREATE OR REPLACE FUNCTION b.ftrig_riviste() RETURNS TRIGGER AS
 $$
 DECLARE
-    articoli    text[]  := string_to_array(NEW.Doi_Articoli_Pubblicati, '@');
-    narticoli   INTEGER := array_length(articoli, 1);
+    articolip    text[]  := string_to_array(NEW.Doi_Articoli_Pubblicati, ' ');
+    narticoli   INTEGER := array_length(articolip, 1);
     newArticoli b.Articoli.id_Articoli%TYPE;
     newriviste  b.riviste.ID_Riviste%TYPE;
     vcheck      INTEGER := 0;
 BEGIN
     FOR i IN 1..narticoli
         LOOP
-            newArticoli = (SELECT id_Articoli FROM b.Articoli WHERE doi = articoli[i]);
+            newArticoli = (SELECT id_Articoli FROM b.Articoli WHERE doi = articolip[i]);
             --Controllo se l'Articoli esiste
-            IF NOT EXISTS(SELECT * FROM b.Articoli WHERE doi = articoli[i]) THEN
-                RAISE NOTICE 'Articoli {%} non presente', articoli[i];
+            IF NOT EXISTS(SELECT * FROM b.Articoli WHERE doi = articolip[i]) THEN
+                RAISE NOTICE 'Articoli {%} non presente', articolip[i];
                 vcheck := 1;
                 --Controllo se l'Articoli è già presente in una conferenza
-            ELSEIF EXISTS(SELECT * FROM b.conferenza WHERE Articoli = newArticoli) THEN
-                RAISE NOTICE 'Articoli {%} già presente in una conferenza', articoli[i];
+            ELSEIF EXISTS(SELECT * FROM b.conferenza c WHERE c.articoli = newArticoli) THEN
+                RAISE NOTICE 'Articoli {%} già presente in una conferenza', articolip[i];
                 vcheck := 2;
             END IF;
         END LOOP;
@@ -319,7 +319,7 @@ BEGIN
         --Inserisco gli articoli nella riviste
         FOR i IN 1..narticoli
             LOOP
-                SELECT id_Articoli INTO newArticoli FROM b.Articoli WHERE doi = articoli[i]; --recupero id Articoli
+                SELECT id_Articoli INTO newArticoli FROM b.Articoli WHERE doi = articolip[i]; --recupero id Articoli
                 INSERT INTO b.Articoliinriviste (id_Articoli, id_riviste)
                 VALUES (newArticoli, newriviste);
             END LOOP;
