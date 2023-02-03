@@ -615,37 +615,6 @@ EXECUTE FUNCTION b.ftrig_stocklibri();
 
 
 ------------------------------------------------------------------------------------------------------------------------
-                                            --View Utili
-------------------------------------------------------------------------------------------------------------------------
-
---View Libri con autore
-CREATE VIEW b.view_libri_autore AS
-SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, a.nome, a.cognome
-FROM (b.libri as l NATURAL JOIN b.autorelibri as al) JOIN b.autore as a on al.id_autore = a.id_autore;
-
---View Libri con Serie
-CREATE VIEW b.view_libri_serie AS
-SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, s.nome as nome_serie
-FROM (b.libri as l NATURAL JOIN b.libriinserie as ls) JOIN b.serie as s on ls.id_serie = s.id_serie;
-
---View Articoli con Autore
-CREATE VIEW b.view_Articoli_autore AS
-SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, au.nome, au.cognome
-FROM (b.Articoli as a NATURAL JOIN b.autoreArticoli as aa) JOIN b.autore as au on aa.id_autore = au.id_autore;
-
---View Articoli con Riviste
-CREATE VIEW b.view_Articoli_riviste AS
-SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, r.nome as titolo_riviste
-FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar) JOIN b.riviste as r on ar.id_riviste = r.id_riviste;
-
---View Articoli con Confereza
-CREATE VIEW b.view_Articoli_conferenza AS
-SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, e.nome as titolo_conferenza
-FROM (b.Articoli as a NATURAL JOIN b.conferenza as c) JOIN b.evento as e on c.evento = e.id_evento;
-------------------------------------------------------------------------------------------------------------------------
-
-
-------------------------------------------------------------------------------------------------------------------------
                                        --Funzioni Applicativo
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -696,3 +665,52 @@ BEGIN
 END;
 $$
     LANGUAGE plpgsql;
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+                                        --View Result Applicativo
+------------------------------------------------------------------------------------------------------------------------
+SELECT distinct titolo,
+                b.getAutoriByLibro(l.id_libri) AS Autore,
+                editore,
+                prezzo,
+                lingua,
+                formato,
+                b.getDisponibilita(l.id_libri)
+FROM (b.libri l JOIN b.autorelibri al ON l.id_libri = al.id_libri)
+         JOIN b.autore a ON a.id_autore = al.id_autore;
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+                                            --View Utili
+------------------------------------------------------------------------------------------------------------------------
+
+--View Libri con autore
+CREATE VIEW b.view_libri_autore AS
+SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, a.nome, a.cognome
+FROM (b.libri as l NATURAL JOIN b.autorelibri as al) JOIN b.autore as a on al.id_autore = a.id_autore;
+
+--View Libri con Serie
+CREATE VIEW b.view_libri_serie AS
+SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo, s.nome as nome_serie
+FROM (b.libri as l NATURAL JOIN b.libriinserie as ls) JOIN b.serie as s on ls.id_serie = s.id_serie;
+
+--View Articoli con Autore
+CREATE VIEW b.view_Articoli_autore AS
+SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, au.nome, au.cognome
+FROM (b.Articoli as a NATURAL JOIN b.autoreArticoli as aa) JOIN b.autore as au on aa.id_autore = au.id_autore;
+
+--View Articoli con Riviste
+CREATE VIEW b.view_Articoli_riviste AS
+SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, r.nome as titolo_riviste
+FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar) JOIN b.riviste as r on ar.id_riviste = r.id_riviste;
+
+--View Articoli con Confereza
+CREATE VIEW b.view_Articoli_conferenza AS
+SELECT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato, e.nome as titolo_conferenza
+FROM (b.Articoli as a NATURAL JOIN b.conferenza as c) JOIN b.evento as e on c.evento = e.id_evento;
+------------------------------------------------------------------------------------------------------------------------
