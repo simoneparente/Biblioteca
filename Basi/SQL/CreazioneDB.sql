@@ -269,7 +269,7 @@ CREATE OR REPLACE VIEW b.ins_riviste AS
 SELECT issn,
        nome,
        argomento,
-       datapubblicazione,,
+       datapubblicazione,
        responsabile,
        prezzo,
        text as Doi_Articoli_Pubblicati --Più articoli (DOI1 DOI2)
@@ -671,41 +671,6 @@ END;
 $$
     LANGUAGE plpgsql;
 
---Funzione che restituisce una stringa con i nomi degli autori di un libro
-CREATE OR REPLACE FUNCTION b.getAutoriByLibro(inputIdLibro b.libri.id_libri%TYPE) RETURNS TEXT AS
-$$
-DECLARE
-    returnAutori     TEXT;
-    cursore CURSOR FOR (SELECT nome, cognome
-                        FROM (b.autore a NATURAL JOIN b.autorelibri al)
-                                 JOIN b.libri l ON l.id_libri = al.id_libri
-                        WHERE l.id_libri = inputIdLibro);
-    dimensioneAutori INTEGER= (SELECT COUNT(*)
-                               FROM (b.autore a NATURAL JOIN b.autorelibri al)
-                                        JOIN b.libri l ON l.id_libri = al.id_libri
-                               WHERE l.id_libri = inputIdLibro);
-    autoreNome       b.autore.nome%TYPE;
-    autoreCognome    b.autore.cognome%TYPE;
-    controllo        bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
-BEGIN
-    OPEN cursore;
-    FOR b IN 1..dimensioneAutori
-        LOOP
-            FETCH cursore INTO autoreNome, autoreCognome;
-            if controllo IS false THEN
-                returnAutori = autoreNome || ' ' || autoreCognome;
-                controllo = true;
-            else
-                returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
-            end if;
-        END LOOP;
-    CLOSE cursore;
-    return returnAutori;
-END;
-$$
-    LANGUAGE plpgsql;
-
-
 --Funzione che restituisce una stringa con i nomi degli autori di un articolo
 CREATE OR REPLACE FUNCTION b.getAutoriByArticolo(inputIdArticolo b.articoli.id_articoli%TYPE) RETURNS TEXT AS
 $$
@@ -738,32 +703,6 @@ BEGIN
     return returnAutori;
 end;
 $$ LANGUAGE plpgsql;
-------------------------------------------------------------------------------------------------------------------------
-
-
-------------------------------------------------------------------------------------------------------------------------
---View Result Applicativo
-------------------------------------------------------------------------------------------------------------------------
-
---Result View Libri
-CREATE VIEW b.resultView_libri AS
-SELECT distinct titolo,
-                b.getAutoriByLibro(l.id_libri) AS Autore,
-                editore,
-                prezzo,
-                lingua,
-                formato,
-                b.getDisponibilita(l.id_libri)
-FROM b.libri l;
-
-CREATE VIEW b.resultView_articoli AS
-SELECT distinct titolo,
-                b.getAutoriByArticolo(a.id_articoli),
-                lingua,
-                formato,
-                editore
-FROM b.articoli a;
-
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -839,4 +778,47 @@ SELECT a.titolo,
        e.nome as titolo_conferenza
 FROM (b.Articoli as a NATURAL JOIN b.conferenza as c)
          JOIN b.evento as e on c.evento = e.id_evento;
+------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------
+--ResultView Applicativo
+------------------------------------------------------------------------------------------------------------------------
+
+--Result View Libri
+CREATE VIEW b.resultView_libri AS
+SELECT distinct titolo,
+                b.getAutoriByLibro(l.id_libri) AS Autore,
+                editore,
+                prezzo,
+                lingua,
+                formato,
+                b.getDisponibilita(l.id_libri)
+FROM b.libri l;
+
+--Result View Articoli
+CREATE VIEW b.resultView_articoli AS
+SELECT distinct titolo,
+                b.getAutoriByArticolo(a.id_articoli) AS Autori,
+                lingua,
+                formato,
+                editore
+FROM b.articoli a;
+
+--Result View Serie
+CREATE VIEW b.resultView_serie AS
+SELECT distinct nome_serie as nome,
+                editore,
+                lingua,
+                formato
+FROM b.view_libri_serie;
+
+--Result View Riviste
+CREATE VIEW b.resultView_riviste AS
+SELECT distinct titolo_riviste as nome,
+                disciplina,
+                editore,
+                lingua,
+                formato
+FROM b.view_articoli_riviste;
 ------------------------------------------------------------------------------------------------------------------------
