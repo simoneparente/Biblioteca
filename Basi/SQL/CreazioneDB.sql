@@ -441,6 +441,7 @@ DECLARE
     autore_cognome b.autore.cognome%TYPE;
     newLibri       b.libri.ID_Libri%TYPE;
     newSerie       b.serie.ID_Serie%TYPE;
+    oldFormato     b.libri.formato%TYPE;
 BEGIN
     --Verifico che il libri non sia già presente
     IF EXISTS(SELECT * FROM b.libri WHERE titolo = NEW.titolo AND datapubblicazione = NEW.datapubblicazione) THEN
@@ -482,19 +483,27 @@ BEGIN
 
             --Verifico che la serie non sia già presente
             IF EXISTS(SELECT * FROM b.serie WHERE ISSN = NEW.ISSN_Serie_Di_Appartenenza) THEN
-                newSerie = (SELECT id_serie FROM b.serie WHERE issn = New.ISSN_Serie_Di_Appartenenza);
                 RAISE NOTICE 'Serie già presente';
-                --Aggiorno il libri successivo
-                UPDATE b.libriinserie
-                SET librisuccessivo = newLibri
-                WHERE id_serie = newSerie
-                  AND librisuccessivo IS NULL;
-                RAISE NOTICE 'LIBRi SUCCESSIVO INSERITO';
+                oldFormato = (SELECT DISTINCT l.formato
+                              FROM (b.libri l NATURAL JOIN b.libriinserie ls)
+                                       JOIN b.serie s ON ls.id_serie = s.id_serie
+                              WHERE s.issn = NEW.ISSN_Serie_Di_Appartenenza);
+                RAISE NOTICE 'Formato vecchio: %', oldFormato;
+                IF (NEW.formato = oldFormato) THEN
+                    newSerie = (SELECT id_serie FROM b.serie WHERE issn = New.ISSN_Serie_Di_Appartenenza);
+                    --Aggiorno il libri successivo
+                    UPDATE b.libriinserie
+                    SET librisuccessivo = newLibri
+                    WHERE id_serie = newSerie
+                      AND librisuccessivo IS NULL;
+                    RAISE NOTICE 'LIBRO SUCCESSIVO INSERITO';
 
-                --Aggiorno la tabella libriinserie
-                INSERT INTO b.libriinserie (id_serie, libri) VALUES (newSerie, newLibri);
-                RAISE NOTICE 'NUOVO LIBRi INSERITO';
-
+                    --Aggiorno la tabella libriinserie
+                    INSERT INTO b.libriinserie (id_serie, libri) VALUES (newSerie, newLibri);
+                    RAISE NOTICE 'NUOVO LIBRO INSERITO';
+                ELSE
+                    RAISE NOTICE 'LIBRO NON INSERITO FORMATO SBAGLIATO';
+                END IF;
             ELSE --NON ci sono altri libri, il libri è il primo della serie
                 RAISE NOTICE 'Serie non presente';
 
@@ -550,7 +559,7 @@ BEGIN
         RAISE NOTICE 'Esista già una presentazione per questo libri!! Presentazione non inserita';
     ELSE --Inserisco la presentazione
         INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine,
-                              responsabile) --Inserisco l'evento
+                              responsabile) --Inserisco l'¬evento
         VALUES (NEW.nome, NEW.Indirizzo, NEW.StrutturaOspitante, NEW.DataInizio, NEW.DataFine, NEW.Responsabile);
         INSERT INTO b.presentazione (evento, libri) --Inserisco la presentazione
         SELECT e.ID_evento, l.ID_libri --Trasformo l'ISBN in un ID e recupero l'ID dell'evento
@@ -625,7 +634,6 @@ EXECUTE FUNCTION b.ftrig_stocklibri();
 ------------------------------------------------------------------------------------------------------------------------
 
 --Funzione che restituisc la disponibilità di una serie in un negozio
-
 CREATE OR REPLACE FUNCTION b.getDisponibilitaSerie(inputSerieISSN b.Serie.ISSN%TYPE) RETURNS boolean AS
 $$
 DECLARE
@@ -857,3 +865,6 @@ SELECT distinct titolo_riviste as nome,
 FROM b.view_articoli_riviste;
 ------------------------------------------------------------------------------------------------------------------------
 
+SELECT DISTINCT l.formato
+FROM (b.libri l NATURAL JOIN b.libriinserie ls)
+         JOIN b.serie s ON ls.id_serie = s.id_serie
