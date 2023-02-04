@@ -484,12 +484,12 @@ BEGIN
             --Verifico che la serie non sia già presente
             IF EXISTS(SELECT * FROM b.serie WHERE ISSN = NEW.ISSN_Serie_Di_Appartenenza) THEN
                 RAISE NOTICE 'Serie già presente';
-                oldFormato = (SELECT DISTINCT l.formato
-                              FROM (b.libri l NATURAL JOIN b.libriinserie ls)
-                                       JOIN b.serie s ON ls.id_serie = s.id_serie
-                              WHERE s.issn = NEW.ISSN_Serie_Di_Appartenenza);
-                RAISE NOTICE 'Formato vecchio: %', oldFormato;
-                IF (NEW.formato = oldFormato) THEN
+                --oldFormato = (SELECT DISTINCT l.formato
+                --              FROM (b.libri l NATURAL JOIN b.libriinserie ls)
+                --                       JOIN b.serie s ON ls.id_serie = s.id_serie
+                --              WHERE s.issn = NEW.ISSN_Serie_Di_Appartenenza);
+                --RAISE NOTICE 'Formato vecchio: %', oldFormato;
+                --IF (NEW.formato = oldFormato) THEN
                     newSerie = (SELECT id_serie FROM b.serie WHERE issn = New.ISSN_Serie_Di_Appartenenza);
                     --Aggiorno il libri successivo
                     UPDATE b.libriinserie
@@ -515,7 +515,7 @@ BEGIN
                 --Inserisco in libriinserie
                 INSERT INTO b.libriinserie (id_serie, libri) VALUES (newSerie, newLibri);
                 RAISE NOTICE 'NUOVO LIBRi INSERITO';
-            end if;
+            --end if;
         end if;
     END IF;
     RETURN NEW;
