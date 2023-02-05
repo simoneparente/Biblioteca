@@ -70,10 +70,18 @@ BEGIN
             IF EXISTS(SELECT * FROM b.serie WHERE ISSN = NEW.ISSN_Serie_Di_Appartenenza) THEN
                 RAISE NOTICE 'Serie già presente';
                 newSerie = (SELECT id_serie FROM b.serie WHERE issn = New.ISSN_Serie_Di_Appartenenza);
-                FOR
+                --Aggiorno il libro successivo
+                UPDATE b.libriinserie
+                SET librisuccessivo = newLibro
+                WHERE id_serie = newSerie
+                  AND librisuccessivo IS NULL;
+                RAISE NOTICE 'LIBRO SUCCESSIVO INSERITO';
+
                 --Aggiorno la tabella libriinserie
                 INSERT INTO b.libriinserie (id_serie, id_libro) VALUES (newSerie, newLibro);
                 RAISE NOTICE 'NUOVO LIBRO INSERITO';
+            ELSE
+                RAISE NOTICE 'LIBRO NON INSERITO FORMATO SBAGLIATO';
             END IF;
         ELSE --NON ci sono altri libri, il libri è il primo della serie
             RAISE NOTICE 'Serie non presente';

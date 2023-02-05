@@ -35,7 +35,7 @@ CREATE TABLE b.AutoreArticoli
 
     CONSTRAINT PK_AutoreArticoli PRIMARY KEY (ID_Autore, ID_Articoli),
     CONSTRAINT FK_AutoreArticoli_Autore FOREIGN KEY (ID_Autore) REFERENCES b.Autore (ID_Autore),
-    CONSTRAINT FK_AutoreArticoli_Articoli FOREIGN KEY (ID_Articoli) REFERENCES b.Articoli (ID_Articoli)
+    CONSTRAINT FK_AutoreArticoli_Articoli FOREIGN KEY (ID_Articoli) REFERENCES b.Articoli (ID_Articoli) ON DELETE CASCADE
 );
 
 CREATE TABLE b.Riviste
@@ -57,7 +57,7 @@ CREATE TABLE b.ArticoliInRiviste
     ID_Riviste  SERIAL,
 
     CONSTRAINT PK_ArticoliInRiviste PRIMARY KEY (ID_Articoli, ID_Riviste),
-    CONSTRAINT FK_ArticoliInRiviste_Articoli FOREIGN KEY (ID_Articoli) REFERENCES b.Articoli (ID_Articoli),
+    CONSTRAINT FK_ArticoliInRiviste_Articoli FOREIGN KEY (ID_Articoli) REFERENCES b.Articoli (ID_Articoli) ON DELETE CASCADE,
     CONSTRAINT FK_ArticoliInRiviste_Riviste FOREIGN KEY (ID_Riviste) REFERENCES b.Riviste (ID_Riviste)
 );
 
@@ -82,7 +82,7 @@ CREATE TABLE b.Conferenza
     Evento   SERIAL,
 
     CONSTRAINT PK_Conferenza PRIMARY KEY (Articoli, Evento),
-    CONSTRAINT FK_Conferenza_Articoli FOREIGN KEY (Articoli) REFERENCES b.Articoli (ID_Articoli),
+    CONSTRAINT FK_Conferenza_Articoli FOREIGN KEY (Articoli) REFERENCES b.Articoli (ID_Articoli) ON DELETE CASCADE,
     CONSTRAINT FK_Conferenza_Evento FOREIGN KEY (Evento) REFERENCES b.Evento (ID_Evento)
 );
 
@@ -110,7 +110,7 @@ CREATE TABLE b.AutoreLibri
 
     CONSTRAINT PK_AutoreLibri PRIMARY KEY (ID_Autore, ID_Libri),
     CONSTRAINT FK_AutoreLibri_Autore FOREIGN KEY (ID_Autore) REFERENCES b.Autore (ID_Autore),
-    CONSTRAINT FK_AutoreLibri_Libri FOREIGN KEY (ID_Libri) REFERENCES b.Libri (ID_Libri)
+    CONSTRAINT FK_AutoreLibri_Libri FOREIGN KEY (ID_Libri) REFERENCES b.Libri (ID_Libri) ON DELETE CASCADE
 );
 
 CREATE TABLE b.Presentazione
@@ -120,7 +120,7 @@ CREATE TABLE b.Presentazione
 
     CONSTRAINT PK_Presentazione PRIMARY KEY (Evento, Libri),
     CONSTRAINT FK_Presentazione_Evento FOREIGN KEY (Evento) REFERENCES b.Evento (ID_Evento),
-    CONSTRAINT FK_Presentazione_Libri FOREIGN KEY (Libri) REFERENCES b.Libri (ID_Libri)
+    CONSTRAINT FK_Presentazione_Libri FOREIGN KEY (Libri) REFERENCES b.Libri (ID_Libri) ON DELETE CASCADE
 );
 
 CREATE TABLE b.Serie
@@ -137,8 +137,10 @@ CREATE TABLE b.LibriINSerie
 (
     ID_Serie        INTEGER,
     Libri           INTEGER,
+    LibriSuccessivo INTEGER,
 
-    CONSTRAINT FK_Serie_Libri FOREIGN KEY (Libri) REFERENCES b.Libri (ID_Libri),
+    CONSTRAINT FK_Serie_Libri FOREIGN KEY (Libri) REFERENCES b.Libri (ID_Libri) ON DELETE CASCADE,
+    CONSTRAINT FK_Serie_LibriSuccessivo FOREIGN KEY (LibriSuccessivo) REFERENCES b.Libri (ID_Libri) ON DELETE CASCADE
 );
 
 CREATE TABLE b.Negozio
@@ -157,7 +159,7 @@ CREATE TABLE b.Stock
     Quantita INTEGER, -- se quantita=0 la tupla viene eliminata (scoprire come si fa)
 
     CONSTRAINT FK_Stock_Negozio FOREIGN KEY (Negozio) REFERENCES b.Negozio (ID_Negozio),
-    CONSTRAINT FK_Stock_Libri FOREIGN KEY (Libri) REFERENCES b.Libri (ID_Libri)
+    CONSTRAINT FK_Stock_Libri FOREIGN KEY (Libri) REFERENCES b.Libri (ID_Libri) ON DELETE CASCADE
 );
 
 ------------------------------------------------------------------------------------------------------------------------
