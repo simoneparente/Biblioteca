@@ -171,4 +171,29 @@ public class ImplementazioneLibro implements org.Bibliotech.DAO.LibroDao {
         String getLibroBySerieQuery = "SELECT l.titolo, l.isbn, l.datapubblicazione, l.editore, l.genere, l.lingua, l.formato, l.prezzo FROM b.view_libri_serie WHERE nome_serie = ?";
         return getLibri(getLibroBySerieQuery, nome, cognome);
     }
+
+    @Override
+    public Libri searchLibro(String query) {
+        Libri libri = new Libri();
+        String searchLibroQuery = query;
+        try {
+            PreparedStatement ps = connection.prepareStatement(searchLibroQuery);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Libro libro = new Libro();
+                libro.setTitolo(rs.getString("titolo"));
+                libro.setGenere(rs.getString("genere"));
+                libro.setEditore(rs.getString("editore"));
+                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setIsbn(rs.getString("isbn"));
+                libro.setFormato(rs.getString("formato"));
+                libro.setLingua(rs.getString("lingua"));
+                libro.setPrezzo(rs.getDouble("prezzo"));
+                libri.addLibro(libro);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return libri;
+    }
 }

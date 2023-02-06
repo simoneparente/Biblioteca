@@ -25,10 +25,10 @@ public class ImplementazioneUtente implements UtenteDao{
             PreparedStatement checkUserExistInDatabaseQuery= connection.prepareStatement(checkUserExistInDatabase);
             checkUserExistInDatabaseQuery.setString(1, username);
             ResultSet rs=checkUserExistInDatabaseQuery.executeQuery();
-            return rs.next(); //se non esiste ritorna false, se esiste ritorna true
+            return rs.next(); //se esiste un utente con quel nome ritorna true
         } catch (SQLException e){
             e.printStackTrace();
-            return true; //non so se va bene !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            return false;
         }
     }
 

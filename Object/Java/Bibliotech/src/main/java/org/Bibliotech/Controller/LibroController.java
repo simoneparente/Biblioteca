@@ -10,10 +10,6 @@ public class LibroController {
     public LibroController() {
         libro = new ImplementazioneLibro();
     }
-
-    public boolean addLibro(String titolo, String isbn, String autorinome_cognome, String dataPubblicazione, String editore, String genere, String lingua, String formato, double prezzo, String nome_serie_di_appartnenza, String issn_serie_di_appartenenza){
-        return libro.addLibro(titolo, isbn, autorinome_cognome, dataPubblicazione, editore, genere, lingua, formato, prezzo, nome_serie_di_appartnenza, issn_serie_di_appartenenza);
-    }
     public Libri leggiLibri(){
         return libro.getLibri();
     }
@@ -55,5 +51,9 @@ public class LibroController {
     }
     public Libri leggiLibriByIsbn(String isbn){
         return libro.getLibroByIsbn(isbn);
+    }
+
+    public Libri cercaLibri(String query){
+        return libro.searchLibro(query);
     }
 }

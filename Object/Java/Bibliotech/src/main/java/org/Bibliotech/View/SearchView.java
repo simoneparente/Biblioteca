@@ -2,10 +2,8 @@ package org.Bibliotech.View;
 
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
-import org.Bibliotech.Model.Autore;
 
 import javax.swing.*;
-import javax.xml.transform.Result;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -65,16 +63,16 @@ public class SearchView extends View {
     private JComboBox autoreArticoloComboBox;
     private JComboBox editoreArticoloComboBox;
     private JComboBox linguaArticoloComboBox;
-    private JTextField dataPubblicazioneDaArticoloComboBox;
-    private JTextField dataPubblicazioneAArticoloComboBox;
+    private JTextField dataPubblicazioneDaArticoloField;
+    private JTextField dataPubblicazioneAArticoloField;
     private JComboBox formatoArticoloComboBox;
     private JComboBox rivistaArticoloComboBox;
     private JCheckBox linguaRivisteCheckBox;
     private JCheckBox dataPubblicazioneRivisteCheckBox;
     private JCheckBox formatoRivisteCheckBox;
     private JComboBox linguaRivisteComboBox;
-    private JTextField dataPubblicazioneDaRivisteComboBox;
-    private JTextField dataPubblicazioneARivisteComboBox;
+    private JTextField dataPubblicazioneDaRivisteField;
+    private JTextField dataPubblicazioneARivisteField;
     private JPanel argomentoRivistePanel;
     private JPanel linguaRivistePanel;
     private JCheckBox prezzoRivisteCheckBox;
@@ -99,10 +97,12 @@ public class SearchView extends View {
     private JPanel linguaSeriePanel;
     private JComboBox linguaSerieComboBox;
     private JPanel dataPubblicazioneSeriePanel;
-    private JTextField dataDaSerieField;
-    private JTextField dataASerieField;
+    private JTextField dataPubblicazioneDaSerieField;
+    private JTextField dataPubblicazioneASerieField;
     private JPanel formatoSeriePanel;
     private JComboBox formatoSerieComboBox;
+
+    private ArrayList<String> filtriSelezionati;
 
     public SearchView() {
         super(nome);
@@ -113,7 +113,7 @@ public class SearchView extends View {
         setFieldsDisabled();
         fillAllComboBoxes();
         ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
-
+        filtriSelezionati = new ArrayList<>();
 
 
         filtriCheckBox.addActionListener(e -> {
@@ -135,7 +135,7 @@ public class SearchView extends View {
         risorsaComboBox.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
-                if(filtriCheckBox.isSelected()) {
+                if (filtriCheckBox.isSelected()) {
                     ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
                 }
             } else if (e.getStateChange() == ItemEvent.SELECTED && !filtriCheckBox.isSelected()) {
@@ -144,27 +144,22 @@ public class SearchView extends View {
         });
         //aggiunge un listener al searchButton che, quando viene premuto, apre la ResultView, implementare ricerca
         searchButton.addActionListener(e -> {
-            if(searchField.getText().equals("")){
+            if (searchField.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Inserire qualcosa da cercare");
-            }
-            else {
+            } else {
                 Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
                 SearchView.super.setLocationRelativeTo(null); //centra la SearchView rispetto al monitor
                 int searchViewX = SearchView.getInstance().getX(); //ottiene la posizione della SearchView
                 int searchViewY = SearchView.getInstance().getY(); //ottiene la posizione della SearchView
                 int searchViewW = SearchView.getInstance().getWidth(); //ottiene la larghezza della SearchView
-                int x; //variabile che conterrà la posizione x della ResultView
-                SearchView.getInstance().setLocation(searchViewX-searchViewW/2, searchViewY); //centra la SearchView rispetto alla ResultView
-                ResultView.getInstance().setLocation(SearchView.getInstance().getX()+searchViewW,searchViewY); //centra la ResultView rispetto alla SearchView
+                SearchView.getInstance().setLocation(searchViewX - searchViewW / 2, searchViewY); //centra la SearchView rispetto alla ResultView
+                ResultView.getInstance().setLocation(SearchView.getInstance().getX() + searchViewW, searchViewY); //centra la ResultView rispetto alla SearchView
                 ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase());
-
-
             }
         });
+
         //aggiunge un listener al autoreLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
-        autoreLibroCheckBox.addActionListener(e ->{
-            autoreLibroComboBox.setEnabled(autoreLibroCheckBox.isSelected());
-        });
+        autoreLibroCheckBox.addActionListener(e -> autoreLibroComboBox.setEnabled(autoreLibroCheckBox.isSelected()));
 
         //aggiunge un listener al editoreLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
         editoreLibroCheckBox.addActionListener(e -> editoreLibroComboBox.setEnabled(editoreLibroCheckBox.isSelected()));
@@ -210,8 +205,8 @@ public class SearchView extends View {
 
         //aggiunge un listener al dataPubblicazioneArticoloCheckBox che, quando viene selezionato, abilita/disabilita i relativi JTextField
         dataPubblicazioneArticoloCheckBox.addActionListener(e -> {
-            dataPubblicazioneDaArticoloComboBox.setEnabled(dataPubblicazioneArticoloCheckBox.isSelected());
-            dataPubblicazioneAArticoloComboBox.setEnabled(dataPubblicazioneArticoloCheckBox.isSelected());
+            dataPubblicazioneDaArticoloField.setEnabled(dataPubblicazioneArticoloCheckBox.isSelected());
+            dataPubblicazioneAArticoloField.setEnabled(dataPubblicazioneArticoloCheckBox.isSelected());
         });
 
         //aggiunge un listener al formatoArticoloCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
@@ -232,8 +227,8 @@ public class SearchView extends View {
         //aggiunge un listener al linguaRivisteCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
         linguaRivisteCheckBox.addActionListener(e -> linguaRivisteComboBox.setEnabled(linguaRivisteCheckBox.isSelected()));
         dataPubblicazioneRivisteCheckBox.addActionListener(e -> {
-            dataPubblicazioneDaRivisteComboBox.setEnabled(dataPubblicazioneRivisteCheckBox.isSelected());
-            dataPubblicazioneARivisteComboBox.setEnabled(dataPubblicazioneRivisteCheckBox.isSelected());
+            dataPubblicazioneDaRivisteField.setEnabled(dataPubblicazioneRivisteCheckBox.isSelected());
+            dataPubblicazioneARivisteField.setEnabled(dataPubblicazioneRivisteCheckBox.isSelected());
         });
 
         //aggiunge un listener al formatoRivisteCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
@@ -257,8 +252,8 @@ public class SearchView extends View {
 
         //aggiunge un listener al dataPubblicazioneSerieCheckBox che, quando viene selezionato, abilita/disabilita i relativi JTextField
         dataPubblicazioneSerieCheckBox.addActionListener(e -> {
-            dataDaSerieField.setEnabled(dataPubblicazioneSerieCheckBox.isSelected());
-            dataASerieField.setEnabled(dataPubblicazioneSerieCheckBox.isSelected());
+            dataPubblicazioneDaSerieField.setEnabled(dataPubblicazioneSerieCheckBox.isSelected());
+            dataPubblicazioneASerieField.setEnabled(dataPubblicazioneSerieCheckBox.isSelected());
         });
 
         //aggiunge un listener al formatoSerieCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
@@ -273,7 +268,7 @@ public class SearchView extends View {
             @Override
             public void focusLost(FocusEvent e) {
                 super.focusLost(e);
-                if(searchField.getText().equals("")) {
+                if (searchField.getText().equals("")) {
                     ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
                 }
             }
@@ -281,7 +276,7 @@ public class SearchView extends View {
     }
 
     private void ricaricaSearchField(String risorsa) {
-        switch(risorsa){
+        switch (risorsa) {
             case "Libri" -> searchField.setText("Cerca un libro...");
             case "Serie" -> searchField.setText("Cerca una serie...");
             case "Articoli" -> searchField.setText("Cerca un articolo...");
@@ -290,7 +285,6 @@ public class SearchView extends View {
                 searchField.setText("Selezionare una risorsa...");
             }
         }
-
     }
 
     private void setFieldsDisabled() { //NON è COMPLETO
@@ -311,24 +305,24 @@ public class SearchView extends View {
         editoreArticoloComboBox.setEnabled(false);
         disciplinaArticoloComboBox.setEnabled(false);
         linguaArticoloComboBox.setEnabled(false);
-        dataPubblicazioneDaArticoloComboBox.setEnabled(false);
-        dataPubblicazioneAArticoloComboBox.setEnabled(false);
+        dataPubblicazioneDaArticoloField.setEnabled(false);
+        dataPubblicazioneAArticoloField.setEnabled(false);
         formatoArticoloComboBox.setEnabled(false);
         rivistaArticoloComboBox.setEnabled(false);
         conferenzaArticoloComboBox.setEnabled(false);
         //Riviste
         argomentoRivisteComboBox.setEnabled(false);
         linguaRivisteComboBox.setEnabled(false);
-        dataPubblicazioneDaRivisteComboBox.setEnabled(false);
-        dataPubblicazioneARivisteComboBox.setEnabled(false);
+        dataPubblicazioneDaRivisteField.setEnabled(false);
+        dataPubblicazioneARivisteField.setEnabled(false);
         formatoRivisteComboBox.setEnabled(false);
         prezzoDaRivisteField.setEnabled(false);
         prezzoARivisteField.setEnabled(false);
         //Serie
         editoreSerieComboBox.setEnabled(false);
         linguaSerieComboBox.setEnabled(false);
-        dataDaSerieField.setEnabled(false);
-        dataASerieField.setEnabled(false);
+        dataPubblicazioneDaSerieField.setEnabled(false);
+        dataPubblicazioneASerieField.setEnabled(false);
         formatoSerieComboBox.setEnabled(false);
     }
 
@@ -358,7 +352,7 @@ public class SearchView extends View {
         return instance;
     }
 
-    public void fillAllComboBoxes(){
+    public void fillAllComboBoxes() {
         fillComboBox(autoreLibroComboBox, FiltriController.getInstance().leggiAutoriLibri());
         fillComboBox(editoreLibroComboBox, FiltriController.getInstance().leggiEditoriLibri());
         fillComboBox(genereLibroComboBox, FiltriController.getInstance().leggiGeneriLibri());
@@ -379,12 +373,252 @@ public class SearchView extends View {
         fillComboBox(linguaSerieComboBox, FiltriController.getInstance().leggiLingueSerie());
         fillComboBox(formatoSerieComboBox, FiltriController.getInstance().leggiFormatiSerie());
     }
+
     public void fillComboBox(JComboBox comboBox, ArrayList<String> items) {
         comboBox.removeAllItems();
         for (String item : items) {
             comboBox.addItem(item);
         }
     }
+
+    public String buildQueryByFiltri() {  // in base alla risorsa selezionata, costruisce la query
+        String q = "";
+        String risorsa = String.valueOf(risorsaComboBox.getSelectedItem());
+
+        switch (risorsa) {
+            case "Libri":
+                q = buildQueryByFiltriLibri(); // costruisce la query per i libri
+                break;
+            case "Articoli":
+                q = buildQueryByFiltriArticoli(); // costruisce la query per gli articoli
+                break;
+            case "Riviste":
+                q = buildQueryByFiltriRiviste(); // costruisce la query per le riviste
+                break;
+            case "Serie":
+                q = buildQueryByFiltriSerie(); // costruisce la query per le serie
+                break;
+            default:
+                break;
+        }
+        return q;
+    }
+
+    private String buildQueryByFiltriSerie() { // costruisce la query per le serie in base ai filtri selezionati
+        String titoloOrIssn,editore, lingua, dataPubblicazioneDa, dataPubblicazioneA, formato;
+        titoloOrIssn = searchField.getText();
+        String query = "SELECT * FROM b.filter_serie WHERE nome LIKE '%" + titoloOrIssn + "%' OR issn LIKE '%" + titoloOrIssn + "%' AND ";
+
+
+        if (editoreSerieCheckBox.isSelected()) {
+            editore = String.valueOf(editoreSerieComboBox.getSelectedItem());
+        } else {
+            editore = "";
+        }
+
+        if (linguaSerieCheckBox.isSelected()) {
+            lingua = String.valueOf(linguaSerieComboBox.getSelectedItem());
+        } else {
+            lingua = "";
+        }
+
+        if (formatoSerieCheckBox.isSelected()) {
+            formato = String.valueOf(formatoSerieComboBox.getSelectedItem());
+        } else {
+            formato = "";
+        }
+
+        if (dataPubblicazioneSerieCheckBox.isSelected()) {
+            dataPubblicazioneDa = dataPubblicazioneDaSerieField.getText();
+            dataPubblicazioneA = dataPubblicazioneASerieField.getText();
+        } else {
+            dataPubblicazioneDa = "";
+            dataPubblicazioneA = "";
+        }
+
+        String finalQuery = query +
+                "editore = '" + editore +
+                "' AND lingua = '" + lingua +
+                "' AND formato = '" + formato +
+                "' AND data_pubblicazione BETWEEN '" + dataPubblicazioneDa +
+                "' AND '" + dataPubblicazioneA + "'";
+        return finalQuery;
+    }
+
+    private String buildQueryByFiltriRiviste() { // costruisce la query per le riviste in base ai filtri selezionati
+        String nomeOrIssn, argomento, lingua, formato, dataPubblicazioneDa, dataPubblicazioneA;
+        nomeOrIssn = searchField.getText();
+        String query = "SELECT * FROM b.filter_riviste WHERE nome LIKE '%" + nomeOrIssn + "%' OR issn LIKE '%" + nomeOrIssn + "%') AND ";
+
+        if (argomentoRivisteCheckBox.isSelected()) {
+            argomento = String.valueOf(argomentoRivisteComboBox.getSelectedItem());
+        } else {
+            argomento = "";
+        }
+
+        if (linguaRivisteCheckBox.isSelected()) {
+            lingua = String.valueOf(linguaRivisteComboBox.getSelectedItem());
+        } else {
+            lingua = "";
+        }
+
+        if (formatoRivisteCheckBox.isSelected()) {
+            formato = String.valueOf(formatoRivisteComboBox.getSelectedItem());
+        } else {
+            formato = "";
+        }
+
+        if (dataPubblicazioneRivisteCheckBox.isSelected()) {
+            dataPubblicazioneDa = dataPubblicazioneDaRivisteField.getText();
+            dataPubblicazioneA = dataPubblicazioneARivisteField.getText();
+        } else {
+            dataPubblicazioneDa = "";
+            dataPubblicazioneA = "";
+        }
+
+        String finalQuery = query +
+                "argomento = '" + argomento +
+                "' AND lingua = '" + lingua +
+                "' AND formato = '" + formato +
+                "' AND data_pubblicazione BETWEEN '" + dataPubblicazioneDa +
+                "' AND '" + dataPubblicazioneA + "'";
+        return finalQuery;
+    }
+
+    private String buildQueryByFiltriLibri() { // costruisce la query per i libri in base ai filtri selezionati
+        String titoloOrisbn, autore, editore, genere, lingua, serie, formato, dataPubblicazioneDa, dataPubblicazioneA, prezzoDa, prezzoA;
+        titoloOrisbn = searchField.getText();
+        String query = "SELECT * FROM b.filter_libri WHERE (titolo LIKE '%" + titoloOrisbn + "%' OR isbn LIKE '%" + titoloOrisbn + "%') AND";
+
+        if (autoreLibroCheckBox.isSelected()) {
+            autore = String.valueOf(autoreLibroComboBox.getSelectedItem());
+        } else {
+            autore = "";
+        }
+
+        if (editoreLibroCheckBox.isSelected()) {
+            editore = String.valueOf(editoreLibroComboBox.getSelectedItem());
+        } else {
+            editore = "";
+        }
+
+        if (genereLibroCheckBox.isSelected()) {
+            genere = String.valueOf(genereLibroComboBox.getSelectedItem());
+        } else {
+            genere = "";
+        }
+
+        if (linguaLibroCheckBox.isSelected()) {
+            lingua = String.valueOf(linguaLibroComboBox.getSelectedItem());
+        } else {
+            lingua = "";
+        }
+
+        if (serieLibroCheckBox.isSelected()) {
+            serie = String.valueOf(serieLibroComboBox.getSelectedItem());
+        } else {
+            serie = "";
+        }
+
+        if (formatoLibroCheckBox.isSelected()) {
+            formato = String.valueOf(formatoLibroComboBox.getSelectedItem());
+        } else {
+            formato = "";
+        }
+
+        if (dataPubblicazioneLibroCheckBox.isSelected()) {
+            dataPubblicazioneDa = dataDaLibroField.getText();
+            dataPubblicazioneA = dataALibroField.getText();
+        } else {
+            dataPubblicazioneDa = "";
+            dataPubblicazioneA = "";
+        }
+
+        if (prezzoLibroCheckBox.isSelected()) {
+            prezzoDa = prezzoDaLibroField.getText();
+            prezzoA = prezzoALibroField.getText();
+
+        } else {
+            prezzoDa = "";
+            prezzoA = "";
+
+        }
+        String finalQuery = query +
+                "autore = '" + autore +
+                "' AND editore = '" + editore +
+                "' AND genere = '" + genere +
+                "' AND lingua = '" + lingua +
+                "' AND serie = '" + serie +
+                "' AND formato = '" + formato +
+                "' AND data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA +
+                "' AND prezzo BETWEEN '" + prezzoDa + "' AND '" + prezzoA + "';";
+        return finalQuery;
+    }
+
+
+    private String buildQueryByFiltriArticoli() { // costruisce la query per gli articoli in base ai filtri selezionati
+        String titoloOrDOI, autore, editore, disciplina, lingua, rivista, conferenza, formato, dataPubblicazioneDa, dataPubblicazioneA;
+        titoloOrDOI = searchField.getText();
+
+        String query = "SELECT * FROM b.filter_articoli WHERE (titolo LIKE '%"+ titoloOrDOI +"%' OR doi LIKE '%"+ titoloOrDOI +"%') AND ";
+
+           if(autoreArticoloCheckBox.isSelected()) {
+               autore = String.valueOf(autoreArticoloComboBox.getSelectedItem());
+           }else {
+               autore = "";
+           }
+
+           if(editoreArticoloCheckBox.isSelected()) {
+               editore = String.valueOf(editoreArticoloComboBox.getSelectedItem());
+           }else {
+               editore = "";
+           }
+
+           if(disciplinaArticoloCheckBox.isSelected()) {
+               disciplina = String.valueOf(disciplinaArticoloComboBox.getSelectedItem());
+           }else {
+               disciplina = "";
+           }
+
+           if(linguaArticoloCheckBox.isSelected()) {
+               lingua = String.valueOf(linguaArticoloComboBox.getSelectedItem());
+           }else {
+                lingua = "";
+           }
+
+           if(rivistaArticoloCheckBox.isSelected()) {
+                rivista = String.valueOf(rivistaArticoloComboBox.getSelectedItem());
+           }else {
+               rivista = "";
+           }
+
+           if(conferenzaArticoloCheckBox.isSelected()) {
+                conferenza = String.valueOf(conferenzaArticoloComboBox.getSelectedItem());
+           }else {
+                conferenza = "";
+           }
+
+           if(formatoArticoloCheckBox.isSelected()) {
+               formato = String.valueOf(formatoArticoloComboBox.getSelectedItem());
+           }else {
+               formato = "";
+           }
+
+           if(dataPubblicazioneArticoloCheckBox.isSelected()) {
+               dataPubblicazioneDa = dataPubblicazioneDaArticoloField.getText();
+               dataPubblicazioneA = dataPubblicazioneAArticoloField.getText();
+           }else {
+                dataPubblicazioneDa = "";
+                dataPubblicazioneA = "";
+           }
+           String finalQuery = query + "autore = '" + autore +
+                   "' AND editore = '" + editore +
+                   "' AND disciplina = '" + disciplina +
+                   "' AND lingua = '" + lingua +
+                   "' AND rivista = '" + rivista +
+                   "' AND conferenza = '" + conferenza +
+                   "' AND formato = '" + formato +
+                   "' AND data_pubblicazione BEETWEEN '" + dataPubblicazioneDa + "'AND'" + dataPubblicazioneA + "';";
+        return finalQuery;
+    }
 }
-
-

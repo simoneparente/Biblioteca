@@ -1,6 +1,8 @@
 package org.Bibliotech.View;
 
 import org.Bibliotech.Controller.FiltriController;
+import org.Bibliotech.Model.Libri;
+import org.Bibliotech.Model.Libro;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -8,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 import javax.swing.table.TableColumnModel;
 
 public class ResultView extends View{
@@ -16,20 +19,19 @@ public class ResultView extends View{
     private JPanel rootPanel;
     private JTable resultTable;
     private JScrollPane resultScrollPane;
+    private ArrayList<String> filtri;
 
     ResultView(FiltriController fc){
         super(nome);
         super.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         super.setContentPane(rootPanel);
-
-        WindowListener closeWindow = new WindowAdapter() {
+        WindowListener closeWindow = new WindowAdapter() {//listener per la chiusura della finestra
             @Override
             public void windowClosing(WindowEvent we) {
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Exit Application", JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.YES_OPTION) {
                     ResultView.super.dispose(); //chiude la finestra
                     SearchView.getInstance().setLocationRelativeTo(null); //centra la finestra di ricerca
-
                 }
             }
         };
@@ -63,6 +65,9 @@ public class ResultView extends View{
         model.setRowCount(0);
         model.setColumnCount(0);
     }
+
+    
+
 }
 
 
