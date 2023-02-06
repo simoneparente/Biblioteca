@@ -1,5 +1,5 @@
 --Insert Articolo Autore
-INSERT INTO b.ins_articoli_autore(doi, titolo, autorinome_cognome, datapubblicazione, disciplina, editore, lingua,
+INSERT INTO b.ins_articoli_autori(doi, titolo, autorinome_cognome, datapubblicazione, disciplina, editore, lingua,
                                   formato)
 values ('10.1101/2020.12.31', 'La scoperta delle proteine', 'Mario_Rossi Giuseppe_Bianchi', '2020-12-31', 'Natura',
         'Nature Publishing Group', 'Italiano', 'Cartaceo'),
