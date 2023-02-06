@@ -409,15 +409,22 @@ DECLARE
     idAutoreArticoli CURSOR FOR SELECT id_autore
                                 FROM b.autorearticolo
                                 WHERE id_articolo = OLD.id_articolo;
-    idRivista b.riviste.id_rivista%TYPE = (SELECT id_rivista FROM b.articoliinriviste WHERE id_articolo = OLD.id_articolo);
-    IdPresentazione b.evento.id_evento%TYPE = (SELECT id_evento FROM b.presentazione WHERE id_articolo = OLD.id_articolo);
+    idRivista        b.riviste.id_rivista%TYPE = (SELECT id_rivista
+                                                  FROM b.articoliinriviste
+                                                  WHERE id_articolo = OLD.id_articolo);
+    IdPresentazione  b.evento.id_evento%TYPE   = (SELECT id_evento
+                                                  FROM b.presentazione
+                                                  WHERE id_articolo = OLD.id_articolo);
 BEGIN
     --Eliminazione Autori se non hanno scritto altro
     OPEN idAutoreArticoli;
     LOOP
         FETCH idAutoreArticoli INTO idAutoreArticolo;
         EXIT WHEN NOT FOUND;
-        IF NOT EXISTS(SELECT id_autore FROM b.autorearticolo WHERE id_autore = idAutoreArticolo AND id_articolo <> OLD.id_articolo) THEN
+        IF NOT EXISTS(SELECT id_autore
+                      FROM b.autorearticolo
+                      WHERE id_autore = idAutoreArticolo
+                        AND id_articolo <> OLD.id_articolo) THEN
             IF NOT EXISTS(SELECT * FROM b.autorelibro WHERE id_autore = idAutoreArticolo) THEN
                 DELETE FROM b.autore WHERE id_autore = idAutoreArticolo;
             END IF;
@@ -425,12 +432,18 @@ BEGIN
     END LOOP;
 
     --Eliminazione Rivista se non ha altri articoli
-    IF NOT EXISTS(SELECT * FROM b.articoliinriviste WHERE id_articolo <> old.id_articolo AND id_rivista = idRivista) THEN
+    IF NOT EXISTS(SELECT *
+                  FROM b.articoliinriviste
+                  WHERE id_articolo <> old.id_articolo
+                    AND id_rivista = idRivista) THEN
         DELETE FROM b.riviste WHERE id_rivista = idRivista;
     END IF;
 
     --Eliminazione Presentazione se non ha altri articoli
-    IF NOT EXISTS(SELECT * FROM b.presentazione WHERE id_articolo <> old.id_articolo AND id_evento = IdPresentazione) THEN
+    IF NOT EXISTS(SELECT *
+                  FROM b.presentazione
+                  WHERE id_articolo <> old.id_articolo
+                    AND id_evento = IdPresentazione) THEN
         DELETE FROM b.evento WHERE id_evento = IdPresentazione;
     END IF;
 
@@ -488,7 +501,7 @@ BEGIN
                 vcheck := 3;
                 --Controllo se l'Articolo ha lo stesso formato di tutti gli altri
             ELSEIF (i <> 0) THEN
-                oldFormato = (SELECT formato FROM b.Articoli WHERE doi = articolip[i-1]);
+                oldFormato = (SELECT formato FROM b.Articoli WHERE doi = articolip[i - 1]);
                 IF (oldFormato <> (SELECT formato FROM b.Articoli WHERE doi = articolip[i])) THEN
                     RAISE NOTICE 'Articolo {%} ha formato diverso', articolip[i];
                     vcheck := 4;
@@ -502,9 +515,9 @@ BEGIN
     ELSIF (vcheck = 2) THEN
         RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA CONFERENZA ';
     ELSEIF (vcheck = 3) THEN
-        RAISE NOTICE  'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA RIVISTA ';
+        RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO GIA'' PRESENTI IN UNA RIVISTA ';
     ELSEIF (vcheck = 4) THEN
-        RAISE NOTICE  'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO CON FORMATO DIVERSO';
+        RAISE NOTICE 'EVENTO NON INSERITO, UNO O PIU'' ARTICOLI SONO CON FORMATO DIVERSO';
     ELSE
         --Inserisco la rivista
         INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
@@ -868,12 +881,12 @@ EXECUTE FUNCTION b.ftrig_stocklibri();
 ------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION b.ftrig_RimozioneDaStock() RETURNS trigger AS
 $$
-    DECLARE
-    BEGIN
-        if (NEW.quantita = 0) then
-            DELETE FROM b.stock WHERE id_libro = OLD.id_libro;
-        end if;
-    END;
+DECLARE
+BEGIN
+    if (NEW.quantita = 0) then
+        DELETE FROM b.stock WHERE id_libro = OLD.id_libro;
+    end if;
+END;
 $$
     LANGUAGE plpgsql;
 
@@ -965,36 +978,6 @@ FROM (b.Articoli as a NATURAL JOIN b.conferenza as c)
 --Funzioni Applicativo
 ------------------------------------------------------------------------------------------------------------------------
 
---Funzione che restituisc la disponibilità di una serie in un negozio
-CREATE OR REPLACE FUNCTION b.getDisponibilitaSerie(inputSerieISSN b.Serie.ISSN%TYPE) RETURNS boolean AS
-$$
-DECLARE
-    scorrilibri  b.libri.id_libro%TYPE;
-    cursoreLibri CURSOR FOR (SELECT id_libro
-                             FROM (b.libri l NATURAL JOIN b.libriinserie ls)
-                                      JOIN b.serie s ON s.id_serie = ls.id_serie
-                             WHERE ISSN = inputSerieISSN);
-    nScorriLibri INTEGER := (SELECT count(*)
-                             FROM (b.libri l NATURAL JOIN b.libriinserie ls)
-                                      JOIN b.serie s ON s.id_serie = ls.id_serie
-                             WHERE ISSN = inputSerieISSN);
-BEGIN
-    OPEN cursorelibri;
-    FOR i IN 1..nScorriLibri
-        LOOP
-            FETCH cursoreLibri INTO scorrilibri;
-            if NOT b.getDisponibilita(scorrilibri) THEN
-                CLOSE cursoreLibri;
-                return false;
-            end if;
-        end loop;
-    CLOSE cursoreLibri;
-    return true;
-end;
-$$
-    LANGUAGE plpgsql;
-
-
 --Funzione che restituisce la disponibilità di un libro in un negozio
 CREATE OR REPLACE FUNCTION b.getDisponibilita(inputLibro b.libri.id_libro%TYPE) RETURNS boolean AS
 $$
@@ -1009,34 +992,56 @@ END;
 $$
     LANGUAGE plpgsql;
 
+
+--Funzione che restituisc la disponibilità di una serie in un negozio
+CREATE OR REPLACE FUNCTION b.getDisponibilitaSerie(inputSerieISSN b.Serie.ISSN%TYPE) RETURNS boolean AS
+$$
+DECLARE
+    scorrilibri b.libri.id_libro%TYPE;
+    cursoreLibri CURSOR FOR (SELECT id_libro
+                             FROM (b.libri l NATURAL JOIN b.libriinserie ls)
+                                      JOIN b.serie s ON s.id_serie = ls.id_serie
+                             WHERE ISSN = inputSerieISSN);
+BEGIN
+    OPEN cursorelibri;
+    LOOP
+        FETCH cursoreLibri INTO scorrilibri;
+        EXIT WHEN NOT FOUND;
+        if NOT b.getDisponibilita(scorrilibri) THEN
+            CLOSE cursoreLibri;
+            return false;
+        end if;
+    end loop;
+    CLOSE cursoreLibri;
+    return true;
+end;
+$$
+    LANGUAGE plpgsql;
+
 --Funzione che restituisce una stringa con i nomi degli autori di un libro
 CREATE OR REPLACE FUNCTION b.getAutoriByLibro(inputIdLibro b.libri.id_libro%TYPE) RETURNS TEXT AS
 $$
 DECLARE
-    returnAutori     TEXT;
+    returnAutori  TEXT;
     cursore CURSOR FOR (SELECT nome, cognome
                         FROM (b.autore a NATURAL JOIN b.autorelibro al)
                                  JOIN b.libri l ON l.id_libro = al.id_libro
                         WHERE l.id_libro = inputIdLibro);
-    dimensioneAutori INTEGER= (SELECT COUNT(*)
-                               FROM (b.autore a NATURAL JOIN b.autorelibro al)
-                                        JOIN b.libri l ON l.id_libro = al.id_libro
-                               WHERE l.id_libro = inputIdLibro);
-    autoreNome       b.autore.nome%TYPE;
-    autoreCognome    b.autore.cognome%TYPE;
-    controllo        bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
+    autoreNome    b.autore.nome%TYPE;
+    autoreCognome b.autore.cognome%TYPE;
+    controllo     bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
 BEGIN
     OPEN cursore;
-    FOR b IN 1..dimensioneAutori
-        LOOP
-            FETCH cursore INTO autoreNome, autoreCognome;
-            if controllo IS false THEN
-                returnAutori = autoreNome || ' ' || autoreCognome;
-                controllo = true;
-            else
-                returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
-            end if;
-        END LOOP;
+    LOOP
+        FETCH cursore INTO autoreNome, autoreCognome;
+        EXIT WHEN NOT FOUND;
+        if controllo IS false THEN
+            returnAutori = autoreNome || ' ' || autoreCognome;
+            controllo = true;
+        else
+            returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
+        end if;
+    END LOOP;
     CLOSE cursore;
     return returnAutori;
 END;
@@ -1047,30 +1052,26 @@ $$
 CREATE OR REPLACE FUNCTION b.getAutoriByArticolo(inputIdArticolo b.articoli.id_articolo%TYPE) RETURNS TEXT AS
 $$
 DECLARE
-    autoreNome       b.autore.nome%TYPE;
-    autoreCognome    b.autore.cognome%TYPE;
-    returnAutori     TEXT;
-    controllo        bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
+    autoreNome    b.autore.nome%TYPE;
+    autoreCognome b.autore.cognome%TYPE;
+    returnAutori  TEXT;
+    controllo     bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
     cursore cursor for (SELECT nome, cognome
                         FROM (b.autore a NATURAL JOIN b.autorearticolo aa)
                                  JOIN b.articoli ar ON ar.id_articolo = aa.id_articolo
                         WHERE ar.id_articolo = inputIdArticolo);
-    dimensioneAutori INTEGER= (SELECT COUNT(*)
-                               FROM (b.autore a NATURAL JOIN b.autorearticolo aa)
-                                        JOIN b.articoli ar ON ar.id_articolo = aa.id_articolo
-                               WHERE ar.id_articolo = inputIdArticolo);
 BEGIN
     open cursore;
-    FOR b IN 1..dimensioneAutori
-        LOOP
-            FETCH cursore INTO autoreNome, autoreCognome;
-            if controllo IS false THEN
-                returnAutori = autoreNome || ' ' || autoreCognome;
-                controllo = true;
-            else
-                returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
-            end if;
-        END LOOP;
+    LOOP
+        FETCH cursore INTO autoreNome, autoreCognome;
+        EXIT WHEN NOT FOUND;
+        if controllo IS false THEN
+            returnAutori = autoreNome || ' ' || autoreCognome;
+            controllo = true;
+        else
+            returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
+        end if;
+    END LOOP;
     CLOSE cursore;
     return returnAutori;
 end;
