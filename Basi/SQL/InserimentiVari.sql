@@ -39,8 +39,8 @@ INSERT INTO b.ins_libri_autore_serie (titolo, ISBN, autorinome_cognome, datapubb
 VALUES ('Il Signore degli Anelli 2 cartaceo', '978-88-17-88033-0', 'J.R.R._Tolkien ciao_fratm', '1954-07-29',
         'Mondadori', 'Fantasy', 'Italiano', 'Cartaceo', 'Il Signore degli Anelli', '978-88-04-58339-8');
 
-INSERT INTO b.ins_presentazione(isbn, indirizzo, strutturaospitante, datainizio, datafine, responsabile)
-VALUES ('978-88-17-88000-0', 'Via Roma 1', 'Mondadori', '2020-12-31', '2021-12-31', 'Mario Rossi');
+INSERT INTO b.ins_presentazione(isbn, nome, indirizzo, strutturaospitante, datainizio, datafine, responsabile)
+VALUES ('978-88-17-88000-0', 'luca', 'Via Roma 1', 'Mondadori', '2020-12-31', '2021-12-31', 'Mario Rossi');
 
 --INSERT NEGOZI
 INSERT INTO b.negozio(nome, tipo)
