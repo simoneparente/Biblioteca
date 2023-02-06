@@ -3,7 +3,6 @@ import org.Bibliotech.Model.Libro;
 import org.Bibliotech.Model.Libri;
 
 public interface LibroDao {
-    public boolean addLibro(String titolo, String isbn, String autorinome_cognome, String dataPubblicazione, String editore, String genere, String lingua, String formato, double prezzo, String nome_serie_di_appartnenza, String issn_serie_di_appartenenza);
     public Libri getLibri(String query, String parametro);
     public Libri getLibri(String query, String parametro1, String parametro2);
 

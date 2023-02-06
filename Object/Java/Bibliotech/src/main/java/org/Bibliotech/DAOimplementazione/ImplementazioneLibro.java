@@ -20,28 +20,6 @@ public class ImplementazioneLibro implements org.Bibliotech.DAO.LibroDao {
     }
 
     @Override
-    public boolean addLibro(String titolo, String isbn, String autorinome_cognome, String dataPubblicazione, String editore, String genere, String lingua, String formato, double prezzo, String nome_serie_di_appartnenza, String issn_serie_di_appartenenza){
-        String addLibroQuery= "INSERT INTO b.ins_libro_autore_serie (titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo, nome_serie_di_appartnenza, issn_serie_di_appartenenza ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(addLibroQuery);
-            preparedStatement.setString(1, titolo);
-            preparedStatement.setString(2, isbn);
-            preparedStatement.setString(3, autorinome_cognome);
-            preparedStatement.setString(4, dataPubblicazione);
-            preparedStatement.setString(5, editore);
-            preparedStatement.setString(6, genere);
-            preparedStatement.setString(7, lingua);
-            preparedStatement.setString(8, formato);
-            preparedStatement.setDouble(9, prezzo);
-            preparedStatement.setString(10, nome_serie_di_appartnenza);
-            preparedStatement.setString(11, issn_serie_di_appartenenza);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return false;
-    }
-    @Override
     public Libri getLibri(String query, String parametro) {
         Libri libri = new Libri();
         String getLibriQuery = query;

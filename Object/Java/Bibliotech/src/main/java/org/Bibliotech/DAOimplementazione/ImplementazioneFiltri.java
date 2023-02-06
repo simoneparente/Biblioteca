@@ -24,7 +24,7 @@ public class ImplementazioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getAutoriLibri() {
         ArrayList<String> autori = new ArrayList<>();
-        String getAutoriQuery = "SELECT DISTINCT nome, cognome FROM b.autore";
+        String getAutoriQuery = "SELECT DISTINCT nome, cognome FROM b.view_libri_autore";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getAutoriQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -104,7 +104,7 @@ public class ImplementazioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getPresentatoInLibro() {
         ArrayList<String> presentatoIn = new ArrayList<>();
-        String getPresentatoInQuery = "SELECT DISTINCT e.strutturaospitante, e.datainizio FROM (b.libri as l NATURAL JOIN b.presentazione as p) JOIN b.evento as e ON e.id_evento = p.evento ";
+        String getPresentatoInQuery = "SELECT DISTINCT e.strutturaospitante, e.datainizio FROM (b.libri as l NATURAL JOIN b.presentazione as p) JOIN b.evento as e ON e.id_evento = p.id_evento ";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(getPresentatoInQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -231,7 +231,7 @@ public class ImplementazioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getConferenzeArticoli() {
         ArrayList<String> conferenze = new ArrayList<>();
-        String getConferenzeQuery = "SELECT DISTINCT titolo_conferenza FROM b.view_articoli_conferenza";
+        String getConferenzeQuery = "SELECT DISTINCT titolo_conferenza FROM b.view_articoli_conferenze";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(getConferenzeQuery);
             ResultSet rs = preparedStatement.executeQuery();
