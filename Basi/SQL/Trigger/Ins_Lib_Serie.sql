@@ -32,6 +32,20 @@ BEGIN
     IF EXISTS(SELECT * FROM b.libri WHERE titolo = NEW.titolo AND datapubblicazione = NEW.datapubblicazione) THEN
         RAISE NOTICE 'Libri già presente';
     ELSE
+        IF EXISTS(SELECT * FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza) THEN
+            RAISE NOTICE 'Serie già presente';
+
+            oldFormato = (SELECT DISTINCT l.formato
+                          FROM (b.libri l NATURAL JOIN b.libriinserie ls)
+                                   JOIN b.serie s on s.id_serie = ls.id_serie);
+            IF (oldFormato <> NEW.formato) THEN
+                RAISE NOTICE 'Il formato del libro non è compatibile con la serie, libro non inserito';
+                RETURN NEW;
+            END IF;
+        ELSE
+            RAISE NOTICE 'Serie non presente';
+            INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
+        END IF;
         --Insert Libri
         INSERT INTO b.libri(titolo, ISBN, datapubblicazione, Editore, Genere, Lingua, Formato, Prezzo)
         VALUES (NEW.titolo, NEW.ISBN, NEW.datapubblicazione, NEW.editore, NEW.datapubblicazione, NEW.lingua,
@@ -60,26 +74,12 @@ BEGIN
                   AND l.datapubblicazione = NEW.datapubblicazione;
             END LOOP;
         --Insert Serie
-        newLibro = (SELECT id_libro FROM b.libri WHERE isbn= NEW.isbn);
-        IF EXISTS (SELECT * FROM b.serie WHERE issn=NEW.issn) THEN
-            RAISE NOTICE 'Serie già presente';
-            oldFormato = (SELECT DISTINCT l.formato FROM (b.libri l NATURAL JOIN b.libriinserie ls) JOIN b.serie s on s.id_serie = ls.id_serie);
-            IF (oldFormato <> NEW.formato) THEN
-                RAISE NOTICE 'Il formato del libro non è compatibile con la serie';
-            ELSE
-                newSerie = (SELECT id_serie FROM b.serie WHERE issn=NEW.issn);
-                INSERT INTO b.libriinserie(id_libro, id_serie) values (newLibro, newSerie);
-            END IF;
-        ELSE
-            RAISE NOTICE 'Serie non presente';
-            INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
-            newSerie = (SELECT id_serie FROM b.serie WHERE issn=NEW.issn);
-            INSERT INTO b.libriinserie(id_libro, id_serie) values (newLibro, newSerie);
-        end if;
-    END IF;
-    RETURN NEW;
-end;
-
+        newLibro = (SELECT id_libro FROM b.libri WHERE isbn = NEW.isbn);
+        newSerie = (SELECT id_serie FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza);
+        INSERT INTO b.libriinserie(id_libro, id_serie) values (newLibro, newSerie);
+        RETURN NEW;
+    end if;
+END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER trig_LibriAutoreSerie
