@@ -24,4 +24,5 @@ public interface LibroDao {
     //Attributi Tabelle Multiple
     public Libri getLibriByAutore(String nome, String cognome);
     public Libri getLibriBySerie(String nome_serie_di_appartenenza, String issn_serie_di_appartenenza);
+    public Libri searchLibro(String query);
 }

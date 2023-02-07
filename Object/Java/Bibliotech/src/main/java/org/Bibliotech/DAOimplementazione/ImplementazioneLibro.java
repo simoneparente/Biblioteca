@@ -3,13 +3,14 @@ package org.Bibliotech.DAOimplementazione;
 import org.Bibliotech.ConnessioneDB;
 import org.Bibliotech.Model.Libri;
 import org.Bibliotech.Model.Libro;
+import org.Bibliotech.DAO.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ImplementazioneLibro implements org.Bibliotech.DAO.LibroDao {
+public class ImplementazioneLibro implements LibroDao {
     private Connection connection;
     public ImplementazioneLibro() {
         try {

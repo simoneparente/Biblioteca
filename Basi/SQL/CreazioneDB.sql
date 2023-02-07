@@ -402,7 +402,7 @@ EXECUTE FUNCTION b.ftrig_ArticoliAutori();
 ------------------------------------------------------------------------------------------------------------------------
 --Trigger Rimozione Articoli
 ------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION ftrig_rimozineArticoli() RETURNS trigger AS
+CREATE OR REPLACE FUNCTION b.ftrig_rimozineArticoli() RETURNS trigger AS
 $$
 DECLARE
     idAutoreArticolo b.autore.id_autore%TYPE;
@@ -456,7 +456,7 @@ CREATE TRIGGER trig_rimozioneArticoli
     BEFORE DELETE
     ON b.articoli
     FOR EACH ROW
-EXECUTE PROCEDURE ftrig_rimozineArticoli();
+EXECUTE PROCEDURE b.ftrig_rimozineArticoli();
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -725,13 +725,13 @@ EXECUTE FUNCTION b.ftrig_LibriAutoreSerie();
 ------------------------------------------------------------------------------------------------------------------------
 --Trigger Rimozione Libri
 ------------------------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION ftrig_rimozineLibri() RETURNS trigger AS
+CREATE OR REPLACE FUNCTION b.ftrig_rimozineLibri() RETURNS trigger AS
 $$
 DECLARE
     idAutoreLibro b.autore.id_autore%TYPE;
-    idAutoriLibri CURSOR FOR SELECT id_autore
+    idAutoriLibri CURSOR FOR ( SELECT id_autore
                              FROM b.autorelibro
-                             WHERE id_libro = OLD.id_libro;
+                             WHERE id_libro = OLD.id_libro);
     idEvento      b.evento.id_evento%TYPE = (SELECT id_evento
                                              FROM b.presentazione
                                              WHERE id_libro = OLD.id_libro);
@@ -768,7 +768,7 @@ CREATE TRIGGER trig_rimozioneLibri
     BEFORE DELETE
     ON b.libri
     FOR EACH ROW
-EXECUTE PROCEDURE ftrig_rimozineLibri();
+EXECUTE PROCEDURE b.ftrig_rimozineLibri();
 ------------------------------------------------------------------------------------------------------------------------
 
 
@@ -950,7 +950,7 @@ SELECT a.titolo,
        a.editore,
        a.lingua,
        a.formato,
-       r.nome as titolo_rivista
+       r.nome as titolo_riviste
 FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar)
          JOIN b.riviste as r on ar.id_rivista = r.id_rivista;
 
@@ -1103,6 +1103,7 @@ SELECT distinct nome_serie                    as nome,
                 editore,
                 lingua,
                 formato,
+                datapubblicazione,
                 b.getDisponibilitaSerie(issn) AS Disponibilità
 FROM b.view_libri_serie;
 

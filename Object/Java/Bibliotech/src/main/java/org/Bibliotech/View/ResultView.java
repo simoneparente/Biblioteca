@@ -1,17 +1,14 @@
 package org.Bibliotech.View;
 
 import org.Bibliotech.Controller.FiltriController;
-import org.Bibliotech.Model.Libri;
-import org.Bibliotech.Model.Libro;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.stream.IntStream;
-import javax.swing.table.TableColumnModel;
 
 public class ResultView extends View{
     private static final String nome="Result";
@@ -47,17 +44,21 @@ public class ResultView extends View{
         return instance;
     }
 
-    public void updateTable(String nomeTabellaIn){
+    public void updateTable(String nomeTabellaIn, String query){
         String nomeTabella="resultview_"+nomeTabellaIn;
         emptyTable();
         FiltriController fc = FiltriController.getInstance();
         DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
         model.setRowCount(0);
         ArrayList<String> columns = fc.getColumns(nomeTabella);
+        ArrayList<String> rows = fc.getRows(query);
         for(String column : columns){
             model.addColumn(column);
-            System.out.println(column);
+            //System.out.println(column);
         }
+
+
+
     }
 
     private void emptyTable() {
