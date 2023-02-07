@@ -61,6 +61,7 @@ CREATE TABLE b.ArticoliInRiviste
     CONSTRAINT FK_ArticoliInRiviste_Rivista FOREIGN KEY (ID_Rivista) REFERENCES b.Riviste (ID_Rivista) ON DELETE CASCADE
 );
 
+
 CREATE TABLE b.Evento
 (
     ID_Evento          SERIAL,
@@ -85,6 +86,7 @@ CREATE TABLE b.Conferenza
     CONSTRAINT FK_Conferenza_Articolo FOREIGN KEY (ID_Articolo) REFERENCES b.Articoli (ID_Articolo) ON DELETE CASCADE,
     CONSTRAINT FK_Conferenza_Evento FOREIGN KEY (ID_Evento) REFERENCES b.Evento (ID_Evento) ON DELETE CASCADE
 );
+
 
 CREATE TABLE b.Libri
 (
@@ -568,7 +570,7 @@ DECLARE
     narticoli   INTEGER := array_length(articolip, 1);
     newArticolo b.Articoli.id_Articolo%TYPE;
     newevento   b.evento.ID_Evento%TYPE;
-    vcheck      boolean:= true;
+    vcheck      boolean := true;
     nome        text;
 BEGIN
     FOR i IN 1..narticoli
@@ -729,9 +731,9 @@ CREATE OR REPLACE FUNCTION b.ftrig_rimozineLibri() RETURNS trigger AS
 $$
 DECLARE
     idAutoreLibro b.autore.id_autore%TYPE;
-    idAutoriLibri CURSOR FOR ( SELECT id_autore
-                             FROM b.autorelibro
-                             WHERE id_libro = OLD.id_libro);
+    idAutoriLibri CURSOR FOR (SELECT id_autore
+                              FROM b.autorelibro
+                              WHERE id_libro = OLD.id_libro);
     idEvento      b.evento.id_evento%TYPE = (SELECT id_evento
                                              FROM b.presentazione
                                              WHERE id_libro = OLD.id_libro);
@@ -1080,6 +1082,7 @@ $$ LANGUAGE plpgsql;
 --Result View Libri
 CREATE VIEW b.resultView_libri AS
 SELECT distinct titolo,
+                isbn,
                 b.getAutoriByLibro(l.id_libro) AS Autore,
                 editore,
                 prezzo,
@@ -1091,11 +1094,14 @@ FROM b.libri l;
 --Result View Articoli
 CREATE VIEW b.resultView_articoli AS
 SELECT distinct titolo,
+                doi,
                 b.getAutoriByArticolo(a.id_articolo) AS Autori,
                 lingua,
                 formato,
-                editore
-FROM b.articoli a;
+                editore,
+                disciplina,
+                a.datapubblicazione                  as data_pubblicazione
+FROM (b.articoli a NATURAL JOIN b.autorearticolo);
 
 --Result View Serie
 CREATE VIEW b.resultView_serie AS
@@ -1109,7 +1115,7 @@ FROM b.view_libri_serie;
 
 --Result View Riviste
 CREATE VIEW b.resultView_riviste AS
-SELECT distinct titolo_rivista as nome,
+SELECT distinct titolo as nome,
                 disciplina,
                 editore,
                 lingua,

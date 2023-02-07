@@ -3,11 +3,9 @@ package org.Bibliotech.DAOimplementazione;
 import org.Bibliotech.ConnessioneDB;
 import org.Bibliotech.DAO.FiltriDao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Vector;
 
 
 public class ImplementazioneFiltri implements FiltriDao {
@@ -355,5 +353,28 @@ public class ImplementazioneFiltri implements FiltriDao {
             e.printStackTrace();
         }
         return columns;
+    }
+
+    public Vector<Vector<Object>> getRows(String query){
+        int i=0, j;
+        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs=ps.executeQuery();
+            ResultSetMetaData rsmd=rs.getMetaData();
+            while(rs.next()){
+                while (rs.next()) {
+                    Vector<Object> row = new Vector<Object>(rsmd.getColumnCount());
+                    for (i = 1; i <= rsmd.getColumnCount(); i++) {
+                        row.add(rs.getObject(i));
+                    }
+                    data.add(row);
+                }
+            }
+            return data;
+        } catch (SQLException e){
+            System.out.println("Errore " + e);
+        }
+        return null;
     }
 }

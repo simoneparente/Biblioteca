@@ -3,6 +3,7 @@ package org.Bibliotech.Controller;
 import org.Bibliotech.DAOimplementazione.ImplementazioneFiltri;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class FiltriController {
     private static FiltriController instance=null;
@@ -59,4 +60,5 @@ public class FiltriController {
     public ArrayList<String> getColumns(String nomeTable) { return filtri.getColumns(nomeTable);}
 
 
+    public Vector<Vector<Object>> getRows(String query){return filtri.getRows(query);}
 }

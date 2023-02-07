@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class ResultView extends View{
     private static final String nome="Result";
@@ -46,15 +47,21 @@ public class ResultView extends View{
 
     public void updateTable(String nomeTabellaIn, String query){
         String nomeTabella="resultview_"+nomeTabellaIn;
+        System.out.println(nomeTabella);
         emptyTable();
         FiltriController fc = FiltriController.getInstance();
         DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
-        model.setRowCount(0);
         ArrayList<String> columns = fc.getColumns(nomeTabella);
-        ArrayList<String> rows = fc.getRows(query);
+        Vector<Vector<Object>> rows=fc.getRows(query);
+
+        //model.setRowCount(0);
+        //Object[] rows = fc.getRows(query);
         for(String column : columns){
             model.addColumn(column);
             //System.out.println(column);
+        }
+        for(Vector<Object> row: rows){
+            model.addRow(row);
         }
 
 
