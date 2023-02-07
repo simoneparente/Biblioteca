@@ -60,3 +60,20 @@ INSERT INTO b.ins_conferenza (nome, indirizzo, strutturaospitante, datainizio, d
                               doi_articoli_presentati)
 VALUES ('culo', 'Via Roma 1', 'Casa Editrice', '2018-01-01', '2018-01-01', 'Mario Rossi',
         '10.1101/2027.12.31 10.1101/2031.12.31');
+
+
+
+--INSERT PROVA FUNZIONE CELAFAREMO
+INSERT INTO b.ins_libri_autore_serie (titolo, ISBN, autorinome_cognome, datapubblicazione, editore, genere, lingua,
+                                      formato,
+                                      nome_serie_di_appartenenza, issn_serie_di_appartenenza)
+VALUES ('I S D A 1', '333', 'jkr', '2023-02-03', 'Io', 'fts', 'ita', 'Ebook', 'I S D A', '999'),
+       ('I S D A 2', '334', 'jkr', '2024-02-03', 'Io', 'fts', 'ita', 'Ebook', 'I S D A', '999');
+
+INSERT INTO b.ins_libri_autore_serie (titolo, ISBN, autorinome_cognome, datapubblicazione, editore, genere, lingua,
+                                      formato,
+                                      nome_serie_di_appartenenza, issn_serie_di_appartenenza)
+VALUES ('I S D A 1', '333', 'jkr', '2023-02-03', 'Io', 'fts', 'ita', 'Cartaceo', 'I S D A', '222'),
+       ('I S D A 2', '333', 'jkr', '2024-02-03', 'Io', 'fts', 'ita', 'Cartaceo', 'I S D A', '222');
+
+
