@@ -682,7 +682,7 @@ BEGIN
         END IF;
         --Insert Libri
         INSERT INTO b.libri(titolo, ISBN, datapubblicazione, Editore, Genere, Lingua, Formato, Prezzo)
-        VALUES (NEW.titolo, NEW.ISBN, NEW.datapubblicazione, NEW.editore, NEW.datapubblicazione, NEW.lingua,
+        VALUES (NEW.titolo, NEW.ISBN, NEW.datapubblicazione, NEW.editore, NEW.genere, NEW.lingua,
                 New.Formato, NEW.prezzo);
         --Insert Autori
         FOR i IN 1..nautori
@@ -1081,15 +1081,17 @@ $$ LANGUAGE plpgsql;
 
 --Result View Libri
 CREATE VIEW b.resultView_libri AS
-SELECT distinct titolo,
+SELECT DISTINCT titolo,
                 isbn,
-                b.getAutoriByLibro(l.id_libro) AS Autore,
+                b.getAutoriByLibro(l.id_libro) AS Autori,
                 editore,
-                prezzo,
+                genere,
                 lingua,
+                s.nome AS serie,
                 formato,
+                prezzo,
                 b.getDisponibilita(l.id_libro) AS Disponibilità
-FROM b.libri l;
+FROM (b.libri l FULL OUTER JOIN b.libriinserie lis ON l.id_libro = lis.id_libro) JOIN b.serie S ON lis.id_serie=s.id_serie;
 
 --Result View Articoli
 CREATE VIEW b.resultView_articoli AS

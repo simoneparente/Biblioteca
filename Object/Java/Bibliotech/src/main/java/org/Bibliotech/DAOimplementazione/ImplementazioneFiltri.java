@@ -362,15 +362,15 @@ public class ImplementazioneFiltri implements FiltriDao {
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs=ps.executeQuery();
             ResultSetMetaData rsmd=rs.getMetaData();
-            while(rs.next()){
                 while (rs.next()) {
                     Vector<Object> row = new Vector<Object>(rsmd.getColumnCount());
                     for (i = 1; i <= rsmd.getColumnCount(); i++) {
+                        System.out.println(rs.getObject(i));
                         row.add(rs.getObject(i));
                     }
                     data.add(row);
                 }
-            }
+
             return data;
         } catch (SQLException e){
             System.out.println("Errore " + e);

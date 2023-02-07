@@ -400,7 +400,8 @@ public class SearchView extends View {
         return q;
     }
 
-    private String buildQueryByFiltriSerie() { // costruisce la query per le serie in base ai filtri selezionati
+
+    private String buildQueryByFiltriSerie() {
         String titoloOrIssn,editore, lingua, dataPubblicazioneDa, dataPubblicazioneA, formato;
         titoloOrIssn = searchField.getText();
         String query = "SELECT * FROM b.filter_serie WHERE nome LIKE '%" + titoloOrIssn + "%' OR issn LIKE '%" + titoloOrIssn + "%' AND ";
@@ -484,75 +485,64 @@ public class SearchView extends View {
     private String buildQueryByFiltriLibri() { // costruisce la query per i libri in base ai filtri selezionati
         String titoloOrisbn, autore, editore, genere, lingua, serie, formato, dataPubblicazioneDa, dataPubblicazioneA, prezzoDa, prezzoA;
         titoloOrisbn = searchField.getText();
-        String query = "SELECT * FROM b.resultview_libri WHERE (titolo LIKE '%" + titoloOrisbn + "%' OR isbn LIKE '%" + titoloOrisbn + "%') AND ";
+        String finalQuery = "SELECT * FROM b.resultview_libri WHERE (titolo LIKE '%" + titoloOrisbn + "%' OR isbn LIKE '%" + titoloOrisbn + "%') AND ";
 
         if (autoreLibroCheckBox.isSelected()) {
             autore = String.valueOf(autoreLibroComboBox.getSelectedItem());
-        } else {
-            autore = "";
+            finalQuery += "autori LIKE '%" + autore + "%' AND";
         }
 
         if (editoreLibroCheckBox.isSelected()) {
             editore = String.valueOf(editoreLibroComboBox.getSelectedItem());
-        } else {
-            editore = "";
+            finalQuery += " editore = '" + editore + "' AND";
         }
 
         if (genereLibroCheckBox.isSelected()) {
             genere = String.valueOf(genereLibroComboBox.getSelectedItem());
-        } else {
-            genere = "";
+            finalQuery += " genere LIKE '%" + genere + "%' AND";
         }
 
         if (linguaLibroCheckBox.isSelected()) {
             lingua = String.valueOf(linguaLibroComboBox.getSelectedItem());
-        } else {
-            lingua = "";
+            finalQuery += " lingua = '" + lingua + "' AND";
         }
 
         if (serieLibroCheckBox.isSelected()) {
             serie = String.valueOf(serieLibroComboBox.getSelectedItem());
-        } else {
-            serie = "";
+            finalQuery += " serie = '" + serie + "' AND";
         }
 
         if (formatoLibroCheckBox.isSelected()) {
             formato = String.valueOf(formatoLibroComboBox.getSelectedItem());
-        } else {
-            formato = "";
+            finalQuery += " formato = '" + formato + "' AND";
         }
 
         if (dataPubblicazioneLibroCheckBox.isSelected()) {
             dataPubblicazioneDa = dataDaLibroField.getText();
             dataPubblicazioneA = dataALibroField.getText();
-        } else {
-            dataPubblicazioneDa = "";
-            dataPubblicazioneA = "";
+            finalQuery += " data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "' AND";
         }
 
         if (prezzoLibroCheckBox.isSelected()) {
             prezzoDa = prezzoDaLibroField.getText();
             prezzoA = prezzoALibroField.getText();
-
-        } else {
-            prezzoDa = "";
-            prezzoA = "";
-
+            finalQuery += " prezzo BETWEEN '" + prezzoDa + "' AND '" + prezzoA + "' AND";
         }
-        String finalQuery = query +
-                " autore = '" + autore +
-                "' AND editore = '" + editore +
-                "' AND genere = '" + genere +
-                "' AND lingua = '" + lingua +
-                "' AND serie = '" + serie +
-                "' AND formato = '" + formato +
-                "' AND data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA +
-                "' AND prezzo BETWEEN '" + prezzoDa + "' AND '" + prezzoA + "';";
+        if(finalQuery.endsWith("AND ")){
+            finalQuery= finalQuery.substring(0, finalQuery.length()-4)+";";
+            System.out.println("-------");
+            System.out.println(finalQuery);
+        }
+        if(finalQuery.endsWith("AND")){
+            finalQuery= finalQuery.substring(0, finalQuery.length()-3)+";";
+            System.out.println("-------");
+            System.out.println(finalQuery);
+        }
         return finalQuery;
     }
 
-
-    private String buildQueryByFiltriArticoli() { // costruisce la query per gli articoli in base ai filtri selezionati
+//Costruisce la query per gli articoli in base ai filtri selezionati
+    private String buildQueryByFiltriArticoli() {
         String titoloOrDOI, autore, editore, disciplina, lingua, formato, dataPubblicazioneDa, dataPubblicazioneA;
         titoloOrDOI = searchField.getText();
 

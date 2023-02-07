@@ -5,3 +5,5 @@ FROM b.articoli a, b.riviste r, b.conferenza c, b.evento e, b.autore au
 
 ;
 SELECT * FROM b.view_articoli_autore WHERE (titolo LIKE '%%' OR doi LIKE '%%')
+
+SELECT * FROM b.resultview_libri WHERE (titolo LIKE '%%' OR isbn LIKE '%%')
