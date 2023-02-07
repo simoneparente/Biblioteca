@@ -129,6 +129,14 @@ public class SearchView extends View {
             }
         });
 
+        //aggiunge un listener al searchButton che, quando viene premuto, apre la ResultView, implementare ricerca
+        searchButton.addActionListener(e -> {
+                Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
+                adjustSearchPosition();
+                ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase(), buildQueryByFiltri());
+
+        });
+
         //LISTENER CHECKBOX FILTRI LIBRI
         //------------------------------------------------------------------------------------------
         //aggiunge un listener alla risorsaComboBox che, quando viene selezionata una risorsa, ricarica i filtri
@@ -142,18 +150,6 @@ public class SearchView extends View {
                 setFiltriInvisibili();
             }
         });
-        //aggiunge un listener al searchButton che, quando viene premuto, apre la ResultView, implementare ricerca
-        searchButton.addActionListener(e -> {
-                Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
-                SearchView.super.setLocationRelativeTo(null); //centra la SearchView rispetto al monitor
-                int searchViewX = SearchView.getInstance().getX(); //ottiene la posizione della SearchView
-                int searchViewY = SearchView.getInstance().getY(); //ottiene la posizione della SearchView
-                int searchViewW = SearchView.getInstance().getWidth(); //ottiene la larghezza della SearchView
-                SearchView.getInstance().setLocation(searchViewX - searchViewW / 2, searchViewY); //centra la SearchView rispetto alla ResultView
-                ResultView.getInstance().setLocation(SearchView.getInstance().getX() + searchViewW, searchViewY); //centra la ResultView rispetto alla SearchView
-                ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase(), buildQueryByFiltri());
-        });
-
         //aggiunge un listener al autoreLibroCheckBox che, quando viene selezionato, abilita/disabilita il relativo JComboBox
         autoreLibroCheckBox.addActionListener(e -> autoreLibroComboBox.setEnabled(autoreLibroCheckBox.isSelected()));
 
@@ -341,7 +337,7 @@ public class SearchView extends View {
         }
     }
 
-    public static View getInstance() {
+    public static SearchView getInstance() {
         if (instance == null) {
             instance = new SearchView();
         }
@@ -402,43 +398,40 @@ public class SearchView extends View {
 
 
     private String buildQueryByFiltriSerie() {
-        String titoloOrIssn,editore, lingua, dataPubblicazioneDa, dataPubblicazioneA, formato;
+        String titoloOrIssn, editore, lingua, dataPubblicazioneDa, dataPubblicazioneA, formato;
         titoloOrIssn = searchField.getText();
-        String query = "SELECT * FROM b.filter_serie WHERE nome LIKE '%" + titoloOrIssn + "%' OR issn LIKE '%" + titoloOrIssn + "%' AND ";
+        String finalQuery = "SELECT DISTINCT * FROM b.resultview_serie WHERE nome LIKE '%" + titoloOrIssn + "%' OR issn LIKE '%" + titoloOrIssn + "%' AND";
 
 
         if (editoreSerieCheckBox.isSelected()) {
             editore = String.valueOf(editoreSerieComboBox.getSelectedItem());
-        } else {
-            editore = "";
+            finalQuery += " editore = '" + editore + "' AND";
         }
 
         if (linguaSerieCheckBox.isSelected()) {
             lingua = String.valueOf(linguaSerieComboBox.getSelectedItem());
-        } else {
-            lingua = "";
+            finalQuery += " lingua = '" + lingua + "' AND";
         }
 
         if (formatoSerieCheckBox.isSelected()) {
             formato = String.valueOf(formatoSerieComboBox.getSelectedItem());
-        } else {
-            formato = "";
+            finalQuery += " formato = '" + formato + "' AND";
         }
 
         if (dataPubblicazioneSerieCheckBox.isSelected()) {
             dataPubblicazioneDa = dataPubblicazioneDaSerieField.getText();
             dataPubblicazioneA = dataPubblicazioneASerieField.getText();
-        } else {
-            dataPubblicazioneDa = "";
-            dataPubblicazioneA = "";
+            finalQuery += " data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "' AND";
         }
 
-        String finalQuery = query +
-                " editore = '" + editore +
-                "' AND lingua = '" + lingua +
-                "' AND formato = '" + formato +
-                "' AND data_pubblicazione BETWEEN '" + dataPubblicazioneDa +
-                "' AND '" + dataPubblicazioneA + "'";
+        if(finalQuery.endsWith("AND ")){
+            finalQuery= finalQuery.substring(0, finalQuery.length()-4)+";";
+        }
+        if(finalQuery.endsWith("AND")){
+            finalQuery= finalQuery.substring(0, finalQuery.length()-3)+";";
+        }
+        System.out.println("-------");
+        System.out.println(finalQuery);
         return finalQuery;
     }
 
@@ -530,14 +523,12 @@ public class SearchView extends View {
         }
         if(finalQuery.endsWith("AND ")){
             finalQuery= finalQuery.substring(0, finalQuery.length()-4)+";";
-            System.out.println("-------");
-            System.out.println(finalQuery);
         }
         if(finalQuery.endsWith("AND")){
             finalQuery= finalQuery.substring(0, finalQuery.length()-3)+";";
-            System.out.println("-------");
-            System.out.println(finalQuery);
         }
+        System.out.println("-------");
+        System.out.println(finalQuery);
         return finalQuery;
     }
 
@@ -601,4 +592,6 @@ public class SearchView extends View {
             }
         return finalQuery;
     }
+
 }
+

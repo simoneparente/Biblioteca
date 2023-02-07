@@ -39,9 +39,14 @@ public class View extends JFrame{
         this.setVisible(false);
     }
 
-    int adjustSearchPosition() {
-        this.setLocation(this.getX() + (ResultView.getInstance().getWidth())/2, this.getY());
-        return DISPOSE_ON_CLOSE;
+    public void adjustSearchPosition() {
+        //this.setLocation(this.getX() + (ResultView.getInstance().getWidth())/2, this.getY());
+        SearchView.getInstance().setLocationRelativeTo(null);
+        int searchViewX = SearchView.getInstance().getX(); //ottiene la posizione della SearchView
+        int searchViewY = SearchView.getInstance().getY(); //ottiene la posizione della SearchView
+        int searchViewW = SearchView.getInstance().getWidth(); //ottiene la larghezza della SearchView
+        SearchView.getInstance().setLocation(searchViewX - searchViewW / 2, searchViewY); //centra la SearchView rispetto alla ResultView
+        ResultView.getInstance().setLocation(SearchView.getInstance().getX() + searchViewW, searchViewY); //centra la ResultView rispetto alla SearchView
     }
 
 }

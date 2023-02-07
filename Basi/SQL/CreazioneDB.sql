@@ -1107,7 +1107,8 @@ FROM (b.articoli a NATURAL JOIN b.autorearticolo);
 
 --Result View Serie
 CREATE VIEW b.resultView_serie AS
-SELECT distinct nome_serie                    as nome,
+SELECT DISTINCT ON (nome_serie) nome_serie as nome, --da valutare se vogliamo fare così, dubito però di base funziona
+                issn,
                 editore,
                 lingua,
                 formato,
