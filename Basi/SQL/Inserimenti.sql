@@ -27,6 +27,6 @@ values ('10.1101/2020.12.31', 'La scoperta delle proteine', 'Mario_Rossi Giusepp
 
 --Insert Articolo Rivista
 INSERT INTO b.ins_riviste (issn, nome, argomento, datapubblicazione, responsabile, doi_articoli_pubblicati)
-VALUES ('978-88-04-58339-8', 'Il Signore degli Anelli 1', 'Fantasy', '1954-07-29', 'J.R.R._Tolkien',
-        '10.1101/2020.12.31 10.1101/2021.12.31');
+VALUES ('978-88-04-58339-8', 'Rivista', 'MOTO', '1954-07-29', 'luigi_esposito',
+        '10.1101/2030.12.31 10.1101/2028.12.31');
 
