@@ -952,7 +952,8 @@ SELECT a.titolo,
        a.editore,
        a.lingua,
        a.formato,
-       r.nome as titolo_riviste
+       r.nome as titolo_riviste,
+       r.issn as issn_riviste
 FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar)
          JOIN b.riviste as r on ar.id_rivista = r.id_rivista;
 
@@ -1118,7 +1119,8 @@ FROM b.view_libri_serie;
 
 --Result View Riviste
 CREATE VIEW b.resultView_riviste AS
-SELECT distinct titolo as nome,
+SELECT distinct titolo_riviste as nome,
+                issn_riviste as issn,
                 disciplina,
                 editore,
                 lingua,
