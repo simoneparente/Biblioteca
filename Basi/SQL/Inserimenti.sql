@@ -34,4 +34,4 @@ VALUES ('978-88-04-58339-8', 'Il Signore degli Anelli 1', 'Fantasy', '1954-07-29
 INSERT INTO b.ins_libri_autore_serie (titolo, ISBN, autorinome_cognome, datapubblicazione, editore, genere, lingua,
                                       formato,
                                       nome_serie_di_appartenenza, issn_serie_di_appartenenza)
-VALUES ('Il Signore degli Anelli 1', '978-88-04-58339-8', 'J.R.R._Tolkien', '1954-07-29', 'Allen & Unwin'
+VALUES ('Il Signore degli Anelli 1', '978-88-04-58339-8', 'J.R.R._Tolkien', '1954-07-29', 'Allen & Unwin');

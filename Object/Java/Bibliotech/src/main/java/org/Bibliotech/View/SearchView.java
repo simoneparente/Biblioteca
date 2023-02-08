@@ -438,40 +438,27 @@ public class SearchView extends View {
     private String buildQueryByFiltriRiviste() { // costruisce la query per le riviste in base ai filtri selezionati
         String nomeOrIssn, argomento, lingua, formato, dataPubblicazioneDa, dataPubblicazioneA;
         nomeOrIssn = searchField.getText();
-        String query = "SELECT * FROM b.filter_riviste WHERE nome LIKE '%" + nomeOrIssn + "%' OR issn LIKE '%" + nomeOrIssn + "%') AND ";
+        String finalQuery = "SELECT * FROM b.resultview_riviste WHERE nome LIKE '%" + nomeOrIssn + "%' OR issn LIKE '%" + nomeOrIssn + "%') AND ";
 
         if (argomentoRivisteCheckBox.isSelected()) {
             argomento = String.valueOf(argomentoRivisteComboBox.getSelectedItem());
-        } else {
-            argomento = "";
+            finalQuery += " argomento = '" + argomento + "' AND";
         }
 
         if (linguaRivisteCheckBox.isSelected()) {
             lingua = String.valueOf(linguaRivisteComboBox.getSelectedItem());
-        } else {
-            lingua = "";
+            finalQuery += " lingua = '" + lingua + "' AND";
         }
 
         if (formatoRivisteCheckBox.isSelected()) {
             formato = String.valueOf(formatoRivisteComboBox.getSelectedItem());
-        } else {
-            formato = "";
-        }
+            finalQuery += " formato = '" + formato + "' AND";}
 
         if (dataPubblicazioneRivisteCheckBox.isSelected()) {
             dataPubblicazioneDa = dataPubblicazioneDaRivisteField.getText();
             dataPubblicazioneA = dataPubblicazioneARivisteField.getText();
-        } else {
-            dataPubblicazioneDa = "";
-            dataPubblicazioneA = "";
+            finalQuery += " data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "' AND";
         }
-
-        String finalQuery = query +
-                " argomento = '" + argomento +
-                "' AND lingua = '" + lingua +
-                "' AND formato = '" + formato +
-                "' AND data_pubblicazione BETWEEN '" + dataPubblicazioneDa +
-                "' AND '" + dataPubblicazioneA + "'";
         return finalQuery;
     }
 
