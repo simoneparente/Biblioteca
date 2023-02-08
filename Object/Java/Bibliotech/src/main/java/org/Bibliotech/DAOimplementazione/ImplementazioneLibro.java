@@ -161,6 +161,11 @@ public class ImplementazioneLibro implements LibroDao {
         return getLibri(getLibroByPrezzoMAXQuery, prezzo);
     }
 
+    @Override
+    public boolean addLibro(Libro libro) {
+        return false;
+    }
+
     //Get tramite altre tabelle
     @Override
     public Libri getLibriByAutore(String nome, String cognome){
