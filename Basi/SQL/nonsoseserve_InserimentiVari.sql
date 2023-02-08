@@ -20,11 +20,9 @@ values ('10.1101/2020.12.31', 'La scoperta delle proteine', 'Mario_Rossi Giusepp
        ('10.1101/2028.12.31', 'Il futuro dell''energia', 'Andrea_Rossi Giuseppe_Verdi', '2028-12-31', 'Energia',
         'Springer', 'Italiano', 'Cartaceo'),
        ('10.1101/2029.12.31', 'Il futuro dell''automobile', 'Luca_Bianchi Roberto_Neri', '2029-12-31', 'Meccanina',
-        'Nature Publishing Group', 'Inglese', 'Digitale'),
-       ('10.1101/2030.12.31', 'Il futuro della fessa', 'John_Smith Jane_Doe', '2030-12-31', 'Anatomia', 'Wiley',
-        'Italiano', 'Cartaceo'),
-       ('10.1101/2031.12.31', 'Il futuro della fessa artificiale', 'Mark_Johnson David_Williams', '2031-12-31',
-        'Anatomia', 'Elsevier', 'Inglese', 'Digitale');
+        'Nature Publishing Group', 'Inglese', 'Digitale');
+       --('10.1101/2031.12.31', 'Il futuro della fessa artificiale', 'Mark_Johnson David_Williams', '2031-12-31',
+        --'Anatomia', 'Elsevier', 'Inglese', 'Digitale');
 
 --Insert Libro Autore Serie
 INSERT INTO b.ins_libri_autore_serie (titolo, ISBN, autorinome_cognome, datapubblicazione, editore, genere, lingua,

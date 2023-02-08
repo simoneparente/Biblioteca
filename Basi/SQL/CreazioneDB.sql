@@ -1,6 +1,8 @@
 DROP SCHEMA IF EXISTS b CASCADE;
 CREATE SCHEMA b;
 
+CREATE TYPE b.TipoUtente AS ENUM ('0', '1', '2');
+
 ------------------------------------------------------------------------------------------------------------------------
 --Creazione tabelle
 ------------------------------------------------------------------------------------------------------------------------
@@ -173,6 +175,7 @@ CREATE TABLE b.Utente
     ID_Utente SERIAL,
     Username  VARCHAR(128),
     Password  VARCHAR(128),
+    Permessi  b.TipoUtente DEFAULT '0',
 
     CONSTRAINT PK_Utente PRIMARY KEY (ID_Utente),
     CONSTRAINT UK_Utente UNIQUE (Username)
