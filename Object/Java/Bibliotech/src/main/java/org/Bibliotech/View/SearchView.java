@@ -438,7 +438,7 @@ public class SearchView extends View {
     private String buildQueryByFiltriRiviste() { // costruisce la query per le riviste in base ai filtri selezionati
         String nomeOrIssn, argomento, lingua, formato, dataPubblicazioneDa, dataPubblicazioneA;
         nomeOrIssn = searchField.getText();
-        String finalQuery = "SELECT * FROM b.resultview_riviste WHERE nome LIKE '%" + nomeOrIssn + "%' OR issn LIKE '%" + nomeOrIssn + "%') AND ";
+        String finalQuery = "SELECT * FROM b.resultview_riviste WHERE (nome LIKE '%" + nomeOrIssn + "%' OR issn LIKE '%" + nomeOrIssn + "%') AND";
 
         if (argomentoRivisteCheckBox.isSelected()) {
             argomento = String.valueOf(argomentoRivisteComboBox.getSelectedItem());
@@ -458,6 +458,12 @@ public class SearchView extends View {
             dataPubblicazioneDa = dataPubblicazioneDaRivisteField.getText();
             dataPubblicazioneA = dataPubblicazioneARivisteField.getText();
             finalQuery += " data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "' AND";
+        }
+        if(finalQuery.endsWith("AND ")){
+            finalQuery= finalQuery.substring(0, finalQuery.length()-4)+";";
+        }
+        if(finalQuery.endsWith("AND")){
+            finalQuery= finalQuery.substring(0, finalQuery.length()-3)+";";
         }
         return finalQuery;
     }
