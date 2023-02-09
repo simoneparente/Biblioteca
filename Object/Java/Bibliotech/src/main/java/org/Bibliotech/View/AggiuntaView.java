@@ -35,6 +35,9 @@ public class AggiuntaView extends View {
     private JTextField dataPublicazioneField;
     private JLabel logoLabel;
     private JButton annullaButton;
+    private JPanel seriePanel;
+    private JTextField nomeField;
+    private JTextField issnField;
 
     public AggiuntaView() {
         super(nome);
@@ -42,14 +45,14 @@ public class AggiuntaView extends View {
         this.setVisible(true);
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
         setPlaceHolders();
-        setFiltriInvisibili();
+        setPanelInvisibili();
         serieBox.setEnabled(false);
         fillAllComboBoxes();
         risorsaComboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    ricaricaFiltri(String.valueOf(risorsaComboBox.getSelectedItem()));
+                    ricaricaPanel(String.valueOf(risorsaComboBox.getSelectedItem()));
                 }
             }
         });
@@ -71,6 +74,21 @@ public class AggiuntaView extends View {
                 Controller.getInstance().switchView(SearchView.getInstance(), AggiuntaView.getInstance());
             }
         });
+        serieBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    if(!serieBox.getSelectedItem().equals("・・・Aggiungi nuova serie・・・")){
+                        seriePanel.setVisible(false);
+                    }
+                }
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    if (serieBox.getSelectedItem().equals("・・・Aggiungi nuova serie・・・")) {
+                        seriePanel.setVisible(true);
+                    }
+                }
+            }
+        });
     }
 
     public void setPlaceHolders(){
@@ -87,6 +105,9 @@ public class AggiuntaView extends View {
         setPlaceholderText(autoriArticoloField, "Autori");
         setPlaceholderText(formatoArticoliField, "Formato");
         setPlaceholderText(editoreArticoliField, "Titolo");
+        setPlaceholderText(issnField, "ISSN");
+        setPlaceholderText(nomeField, "Nome della serie");
+
     }
     public void setPlaceholderText(JTextField field, String text) {
         field.setText(text);
@@ -110,18 +131,23 @@ public class AggiuntaView extends View {
 
     private void fillComboBox(JComboBox comboBox, ArrayList<String> items) {
         comboBox.removeAllItems();
-        if(comboBox.equals(serieBox))comboBox.addItem("・・・Aggiungi nuova serie・・・");
+        if(comboBox.equals(serieBox)){
+            comboBox.addItem("");
+            comboBox.addItem("・・・Aggiungi nuova serie・・・");
+            comboBox.addItem("");
+        }
         for (String item : items) {
             comboBox.addItem(item);
         }
     }
-    private void setFiltriInvisibili() {
+    private void setPanelInvisibili() {
         LibriPanel.setVisible(false);
         ArticoliPanel.setVisible(false);
+        seriePanel.setVisible(false);
     }
 
-    private void ricaricaFiltri(String risorsa) {
-        setFiltriInvisibili();
+    private void ricaricaPanel(String risorsa) {
+        setPanelInvisibili();
         switch (risorsa) {
             case "Libro" -> LibriPanel.setVisible(true);
             case "Articolo" -> ArticoliPanel.setVisible(true);

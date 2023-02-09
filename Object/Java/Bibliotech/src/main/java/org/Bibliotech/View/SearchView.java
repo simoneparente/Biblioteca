@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class SearchView extends View {
     private static SearchView instance = null;
@@ -140,7 +143,6 @@ public class SearchView extends View {
         });
 
 
-
         filtriCheckBox.addActionListener(e -> {
             if (filtriCheckBox.isSelected()) {
                 if (risorsaComboBox.getSelectedItem().equals("")) {
@@ -156,9 +158,9 @@ public class SearchView extends View {
 
         //aggiunge un listener al searchButton che, quando viene premuto, apre la ResultView, implementare ricerca
         searchButton.addActionListener(e -> {
-                Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
-                adjustSearchPosition();
-                ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase(), buildQueryByFiltri());
+            Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
+            adjustSearchPosition();
+            ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase(), buildQueryByFiltri());
 
         });
 
@@ -427,7 +429,7 @@ public class SearchView extends View {
     private String buildQueryByFiltriSerie() {
         String titoloOrIssn, editore, lingua, dataPubblicazioneDa, dataPubblicazioneA, formato;
         titoloOrIssn = searchField.getText();
-        String finalQuery = "SELECT DISTINCT * FROM b.resultview_serie WHERE nome LIKE '%" + titoloOrIssn + "%' OR issn LIKE '%" + titoloOrIssn + "%' AND";
+        String finalQuery = "SELECT DISTINCT * FROM b.resultview_serie WHERE (nome LIKE '%" + titoloOrIssn + "%' OR issn LIKE '%" + titoloOrIssn + "%') AND";
 
 
         if (editoreSerieCheckBox.isSelected()) {
@@ -448,14 +450,19 @@ public class SearchView extends View {
         if (dataPubblicazioneSerieCheckBox.isSelected()) {
             dataPubblicazioneDa = dataPubblicazioneDaSerieField.getText();
             dataPubblicazioneA = dataPubblicazioneASerieField.getText();
-            finalQuery += " data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "' AND";
+            if (!dataPubblicazioneDa.equals("") && !dataPubblicazioneA.equals("")) {
+                finalQuery += " (datapubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "') AND";
+            } else if (!dataPubblicazioneDa.equals("") || dataPubblicazioneA.equals("")) {
+                finalQuery += "(datapubblicazione >= '" + dataPubblicazioneDa + "') AND";
+            } else if (dataPubblicazioneDa.equals("") || !dataPubblicazioneA.equals("")) {
+            finalQuery += "(datapubblicazione <= '" + dataPubblicazioneA + "') AND";
+            }
         }
-
-        if(finalQuery.endsWith("AND ")){
-            finalQuery= finalQuery.substring(0, finalQuery.length()-4)+";";
+        if (finalQuery.endsWith("AND ")) {
+            finalQuery = finalQuery.substring(0, finalQuery.length() - 4) + ";";
         }
-        if(finalQuery.endsWith("AND")){
-            finalQuery= finalQuery.substring(0, finalQuery.length()-3)+";";
+        if (finalQuery.endsWith("AND")) {
+            finalQuery = finalQuery.substring(0, finalQuery.length() - 3) + ";";
         }
         System.out.println("-------");
         System.out.println(finalQuery);
@@ -479,18 +486,25 @@ public class SearchView extends View {
 
         if (formatoRivisteCheckBox.isSelected()) {
             formato = String.valueOf(formatoRivisteComboBox.getSelectedItem());
-            finalQuery += " formato = '" + formato + "' AND";}
+            finalQuery += " formato = '" + formato + "' AND";
+        }
 
         if (dataPubblicazioneRivisteCheckBox.isSelected()) {
             dataPubblicazioneDa = dataPubblicazioneDaRivisteField.getText();
             dataPubblicazioneA = dataPubblicazioneARivisteField.getText();
-            finalQuery += " data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "' AND";
+            if (!dataPubblicazioneDa.equals("") && !dataPubblicazioneA.equals("")) {
+                finalQuery += " (datapubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "') AND";
+            } else if (!dataPubblicazioneDa.equals("") || dataPubblicazioneA.equals("")) {
+                finalQuery += "(datapubblicazione >= '" + dataPubblicazioneDa + "') AND";
+            } else if (dataPubblicazioneDa.equals("") || !dataPubblicazioneA.equals("")) {
+                finalQuery += "(datapubblicazione <= '" + dataPubblicazioneA + "') AND";
+            }
         }
-        if(finalQuery.endsWith("AND ")){
-            finalQuery= finalQuery.substring(0, finalQuery.length()-4)+";";
+        if (finalQuery.endsWith("AND ")) {
+            finalQuery = finalQuery.substring(0, finalQuery.length() - 4) + ";";
         }
-        if(finalQuery.endsWith("AND")){
-            finalQuery= finalQuery.substring(0, finalQuery.length()-3)+";";
+        if (finalQuery.endsWith("AND")) {
+            finalQuery = finalQuery.substring(0, finalQuery.length() - 3) + ";";
         }
         return finalQuery;
     }
@@ -498,7 +512,7 @@ public class SearchView extends View {
     private String buildQueryByFiltriLibri() { // costruisce la query per i libri in base ai filtri selezionati
         String titoloOrisbn, autore, editore, genere, lingua, serie, formato, dataPubblicazioneDa, dataPubblicazioneA, prezzoDa, prezzoA;
         titoloOrisbn = searchField.getText();
-        String finalQuery = "SELECT * FROM b.resultview_libri WHERE (titolo LIKE '%" + titoloOrisbn + "%' OR isbn LIKE '%" + titoloOrisbn + "%') AND ";
+        String finalQuery = "SELECT * FROM b.resultview_libri WHERE (titolo LIKE '%" + titoloOrisbn + "%' OR isbn LIKE '%" + titoloOrisbn + "%') AND "; //valutare toUpper
 
         if (autoreLibroCheckBox.isSelected()) {
             autore = String.valueOf(autoreLibroComboBox.getSelectedItem());
@@ -533,7 +547,13 @@ public class SearchView extends View {
         if (dataPubblicazioneLibroCheckBox.isSelected()) {
             dataPubblicazioneDa = dataDaLibroField.getText();
             dataPubblicazioneA = dataALibroField.getText();
-            finalQuery += " data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "' AND";
+            if (!dataPubblicazioneDa.equals("") && !dataPubblicazioneA.equals("")) {
+                finalQuery += " (datapubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "') AND";
+            } else if (!dataPubblicazioneDa.equals("") || dataPubblicazioneA.equals("")) {
+                finalQuery += "(datapubblicazione >= '" + dataPubblicazioneDa + "') AND";
+            } else if (dataPubblicazioneDa.equals("") || !dataPubblicazioneA.equals("")) {
+                finalQuery += "(datapubblicazione <= '" + dataPubblicazioneA + "') AND";
+            }
         }
 
         if (prezzoLibroCheckBox.isSelected()) {
@@ -541,75 +561,71 @@ public class SearchView extends View {
             prezzoA = prezzoALibroField.getText();
             finalQuery += " prezzo BETWEEN '" + prezzoDa + "' AND '" + prezzoA + "' AND";
         }
-        if(finalQuery.endsWith("AND ")){
-            finalQuery= finalQuery.substring(0, finalQuery.length()-4)+";";
+        if (finalQuery.endsWith("AND ")) {
+            finalQuery = finalQuery.substring(0, finalQuery.length() - 4) + ";";
         }
-        if(finalQuery.endsWith("AND")){
-            finalQuery= finalQuery.substring(0, finalQuery.length()-3)+";";
+        if (finalQuery.endsWith("AND")) {
+            finalQuery = finalQuery.substring(0, finalQuery.length() - 3) + ";";
         }
         System.out.println("-------");
         System.out.println(finalQuery);
         return finalQuery;
     }
 
-//Costruisce la query per gli articoli in base ai filtri selezionati
+    //Costruisce la query per gli articoli in base ai filtri selezionati
     private String buildQueryByFiltriArticoli() {
         String titoloOrDOI, autore, editore, disciplina, lingua, formato, dataPubblicazioneDa, dataPubblicazioneA;
         titoloOrDOI = searchField.getText();
 
-        String finalQuery = "SELECT * FROM b.resultview_articoli WHERE (titolo LIKE '%"+ titoloOrDOI +"%' OR doi LIKE '%"+ titoloOrDOI +"%') AND ";
+        String finalQuery = "SELECT * FROM b.resultview_articoli WHERE (titolo LIKE '%" + titoloOrDOI + "%' OR doi LIKE '%" + titoloOrDOI + "%') AND ";
 
-           if(autoreArticoloCheckBox.isSelected()) {
-               autore = String.valueOf(autoreArticoloComboBox.getSelectedItem());
-               finalQuery=finalQuery + " autori LIKE '%" + autore + "%'  AND";
-           }
+        if (autoreArticoloCheckBox.isSelected()) {
+            autore = String.valueOf(autoreArticoloComboBox.getSelectedItem());
+            finalQuery = finalQuery + " autori LIKE '%" + autore + "%'  AND";
+        }
 
-           if(editoreArticoloCheckBox.isSelected()) {
-               editore = String.valueOf(editoreArticoloComboBox.getSelectedItem());
-               finalQuery=finalQuery + " editore = '" + editore + "' AND";
-           }
+        if (editoreArticoloCheckBox.isSelected()) {
+            editore = String.valueOf(editoreArticoloComboBox.getSelectedItem());
+            finalQuery = finalQuery + " editore = '" + editore + "' AND";
+        }
 
-           if(disciplinaArticoloCheckBox.isSelected()) {
-               disciplina = String.valueOf(disciplinaArticoloComboBox.getSelectedItem());
-               finalQuery=finalQuery + " disciplina = '" + disciplina + "' AND";
-           }
+        if (disciplinaArticoloCheckBox.isSelected()) {
+            disciplina = String.valueOf(disciplinaArticoloComboBox.getSelectedItem());
+            finalQuery = finalQuery + " disciplina = '" + disciplina + "' AND";
+        }
 
-           if(linguaArticoloCheckBox.isSelected()) {
-               lingua = String.valueOf(linguaArticoloComboBox.getSelectedItem());
-               finalQuery=finalQuery + " lingua = '" + lingua + "' AND";
-               System.out.println("Lingua "+ lingua + "aggiunt aalla qyuarry" + "finalquery{" + finalQuery + "}");
-           }
+        if (linguaArticoloCheckBox.isSelected()) {
+            lingua = String.valueOf(linguaArticoloComboBox.getSelectedItem());
+            finalQuery = finalQuery + " lingua = '" + lingua + "' AND";
+            System.out.println("Lingua " + lingua + "aggiunt aalla qyuarry" + "finalquery{" + finalQuery + "}");
+        }
 
-           //if(rivistaArticoloCheckBox.isSelected()) {
-           //     rivista = String.valueOf(rivistaArticoloComboBox.getSelectedItem());
-           //     finalQuery= finalQuery + " rivista '" + rivista + "' AND";
-           //}
-           //
-           //if(conferenzaArticoloCheckBox.isSelected()) {
-           //     conferenza = String.valueOf(conferenzaArticoloComboBox.getSelectedItem());
-           //     finalQuery=finalQuery + ' confe'
-           //}
+        if (formatoArticoloCheckBox.isSelected()) {
+            formato = String.valueOf(formatoArticoloComboBox.getSelectedItem());
+            finalQuery = finalQuery + " formato = '" + formato + "' AND";
+        }
 
-           if(formatoArticoloCheckBox.isSelected()) {
-               formato = String.valueOf(formatoArticoloComboBox.getSelectedItem());
-               finalQuery=finalQuery + " formato = '" + formato + "' AND";
-           }
-
-           if(dataPubblicazioneArticoloCheckBox.isSelected()) {
-               dataPubblicazioneDa = dataPubblicazioneDaArticoloField.getText();
-               dataPubblicazioneA = dataPubblicazioneAArticoloField.getText();
-               finalQuery= finalQuery+ " data_pubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "'";
-           }
-            if(finalQuery.endsWith("AND ")){
-                finalQuery= finalQuery.substring(0, finalQuery.length()-4)+";";
-                System.out.println("-------");
-                System.out.println(finalQuery);
+        if (dataPubblicazioneArticoloCheckBox.isSelected()) {
+            dataPubblicazioneDa = dataPubblicazioneDaArticoloField.getText();
+            dataPubblicazioneA = dataPubblicazioneAArticoloField.getText();
+            if (!dataPubblicazioneDa.equals("") && !dataPubblicazioneA.equals("")) {
+                finalQuery += " (datapubblicazione BETWEEN '" + dataPubblicazioneDa + "' AND '" + dataPubblicazioneA + "') AND";
+            } else if (!dataPubblicazioneDa.equals("") || dataPubblicazioneA.equals("")) {
+                finalQuery += "(datapubblicazione >= '" + dataPubblicazioneDa + "') AND";
+            } else if (dataPubblicazioneDa.equals("") || !dataPubblicazioneA.equals("")) {
+                finalQuery += "(datapubblicazione <= '" + dataPubblicazioneA + "') AND";
             }
-             if(finalQuery.endsWith("AND")){
-                 finalQuery= finalQuery.substring(0, finalQuery.length()-3)+";";
-                 System.out.println("-------");
-                 System.out.println(finalQuery);
-            }
+        }
+        if (finalQuery.endsWith("AND ")) {
+            finalQuery = finalQuery.substring(0, finalQuery.length() - 4) + ";";
+            System.out.println("-------");
+            System.out.println(finalQuery);
+        }
+        if (finalQuery.endsWith("AND")) {
+            finalQuery = finalQuery.substring(0, finalQuery.length() - 3) + ";";
+            System.out.println("-------");
+            System.out.println(finalQuery);
+        }
         return finalQuery;
     }
 
