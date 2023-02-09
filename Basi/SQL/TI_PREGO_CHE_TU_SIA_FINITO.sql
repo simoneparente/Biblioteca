@@ -487,6 +487,8 @@ CREATE OR REPLACE TRIGGER trig_Libri
     FOR EACH ROW
 EXECUTE FUNCTION b.ftrig_Libri();
 
+
+
 --Trigger per l'inserimento della presentazione di un libro nel DataBase
 CREATE OR REPLACE VIEW b.ins_presentazione AS
 SELECT l.ISBN,
