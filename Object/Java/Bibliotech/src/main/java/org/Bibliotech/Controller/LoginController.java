@@ -24,7 +24,7 @@ public class LoginController extends Controller{
             JOptionPane.showMessageDialog(null, "Inserire username e password");
         }
         else{
-            ImplementazioneUtente iu=new ImplementazioneUtente();
+            ImplementazioneUtente iu = new ImplementazioneUtente();
             if(iu.checkLogin(username, password)){
                 JOptionPane.showMessageDialog(null, "Login effettuato");
                 switchView(SearchView.getInstance(), LoginView.getInstance());

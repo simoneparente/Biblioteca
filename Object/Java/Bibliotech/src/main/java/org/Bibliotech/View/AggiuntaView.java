@@ -1,5 +1,6 @@
 package org.Bibliotech.View;
 
+import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
 
 import javax.swing.*;
@@ -30,10 +31,10 @@ public class AggiuntaView extends View {
     private JTextField editoreArticoliField;
     private JTextField doiField;
     private JComboBox PresentatoInBox;
-    private JPanel addRivistaConferenzaPanel;
     private JTextField isbnField;
     private JTextField dataPublicazioneField;
     private JLabel logoLabel;
+    private JButton annullaButton;
 
     public AggiuntaView() {
         super(nome);
@@ -62,6 +63,12 @@ public class AggiuntaView extends View {
                     serieBox.setEnabled(false);
                     PresentatoInBox.setEnabled(false);
                 }
+            }
+        });
+        annullaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Controller.getInstance().switchView(SearchView.getInstance(), AggiuntaView.getInstance());
             }
         });
     }
