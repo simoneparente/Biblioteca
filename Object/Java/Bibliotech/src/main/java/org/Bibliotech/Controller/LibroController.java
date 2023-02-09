@@ -10,6 +10,10 @@ public class LibroController {
     public LibroController() {
         libro = new ImplementazioneLibro();
     }
+
+    public static void addLibroInDB(String titolo, String text1, String text2, String text3, String text4, String text5, String text6, String valueOf) {
+    }
+
     public Libri leggiLibri(){
         return libro.getLibri();
     }

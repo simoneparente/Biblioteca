@@ -158,10 +158,15 @@ public class SearchView extends View {
 
         //aggiunge un listener al searchButton che, quando viene premuto, apre la ResultView, implementare ricerca
         searchButton.addActionListener(e -> {
-            Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
-            adjustSearchPosition();
-            ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase(), buildQueryByFiltri());
 
+            if(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase().isBlank()){
+                JOptionPane.showMessageDialog(null, "Selezionare una risorsa");
+            }
+            else {
+                Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
+                adjustSearchPosition();
+                ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase(), buildQueryByFiltri());
+            }
         });
 
         //LISTENER CHECKBOX FILTRI LIBRI
@@ -403,26 +408,22 @@ public class SearchView extends View {
     }
 
     public String buildQueryByFiltri() {  // in base alla risorsa selezionata, costruisce la query
-        String q = "";
         String risorsa = String.valueOf(risorsaComboBox.getSelectedItem());
 
         switch (risorsa) {
             case "Libri":
-                q = buildQueryByFiltriLibri(); // costruisce la query per i libri
-                break;
+                return buildQueryByFiltriLibri(); // costruisce la query per i libri
             case "Articoli":
-                q = buildQueryByFiltriArticoli(); // costruisce la query per gli articoli
-                break;
+                return buildQueryByFiltriArticoli(); // costruisce la query per gli articoli
             case "Riviste":
-                q = buildQueryByFiltriRiviste(); // costruisce la query per le riviste
-                break;
+                return buildQueryByFiltriRiviste(); // costruisce la query per le riviste
             case "Serie":
-                q = buildQueryByFiltriSerie(); // costruisce la query per le serie
-                break;
+                return buildQueryByFiltriSerie(); // costruisce la query per le serie
             default:
-                break;
+                JOptionPane.showMessageDialog(null, "Selezionare una risorsa");
+                return null;
         }
-        return q;
+
     }
 
 

@@ -72,6 +72,26 @@ public class ImplementazioneLibro implements LibroDao {
         return libri;
     }
 
+    public boolean addLibro(Libro libro) {
+        String addLibroQuery = "INSERT INTO b.libri (titolo, genere, editore, datapubblicazione, isbn, formato, lingua, prezzo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(addLibroQuery);
+            preparedStatement.setString(1, libro.getTitolo());
+            preparedStatement.setString(2, libro.getGenere());
+            preparedStatement.setString(3, libro.getEditore());
+            preparedStatement.setString(4, libro.getDataPubblicazione());
+            preparedStatement.setString(5, libro.getIsbn());
+            preparedStatement.setString(6, libro.getFormato());
+            preparedStatement.setString(7, libro.getLingua());
+            preparedStatement.setDouble(8, libro.getPrezzo());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     @Override
     public Libri getLibri(){
         Libri libri = new Libri();

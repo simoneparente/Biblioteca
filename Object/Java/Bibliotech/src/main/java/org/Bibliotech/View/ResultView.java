@@ -46,24 +46,26 @@ public class ResultView extends View{
     }
 
     public void updateTable(String nomeTabellaIn, String query){
-        String nomeTabella="resultview_"+nomeTabellaIn;
-        System.out.println(nomeTabella);
-        emptyTable();
-        FiltriController fc = FiltriController.getInstance();
-        DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
-        ArrayList<String> columns = fc.getColumns(nomeTabella);
-        Vector<Vector<Object>> rows=fc.getRows(query);
+        if(nomeTabellaIn.isBlank()) {return;}
+        else {
+            String nomeTabella = "resultview_" + nomeTabellaIn;
+            System.out.println(nomeTabella);
+            emptyTable();
+            FiltriController fc = FiltriController.getInstance();
+            DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
+            ArrayList<String> columns = fc.getColumns(nomeTabella);
+            Vector<Vector<Object>> rows = fc.getRows(query);
 
-        //model.setRowCount(0);
-        //Object[] rows = fc.getRows(query);
-        for(String column : columns){
-            model.addColumn(column);
-            //System.out.println(column);
+            //model.setRowCount(0);
+            //Object[] rows = fc.getRows(query);
+            for (String column : columns) {
+                model.addColumn(column);
+                //System.out.println(column);
+            }
+            for (Vector<Object> row : rows) {
+                model.addRow(row);
+            }
         }
-        for(Vector<Object> row: rows){
-            model.addRow(row);
-        }
-
 
 
     }
