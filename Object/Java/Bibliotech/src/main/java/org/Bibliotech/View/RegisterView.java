@@ -1,6 +1,7 @@
 package org.Bibliotech.View;
 
 
+import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.RegisterController;
 
 import javax.swing.*;
@@ -48,6 +49,12 @@ private static final String nome = "RegisterView";
                     passwordField.setEchoChar('•');
                     confermaPasswordField.setEchoChar('•');
                 }
+            }
+        });
+        annullaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Controller.getInstance().switchView(LoginView.getInstance(), RegisterView.getInstance());
             }
         });
     }

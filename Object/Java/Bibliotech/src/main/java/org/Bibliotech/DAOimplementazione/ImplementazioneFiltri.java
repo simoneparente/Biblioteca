@@ -339,6 +339,7 @@ public class ImplementazioneFiltri implements FiltriDao {
         return formati;
     }
 
+
     public ArrayList<String> getColumns(String nomeTable){
         ArrayList<String> columns = new ArrayList<>();
         String getColumnsQuery = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ?";

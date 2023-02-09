@@ -34,6 +34,17 @@ public class ImplementazioneUtente implements UtenteDao{
 
     @Override
     public boolean checkUserExistenceInDB(String username) {
+        String checkUserExistenceInDBQuery = "SELECT * FROM b.Utente WHERE Username = ?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(checkUserExistenceInDBQuery);
+            preparedStatement.setString(1, username);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 

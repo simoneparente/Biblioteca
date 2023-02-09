@@ -26,6 +26,4 @@ public interface FiltriDao {
     public ArrayList<String> getFormatiSerie();
 
 
-
-
 }
