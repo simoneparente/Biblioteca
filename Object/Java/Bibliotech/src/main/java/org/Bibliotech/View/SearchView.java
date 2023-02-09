@@ -2,8 +2,10 @@ package org.Bibliotech.View;
 
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
+import org.Bibliotech.Controller.LoginController;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -101,6 +103,7 @@ public class SearchView extends View {
     private JTextField dataPubblicazioneASerieField;
     private JPanel formatoSeriePanel;
     private JComboBox formatoSerieComboBox;
+    private JLabel aggiungiLabel;
 
     private ArrayList<String> filtriSelezionati;
 
@@ -113,7 +116,29 @@ public class SearchView extends View {
         setFieldsDisabled();
         fillAllComboBoxes();
         //ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
-        filtriSelezionati = new ArrayList<>();
+
+        aggiungiLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                LoginController.getInstance().switchView(AggiuntaView.getInstance(), SearchView.getInstance());
+            }
+        });
+        aggiungiLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                aggiungiLabel.setBorder(BorderFactory.createLineBorder(Color.decode("#F39524"), 1));
+            }
+        });
+        aggiungiLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                aggiungiLabel.setBorder(null);
+            }
+        });
+
 
 
         filtriCheckBox.addActionListener(e -> {
@@ -264,6 +289,8 @@ public class SearchView extends View {
                     //ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
                 }
             }
+        });
+        aggiungiLabel.addMouseListener(new MouseAdapter() {
         });
     }
 
