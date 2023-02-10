@@ -15,25 +15,25 @@ public class RegisterController extends Controller{
         return instance;
     }
 
-    public void register(JTextField usernameField, JPasswordField passwordField, JPasswordField confermaPasswordField) {
+    public boolean register(JTextField usernameField, JPasswordField passwordField, JPasswordField confermaPasswordField) {
         if (checkRegisterFields(usernameField, passwordField, confermaPasswordField)) {
             if (checkRegisterPasswordMatch(passwordField, confermaPasswordField)) {
-                ImplementazioneUtente iu=new ImplementazioneUtente();
-                if(!iu.checkUserExistInDatabase(usernameField.getText())){
-                    iu.addUser(usernameField.getText(), String.valueOf(passwordField.getPassword()))    ;
+                ImplementazioneUtente iu = new ImplementazioneUtente();
+                if (!iu.checkUserExistInDatabase(usernameField.getText())) {
+                    iu.addUser(usernameField.getText(), String.valueOf(passwordField.getPassword()));
                     System.out.println("Utente " + usernameField.getText() + " registrato");
-                }
-                else {
+                    return true;
+                } else {
                     usernameField.setBackground(Color.red);
                     System.out.println("Utente già esistente");
+                    return false;
                 }
-
             }
-        }
-        else {
+        } else {
             System.out.println("Errore");
+            return false;
         }
-
+        return false;
     }
 
     private boolean checkRegisterPasswordMatch(JPasswordField passwordField, JPasswordField confermaPasswordField) {

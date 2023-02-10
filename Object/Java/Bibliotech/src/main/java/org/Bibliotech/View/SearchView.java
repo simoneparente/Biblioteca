@@ -8,9 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class SearchView extends View {
     private static SearchView instance = null;
@@ -108,6 +105,7 @@ public class SearchView extends View {
     private JComboBox formatoSerieComboBox;
     private JLabel aggiungiLabel;
 
+
     private ArrayList<String> filtriSelezionati;
 
     public SearchView() {
@@ -115,6 +113,7 @@ public class SearchView extends View {
         logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
         this.setVisible(true);
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
+
         setFiltriInvisibili();
         setFieldsDisabled();
         fillAllComboBoxes();

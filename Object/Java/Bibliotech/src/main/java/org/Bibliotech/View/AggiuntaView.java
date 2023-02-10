@@ -41,6 +41,20 @@ public class AggiuntaView extends View {
     private JTextField nomeField;
     private JTextField issnField;
     private JComboBox formatoComboBox;
+    private JTextField nomeRivistaField;
+    private JTextField issnRivistaField;
+    private JTextField argomentoRivistaField;
+    private JTextField responsabileRivistaField;
+    private JTextField datapubblicazioneRivistaField;
+    private JTextField prezzoRivistaField;
+    private JPanel rivistaPanel;
+    private JPanel conferenzaPanel;
+    private JTextField nomeConferenzaField;
+    private JTextField responsabileConferenzaField;
+    private JTextField strutturaConferenzaField;
+    private JTextField indirizzoConferenzaField;
+    private JTextField dataDaConferenzaField;
+    private JTextField dataAConferenzaField;
 
     public AggiuntaView() {
         super(nome);
@@ -144,6 +158,20 @@ LibroController.addLibroInDB(titoloField.getText(), autoriField.getText(), gener
 
 
         });
+        PresentatoInBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    if(PresentatoInBox.getSelectedItem().equals("Rivista")){ //se è stato selezionato rivista
+                        rivistaPanel.setVisible(true);//rendo visibile il pannello rivista
+                        conferenzaPanel.setVisible(false); //rendo invisibile il pannello conferenza
+                    } else if (PresentatoInBox.getSelectedItem().equals("Conferenza")){ //se è stato selezionato conferenza
+                        conferenzaPanel.setVisible(true);//rendo visibile il pannello conferenza
+                        rivistaPanel.setVisible(false); //rendo invisibile il pannello rivista
+                    }
+                }
+            }
+        });
     }
 
     public void setPlaceHolders(){
@@ -161,7 +189,18 @@ LibroController.addLibroInDB(titoloField.getText(), autoriField.getText(), gener
         setPlaceholderText(editoreArticoliField, "Titolo");
         setPlaceholderText(issnField, "ISSN");
         setPlaceholderText(nomeField, "Nome della serie");
-
+        setPlaceholderText(nomeConferenzaField, "Nome della conferenza");
+        setPlaceholderText(dataDaConferenzaField, "Data inizio");
+        setPlaceholderText(dataAConferenzaField, "Data fine");
+        setPlaceholderText(strutturaConferenzaField, "Struttura Ospitante");
+        setPlaceholderText(indirizzoConferenzaField, "Indirizzo");
+        setPlaceholderText(responsabileConferenzaField, "Responsabile");
+        setPlaceholderText(argomentoRivistaField, "Argomento rivista");
+        setPlaceholderText(datapubblicazioneRivistaField, "Data pubblicazione");
+        setPlaceholderText(issnRivistaField, "ISSN");
+        setPlaceholderText(responsabileRivistaField, "Responsabile");
+        setPlaceholderText(prezzoRivistaField, "Autori");
+        setPlaceholderText(nomeRivistaField, "Nome della rivista");
     }
     public void setPlaceholderText(JTextField field, String text) {
         field.setText(text);
@@ -198,6 +237,8 @@ LibroController.addLibroInDB(titoloField.getText(), autoriField.getText(), gener
         LibriPanel.setVisible(false);
         ArticoliPanel.setVisible(false);
         seriePanel.setVisible(false);
+        rivistaPanel.setVisible(false);
+        conferenzaPanel.setVisible(false);
     }
 
     private void ricaricaPanel(String risorsa) {

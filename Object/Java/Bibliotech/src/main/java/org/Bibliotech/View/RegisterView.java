@@ -36,9 +36,16 @@ private static final String nome = "RegisterView";
         registratiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RegisterController.getInstance().register(usernameField, passwordField, confermaPasswordField);
+                if(RegisterController.getInstance().register(usernameField, passwordField, confermaPasswordField)){
+                    JOptionPane.showMessageDialog(null, "Registrazione avvenuta con successo");
+                    Controller.getInstance().switchView(LoginView.getInstance(), RegisterView.getInstance());
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Errore durante la registrazione");
+                }
             }
         });
+
         mostraPasswordCheckBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {

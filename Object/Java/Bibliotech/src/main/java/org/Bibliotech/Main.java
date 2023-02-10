@@ -5,7 +5,7 @@ import org.Bibliotech.View.*;
 
 public class Main {
     public static void main(String[] args) {
-        AggiuntaView aggiuntaView = AggiuntaView.getInstance();
-        //Controller controller= Controller.getInstance();
+        //AggiuntaView aggiuntaView = AggiuntaView.getInstance();
+        Controller controller= Controller.getInstance();
     }
 }
