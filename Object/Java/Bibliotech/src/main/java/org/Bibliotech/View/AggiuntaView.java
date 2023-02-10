@@ -149,7 +149,7 @@ public class AggiuntaView extends View {
                     formatoComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
                 else{
-LibroController.addLibroInDB(titoloField.getText(), autoriField.getText(), genereField.getText(), editoreField.getText(), prezzoField.getText(), isbnField.getText(), dataPublicazioneField.getText(), String.valueOf(formatoComboBox.getSelectedItem()));
+                LibroController.addLibroInDB(titoloField.getText(), autoriField.getText(), genereField.getText(), editoreField.getText(), prezzoField.getText(), isbnField.getText(), dataPublicazioneField.getText(), String.valueOf(formatoComboBox.getSelectedItem()));
                     JOptionPane.showMessageDialog(null, "Libro aggiunto");
                 }
             }
@@ -162,10 +162,10 @@ LibroController.addLibroInDB(titoloField.getText(), autoriField.getText(), gener
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    if(PresentatoInBox.getSelectedItem().equals("Rivista")){ //se è stato selezionato rivista
+                    if(String.valueOf(PresentatoInBox.getSelectedItem()).equals("Rivista")){ //se è stato selezionato rivista
                         rivistaPanel.setVisible(true);//rendo visibile il pannello rivista
                         conferenzaPanel.setVisible(false); //rendo invisibile il pannello conferenza
-                    } else if (PresentatoInBox.getSelectedItem().equals("Conferenza")){ //se è stato selezionato conferenza
+                    } else if (String.valueOf(PresentatoInBox.getSelectedItem()).equals("Conferenza")){ //se è stato selezionato conferenza
                         conferenzaPanel.setVisible(true);//rendo visibile il pannello conferenza
                         rivistaPanel.setVisible(false); //rendo invisibile il pannello rivista
                     }

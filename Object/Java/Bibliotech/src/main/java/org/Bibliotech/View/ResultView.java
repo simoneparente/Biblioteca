@@ -22,6 +22,7 @@ public class ResultView extends View{
     ResultView(FiltriController fc){
         super(nome);
         super.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        super.setResizable(true);
         super.setContentPane(rootPanel);
         WindowListener closeWindow = new WindowAdapter() {//listener per la chiusura della finestra
             @Override
@@ -49,7 +50,6 @@ public class ResultView extends View{
         if(nomeTabellaIn.isBlank()) {return;}
         else {
             String nomeTabella = "resultview_" + nomeTabellaIn;
-            System.out.println(nomeTabella);
             emptyTable();
             FiltriController fc = FiltriController.getInstance();
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
@@ -60,7 +60,6 @@ public class ResultView extends View{
             //Object[] rows = fc.getRows(query);
             for (String column : columns) {
                 model.addColumn(column);
-                //System.out.println(column);
             }
             for (Vector<Object> row : rows) {
                 model.addRow(row);
