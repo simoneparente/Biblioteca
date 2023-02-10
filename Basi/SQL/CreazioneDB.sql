@@ -399,6 +399,8 @@ BEGIN
         --Inserisco l'articolo
         INSERT INTO b.articoli (doi, titolo, datapubblicazione, disciplina, editore, lingua, formato)
         VALUES (NEW.doi, NEW.titolo, NEW.datapubblicazione, NEW.disciplina, NEW.editore, NEW.lingua, NEW.formato);
+
+        --Recupero l'id dell'articolo appena inserito
         idArticolo = (SELECT id_articolo FROM b.articoli WHERE doi = NEW.doi);
 
         --Inserisco gli autori richiamando la procedura insAutori
