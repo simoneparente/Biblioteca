@@ -458,7 +458,7 @@ BEGIN
         RAISE NOTICE 'Libro già presente';
     ELSE
         --Controllo che la serie di appartenenza del libro non sia già presente nel DataBase in tal caso la inserisco
-        IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issn_serie_di_appartenenza) THEN
+            IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issn_serie_di_appartenenza) THEN
             RAISE NOTICE 'Serie non presente';
             IF NEW.nome_serie_di_appartenenza IS NOT NULL THEN
                 INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
@@ -479,7 +479,7 @@ BEGIN
         idLibro = (SELECT id_libro FROM b.libri WHERE isbn = NEW.isbn);
 
         --Inserisco gli autori richiamando la procedura insAutori
-        CALL b.insAutori(NEW.autoriNome_cognome, idLibro, 1);
+        EXECUTE b.insAutori(NEW.autoriNome_cognome, idLibro, 1);
 
         --Inserisco il libro nella serie
         idSerie = (SELECT id_serie FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza);
