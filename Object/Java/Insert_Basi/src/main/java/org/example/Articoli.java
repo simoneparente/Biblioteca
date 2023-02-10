@@ -1,11 +1,13 @@
 package org.example;
 
+import com.sun.jdi.IntegerType;
+
 import java.util.Random;
 
 public class Articoli {
     public String generaTitolo() {
         Random random = new Random();
-        String[] titolo1 = {"La scienza  ", "La politica ", "La scoperta ", "Il futuro", "L'innovazione ", "Studio ", "Ricerca "};
+        String[] titolo1 = {"La scienza  ", "La politica ", "La scoperta ", "Il futuro", "L''innovazione ", "Studio ", "Ricerca "};
         String[] titolo2 = {"della vita", "dell'informatica", "della terra", "dell'universo", "della fisica", "della chimica", "della biologia", "della medicina"};
         String titolo = titolo1[random.nextInt(titolo1.length)] + titolo2[random.nextInt(titolo2.length)];
         return titolo;
@@ -40,8 +42,21 @@ public class Articoli {
         int annoMinimo = annoAttuale - 70;
         int anno = random.nextInt(annoAttuale - annoMinimo + 1) + annoMinimo;
         int mese = random.nextInt(12) + 1;
-        int giorno = random.nextInt(28) + 1;
+        int giorno = random.nextInt(25) + 1;
         return anno + "-" + mese + "-" + giorno;
+    }
+
+    public String generaDataFineConferenza(String dataInizio){
+        Random random = new Random();
+        String[] anno = dataInizio.split("-");
+        String annoInizio = anno[0];
+        String meseInizio = anno[1];
+        int giornoInizio = Integer.parseInt(anno[2]);
+
+        int giornoFine = giornoInizio + random.nextInt(3);
+        String dataFine = annoInizio + "-" + meseInizio + "-" + giornoFine;
+
+        return dataFine;
     }
 
     public String generaLingua() {
@@ -101,6 +116,15 @@ public class Articoli {
         return indirizzoA;
     }
 
+    public String generaStruttraOspitante(){
+        Random random = new Random();
+        String[] struttura1 = {"Hotel", "Palazzetto", "Sala", "Piazza"};
+        String[] Struttura2 = {"Roma", "Milano", "Venezia", "Firenze", "Torino", "Bologna", "Napoli", "Palermo", "Genova", "Bari"};
+        String struttura = struttura1[random.nextInt(struttura1.length)] + " " + Struttura2[random.nextInt(Struttura2.length)];
+
+        return struttura;
+    }
+
 
     public String generaArticolo(){
         String insRivista = "INSERT INTO b.ins_ArticoliRivista(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, editore, lingua, formato, nomerivista, issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES ('";
@@ -115,17 +139,34 @@ public class Articoli {
         String editore = generaEditore();
         String lingua = generaLingua();
         String formato = generaFormato();
-        String articolo = titolo + "', " + "', " + doi + "', " + autori + "', " + datapubblicazione + "', " + disciplina + "', " + editore + "', " + lingua + "', " + formato + "', '";
+        String articolo = titolo + "', '" + doi + "', '" + autori + "', '" + datapubblicazione + "', '" + disciplina + "', '" + editore + "', '" + lingua + "', '" + formato + "', '";
 
         if(random.nextInt(2) == 0){
-            
+            //Insert rivisya
+            String nomerivista = generaRivista();
+            String issn = generaIssn();
+            String argomento = disciplina;
+            String responsabile = autore.generaAutore();
+            String prezzo = generaPrezzo();
+            articolo = insRivista + articolo + nomerivista + "', '" + issn + "', '" + argomento + "', '" + responsabile + "', '" + prezzo + "');";
+        }
+        else {
+            //Insert conferenza
+            String nomeconferenza = generaNomeConferenza(disciplina);
+            String indirizzo = generaIndirizzoConferenza();
+            String struttura = generaStruttraOspitante();
+            String prezzo = generaPrezzo();
+            String dataInizio = generaDataCasualeUltimi70Anni();
+            String dataFine = generaDataFineConferenza(dataInizio);
+            String responsabile = autore.generaAutore();
+            articolo = insConferenza + articolo + nomeconferenza + "', '" + indirizzo + "', '" + dataInizio + "', '" + dataFine + "', '" + responsabile + "', '" + prezzo + "');";
         }
 
+        return articolo;
     }
 
     public static void main(String[] args) {
        Articoli articolo = new Articoli();
-       System.out.println(articolo.generaTitolo());
-       System.out.println(articolo.generaDoi());
+         System.out.println(articolo.generaArticolo());
     }
 }
