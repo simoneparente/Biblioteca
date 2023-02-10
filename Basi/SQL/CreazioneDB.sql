@@ -1088,6 +1088,7 @@ CREATE VIEW b.resultView_libri AS
 SELECT DISTINCT titolo,
                 isbn,
                 b.getAutoriByLibro(l.id_libro) AS Autori,
+                dataPubblicazione,
                 editore,
                 genere,
                 lingua,
@@ -1106,7 +1107,7 @@ SELECT distinct titolo,
                 formato,
                 editore,
                 disciplina,
-                a.datapubblicazione                  as data_pubblicazione
+                a.datapubblicazione
 FROM (b.articoli a NATURAL JOIN b.autorearticolo);
 
 --Result View Serie
@@ -1127,6 +1128,7 @@ SELECT distinct titolo_riviste as nome,
                 disciplina,
                 editore,
                 lingua,
-                formato
+                formato,
+                datapubblicazione
 FROM b.view_articoli_riviste;
 ------------------------------------------------------------------------------------------------------------------------

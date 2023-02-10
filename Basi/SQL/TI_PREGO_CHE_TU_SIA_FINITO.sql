@@ -326,7 +326,7 @@ BEGIN
         idArticolo = (SELECT id_articolo FROM b.articoli WHERE doi = NEW.doi);
 
         --Inserisco gli autori richiamando la procedura insAutori
-        PERFORM b.insAutori(NEW.AutoriNome_Cognome, idArticolo);
+        CALL b.insAutori(NEW.AutoriNome_Cognome, idArticolo);
 
         --Inserisco l'articolo nella rivista
         idRivista = (SELECT id_rivista FROM b.riviste WHERE issn = NEW.issnRivista);
@@ -398,7 +398,7 @@ BEGIN
         idArticolo = (SELECT id_articolo FROM b.articoli WHERE doi = NEW.doi);
 
         --Inserisco gli autori richiamando la procedura insAutori
-        PERFORM b.insAutori(NEW.AutoriNome_Cognome, idArticolo);
+        CALL b.insAutori(NEW.AutoriNome_Cognome, idArticolo);
 
         --Inserisco l'articolo nella conferenza
         idConferenza = (SELECT id_evento
@@ -454,7 +454,9 @@ BEGIN
         --Controllo che la serie di appartenenza del libro non sia già presente nel DataBase in tal caso la inserisco
         IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issn_serie_di_appartenenza) THEN
             RAISE NOTICE 'Serie non presente';
-            INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
+            IF NEW.nome_serie_di_appartenenza IS NOT NULL THEN
+                INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
+            END IF;
             --Controllo che il formato del libro sia compatibile con la serie già presente nel DataBase
         ELSEIF NOT EXISTS(SELECT *
                           FROM (b.serie s NATURAL JOIN libriinserie ls)
@@ -471,12 +473,16 @@ BEGIN
         idLibro = (SELECT id_libro FROM b.libri WHERE isbn = NEW.isbn);
 
         --Inserisco gli autori richiamando la procedura insAutori
-        PERFORM b.insAutori(NEW.autoriNome_cognome, idLibro);
+        CALL b.insAutori(NEW.autoriNome_cognome, idLibro);
 
         --Inserisco il libro nella serie
         idSerie = (SELECT id_serie FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza);
+        RAISE NOTICE 'idSerie: %', idSerie;
+        IF idSerie IS NOT NULL THEN
         INSERT INTO b.libriinserie (id_libro, id_serie) VALUES (idLibro, idSerie);
+        END IF;
     END IF;
+    RETURN NEW;
 END
 $$ LANGUAGE plpgsql;
 
@@ -534,53 +540,6 @@ END
 $$
     language plpgsql;
 
-CREATE OR REPLACE TRIGGER trig_presentazione
-    INSTEAD OF INSERT
-    ON b.ins_presentazione
-    FOR EACH ROW
-EXECUTE FUNCTION b.ftrig_presentazione();CREATE OR REPLACE VIEW b.ins_presentazione AS
-SELECT l.ISBN,
-       e.nome,
-       e.Indirizzo,
-       e.StrutturaOspitante,
-       e.DataInizio,
-       e.DataFine,
-       e.Responsabile
-FROM b.evento as e,
-     b.libri as l;
-
-CREATE OR REPLACE FUNCTION b.ftrig_presentazione()
-    RETURNS trigger AS
-$$
-DECLARE
-BEGIN
-    IF NOT EXISTS(SELECT * FROM b.libri WHERE isbn = NEW.ISBN) THEN --Controllo se il libri esiste
-        RAISE NOTICE 'Il libri non esiste!! Presentazione non inserita';
-    ELSEIF EXISTS(SELECT *
-                  FROM (b.evento as e NATURAL JOIN b.presentazione as p) --Controllo se esiste già una presentazione per quel libri
-                           JOIN b.libri as l ON p.id_libro = l.id_libro
-                  WHERE ISBN = NEW.ISBN) THEN
-        RAISE NOTICE 'Esista già una presentazione per questo libro!! Presentazione non inserita';
-    ELSE --Inserisco la presentazione
-        INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine,
-                              responsabile) --Inserisco l'¬evento
-        VALUES (NEW.nome, NEW.Indirizzo, NEW.StrutturaOspitante, NEW.DataInizio, NEW.DataFine, NEW.Responsabile);
-        INSERT INTO b.presentazione (id_evento, id_libro) --Inserisco la presentazione
-        SELECT e.ID_evento, l.ID_libro --Trasformo l'ISBN in un ID e recupero l'ID dell'evento
-        FROM b.evento e,
-             b.libri l
-        WHERE l.ISBN = NEW.ISBN
-          AND e.nome = NEW.nome
-          AND e.indirizzo = NEW.Indirizzo
-          AND e.strutturaospitante = NEW.StrutturaOspitante
-          AND e.datainizio = NEW.DataInizio
-          AND e.datafine = NEW.DataFine
-          AND e.responsabile = NEW.Responsabile;
-    END IF;
-    RETURN NEW;
-END
-$$
-    language plpgsql;
 
 CREATE OR REPLACE TRIGGER trig_presentazione
     INSTEAD OF INSERT
@@ -768,4 +727,8 @@ EXECUTE FUNCTION b.ftrig_RimozioneDaStock();
 ------------------------------------------------------------------------------------------------------------------------
 
 
+
 ------------------------------------------------------------------------------------------------------------------------
+INSERT INTO b.ins_Libri(titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo) VALUES ('La storia di  Gatto', '978-88-61-837047032', 'Giulio_Tramontana', '1968-7-1', 'Feltrinelli', 'Didattico', 'Italiano', 'Audio', '21.0');
+INSERT INTO b.ins_ArticoliRivista(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, editore, lingua, formato, nomerivista, issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES (d);
+INSERT INTO b.ins_articoliConferenze(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, editore, lingua, formato, nomeconferenza, indirizzoconferenza, strutturaospitanteconferenza, datainizioconferenza, datafineconferenza, responsabileconferenza) VALUES ('
