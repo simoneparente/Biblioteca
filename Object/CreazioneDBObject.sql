@@ -206,7 +206,7 @@ CREATE TABLE b.Jolly
 --Funzioni e Procedure utili
 ------------------------------------------------------------------------------------------------------------------------
 --Procedura Inserimento Autori
-CREATE OR REPLACE PROCEDURE b.insAutori(stringAutori text, idRisorsa INTEGER) AS
+CREATE OR REPLACE PROCEDURE b.insAutori(stringAutori text, idRisorsa INTEGER, tipoRisorsa INTEGER) AS
 $$
 DECLARE
     autori        text[]  = string_to_array(stringAutori, ' ');
@@ -225,7 +225,11 @@ BEGIN
                 INSERT INTO b.autore (nome, cognome) VALUES (autoreNome, autoreCognome);
             END IF;
             idAutore = (SELECT id_autore FROM b.autore WHERE nome = autoreNome AND cognome = autoreCognome);
-            INSERT INTO b.autorelibro (id_autore, id_libro) VALUES (idAutore, idRisorsa);
+            IF(tipoRisorsa = 1) THEN
+                INSERT INTO b.autorelibro (id_autore, id_libro) VALUES (idAutore, idRisorsa);
+            ELSEIF(tipoRisorsa = 0) THEN
+                INSERT INTO b.autorearticolo (id_autore, id_articolo) VALUES (idAutore, idRisorsa);
+            END IF;
         END LOOP;
 END
 $$ LANGUAGE plpgsql;
@@ -299,7 +303,7 @@ CREATE OR REPLACE FUNCTION b.ftrig_ArticoliRivista() RETURNS trigger AS
 $$
 DECLARE
     idRivista  b.riviste.id_rivista%TYPE;
-    idArticolo b.articoli.doi%TYPE;
+    idArticolo INTEGER;
 BEGIN
     --Controllo che l'articolo non sia già presente nel DataBase
     IF EXISTS(SELECT * FROM b.articoli WHERE doi = NEW.doi) THEN
@@ -309,7 +313,7 @@ BEGIN
         IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issnRivista) THEN
             RAISE NOTICE 'Rivista non presente, verrà inserita';
             INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
-            VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.responsabileRivista, NEW.prezzoRivista);
+            VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.datapubblicazione, NEW.responsabileRivista, NEW.prezzoRivista);
             --Controllo che la rivista presente nel database abbia la stessa data di pubblicazione
         ELSEIF NOT EXISTS(SELECT datapubblicazione
                           FROM b.riviste
@@ -326,7 +330,7 @@ BEGIN
         idArticolo = (SELECT id_articolo FROM b.articoli WHERE doi = NEW.doi);
 
         --Inserisco gli autori richiamando la procedura insAutori
-        CALL b.insAutori(NEW.AutoriNome_Cognome, idArticolo);
+        CALL b.insAutori(NEW.AutoriNome_Cognome, idArticolo, 0);
 
         --Inserisco l'articolo nella rivista
         idRivista = (SELECT id_rivista FROM b.riviste WHERE issn = NEW.issnRivista);
@@ -371,7 +375,7 @@ FROM b.Articoli a,
 CREATE OR REPLACE FUNCTION b.ftrig_ArticoliConferenze() RETURNS TRIGGER AS
 $$
 DECLARE
-    idArticolo   b.articoli.doi%TYPE;
+    idArticolo   INTEGER;
     idConferenza b.evento.id_evento%TYPE;
 BEGIN
     --Controllo che l'articolo non sia già presente nel DataBase
@@ -395,10 +399,12 @@ BEGIN
         --Inserisco l'articolo
         INSERT INTO b.articoli (doi, titolo, datapubblicazione, disciplina, editore, lingua, formato)
         VALUES (NEW.doi, NEW.titolo, NEW.datapubblicazione, NEW.disciplina, NEW.editore, NEW.lingua, NEW.formato);
+
+        --Recupero l'id dell'articolo appena inserito
         idArticolo = (SELECT id_articolo FROM b.articoli WHERE doi = NEW.doi);
 
         --Inserisco gli autori richiamando la procedura insAutori
-        CALL b.insAutori(NEW.AutoriNome_Cognome, idArticolo);
+        CALL b.insAutori(NEW.AutoriNome_Cognome, idArticolo, 0);
 
         --Inserisco l'articolo nella conferenza
         idConferenza = (SELECT id_evento
@@ -473,7 +479,7 @@ BEGIN
         idLibro = (SELECT id_libro FROM b.libri WHERE isbn = NEW.isbn);
 
         --Inserisco gli autori richiamando la procedura insAutori
-        CALL b.insAutori(NEW.autoriNome_cognome, idLibro);
+        CALL b.insAutori(NEW.autoriNome_cognome, idLibro, 1);
 
         --Inserisco il libro nella serie
         idSerie = (SELECT id_serie FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza);

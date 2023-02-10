@@ -1,5 +1,6 @@
 package org.Bibliotech.Model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Libro {
@@ -8,20 +9,14 @@ public class Libro {
     private String autoriString = "";
     private String genere;
     private String editore;
-    private String dataPubblicazione;
+    private Date dataPubblicazione;
     private String isbn;
     private String formato;
     private String lingua;
     private double prezzo;
     public Libro() {}
-    public Libro(String titolo,
-                 ArrayList<Autore> autori,
-                 String genere, String editore,
-                 String dataPubblicazione,
-                 String isbn,
-                 String formato,
-                 String lingua,
-                 double prezzo) {
+    public Libro(String titolo, String genere, ArrayList<Autore> autori, String editore, double prezzo, String isbn, String dataPubblicazioneIn, String formato, String lingua) {
+        Date dataPubblicazione = Date.valueOf(dataPubblicazioneIn);
         this.titolo = titolo;
         this.autori = autori;
         this.genere = genere;
@@ -79,11 +74,11 @@ public class Libro {
         this.editore = editore;
     }
 
-    public String getDataPubblicazione() {
+    public Date getDataPubblicazione() {
         return dataPubblicazione;
     }
 
-    public void setDataPubblicazione(String dataPubblicazione) {
+    public void setDataPubblicazione(Date dataPubblicazione) {
         this.dataPubblicazione = dataPubblicazione;
     }
 

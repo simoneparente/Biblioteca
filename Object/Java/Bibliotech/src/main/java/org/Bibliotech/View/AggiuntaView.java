@@ -19,13 +19,13 @@ public class AggiuntaView extends View {
     private JPanel ArticoliPanel;
     private JComboBox risorsaComboBox;
     private JButton addButton;
-    private JTextField titoloField;
-    private JTextField autoriField;
-    private JTextField editoreField;
-    private JTextField genereField;
-    private JTextField prezzoField;
+    private JTextField titoloLibroField;
+    private JTextField autoriLibroField;
+    private JTextField editoreLibroField;
+    private JTextField genereLibroField;
+    private JTextField prezzoLibroField;
     private JCheckBox ilLibroFaParteCheckBox;
-    private JComboBox<String> serieBox;
+    private JComboBox<String> serieLibroBox;
     private JTextField titoloArticoliField;
     private JTextField DisciplinaField;
     private JTextField autoriArticoloField;
@@ -33,14 +33,14 @@ public class AggiuntaView extends View {
     private JTextField editoreArticoliField;
     private JTextField doiField;
     private JComboBox PresentatoInBox;
-    private JTextField isbnField;
-    private JTextField dataPublicazioneField;
+    private JTextField isbnLibroField;
+    private JTextField dataPublicazioneLibroField;
     private JLabel logoLabel;
     private JButton annullaButton;
     private JPanel seriePanel;
     private JTextField nomeField;
     private JTextField issnField;
-    private JComboBox formatoComboBox;
+    private JComboBox formatoLibroComboBox;
     private JTextField nomeRivistaField;
     private JTextField issnRivistaField;
     private JTextField argomentoRivistaField;
@@ -55,6 +55,7 @@ public class AggiuntaView extends View {
     private JTextField indirizzoConferenzaField;
     private JTextField dataDaConferenzaField;
     private JTextField dataAConferenzaField;
+    private JTextField linguaLibroField;
 
     public AggiuntaView() {
         super(nome);
@@ -63,7 +64,7 @@ public class AggiuntaView extends View {
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
         setPlaceHolders();
         setPanelInvisibili();
-        serieBox.setEnabled(false);
+        serieLibroBox.setEnabled(false);
         fillAllComboBoxes();
         risorsaComboBox.addItemListener(new ItemListener() {
             @Override
@@ -77,10 +78,10 @@ public class AggiuntaView extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (ilLibroFaParteCheckBox.isSelected()) {
-                    serieBox.setEnabled(true);
+                    serieLibroBox.setEnabled(true);
                     PresentatoInBox.setEnabled(true);
                 } else {
-                    serieBox.setEnabled(false);
+                    serieLibroBox.setEnabled(false);
                     PresentatoInBox.setEnabled(false);
                 }
             }
@@ -91,16 +92,16 @@ public class AggiuntaView extends View {
                 Controller.getInstance().switchView(SearchView.getInstance(), AggiuntaView.getInstance());
             }
         });
-        serieBox.addItemListener(new ItemListener() {
+        serieLibroBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    if(!serieBox.getSelectedItem().equals("・・・Aggiungi nuova serie・・・")){
+                    if(!serieLibroBox.getSelectedItem().equals("・・・Aggiungi nuova serie・・・")){
                         seriePanel.setVisible(false);
                     }
                 }
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    if (serieBox.getSelectedItem().equals("・・・Aggiungi nuova serie・・・")) {
+                    if (serieLibroBox.getSelectedItem().equals("・・・Aggiungi nuova serie・・・")) {
                         seriePanel.setVisible(true);
                     }
                 }
@@ -124,33 +125,45 @@ public class AggiuntaView extends View {
             }
 
             private void checkAddLibro() {
-                if(String.valueOf(titoloField.getText()).equals("Titolo")){
-                    titoloField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                if(String.valueOf(titoloLibroField.getText()).equals("Titolo")){
+                    titoloLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                if(String.valueOf(autoriField.getText()).equals("Autori")){
-                    autoriField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                if(String.valueOf(autoriLibroField.getText()).equals("Autori")){
+                    autoriLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                if(String.valueOf(genereField.getText()).equals("Genere")){
-                    genereField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                if(String.valueOf(genereLibroField.getText()).equals("Genere")){
+                    genereLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                if(String.valueOf(editoreField.getText()).equals("Editore")){
-                    editoreField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                if(String.valueOf(editoreLibroField.getText()).equals("Editore")){
+                    editoreLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                if(String.valueOf(prezzoField.getText()).equals("Prezzo")){
-                    prezzoField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                if(String.valueOf(prezzoLibroField.getText()).equals("Prezzo")){
+                    prezzoLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                if(String.valueOf(isbnField.getText()).equals("ISBN")){
-                    isbnField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                if(String.valueOf(isbnLibroField.getText()).equals("ISBN")){
+                    isbnLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                if(String.valueOf(dataPublicazioneField.getText()).equals("Data di pubblicazione")){
-                    dataPublicazioneField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                if(String.valueOf(dataPublicazioneLibroField.getText()).equals("Data di pubblicazione")){
+                    dataPublicazioneLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                if(String.valueOf(formatoComboBox.getSelectedItem()).equals("Formato")){
-                    formatoComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                if(String.valueOf(formatoLibroComboBox.getSelectedItem()).equals("Formato")){
+                    formatoLibroComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                else{
-                LibroController.addLibroInDB(titoloField.getText(), autoriField.getText(), genereField.getText(), editoreField.getText(), prezzoField.getText(), isbnField.getText(), dataPublicazioneField.getText(), String.valueOf(formatoComboBox.getSelectedItem()));
-                    JOptionPane.showMessageDialog(null, "Libro aggiunto");
+                if(String.valueOf(linguaLibroField.getText()).equals("Lingua")){
+                    linguaLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                }
+                else {
+                    if (ilLibroFaParteCheckBox.isSelected()) {
+                        System.out.println("non dovrei essere qui");
+                    } else {
+                        System.out.println("ciao eccomi");
+                        LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
+                                autoriLibroField.getText(), editoreLibroField.getText(),
+                                Double.parseDouble(prezzoLibroField.getText()), isbnLibroField.getText(),
+                                dataPublicazioneLibroField.getText(),
+                                String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
+                                null, null);
+                    }
                 }
             }
             private void checkFieldsArticolo() {
@@ -175,13 +188,14 @@ public class AggiuntaView extends View {
     }
 
     public void setPlaceHolders(){
-        setPlaceholderText(titoloField, "Titolo");
-        setPlaceholderText(autoriField, "Autori");
-        setPlaceholderText(editoreField, "Editore");
-        setPlaceholderText(genereField, "Genere");
-        setPlaceholderText(prezzoField, "Prezzo");
-        setPlaceholderText(isbnField, "ISBN");
-        setPlaceholderText(dataPublicazioneField, "Data di pubblicazione");
+        setPlaceholderText(titoloLibroField, "Titolo");
+        setPlaceholderText(autoriLibroField, "Autori");
+        setPlaceholderText(editoreLibroField, "Editore");
+        setPlaceholderText(genereLibroField, "Genere");
+        setPlaceholderText(prezzoLibroField, "Prezzo");
+        setPlaceholderText(isbnLibroField, "ISBN");
+        setPlaceholderText(dataPublicazioneLibroField, "Data di pubblicazione");
+        setPlaceholderText(linguaLibroField, "Lingua");
         setPlaceholderText(doiField, "DOI");
         setPlaceholderText(titoloArticoliField, "Titolo");
         setPlaceholderText(DisciplinaField, "Disciplina");
@@ -219,12 +233,12 @@ public class AggiuntaView extends View {
     }
 
     private void fillAllComboBoxes() {
-        fillComboBox(serieBox, FiltriController.getInstance().leggiSerieLibri());
+        fillComboBox(serieLibroBox, FiltriController.getInstance().leggiSerieLibri());
     }
 
     private void fillComboBox(JComboBox<String> comboBox, ArrayList<String> items) {
         comboBox.removeAllItems();
-        if(comboBox.equals(serieBox)){
+        if(comboBox.equals(serieLibroBox)){
             comboBox.addItem("");
             comboBox.addItem("・・・Aggiungi nuova serie・・・");
             comboBox.addItem("");

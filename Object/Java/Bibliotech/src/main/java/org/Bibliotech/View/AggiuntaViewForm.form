@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="11" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1372" height="692"/>
+      <xy x="20" y="20" width="1372" height="776"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -74,7 +74,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="20211" class="javax.swing.JTextField" binding="autoriField">
+          <component id="20211" class="javax.swing.JTextField" binding="autoriLibroField">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -82,7 +82,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="a9bf0" class="javax.swing.JTextField" binding="editoreField">
+          <component id="a9bf0" class="javax.swing.JTextField" binding="editoreLibroField">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -90,7 +90,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="7402f" class="javax.swing.JTextField" binding="prezzoField">
+          <component id="7402f" class="javax.swing.JTextField" binding="prezzoLibroField">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -100,7 +100,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="54da1" class="javax.swing.JTextField" binding="isbnField">
+          <component id="54da1" class="javax.swing.JTextField" binding="isbnLibroField">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -110,7 +110,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="3fb5b" class="javax.swing.JTextField" binding="genereField">
+          <component id="3fb5b" class="javax.swing.JTextField" binding="genereLibroField">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -118,7 +118,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="f5fb8" class="javax.swing.JTextField" binding="titoloField">
+          <component id="f5fb8" class="javax.swing.JTextField" binding="titoloLibroField">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -128,7 +128,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="b9d20" class="javax.swing.JComboBox" binding="serieBox">
+          <component id="b9d20" class="javax.swing.JComboBox" binding="serieLibroBox">
             <constraints>
               <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -136,15 +136,7 @@
               <model/>
             </properties>
           </component>
-          <component id="8f645" class="javax.swing.JCheckBox" binding="ilLibroFaParteCheckBox" default-binding="true">
-            <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Il Libro fa parte di una serie"/>
-            </properties>
-          </component>
-          <component id="87864" class="javax.swing.JTextField" binding="dataPublicazioneField">
+          <component id="87864" class="javax.swing.JTextField" binding="dataPublicazioneLibroField">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -152,7 +144,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="1f57f" class="javax.swing.JComboBox" binding="formatoComboBox">
+          <component id="1f57f" class="javax.swing.JComboBox" binding="formatoLibroComboBox">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -164,6 +156,22 @@
                 <item value="Audiolibro"/>
               </model>
             </properties>
+          </component>
+          <component id="8f645" class="javax.swing.JCheckBox" binding="ilLibroFaParteCheckBox" default-binding="true">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Il Libro fa parte di una serie"/>
+            </properties>
+          </component>
+          <component id="95535" class="javax.swing.JTextField" binding="linguaLibroField">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
           </component>
         </children>
       </grid>

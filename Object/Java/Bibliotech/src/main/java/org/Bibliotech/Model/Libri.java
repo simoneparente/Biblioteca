@@ -1,5 +1,6 @@
 package org.Bibliotech.Model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Libri {
@@ -74,7 +75,9 @@ public class Libri {
         return libriByEditore;
     }
 
-    public Libri getLibriByDataRangePubblicazione(String dataPubblicazioneMin, String dataPubblicazioneMax) {
+    public Libri getLibriByDataRangePubblicazione(String dataPubblicazioneMinIn, String dataPubblicazioneMaxIn) {
+        Date dataPubblicazioneMin = Date.valueOf(dataPubblicazioneMinIn);
+        Date dataPubblicazioneMax = Date.valueOf(dataPubblicazioneMaxIn);
         Libri libriByDataPubblicazione = new Libri();
         for (Libro libro : libri) {
             if (libro.getDataPubblicazione().compareTo(dataPubblicazioneMin) >= 0 && libro.getDataPubblicazione().compareTo(dataPubblicazioneMax) <= 0) {
@@ -84,7 +87,8 @@ public class Libri {
         return libriByDataPubblicazione;
     }
 
-    public Libri getLibriByDataPubblicazioneMin(String dataPubblicazioneMin) {
+    public Libri getLibriByDataPubblicazioneMin(String dataPubblicazioneMinIn) {
+        Date dataPubblicazioneMin = Date.valueOf(dataPubblicazioneMinIn);
         Libri libriByDataPubblicazioneMin = new Libri();
         for (Libro libro : libri) {
             if (libro.getDataPubblicazione().compareTo(dataPubblicazioneMin) >= 0) {
@@ -94,7 +98,8 @@ public class Libri {
         return libriByDataPubblicazioneMin;
     }
 
-    public Libri getLibriByDataPubblicazioneMax(String dataPubblicazioneMax) {
+    public Libri getLibriByDataPubblicazioneMax(String dataPubblicazioneMaxIn) {
+        Date dataPubblicazioneMax = Date.valueOf(dataPubblicazioneMaxIn);
         Libri libriByDataPubblicazioneMax = new Libri();
         for (Libro libro : libri) {
             if (libro.getDataPubblicazione().compareTo(dataPubblicazioneMax) <= 0) {

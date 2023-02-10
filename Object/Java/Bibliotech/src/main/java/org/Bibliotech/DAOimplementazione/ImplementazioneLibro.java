@@ -5,10 +5,7 @@ import org.Bibliotech.Model.Libri;
 import org.Bibliotech.Model.Libro;
 import org.Bibliotech.DAO.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ImplementazioneLibro implements LibroDao {
     private Connection connection;
@@ -33,7 +30,7 @@ public class ImplementazioneLibro implements LibroDao {
                 libro.setTitolo(rs.getString("titolo"));
                 libro.setGenere(rs.getString("genere"));
                 libro.setEditore(rs.getString("editore"));
-                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setDataPubblicazione(rs.getDate("datapubblicazione"));
                 libro.setIsbn(rs.getString("isbn"));
                 libro.setFormato(rs.getString("formato"));
                 libro.setLingua(rs.getString("lingua"));
@@ -59,7 +56,7 @@ public class ImplementazioneLibro implements LibroDao {
                 libro.setTitolo(rs.getString("titolo"));
                 libro.setGenere(rs.getString("genere"));
                 libro.setEditore(rs.getString("editore"));
-                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setDataPubblicazione(rs.getDate("datapubblicazione"));
                 libro.setIsbn(rs.getString("isbn"));
                 libro.setFormato(rs.getString("formato"));
                 libro.setLingua(rs.getString("lingua"));
@@ -73,17 +70,18 @@ public class ImplementazioneLibro implements LibroDao {
     }
 
     public boolean addLibro(Libro libro) {
-        String addLibroQuery = "INSERT INTO b.libri (titolo, genere, editore, datapubblicazione, isbn, formato, lingua, prezzo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String addLibroQuery = "INSERT INTO b.ins_Libri (titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(addLibroQuery);
             preparedStatement.setString(1, libro.getTitolo());
-            preparedStatement.setString(2, libro.getGenere());
-            preparedStatement.setString(3, libro.getEditore());
-            preparedStatement.setString(4, libro.getDataPubblicazione());
-            preparedStatement.setString(5, libro.getIsbn());
-            preparedStatement.setString(6, libro.getFormato());
+            preparedStatement.setString(2, libro.getIsbn());
+            preparedStatement.setString(3, libro.getAutoriString());
+            preparedStatement.setDate(4, libro.getDataPubblicazione());
+            preparedStatement.setString(5, libro.getEditore());
+            preparedStatement.setString(6, libro.getGenere());
             preparedStatement.setString(7, libro.getLingua());
-            preparedStatement.setDouble(8, libro.getPrezzo());
+            preparedStatement.setString(8, libro.getFormato());
+            preparedStatement.setDouble(9, libro.getPrezzo());
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -104,7 +102,7 @@ public class ImplementazioneLibro implements LibroDao {
                 libro.setTitolo(rs.getString("titolo"));
                 libro.setGenere(rs.getString("genere"));
                 libro.setEditore(rs.getString("editore"));
-                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setDataPubblicazione(rs.getDate("datapubblicazione"));
                 libro.setIsbn(rs.getString("isbn"));
                 libro.setFormato(rs.getString("formato"));
                 libro.setLingua(rs.getString("lingua"));
@@ -205,7 +203,7 @@ public class ImplementazioneLibro implements LibroDao {
                 libro.setTitolo(rs.getString("titolo"));
                 libro.setGenere(rs.getString("genere"));
                 libro.setEditore(rs.getString("editore"));
-                libro.setDataPubblicazione(rs.getString("datapubblicazione"));
+                libro.setDataPubblicazione(rs.getDate("datapubblicazione"));
                 libro.setIsbn(rs.getString("isbn"));
                 libro.setFormato(rs.getString("formato"));
                 libro.setLingua(rs.getString("lingua"));
