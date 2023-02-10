@@ -229,7 +229,7 @@ public class ImplementazioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getConferenzeArticoli() {
         ArrayList<String> conferenze = new ArrayList<>();
-        String getConferenzeQuery = "SELECT DISTINCT titolo_conferenza FROM b.view_articoli_conferenze";
+        String getConferenzeQuery = "SELECT DISTINCT titolo_conferenza FROM b.view_articoli_conferenza";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(getConferenzeQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -366,7 +366,6 @@ public class ImplementazioneFiltri implements FiltriDao {
                 while (rs.next()) {
                     Vector<Object> row = new Vector<Object>(rsmd.getColumnCount());
                     for (i = 1; i <= rsmd.getColumnCount(); i++) {
-                        System.out.println(rs.getObject(i));
                         row.add(rs.getObject(i));
                     }
                     data.add(row);

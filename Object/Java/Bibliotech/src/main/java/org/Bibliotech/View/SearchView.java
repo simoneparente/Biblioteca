@@ -464,8 +464,6 @@ public class SearchView extends View {
         if (finalQuery.endsWith("AND")) {
             finalQuery = finalQuery.substring(0, finalQuery.length() - 3) + ";";
         }
-        System.out.println("-------");
-        System.out.println(finalQuery);
         return finalQuery;
     }
 
@@ -567,8 +565,6 @@ public class SearchView extends View {
         if (finalQuery.endsWith("AND")) {
             finalQuery = finalQuery.substring(0, finalQuery.length() - 3) + ";";
         }
-        System.out.println("-------");
-        System.out.println(finalQuery);
         return finalQuery;
     }
 
@@ -597,7 +593,6 @@ public class SearchView extends View {
         if (linguaArticoloCheckBox.isSelected()) {
             lingua = String.valueOf(linguaArticoloComboBox.getSelectedItem());
             finalQuery = finalQuery + " lingua = '" + lingua + "' AND";
-            System.out.println("Lingua " + lingua + "aggiunt aalla qyuarry" + "finalquery{" + finalQuery + "}");
         }
 
         if (formatoArticoloCheckBox.isSelected()) {
@@ -618,13 +613,9 @@ public class SearchView extends View {
         }
         if (finalQuery.endsWith("AND ")) {
             finalQuery = finalQuery.substring(0, finalQuery.length() - 4) + ";";
-            System.out.println("-------");
-            System.out.println(finalQuery);
         }
         if (finalQuery.endsWith("AND")) {
             finalQuery = finalQuery.substring(0, finalQuery.length() - 3) + ";";
-            System.out.println("-------");
-            System.out.println(finalQuery);
         }
         return finalQuery;
     }
