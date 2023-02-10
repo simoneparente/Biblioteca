@@ -8,7 +8,7 @@ public class Articoli {
     public String generaTitolo() {
         Random random = new Random();
         String[] titolo1 = {"La scienza  ", "La politica ", "La scoperta ", "Il futuro", "L''innovazione ", "Studio ", "Ricerca "};
-        String[] titolo2 = {"della vita", "dell'informatica", "della terra", "dell'universo", "della fisica", "della chimica", "della biologia", "della medicina"};
+        String[] titolo2 = {"della vita", "dell''informatica", "della terra", "dell''universo", "della fisica", "della chimica", "della biologia", "della medicina"};
         String titolo = titolo1[random.nextInt(titolo1.length)] + titolo2[random.nextInt(titolo2.length)];
         return titolo;
     }
@@ -128,7 +128,7 @@ public class Articoli {
 
     public String generaArticolo(){
         String insRivista = "INSERT INTO b.ins_ArticoliRivista(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, editore, lingua, formato, nomerivista, issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES ('";
-        String insConferenza = "INSERT INTO b.ins_ArticoliConferenza(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, editore, lingua, formato, nomeconferenza, luogoconferenza, dataconferenza, responsabileconferenza, prezzoconferenza) VALUES ('";
+        String insConferenza = "INSERT INTO b.ins_ArticoliConferenze(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, editore, lingua, formato, nomeconferenza, indirizzoconferenza, datainizioconferenza, datafineconferenza, strutturaospitanteconferenza, responsabileconferenza) VALUES ('";
         Random random = new Random();
         Autore autore = new Autore();
         String doi = generaDoi();
@@ -155,11 +155,10 @@ public class Articoli {
             String nomeconferenza = generaNomeConferenza(disciplina);
             String indirizzo = generaIndirizzoConferenza();
             String struttura = generaStruttraOspitante();
-            String prezzo = generaPrezzo();
-            String dataInizio = generaDataCasualeUltimi70Anni();
+            String dataInizio = datapubblicazione;
             String dataFine = generaDataFineConferenza(dataInizio);
             String responsabile = autore.generaAutore();
-            articolo = insConferenza + articolo + nomeconferenza + "', '" + indirizzo + "', '" + dataInizio + "', '" + dataFine + "', '" + responsabile + "', '" + prezzo + "');";
+            articolo = insConferenza + articolo + nomeconferenza + "', '" + indirizzo + "', '" + dataInizio + "', '" + dataFine + "', '" + struttura + "', '" + responsabile + "');";
         }
 
         return articolo;

@@ -375,7 +375,7 @@ FROM b.Articoli a,
 CREATE OR REPLACE FUNCTION b.ftrig_ArticoliConferenze() RETURNS TRIGGER AS
 $$
 DECLARE
-    idArticolo   b.articoli.doi%TYPE;
+    idArticolo   INTEGER;
     idConferenza b.evento.id_evento%TYPE;
 BEGIN
     --Controllo che l'articolo non sia già presente nel DataBase
@@ -733,5 +733,3 @@ EXECUTE FUNCTION b.ftrig_RimozioneDaStock();
 
 
 ------------------------------------------------------------------------------------------------------------------------
-INSERT INTO b.ins_Libri(titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo) VALUES ('La storia di  Gatto', '978-88-61-837047032', 'Giulio_Tramontana', '1968-7-1', 'Feltrinelli', 'Didattico', 'Italiano', 'Audio', '21.0');
-INSERT INTO b.ins_ArticoliRivista(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, editore, lingua, formato, nomerivista, issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES ('L''innovazione della medicina', '10.3723/2513.3316', 'Davide_DiLorenzo', '1977-6-18', 'Fisica', 'Cambridge University Press', 'Tedesco', 'Audio', 'PLOS ONE', '987-712513528', 'Fisica', 'Alessio_Tramontana', '4.0');
