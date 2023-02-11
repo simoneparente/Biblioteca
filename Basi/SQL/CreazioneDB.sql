@@ -479,7 +479,7 @@ BEGIN
         idLibro = (SELECT id_libro FROM b.libri WHERE isbn = NEW.isbn);
 
         --Inserisco gli autori richiamando la procedura insAutori
-        EXECUTE b.insAutori(NEW.autoriNome_cognome, idLibro, 1);
+        CALL b.insAutori(NEW.autoriNome_cognome, idLibro, 1);
 
         --Inserisco il libro nella serie
         idSerie = (SELECT id_serie FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza);
