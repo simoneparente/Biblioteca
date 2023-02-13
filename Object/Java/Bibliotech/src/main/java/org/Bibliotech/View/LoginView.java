@@ -63,6 +63,14 @@ public class LoginView extends View {
         });
     }
 
+    public String getUsername(){
+        return usernameField.getText();
+    }
+
+    public String getPassword(){
+        return String.valueOf(passwordField.getPassword());
+    }
+
 
     public static LoginView getInstance() {
         if (instance == null) {

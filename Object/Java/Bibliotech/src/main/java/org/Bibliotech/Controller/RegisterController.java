@@ -1,6 +1,7 @@
 package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
+import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +21,7 @@ public class RegisterController extends Controller{
             if (checkRegisterPasswordMatch(passwordField, confermaPasswordField)) {
                 ImplementazioneUtente iu = new ImplementazioneUtente();
                 if (!iu.checkUserExistInDatabase(usernameField.getText())) {
-                    iu.addUser(usernameField.getText(), String.valueOf(passwordField.getPassword()));
+                    UtenteController.getInstance().registraUtente(usernameField.getText(), String.valueOf(passwordField.getPassword()));
                     System.out.println("Utente " + usernameField.getText() + " registrato");
                     return true;
                 } else {

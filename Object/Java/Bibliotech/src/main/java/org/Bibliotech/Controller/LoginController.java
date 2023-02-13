@@ -1,6 +1,7 @@
 package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
+import org.Bibliotech.Model.Utente;
 import org.Bibliotech.View.LoginView;
 import org.Bibliotech.View.SearchView;
 
@@ -17,6 +18,7 @@ public class LoginController extends Controller{
     }
 
     public void login(JTextField usernameField, JPasswordField passwordField){
+
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
         changeLoginFieldsColor(usernameField, passwordField);
@@ -27,6 +29,7 @@ public class LoginController extends Controller{
             ImplementazioneUtente iu = new ImplementazioneUtente();
             if(iu.checkLogin(username, password)){
                 JOptionPane.showMessageDialog(null, "Login effettuato");
+                Utente utente = Utente.getInstance();
                 switchView(SearchView.getInstance(), LoginView.getInstance());
             }
             else{

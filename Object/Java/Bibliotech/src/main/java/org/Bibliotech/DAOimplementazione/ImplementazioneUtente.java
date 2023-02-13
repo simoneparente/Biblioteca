@@ -79,4 +79,17 @@ public class ImplementazioneUtente implements UtenteDao{
         }
     }
 
+    public boolean changePassword(String username, String nuovaPassword) {
+        String changePasswordQuery = "UPDATE b.Utente SET Password = ? WHERE Username = ?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(changePasswordQuery);
+            preparedStatement.setString(1, nuovaPassword);
+            preparedStatement.setString(2, username);
+            preparedStatement.executeUpdate();
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
