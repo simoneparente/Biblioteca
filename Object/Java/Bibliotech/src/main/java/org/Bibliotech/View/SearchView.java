@@ -104,12 +104,27 @@ public class SearchView extends View {
     private JPanel formatoSeriePanel;
     private JComboBox formatoSerieComboBox;
     private JLabel aggiungiLabel;
+    private JMenuBar menuBar;
+    private JMenu menu;
+    private JMenuItem menuItem;
 
 
     private ArrayList<String> filtriSelezionati;
 
     public SearchView() {
         super(nome);
+        menuBar = new JMenuBar();
+        menu = new JMenu("Profilo");
+        menuItem = new JMenuItem("Visualizza Profilo");
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginController.getInstance().switchView(ProfiloView.getInstance(), SearchView.getInstance());
+            }
+        });
+        menu.add(menuItem);
+        menuBar.add(menu);
+        this.setJMenuBar(menuBar);
         logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
         this.setVisible(true);
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame

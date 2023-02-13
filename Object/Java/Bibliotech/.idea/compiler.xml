@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="provaBiblio" />
         <module name="BiblioTech" />
+        <module name="Bibliotech" />
         <module name="provaBiblio copia" />
+        <module name="provaBiblio" />
       </profile>
     </annotationProcessing>
   </component>

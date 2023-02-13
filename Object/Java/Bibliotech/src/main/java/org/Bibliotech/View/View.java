@@ -15,6 +15,8 @@ public class View extends JFrame{
     private JPanel logoPanel;
     private JPanel contentPanel;
     private JLabel logoLabel;
+
+
     View(String nome){
         FlatDarkLaf.setup();
         this.setTitle(nome); //nome visualizzato sul JFrame
