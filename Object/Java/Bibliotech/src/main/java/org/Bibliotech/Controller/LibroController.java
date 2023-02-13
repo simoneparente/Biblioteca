@@ -7,8 +7,8 @@ import org.Bibliotech.Model.Libro;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class LibroController {
     ImplementazioneLibro libro;
@@ -17,25 +17,31 @@ public class LibroController {
         libro = new ImplementazioneLibro();
     }
 
-    public static void addLibroInDB(String titolo, String genere, String autori, String editore, double prezzo,
-                                    String isbn, String dataPubblicazione, String formato, String lingua, String nomeSerie, String ISSNSerie) {
-        ImplementazioneLibro il= new ImplementazioneLibro();
-        if(autori.contains(",")){
-            int count = StringUtils.countMatches(autori, ",");
-            ArrayList < Autore > al_autori = new ArrayList< Autore >();
-            for(int i=0; i<count; i++){
-                String[] autore = autori.split(",");
-                al_autori.add(new Autore(autore[0], autore[1]));
-            }
-            System.out.println("ciaooooo");
-            Libro libro= new Libro(titolo, genere, al_autori, editore, prezzo, isbn, dataPubblicazione, formato, lingua);
-            System.out.println("output: "+ il.addLibro(libro));
-            //JOptionPane.showMessageDialog(null, "Libro aggiunto con successo");
+    public static void addLibroInDB(String titolo, String genere, String autori, String editore, String prezzo,
+                                    String isbn, String dataPubblicazione, String formato, String lingua, String nomeSerie, String ISSNSerie) {;
+        ImplementazioneLibro il = new ImplementazioneLibro();
+        ArrayList<Autore> al_autori;
+        if (autori.contains(",")) {
+            String autoriStringSenzaSpazi= autori.replace(", ", ","); // rimuove gli spazi dopo la virgola
+            al_autori = autoriStringToArrayList(autoriStringSenzaSpazi, StringUtils.countMatches(autori, ",") + 1);
+        } else {
+            al_autori = autoriStringToArrayList(autori, 1);
         }
-        else {
-
+        if (il.addLibro(new Libro(titolo, genere, al_autori, editore, prezzo, isbn, dataPubblicazione, formato, lingua, nomeSerie, ISSNSerie))) {
+            JOptionPane.showMessageDialog(null, "Libro aggiunto con successo");
+        } else {
+            JOptionPane.showMessageDialog(null, "Errore nell'aggiunta del libro");
         }
+    }
 
+    private static ArrayList<Autore> autoriStringToArrayList(String autori, int count) {
+        ArrayList<Autore> al_autori = new ArrayList<Autore>();
+        for (int i = 0; i < count; i++) {
+            Autore autore =  new Autore(autori.split(",")[i].split("_")[0], autori.split(",")[i].split("_")[1]);
+            System.out.println("istanza i = " +i+ "dati:  "+ autore.getNome() + " " + autore.getCognome() + " " + autore.getNomeCognome());
+            al_autori.add(new Autore(autore.getNome(), autore.getCognome()));
+        }
+        return al_autori;
     }
 
     public Libri leggiLibri() {

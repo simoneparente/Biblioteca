@@ -104,7 +104,9 @@ CREATE TABLE b.Libri
 
     CONSTRAINT PK_Libri PRIMARY KEY (ID_Libro),
     CONSTRAINT UK_Libro UNIQUE (ISBN),
-    CONSTRAINT CK_Libri CHECK (Prezzo > 0)
+    CONSTRAINT CK_Libri CHECK (Prezzo >= 0),
+    CONSTRAINT CK_NOTNULL_Titolo CHECK (Titolo IS NOT NULL),
+    CONSTRAINT CK_Titolo CHECK (Titolo <> '')
 );
 
 CREATE TABLE b.AutoreLibro
@@ -209,7 +211,7 @@ CREATE TABLE b.Jolly
 CREATE OR REPLACE PROCEDURE b.insAutori(stringAutori text, idRisorsa INTEGER, tipoRisorsa INTEGER) AS
 $$
 DECLARE
-    autori        text[]  = string_to_array(stringAutori, ' ');
+    autori        text[]  = string_to_array(stringAutori, ',');
     numAutori     INTEGER = array_length(autori, 1);
     autoreNome    b.autore.nome%TYPE;
     autoreCognome b.autore.cognome%TYPE;
@@ -218,7 +220,9 @@ BEGIN
     FOR i IN 1..numAutori
         LOOP
             autoreNome = split_part(autori[i], '_', 1);
+            autoreNome = ltrim(autoreNome, ' ');
             autoreCognome = split_part(autori[i], '_', 2);
+            autoreCognome = ltrim(autoreCognome, ' ');
             RAISE NOTICE 'autoreNome: % autoreCognome: %', autoreNome, autoreCognome;
             IF NOT EXISTS(SELECT * FROM b.autore WHERE nome = autoreNome AND cognome = autoreCognome) THEN
                 RAISE NOTICE 'Autore non presente, verrà inserito';

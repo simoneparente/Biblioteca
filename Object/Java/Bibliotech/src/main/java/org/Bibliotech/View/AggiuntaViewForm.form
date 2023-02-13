@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="11" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1372" height="776"/>
+      <xy x="20" y="20" width="1372" height="808"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -323,7 +323,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="19c63" class="javax.swing.JTextField" binding="nomeField">
+          <component id="19c63" class="javax.swing.JTextField" binding="nomeSerieField">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -333,7 +333,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="1645a" class="javax.swing.JTextField" binding="issnField">
+          <component id="1645a" class="javax.swing.JTextField" binding="issnSerieField">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>

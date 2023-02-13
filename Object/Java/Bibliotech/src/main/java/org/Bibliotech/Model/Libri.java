@@ -119,39 +119,4 @@ public class Libri {
         return libriByFormato;
     }
 
-    public Libri getLibriByRangePrezzo(double min, double max) {
-        Libri libriByPrezzo = new Libri();
-        for (Libro libro : libri) {
-            if (libro.getPrezzo() >= min && libro.getPrezzo() <= max) {
-                libriByPrezzo.addLibro(libro);
-            }
-        }
-        return libriByPrezzo;
-    }
-
-    public Libri getLibriByPrezzoMin(double min) {
-        Libri libriByPrezzoMin = new Libri();
-        for (Libro libro : libri) {
-            if (libro.getPrezzo() >= min) {
-                libriByPrezzoMin.addLibro(libro);
-            }
-        }
-        return libriByPrezzoMin;
-    }
-
-    public Libri getLibriByPrezzoMax(double max) {
-        Libri libriByPrezzoMax = new Libri();
-        for (Libro libro : libri) {
-            if (libro.getPrezzo() <= max) {
-                libriByPrezzoMax.addLibro(libro);
-            }
-        }
-        return libriByPrezzoMax;
-    }
-
-
-
-
-
-
 }

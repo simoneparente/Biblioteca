@@ -38,8 +38,8 @@ public class AggiuntaView extends View {
     private JLabel logoLabel;
     private JButton annullaButton;
     private JPanel seriePanel;
-    private JTextField nomeField;
-    private JTextField issnField;
+    private JTextField nomeSerieField;
+    private JTextField issnSerieField;
     private JComboBox formatoLibroComboBox;
     private JTextField nomeRivistaField;
     private JTextField issnRivistaField;
@@ -138,7 +138,7 @@ public class AggiuntaView extends View {
                     editoreLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
                 if(String.valueOf(prezzoLibroField.getText()).equals("Prezzo")){
-                    prezzoLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    prezzoLibroField.setText("");
                 }
                 if(String.valueOf(isbnLibroField.getText()).equals("ISBN")){
                     isbnLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
@@ -152,20 +152,25 @@ public class AggiuntaView extends View {
                 if(String.valueOf(linguaLibroField.getText()).equals("Lingua")){
                     linguaLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-                else {
                     if (ilLibroFaParteCheckBox.isSelected()) {
-                        System.out.println("non dovrei essere qui");
+                        if(String.valueOf(serieLibroBox.getSelectedItem()).equals("・・・Aggiungi nuova serie・・・")) {
+                            LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
+                                    autoriLibroField.getText(), editoreLibroField.getText(),
+                                    prezzoLibroField.getText(), isbnLibroField.getText(),
+                                    dataPublicazioneLibroField.getText(),
+                                    String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
+                                    nomeSerieField.getText(), issnSerieField.getText());
+                        }
                     } else {
-                        System.out.println("ciao eccomi");
                         LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
                                 autoriLibroField.getText(), editoreLibroField.getText(),
-                                Double.parseDouble(prezzoLibroField.getText()), isbnLibroField.getText(),
+                                prezzoLibroField.getText(), isbnLibroField.getText(),
                                 dataPublicazioneLibroField.getText(),
                                 String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
                                 null, null);
                     }
                 }
-            }
+
             private void checkFieldsArticolo() {
             }
 
@@ -201,8 +206,8 @@ public class AggiuntaView extends View {
         setPlaceholderText(DisciplinaField, "Disciplina");
         setPlaceholderText(autoriArticoloField, "Autori");
         setPlaceholderText(editoreArticoliField, "Titolo");
-        setPlaceholderText(issnField, "ISSN");
-        setPlaceholderText(nomeField, "Nome della serie");
+        setPlaceholderText(issnSerieField, "ISSN");
+        setPlaceholderText(nomeSerieField, "Nome della serie");
         setPlaceholderText(nomeConferenzaField, "Nome della conferenza");
         setPlaceholderText(dataDaConferenzaField, "Data inizio");
         setPlaceholderText(dataAConferenzaField, "Data fine");

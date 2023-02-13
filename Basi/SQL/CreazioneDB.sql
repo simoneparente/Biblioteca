@@ -104,7 +104,8 @@ CREATE TABLE b.Libri
 
     CONSTRAINT PK_Libri PRIMARY KEY (ID_Libro),
     CONSTRAINT UK_Libro UNIQUE (ISBN),
-    CONSTRAINT CK_Libri CHECK (Prezzo > 0)
+    CONSTRAINT CK_Libri CHECK (Prezzo > 0),
+    CONSTRAINT CK_Titolo (Titolo IS NOT NULL)
 );
 
 CREATE TABLE b.AutoreLibro

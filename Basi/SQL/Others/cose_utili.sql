@@ -57,3 +57,11 @@ $$
     LANGUAGE plpgsql;
 
 SELECT b.getAutoriByLibro(1);
+
+
+---INSERT PROVA FUNZIONE INSAUTORI ECC
+INSERT INTO b.ins_libri(titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo)
+VALUES  ('a', '123', 'a_a, b_b', '2023-02-13', 'aa', 'aaa', 'i', 'Cartaceo', 12.3);
+
+INSERT INTO b.ins_Libri(titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo)
+VALUES ('Il viaggio di Minnie e Minnie', '978-88-60-269972745', 'Simone_DiNapoli', '2005-3-7', 'Zanichelli', 'Romanzo', 'Inglese', 'Ebook', '7.0');

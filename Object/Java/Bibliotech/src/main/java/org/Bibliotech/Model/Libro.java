@@ -1,5 +1,7 @@
 package org.Bibliotech.Model;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -13,9 +15,14 @@ public class Libro {
     private String isbn;
     private String formato;
     private String lingua;
-    private double prezzo;
+    private String prezzo;
+    private String serieDiAppartenenza;
+
+
+    private String ISSNSerieDiAppartenenza;
     public Libro() {}
-    public Libro(String titolo, String genere, ArrayList<Autore> autori, String editore, double prezzo, String isbn, String dataPubblicazioneIn, String formato, String lingua) {
+    public Libro(String titolo, String genere, ArrayList<Autore> autori, String editore, String prezzo,
+                 String isbn, String dataPubblicazioneIn, String formato, String lingua, String serieDiAppartenenza, String ISSNSerieDiAppartenenza) {
         Date dataPubblicazione = Date.valueOf(dataPubblicazioneIn);
         this.titolo = titolo;
         this.autori = autori;
@@ -26,6 +33,8 @@ public class Libro {
         this.formato = formato;
         this.lingua = lingua;
         this.prezzo = prezzo;
+        this.serieDiAppartenenza = serieDiAppartenenza;
+        this.ISSNSerieDiAppartenenza = ISSNSerieDiAppartenenza;
     }
 
     public String getTitolo() {
@@ -41,8 +50,9 @@ public class Libro {
     }
 
     public String getAutoriString() {
+        autoriString = "";
         for (Autore autore : autori) {
-            autoriString = autoriString + autore.getNome() + " " + autore.getCognome() + ", ";
+            autoriString = autoriString + autore.getNomeCognome() + ", ";
         }
         return autoriString.substring(0, autoriString.length() - 2);
     }
@@ -98,12 +108,20 @@ public class Libro {
         this.formato = formato;
     }
 
-    public double getPrezzo() {
+    public String getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(double prezzo) {
+    public void setPrezzo(String prezzo) {
         this.prezzo = prezzo;
+    }
+
+    public String getSerieDiAppartenenza() {
+        return serieDiAppartenenza;
+    }
+
+    public String getISSNSerieDiAppartenenza() {
+        return ISSNSerieDiAppartenenza;
     }
 }
 
