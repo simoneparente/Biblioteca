@@ -1,5 +1,6 @@
 package org.Bibliotech.Model;
 
+import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.View.LoginView;
 
 public class Utente {
@@ -11,7 +12,7 @@ public class Utente {
     Utente(){
         username = LoginView.getInstance().getUsername();
         password = LoginView.getInstance().getPassword();
-        permessi = 0;
+        permessi = UtenteController.getInstance().getPermessi(username);
     }
 
     public String getUsername() {

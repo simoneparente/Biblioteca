@@ -35,4 +35,8 @@ public class UtenteController {
     }
         else{ return false;}
     }
+
+    public int getPermessi(String username) {
+        return utente.getPermessi(username);
+    }
 }

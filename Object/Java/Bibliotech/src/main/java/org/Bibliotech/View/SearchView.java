@@ -3,6 +3,7 @@ package org.Bibliotech.View;
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
 import org.Bibliotech.Controller.LoginController;
+import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -128,7 +129,7 @@ public class SearchView extends View {
         logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
         this.setVisible(true);
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
-
+        checkPermessi();
         setFiltriInvisibili();
         setFieldsDisabled();
         fillAllComboBoxes();
@@ -313,6 +314,13 @@ public class SearchView extends View {
         });
         aggiungiLabel.addMouseListener(new MouseAdapter() {
         });
+    }
+
+    private void checkPermessi() {
+        System.out.println("Permessi: " + Utente.getInstance().getPermessi());
+        if (Utente.getInstance().getPermessi()<=0) {
+            aggiungiLabel.setVisible(false);
+        }
     }
 
     //private void ricaricaSearchField(String risorsa) {
