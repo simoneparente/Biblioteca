@@ -24,6 +24,7 @@ public class ProfiloView extends View {
     private JLabel nuovaPasswordLabel;
     private JLabel confermaPassordLabel;
     private JButton confermaButton;
+    private JList listaNotifiche;
 
     private ProfiloView() {
         super(nome);
@@ -72,13 +73,7 @@ public class ProfiloView extends View {
                 String vecchiaPassword = new String(vecchiaPasswordField.getPassword());
                 String nuovaPassword = new String(nuovaPasswordField.getPassword());
                 String confermaPassword = new String(confermaPasswordField.getPassword());
-                if (vecchiaPassword.isBlank() || nuovaPassword.isBlank() || confermaPassword.isBlank()) {
-                    JOptionPane.showMessageDialog(null, "Inserisci tutte le password", "Errore", JOptionPane.ERROR_MESSAGE);
-                } else if (!vecchiaPassword.equals(Utente.getInstance().getPassword())) {
-                    JOptionPane.showMessageDialog(null, "La vecchia password non è corretta", "Errore", JOptionPane.ERROR_MESSAGE);
-                } else if (!nuovaPassword.equals(confermaPassword)) {
-                    JOptionPane.showMessageDialog(null, "Le password non coincidono", "Errore", JOptionPane.ERROR_MESSAGE);
-                } else {
+                if(checkPasswordFields(vecchiaPassword, nuovaPassword, confermaPassword)){
                     if(UtenteController.getInstance().cambiaPassword(Utente.getInstance().getUsername(), Utente.getInstance().getPassword(), nuovaPassword)){
                         JOptionPane.showMessageDialog(null, "Password cambiata con successo", "Successo", JOptionPane.INFORMATION_MESSAGE);
                         Utente.getInstance().setPassword(nuovaPassword);
@@ -87,9 +82,24 @@ public class ProfiloView extends View {
                         JOptionPane.showMessageDialog(null, "Errore nel cambiamento della password", "Errore", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-
             }
         });
+    }
+
+    private boolean checkPasswordFields(String vecchiaPassword, String nuovaPassword, String confermaPassword) {
+        if (vecchiaPassword.isBlank() || nuovaPassword.isBlank() || confermaPassword.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Inserisci tutte le password", "Errore", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (!vecchiaPassword.equals(Utente.getInstance().getPassword())) {
+            JOptionPane.showMessageDialog(null, "La vecchia password non è corretta", "Errore", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (!nuovaPassword.equals(confermaPassword)) {
+            JOptionPane.showMessageDialog(null, "Le password non coincidono", "Errore", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     public static ProfiloView getInstance() {
