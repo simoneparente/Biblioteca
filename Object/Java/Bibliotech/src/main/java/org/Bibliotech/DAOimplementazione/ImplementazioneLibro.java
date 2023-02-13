@@ -110,6 +110,10 @@ public class ImplementazioneLibro implements LibroDao {
     public Libri getLibri(){
         Libri libri = new Libri();
         String getLibriQuery = "SELECT * FROM b.libri";
+        return getLibri(libri, getLibriQuery);
+    }
+
+    private Libri getLibri(Libri libri, String getLibriQuery) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(getLibriQuery);
             ResultSet rs = preparedStatement.executeQuery();
@@ -130,6 +134,7 @@ public class ImplementazioneLibro implements LibroDao {
         }
         return libri;
     }
+
     @Override
     public Libri getLibriByTitolo(String titolo) {
         String getLibroByTitoloQuery = "SELECT * FROM b.libri WHERE titolo = ?";
@@ -211,24 +216,6 @@ public class ImplementazioneLibro implements LibroDao {
     public Libri searchLibro(String query) {
         Libri libri = new Libri();
         String searchLibroQuery = query;
-        try {
-            PreparedStatement ps = connection.prepareStatement(searchLibroQuery);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Libro libro = new Libro();
-                libro.setTitolo(rs.getString("titolo"));
-                libro.setGenere(rs.getString("genere"));
-                libro.setEditore(rs.getString("editore"));
-                libro.setDataPubblicazione(rs.getDate("datapubblicazione"));
-                libro.setIsbn(rs.getString("isbn"));
-                libro.setFormato(rs.getString("formato"));
-                libro.setLingua(rs.getString("lingua"));
-                libro.setPrezzo(rs.getString("prezzo"));
-                libri.addLibro(libro);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return libri;
+        return getLibri(libri, searchLibroQuery);
     }
 }

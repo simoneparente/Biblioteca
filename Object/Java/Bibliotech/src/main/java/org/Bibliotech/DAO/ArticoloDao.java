@@ -3,23 +3,23 @@ package org.Bibliotech.DAO;
 import org.Bibliotech.Model.Articoli;
 
 public interface ArticoloDao {
-    public Articoli getArticoli(String query, String parametro);
+    Articoli getArticoli(String query, String parametro);
     Articoli getArticoli(String query, String parametro1, String parametro2);
 
     //Attributi Tabella Articoli
-    public Articoli getArticoli();
-    public Articoli getArticoliByTitolo(String titolo);
-    public Articoli getArticoloByDoi(String doi);
-    public Articoli getArticoliByRangeDataPubblicazione(String dataPubblicazioneMin, String dataPubblicazioneMax);
-    public Articoli getArticoliByDataPubblicazioneMin(String dataPubblicazioneMin);
-    public Articoli getArticoliByDataPubblicazioneMax(String dataPubblicazioneMax);
-    public Articoli getArticoliByDisciplina(String disciplina);
-    public Articoli getArticoliByEditore(String editore);
-    public Articoli getArticoliByLingua(String lingua);
-    public Articoli getArticoliByFormato(String formato);
+    Articoli getArticoli();
+    Articoli getArticoliByTitolo(String titolo);
+    Articoli getArticoloByDoi(String doi);
+    Articoli getArticoliByRangeDataPubblicazione(String dataPubblicazioneMin, String dataPubblicazioneMax);
+    Articoli getArticoliByDataPubblicazioneMin(String dataPubblicazioneMin);
+    Articoli getArticoliByDataPubblicazioneMax(String dataPubblicazioneMax);
+    Articoli getArticoliByDisciplina(String disciplina);
+    Articoli getArticoliByEditore(String editore);
+    Articoli getArticoliByLingua(String lingua);
+    Articoli getArticoliByFormato(String formato);
 
     //Attributi Tabelle Multiple
-    public Articoli getArticoliByAutore(String nome, String cognome);
-    public Articoli getArticoliByRivista(String rivista);
-    public Articoli getArticoliByConferenza(String conferenza);
+    Articoli getArticoliByAutore(String nome, String cognome);
+    Articoli getArticoliByRivista(String rivista);
+    Articoli getArticoliByConferenza(String conferenza);
 }

@@ -30,7 +30,7 @@ public class View extends JFrame{
             taskbar.setIconImage(imageIconaFinestre);
         } catch (final UnsupportedOperationException u){
         } catch (final SecurityException e){
-            System.out.printf("Eccezione TaskBar");
+            System.out.print("Eccezione TaskBar");
         }
     }
 

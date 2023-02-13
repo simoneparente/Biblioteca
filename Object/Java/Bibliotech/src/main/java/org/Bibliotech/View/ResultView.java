@@ -47,7 +47,8 @@ public class ResultView extends View{
     }
 
     public void updateTable(String nomeTabellaIn, String query){
-        if(nomeTabellaIn.isBlank()) {return;}
+        if(nomeTabellaIn.isBlank()) {
+        }
         else {
             String nomeTabella = "resultview_" + nomeTabellaIn;
             emptyTable();

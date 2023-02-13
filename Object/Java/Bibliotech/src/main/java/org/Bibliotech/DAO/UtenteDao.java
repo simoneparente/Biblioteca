@@ -4,8 +4,8 @@ import org.Bibliotech.Model.Utente;
 public interface UtenteDao {
     boolean checkUserExistenceInDB(String username);
 
-    public boolean checkLogin(String username, String password);
-    public boolean addUser(String username, String password);
-    public boolean changePassword(String username, String nuovaPassword);
-    public int getPermessi(String username);
+    boolean checkLogin(String username, String password);
+    boolean addUser(String username, String password);
+    boolean changePassword(String username, String nuovaPassword);
+    int getPermessi(String username);
 }

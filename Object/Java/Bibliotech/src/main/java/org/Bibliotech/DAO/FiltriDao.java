@@ -4,26 +4,26 @@ import java.util.ArrayList;
 
 public interface FiltriDao {
 
-    public ArrayList<String> getAutoriLibri();
-    public ArrayList<String> getGenereLibri();
-    public ArrayList<String> getLinguaLibri();
-    public ArrayList<String> getEditoreLibri();
-    public ArrayList<String> getFormatoLibri();
-    public ArrayList<String> getPresentatoInLibro(); //da controllare
-    public ArrayList<String> getSerieLibri();
-    public ArrayList<String> getAutoriArticoli();
-    public ArrayList<String> getDisciplinaArticoli();
-    public ArrayList<String> getLinguaArticoli();
-    public ArrayList<String> getEditoreArticoli();
-    public ArrayList<String> getFormatoArticoli();
-    public ArrayList<String> getRivistaArticoli();
-    public ArrayList<String> getConferenzeArticoli();
-    public ArrayList<String> getArgomentiRiviste();
-    public ArrayList<String> getLingueRiviste();
-    public ArrayList<String> getFormatiRiviste();
-    public ArrayList<String> getEditoriSerie();
-    public ArrayList<String> getLingueSerie();
-    public ArrayList<String> getFormatiSerie();
+    ArrayList<String> getAutoriLibri();
+    ArrayList<String> getGenereLibri();
+    ArrayList<String> getLinguaLibri();
+    ArrayList<String> getEditoreLibri();
+    ArrayList<String> getFormatoLibri();
+    ArrayList<String> getPresentatoInLibro(); //da controllare
+    ArrayList<String> getSerieLibri();
+    ArrayList<String> getAutoriArticoli();
+    ArrayList<String> getDisciplinaArticoli();
+    ArrayList<String> getLinguaArticoli();
+    ArrayList<String> getEditoreArticoli();
+    ArrayList<String> getFormatoArticoli();
+    ArrayList<String> getRivistaArticoli();
+    ArrayList<String> getConferenzeArticoli();
+    ArrayList<String> getArgomentiRiviste();
+    ArrayList<String> getLingueRiviste();
+    ArrayList<String> getFormatiRiviste();
+    ArrayList<String> getEditoriSerie();
+    ArrayList<String> getLingueSerie();
+    ArrayList<String> getFormatiSerie();
 
 
 }

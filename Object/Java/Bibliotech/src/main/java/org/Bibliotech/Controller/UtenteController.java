@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class UtenteController {
     private static UtenteController instance= null;
-    private ImplementazioneUtente utente;
+    private final ImplementazioneUtente utente;
     public UtenteController() {
         utente = new ImplementazioneUtente();
     }
@@ -39,4 +39,5 @@ public class UtenteController {
     public int getPermessi(String username) {
         return utente.getPermessi(username);
     }
+
 }

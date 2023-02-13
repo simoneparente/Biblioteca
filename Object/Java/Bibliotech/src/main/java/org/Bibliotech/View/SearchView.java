@@ -105,9 +105,9 @@ public class SearchView extends View {
     private JPanel formatoSeriePanel;
     private JComboBox formatoSerieComboBox;
     private JLabel aggiungiLabel;
-    private JMenuBar menuBar;
-    private JMenu menu;
-    private JMenuItem menuItem;
+    private final JMenuBar menuBar;
+    private final JMenu menu;
+    private final JMenuItem menuItem;
 
 
     private ArrayList<String> filtriSelezionati;
