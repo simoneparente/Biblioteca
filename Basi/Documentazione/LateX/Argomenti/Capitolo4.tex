@@ -1,0 +1,207 @@
+\chapter{Schema Fisico}
+
+In questo ultimo capitolo esamineremo i meccanismi necessari per la traduzione di uno schema logico 
+in uno schema fisico. Andremo a definire le tabelle con i relativi attributi e tipi dei dati, le
+funzioni, le procedure, i trigger e i vincoli. Con questi elementi, sarà possibile creare un database
+relazionale con una struttura specifica che soddisfi i requisiti identificati nel Capitolo \ref{Capitolo1}.
+
+\section{Creazione Tabelle}
+\subsection{Tabella Articoli}
+\begin{lstlisting}
+    CREATE TABLE b.Articoli
+    ID_Articolo       SERIAL,
+    Titolo            VARCHAR(128),
+    DOI               VARCHAR(128),
+    DataPubblicazione DATE,
+    Disciplina        VARCHAR(128),
+    Editore           VARCHAR(128),
+    Lingua            VARCHAR(128),
+    Formato           VARCHAR(128),
+
+    CONSTRAINT PK_Articoli PRIMARY KEY (ID_Articolo),
+    CONSTRAINT UK_Articolo UNIQUE (DOI);
+\end{lstlisting}
+\subsection{Tabella Autore}
+\begin{lstlisting}
+    CREATE TABLE b.Autore
+    ID_Autore SERIAL,
+    Nome      VARCHAR(128),
+    Cognome   VARCHAR(128),
+
+    CONSTRAINT PK_Autore PRIMARY KEY (ID_Autore);
+\end{lstlisting}
+\subsection{Tabella AutoreArticolo}
+\begin{lstlisting}
+    CREATE TABLE b.AutoreArticolo
+    ID_Autore   SERIAL,
+    ID_Articolo SERIAL,
+
+    CONSTRAINT PK_AutoreArticolo PRIMARY KEY (ID_Autore, ID_Articolo),
+    CONSTRAINT FK_AutoreArticolo_Autore FOREIGN KEY (ID_Autore) REFERENCES b.Autore (ID_Autore) ON DELETE CASCADE,
+    CONSTRAINT FK_AutoreArticolo_Articoli FOREIGN KEY (ID_Articolo) REFERENCES b.Articoli (ID_Articolo) ON DELETE CASCADE;
+\end{lstlisting}
+
+\subsection{Tabella Riviste}
+\begin{lstlisting}
+    CREATE TABLE b.Riviste
+    ID_Rivista        SERIAL,
+    ISSN              VARCHAR(128),
+    Nome              VARCHAR(128),
+    Argomento         VARCHAR(128),
+    DataPubblicazione DATE,
+    Responsabile      VARCHAR(128),
+    Prezzo            FLOAT,
+
+    CONSTRAINT PK_Riviste PRIMARY KEY (ID_Rivista);
+\end{lstlisting}
+
+\subsection{Tabella ArticoliInRiviste}
+\begin{lstlisting}
+CREATE TABLE b.ArticoliInRiviste
+    ID_Articolo SERIAL,
+    ID_Rivista  SERIAL,
+
+    CONSTRAINT PK_ArticoliInRiviste PRIMARY KEY (ID_Articolo, ID_Rivista),
+    CONSTRAINT FK_ArticoliInRiviste_Articolo FOREIGN KEY (ID_Articolo) REFERENCES b.Articoli (ID_Articolo) ON DELETE CASCADE,
+    CONSTRAINT FK_ArticoliInRiviste_Rivista FOREIGN KEY (ID_Rivista) REFERENCES b.Riviste (ID_Rivista) ON DELETE CASCADE
+\end{lstlisting}
+
+\newpage
+
+\subsection{Tabella Evento}
+\begin{lstlisting}
+    ID_Evento          SERIAL,
+    Nome               VARCHAR(128),
+    Indirizzo          VARCHAR(128),
+    StrutturaOspitante VARCHAR(128),
+    DataInizio         DATE,
+    DataFine           DATE,
+    Responsabile       VARCHAR(128),
+
+    CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento),
+    CONSTRAINT CK_Date CHECK (DataInizio <= DataFine),
+    CONSTRAINT UK_Evento UNIQUE (Indirizzo, StrutturaOspitante, DataInizio, DataFine, Responsabile);
+\end{lstlisting}
+
+\subsection{Conferenza}
+\begin{lstlisting}
+    CREATE TABLE b.Conferenza
+    ID_Articolo SERIAL,
+    ID_Evento   SERIAL,
+
+    CONSTRAINT PK_Conferenza PRIMARY KEY (ID_Articolo, ID_Evento),
+    CONSTRAINT FK_Conferenza_Articolo FOREIGN KEY (ID_Articolo) REFERENCES b.Articoli (ID_Articolo) ON DELETE CASCADE,
+    CONSTRAINT FK_Conferenza_Evento FOREIGN KEY (ID_Evento) REFERENCES b.Evento (ID_Evento) ON DELETE CASCADE;
+\end{lstlisting}
+
+\subsection{Tabella Libri}
+\begin{lstlisting}
+    CREATE TABLE b.Libri
+    ID_Libro          SERIAL,
+    Titolo            VARCHAR(128),
+    ISBN              VARCHAR(128),
+    DataPubblicazione DATE,
+    Editore           VARCHAR(128),
+    Genere            VARCHAR(128),
+    Lingua            VARCHAR(128),
+    Formato           VARCHAR(128),
+    Prezzo            FLOAT,
+
+    CONSTRAINT PK_Libri PRIMARY KEY (ID_Libro),
+    CONSTRAINT UK_Libro UNIQUE (ISBN),
+    CONSTRAINT CK_Libri CHECK (Prezzo > 0),
+    CONSTRAINT CK_Titolo (Titolo IS NOT NULL);
+\end{lstlisting}
+
+\subsection{Tabella AutoreLibro}
+\begin{lstlisting}
+    CREATE TABLE b.AutoreLibro
+    ID_Autore SERIAL,
+    ID_Libro  SERIAL,
+
+    CONSTRAINT PK_AutoreLibro PRIMARY KEY (ID_Autore, ID_Libro),
+    CONSTRAINT FK_AutoreLibro_Autore FOREIGN KEY (ID_Autore) REFERENCES b.Autore (ID_Autore) ON DELETE CASCADE,
+    CONSTRAINT FK_AutoreLibro_Libro FOREIGN KEY (ID_Libro) REFERENCES b.Libri (ID_Libro) ON DELETE CASCADE;
+\end{lstlisting}
+
+\subsection{Tabella Presentazione}
+\begin{lstlisting}
+    CREATE TABLE b.Presentazione
+    ID_Evento SERIAL,
+    ID_Libro  SERIAL,
+
+    CONSTRAINT PK_Presentazione PRIMARY KEY (ID_Evento, ID_Libro),
+    CONSTRAINT FK_Presentazione_Evento FOREIGN KEY (ID_Evento) REFERENCES b.Evento (ID_Evento) ON DELETE CASCADE,
+    CONSTRAINT FK_Presentazione_Libro FOREIGN KEY (ID_Libro) REFERENCES b.Libri (ID_Libro) ON DELETE CASCADE;
+\end{lstlisting}
+
+\subsection{Tabella Serie}
+\begin{lstlisting}
+    CREATE TABLE b.Serie
+    ID_Serie SERIAL,
+    ISSN     VARCHAR(128),
+    Nome     VARCHAR(128),
+
+    CONSTRAINT PK_Serie PRIMARY KEY (ID_Serie),
+    CONSTRAINT UK_Serie UNIQUE (ISSN);
+\end{lstlisting}
+
+\newpage
+
+\subsection{Tabella LibriInSerie}
+\begin{lstlisting}
+    CREATE TABLE b.LibriInSerie
+    ID_Serie INTEGER,
+    ID_Libro INTEGER,
+
+    CONSTRAINT PK_LibriInSerie PRIMARY KEY (ID_Serie, ID_Libro),
+    CONSTRAINT FK_Libri_Serie FOREIGN KEY (ID_Serie) REFERENCES b.Serie (ID_Serie) ON DELETE CASCADE,
+    CONSTRAINT FK_Serie_Libri FOREIGN KEY (ID_Libro) REFERENCES b.Libri (ID_Libro) ON DELETE CASCADE;
+\end{lstlisting}
+
+\subsection{Tabella Negozio}
+\begin{lstlisting}
+    CREATE TABLE b.Negozio
+    ID_Negozio SERIAL,
+    Nome       VARCHAR(128),
+    Tipo       VARCHAR(128),
+
+    CONSTRAINT PK_Negozio PRIMARY KEY (ID_Negozio);
+\end{lstlisting}
+
+\subsection{Tabella Stock}
+\begin{lstlisting}
+    CREATE TABLE b.Negozio
+    ID_Negozio SERIAL,
+    Nome       VARCHAR(128),
+    Tipo       VARCHAR(128),
+
+    CONSTRAINT PK_Negozio PRIMARY KEY (ID_Negozio);
+\end{lstlisting}
+
+\subsection{Tabella Utente}
+\begin{lstlisting}
+    CREATE TABLE b.Utente
+    ID_Utente SERIAL,
+    Username  VARCHAR(128),
+    Password  VARCHAR(128),
+    Permessi  b.TipoUtente DEFAULT '0',
+
+    CONSTRAINT PK_Utente PRIMARY KEY (ID_Utente),
+    CONSTRAINT UK_Utente UNIQUE (Username);
+\end{lstlisting}
+
+\newpage
+
+\subsection{Tabella Richiesta}
+\begin{lstlisting}
+    CREATE TABLE b.Richiesta
+    ID_Utente     SERIAL,
+    ID_Serie      SERIAL,
+
+    CONSTRAINT PK_Richiesta PRIMARY KEY (ID_Utente, ID_Serie),
+    CONSTRAINT FK_Richiesta_Utente FOREIGN KEY (ID_Utente) REFERENCES b.Utente (ID_Utente) ON DELETE CASCADE,
+    CONSTRAINT FK_Richiesta_Serie FOREIGN KEY (ID_Serie) REFERENCES b.Serie (ID_Serie) ON DELETE CASCADE;
+\end{lstlisting}
+
+\section{Creazione Funzioni e Procedure}
