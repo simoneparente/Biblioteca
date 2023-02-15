@@ -32,4 +32,17 @@
 \contentsline {subsection}{\numberline {4.1.14}Tabella Stock}{19}{subsection.4.1.14}%
 \contentsline {subsection}{\numberline {4.1.15}Tabella Utente}{19}{subsection.4.1.15}%
 \contentsline {subsection}{\numberline {4.1.16}Tabella Richiesta}{20}{subsection.4.1.16}%
-\contentsline {section}{\numberline {4.2}Creazione Funzioni e Procedure}{20}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Creazione Funzioni}{20}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Tabella Jolly}{20}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Procedura inserimento Autori}{20}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Funzione Disponibilità Libro}{21}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Funzione Disponibilità Serie}{21}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Trigger Gestione Articoli}{22}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Inserimento Articolo e Rivista}{22}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Inserimento Articolo e Conferenza}{24}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Rimozione Articolo}{25}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Trigger Gestione Libri}{27}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Inserimento Libro}{27}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Inserimento Presentazione di un libro}{29}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Rimozione Libro}{30}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Trigger Gestione Stock}{31}{section.4.5}%

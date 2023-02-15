@@ -502,6 +502,8 @@ EXECUTE FUNCTION b.ftrig_Libri();
 
 
 --Trigger per l'inserimento della presentazione di un libro nel DataBase
+
+--View da dove viene inserito una presentazione
 CREATE OR REPLACE VIEW b.ins_presentazione AS
 SELECT l.ISBN,
        e.nome,
@@ -513,6 +515,7 @@ SELECT l.ISBN,
 FROM b.evento as e,
      b.libri as l;
 
+--Funzione del trigger per l'inserimento di una presentazione
 CREATE OR REPLACE FUNCTION b.ftrig_presentazione()
     RETURNS trigger AS
 $$
@@ -546,7 +549,7 @@ END
 $$
     language plpgsql;
 
-
+--Trigger per l'inserimento di una presentazione
 CREATE OR REPLACE TRIGGER trig_presentazione
     INSTEAD OF INSERT
     ON b.ins_presentazione
