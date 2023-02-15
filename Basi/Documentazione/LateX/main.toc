@@ -1,16 +1,35 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {chapter}{\numberline {1}Requisiti identificati}{3}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Progettazione concettuale}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Class Diagram}{4}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Analisi della ristrutturazione del Class Diagram}{5}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Analisi delle ridondanze}{5}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Analisi degli identificativi}{5}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Rimozione degli attributi multivalore}{5}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Rimozione degli attributi composti}{5}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Partizione/Accorpamento delle associazioni}{6}{subsection.2.2.5}%
-\contentsline {subsection}{\numberline {2.2.6}Rimozione delle gerarchie}{6}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Class Diagram ristrutturato}{6}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Dizionario delle classi}{7}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Dizionario delle associazioni}{9}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Schema logico}{10}{chapter.3}%
+\contentsline {chapter}{\numberline {1}Requisiti identificati}{4}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Progettazione concettuale}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class Diagram}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Analisi della ristrutturazione del Class Diagram}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Analisi delle ridondanze}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Analisi degli identificativi}{7}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Rimozione degli attributi multivalore}{7}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Rimozione degli attributi composti}{7}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Partizione/Accorpamento delle associazioni}{8}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Rimozione delle gerarchie}{8}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Class Diagram ristrutturato}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Dizionario delle classi}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Dizionario delle associazioni}{12}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Schema logico}{13}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Schema Fisico}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Creazione Tabelle}{15}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Tabella Articoli}{15}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Tabella Autore}{15}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Tabella AutoreArticolo}{16}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Tabella Riviste}{16}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Tabella ArticoliInRiviste}{16}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Tabella Evento}{17}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.7}Conferenza}{17}{subsection.4.1.7}%
+\contentsline {subsection}{\numberline {4.1.8}Tabella Libri}{17}{subsection.4.1.8}%
+\contentsline {subsection}{\numberline {4.1.9}Tabella AutoreLibro}{18}{subsection.4.1.9}%
+\contentsline {subsection}{\numberline {4.1.10}Tabella Presentazione}{18}{subsection.4.1.10}%
+\contentsline {subsection}{\numberline {4.1.11}Tabella Serie}{18}{subsection.4.1.11}%
+\contentsline {subsection}{\numberline {4.1.12}Tabella LibriInSerie}{19}{subsection.4.1.12}%
+\contentsline {subsection}{\numberline {4.1.13}Tabella Negozio}{19}{subsection.4.1.13}%
+\contentsline {subsection}{\numberline {4.1.14}Tabella Stock}{19}{subsection.4.1.14}%
+\contentsline {subsection}{\numberline {4.1.15}Tabella Utente}{19}{subsection.4.1.15}%
+\contentsline {subsection}{\numberline {4.1.16}Tabella Richiesta}{20}{subsection.4.1.16}%
+\contentsline {section}{\numberline {4.2}Creazione Funzioni e Procedure}{20}{section.4.2}%

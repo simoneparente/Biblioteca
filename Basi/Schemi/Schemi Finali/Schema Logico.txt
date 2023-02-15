@@ -44,6 +44,6 @@ ID_Libro -> Libro(ID_Libro)
 
 Utente: ID_Utente, Username, Password
 
-Richiesta: ID_Utente, ID_Serie,
+Richiesta: ID_Utente, ID_Serie
 ID_Utente -> Utente(ID_Utente)
 ID_Serie -> Serie(ID_Serie)

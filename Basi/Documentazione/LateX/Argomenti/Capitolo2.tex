@@ -4,25 +4,24 @@
     \includegraphics[scale=0.3]{Immagini/SchemaConcettuale.png}
         
     \section{Analisi della ristrutturazione del Class Diagram}
-        In questa fase verranno effettuate delle modifiche che renderanno il Class Diagram
-        più adatto a una traduzione al modello logico \textcolor{red}{(magari scriviamo meglio sta parte)}
+        In questa fase verranno effettuate delle modifiche al Class Diagram in modo tale da renderlo
+        più adatto a una traduzione al modello logico. \textcolor{red}{(magari scriviamo meglio sta parte)}
         \subsection{Analisi delle ridondanze}
         Nel Diagramma Concettuale non ci sono ridondanze tali da essere eliminate.
         \subsection{Analisi degli identificativi}
-        In questa fase andremo a scegliere uno o più attributi atti a identificare univocamente
+        In questa fase andremo a scegliere un attributo per identificare univocamente
         le varie entità presenti nello schema precedente, in particolare:
             \begin{enumerate}
             \item L'entità \textbf{Libro} presenta l'attributo ISBN che rappresenta una possibile chiave primaria,
                   tuttavia è stato scelto di aggiungere un attributo \textit{ID\_Libro} in modo tale da aumentare
-                  la velocità di accesso agli indici.
+                  la velocità di accesso agli indici e garantire l'immutabilità della base di dati.
             \item Per \textbf{Articolo scientifico} la situazione è analoga, è stato quindi aggiunto un attributo
                   \textit{ID\_Articolo}.
             \item Nel caso dell'entità \textbf{Rivista}, la quale presenta un attributo ISSN che è chiave candidata,
                   di inserire un ulteriore attributo \textit{ID\_Rivista}.
             \item Sarebbe possibile identificare un \textbf{Evento} tramite un insieme piuttosto ampio di attributi, è
                   stato quindi aggiunto un attributo \textit{ID\_Evento}.
-            \item Dato che diversi \textbf{Autori} potrebbero avere lo stesso nome, è stato aggiunto l'identificativo
-                  \textit{ID\_Autore}.
+            \item Per lo stesso motivo di Evento, è stato aggiunto alla tabella \textbf{Autore} un attributo \textit{ID\_Autore}.
             \item Dato che l'entità \textbf{Negozio} non presenta alcuna chiave candidata, è stato aggiunto l'attributo
                   \textit{ID\_Negozio}.
             \item \'E stato deciso di aggiungere a \textbf{Serie} un attributo \textit{ID\_Serie} per ridurre il volume degli
@@ -33,6 +32,10 @@
         \subsection{Rimozione degli attributi composti}
             Non sono presenti attributi composti.
         \subsection{Partizione/Accorpamento delle associazioni}
+        L'unica associazione 1:1 presente in questo Class Diagram è quella tra un \textbf{Libro} e una \textbf{Presentazione},
+        nonostante ciò, è stato deciso di mantenere la classe associativa tra le classi perché abbiamo ritenuto più idoneo
+        avere due classi diverse per associare due tipi di pubblicazione diversi a un Evento.
+
             
         \subsection{Rimozione delle gerarchie}
             In questo diagramma sono presenti 2 generalizzazioni e 4 relative specializzazioni.
@@ -56,22 +59,50 @@
       \multicolumn{1}{|l|}{Classe}           & \multicolumn{1}{l|}{Attributi}                                                                                                                            & \multicolumn{1}{l|}{Descrizione}                                                                                                                                                              \\ \hline
       \endhead
       %
-      \multicolumn{1}{|l|}{Articolo}         & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Articolo\\ Titolo\\ Doi\\ DataPubblicazione\\ Editore\\ Lingua\\ Formato\end{tabular}}                 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le \\ informazioni relative\\ agli articoli presenti\\ nel sistema\end{tabular}}                                           \\ \hline
+      \multicolumn{1}{|l|}{Articolo}         & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Articolo\\ Titolo\\ Doi\\ DataPubblicazione\\ Disciplina \\ Editore\\ Lingua\\ Formato\end{tabular}}                 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le \\ informazioni relative\\ agli articoli presenti\\ nel sistema\end{tabular}}                                           \\ \hline
       \multicolumn{1}{|l|}{Autore}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Autore\\ Nome\\ Cognome\end{tabular}}                                                                  & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative\\ agli autori presenti\\ nel sistema\end{tabular}}                                              \\ \hline
-      \multicolumn{1}{|l|}{Rivista}          & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Rivista\\ ISSN\\ Nome\\ Argomento\\ DataPubblicazione\\ Responsabile\end{tabular}}                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative\\ alle riviste scientifiche\\ presenti nel sistema\end{tabular}}                                \\ \hline
-      \multicolumn{1}{|l|}{AutoreArticolo}   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Autore\\ Articolo\end{tabular}}                                                                            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni sugli\\ autori degli articoli\\ scientifici\end{tabular}}                                                \\ \hline
-      \multicolumn{1}{|l|}{ArticoloInRivista} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Rivista\\ Articolo\end{tabular}}                                                                           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che mette in\\ relazione Articoli\\ e Riviste a cui\\ i primi appartengono\end{tabular}}                                                \\ \hline
+      \multicolumn{1}{|l|}{Rivista}          & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Rivista\\ ISSN\\ Nome\\ Argomento\\ DataPubblicazione\\ Responsabile \\ Prezzo\end{tabular}}                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative\\ alle riviste scientifiche\\ presenti nel sistema\end{tabular}}                                \\ \hline
+      \multicolumn{1}{|l|}{AutoreArticolo}   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                                            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni sugli\\ autori degli articoli\\ scientifici\end{tabular}}                                                \\ \hline
+      \multicolumn{1}{|l|}{ArticoloInRivista} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                                           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che mette in\\ relazione Articoli\\ e Riviste a cui\\ i primi appartengono\end{tabular}}                                                \\ \hline
       \multicolumn{1}{|l|}{Evento}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Evento\\ Indirizzo\\ StrutturaOspitante\\ DataInizio\\ DataFine\\ Responsabile\end{tabular}}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni sugli \\ eventi relativi a \\ presentazioni di libri\\ oppure a conferenze \\ scientifiche\end{tabular}} \\ \hline
-      \multicolumn{1}{|l|}{Conferenza}       & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Evento\\ Articolo\end{tabular}}                                                                            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che mette in\\ relazione eventi e\\ articoli scientifici\end{tabular}}                                                                  \\ \hline
+      \multicolumn{1}{|l|}{Conferenza}       & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                                            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che mette in\\ relazione eventi e\\ articoli scientifici\end{tabular}}                                                                  \\ \hline
       \multicolumn{1}{|l|}{Libro}            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Libro\\ Titolo\\ ISBN\\ DataPubblicazione\\ Editore\\ Genere\\ Lingua\\ Formato\\ Prezzo\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le principali \\ informazioni sui libri\\ presenti nel sistema\end{tabular}}                                             \\ \hline
-      \multicolumn{1}{|l|}{AutoreLibro}      & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Autore\\ Libro\end{tabular}}                                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che mette in\\ relazione Autori e Libri\end{tabular}}                                                                                   \\ \hline
-      \multicolumn{1}{|l|}{Presentazione}    & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Evento\\ Libro\end{tabular}}                                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni relative\\ a presentazioni di libri\end{tabular}}                                                        \\ \hline
+      \multicolumn{1}{|l|}{AutoreLibro}      & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che mette in\\ relazione Autori e Libri\end{tabular}}                                                                                   \\ \hline
+      \multicolumn{1}{|l|}{Presentazione}    & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni relative\\ a presentazioni di libri\end{tabular}}                                                        \\ \hline
       \multicolumn{1}{|l|}{Serie}            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Serie\\ ISSN\\ Nome\end{tabular}}                                                                      & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni relative\\ alle Serie di libri\end{tabular}}                                                             \\ \hline
-      \multicolumn{1}{|l|}{LibroInSerie}     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Serie\\ Libro\\ LibroSuccessivo\end{tabular}}                                                          & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che mette in\\ relazione Serie, Libri\\ e relativi sequel\end{tabular}}                                                                 \\ \hline
       \multicolumn{1}{|l|}{Negozio}          & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Negozio\\ Nome\\ Tipo\end{tabular}}                                                                    & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni\\ relative ai Negozi presenti\\ nel sistema\end{tabular}}                                                \\ \hline
-      \multicolumn{1}{|l|}{Stock}            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Negozio\\ Libro\end{tabular}}                                                                              & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative ai\\ libri acquistabili da\\ determinati negozi\end{tabular}}                                   \\ \hline
+      \multicolumn{1}{|l|}{Stock}            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Quantità\end{tabular}}                                                                              & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative ai\\ libri acquistabili da\\ determinati negozi e la \\ relativa quantità\end{tabular}}                                   \\ \hline
       \multicolumn{1}{|l|}{Utente}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Utente\\ Username\\ Password\end{tabular}}                                                             & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative\\ agli Utenti registrati sul\\ sistema\end{tabular}}                                            \\ \hline
-      \multicolumn{1}{|l|}{Richiesta}        & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Utente\\ Serie\\ Disponibilità\end{tabular}}                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che gestisce le\\ richieste fatte dagli utenti\\ relativamente alle\\ disponibilità di libri\end{tabular}}                              \\ \hline
+      \multicolumn{1}{|l|}{Richiesta}        & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che gestisce le\\ richieste fatte dagli utenti\\ relativamente alle\\ disponibilità di serie\end{tabular}}                              \\ \hline
       \end{longtable}
         \pagebreak
     \section{Dizionario delle associazioni}
+
+    \begin{longtable}[c]{|l|l|l|}
+      \hline
+      Associazione &
+        Classi coinvolte &
+        Descrizione \\ \hline
+      \endfirsthead
+      %
+      \endhead
+      %
+      scritto ... scrive &
+        \begin{tabular}[c]{@{}l@{}}Libri e Autore\\ Articoli e Autore.\end{tabular} &
+        \begin{tabular}[c]{@{}l@{}}Uno o più Libri/Articoli vengono\\ scritti da uno o più Autori. {[}*, *{]}\end{tabular} \\ \hline
+      venduto ... vende &
+        \begin{tabular}[c]{@{}l@{}}Negozio, Stock,\\ Libri.\end{tabular} &
+        \begin{tabular}[c]{@{}l@{}}Uno o più negozi vendono uno o \\ più libri. {[}*, 1..*{]}.\end{tabular} \\ \hline
+      raggruppa ... in &
+        Riviste e Articoli. &
+        \begin{tabular}[c]{@{}l@{}}Almeno un articolo è pubblicato\\ in una rivista.\\ Una rivista raggruppa diversi articoli.\\  {[}1..*, 0..1{]}\end{tabular} \\ \hline
+      presentato ... presenta &
+        \begin{tabular}[c]{@{}l@{}}Articoli, Conferenza,\\ Evento.\\ Libri, Presentazione,\\ Evento.\end{tabular} &
+        \begin{tabular}[c]{@{}l@{}}Uno o più articoli possono essere\\ presentati in una conferenza \\ Un libro può essere presentato\\ durante un evento. {[}0..1, 1...*{]}\end{tabular} \\ \hline
+      raggruppa ... appartiene &
+        Libri, Serie &
+        \begin{tabular}[c]{@{}l@{}}Una serie raggruppa diversi libri,\\ un libro può appartenere al più a una\\ serie. {[}1..*, 0..1{]}\end{tabular} \\ \hline
+      richiede ... richiesta &
+        Utente, Serie &
+        \begin{tabular}[c]{@{}l@{}}Un utente può richiedere diverse serie.\\ Una serie può essere richiesta\\ da diversi utenti. {[}*..*{]}\end{tabular} \\ \hline
+      \end{longtable}
