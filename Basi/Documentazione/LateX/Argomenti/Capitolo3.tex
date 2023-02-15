@@ -28,7 +28,7 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{Rivista}: \underline{ID\_Rivista}, ISSN, Nome, Argomento, DataPubblicazione, Responsabile
+        \textbf{Rivista}: \underline{ID\_Rivista}, ISSN, Nome, Argomento, DataPubblicazione, Responsabile, Prezzo
     }%
 }
 
@@ -41,13 +41,13 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{AutoreArticolo}: \textit{\underline{Autore, Articolo}}
+        \textbf{AutoreArticolo}: \textit{\underline{ID\_Autore, ID\_Articolo}}
     }%
 }
 
-\textit{Autore} $\hookrightarrow$ Autore(ID\_Autore)
+\textit{ID\_Autore} $\hookrightarrow$ Autore(ID\_Autore)
 
-\textit{Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
+\textit{ID\_Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
 
 \vspace{0.6cm}
 
@@ -58,13 +58,13 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{ArticoloInRivista}: \textit{\underline{Rivista, Articolo}}
+        \textbf{ArticoloInRivista}: \textit{\underline{ID\_Rivista, ID\_Articolo}}
     }%
 }
 
-\textit{Rivista} $\hookrightarrow$ Rivista(ID\_Rivista)
+\textit{ID\_Rivista} $\hookrightarrow$ Rivista(ID\_Rivista)
 
-\textit{Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
+\textit{ID\_Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
 
 \vspace{0.6cm}
 %FINE ARTICOLOINRIVISTA%
@@ -87,13 +87,13 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{Conferenza}: \textit{\underline{Evento, Articolo}}
+        \textbf{Conferenza}: \textit{\underline{ID\_Evento, ID\_Articolo}}
     }%
 }
 
-\textit{Evento} $\hookrightarrow$ Evento(ID\_Evento)
+\textit{ID\_Evento} $\hookrightarrow$ Evento(ID\_Evento)
 
-\textit{Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
+\textit{ID\_Articolo} $\hookrightarrow$ Articolo(ID\_Articolo)
 
 \vspace{0.6cm}
 
@@ -116,13 +116,13 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{AutoreLibro}: \textit{\underline{Autore, Libro}}
+        \textbf{AutoreLibro}: \textit{\underline{ID\_Autore, ID\_Libro}}
     }%
 }
 
-\textit{Autore} $\hookrightarrow$ Autore(ID\_Autore)
+\textit{ID\_Autore} $\hookrightarrow$ Autore(ID\_Autore)
 
-\textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+\textit{ID\_Libro} $\hookrightarrow$ Libro(ID\_Libro)
 
 \vspace{0.6cm}
 %FINE AUTORELIBRO%
@@ -132,13 +132,13 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{Presentazione}: \textit{\underline{Evento, Libro}}
+        \textbf{Presentazione}: \textit{\underline{ID\_Evento, ID\_Libro}}
     }%
 }
 
-\textit{Evento} $\hookrightarrow$ Evento(ID\_Evento)
+\textit{ID\_Evento} $\hookrightarrow$ Evento(ID\_Evento)
 
-\textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+\textit{ID\_Libro} $\hookrightarrow$ Libro(ID\_Libro)
 
 \vspace{0.6cm}
 %FINE PRESENTAZIONE%
@@ -161,18 +161,18 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{LibroInSerie}: \underline{ID\_Serie}, \textit{Libro}, \textit{LibroSuccessivo}
+        \textbf{LibroInSerie}: \underline{ID\_Serie}, \textit{ID\_Libro}
     }%
 }
 
 \textit{ID\_Serie} $\hookrightarrow$ Serie(ID\_Serie)
 
-\textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+\textit{ID\_Libro} $\hookrightarrow$ Libro(ID\_Libro)
 
-\textit{LibroSuccessivo} $\hookrightarrow$ Libro(ID\_Libro)
 
 \vspace{0.6cm}
 %FINE LIBROINSERIE
+
 
 %INIZIO NEGOZIO%
 
@@ -190,13 +190,13 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{Stock}: \underline{\textit{Negozio, Libro}}
+        \textbf{Stock}: \underline{\textit{ID\_Negozio, ID\_Libro}}, Quantità
     }%
 }
 
-\textit{Negozio} $\hookrightarrow$ Negozio(ID\_Negozio)
+\textit{ID\_Negozio} $\hookrightarrow$ Negozio(ID\_Negozio)
 
-\textit{Libro} $\hookrightarrow$ Libro(ID\_Libro)
+\textit{ID\_Libro} $\hookrightarrow$ Libro(ID\_Libro)
 
 \vspace{0.6cm}
 %FINE STOCK
@@ -219,12 +219,12 @@
 
 \noindent\fbox{%
     \parbox{\textwidth}{%
-        \textbf{Richiesta}: \underline{\textit{Utente, Serie}}, Disponibilità
+        \textbf{Richiesta}: \underline{\textit{ID\_Utente, ID\_Serie}}
     }%
 }
 
-\textit{Utente} $\hookrightarrow$ Utente(ID\_Utente)
+\textit{ID\_Utente} $\hookrightarrow$ Utente(ID\_Utente)
 
-\textit{Serie} $\hookrightarrow$ Serie(ID\_Serie)
+\textit{ID\_Serie} $\hookrightarrow$ Serie(ID\_Serie)
 
 %FINE RICHIESTA
