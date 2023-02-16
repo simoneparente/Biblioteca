@@ -105,6 +105,7 @@ public class SearchView extends View {
     private JPanel formatoSeriePanel;
     private JComboBox formatoSerieComboBox;
     private JLabel aggiungiLabel;
+    private JLabel richiestaLabel;
     private final JMenuBar menuBar;
     private final JMenu menu;
     private final JMenuItem menuItem;
@@ -314,13 +315,45 @@ public class SearchView extends View {
         });
         aggiungiLabel.addMouseListener(new MouseAdapter() {
         });
+        richiestaLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                richiestaLabel.setBorder(BorderFactory.createLineBorder(Color.decode("#F39524"), 1));
+            }
+        });
+        richiestaLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                richiestaLabel.setBorder(null);
+            }
+        });
+        richiestaLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                RichiestaView dialog = new RichiestaView();
+                dialog.pack();
+                dialog.setVisible(true);
+                //JOptionPane.showMessageDialog(richiestaView.);
+            }
+        });
     }
 
     private void checkPermessi() {
         System.out.println("Permessi: " + Utente.getInstance().getPermessi());
         if (Utente.getInstance().getPermessi()<=0) {
             aggiungiLabel.setVisible(false);
+            richiestaLabel.setVisible(true);
         }
+
     }
 
     //private void ricaricaSearchField(String risorsa) {

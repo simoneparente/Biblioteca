@@ -719,7 +719,7 @@ EXECUTE PROCEDURE b.ftrig_rimozineLibri();
     CREATE OR REPLACE FUNCTION b.ftrig_RimozioneDaStock() RETURNS trigger AS
     $$
     BEGIN
-        --Controllo se la quantità è 0 e in tal caso rimuovo il libro dallo stock
+        --Controllo se la quantit\`a è 0 e in tal caso rimuovo il libro dallo stock
         if (NEW.quantita = 0) then
             DELETE FROM b.stock WHERE id_libro = OLD.id_libro;
         end if;

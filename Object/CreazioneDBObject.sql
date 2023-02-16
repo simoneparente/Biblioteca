@@ -187,7 +187,6 @@ CREATE TABLE b.Richiesta
 (
     ID_Utente     SERIAL,
     ID_Serie      SERIAL,
-    Disponibilità BOOLEAN,
 
     CONSTRAINT PK_Richiesta PRIMARY KEY (ID_Utente, ID_Serie),
     CONSTRAINT FK_Richiesta_Utente FOREIGN KEY (ID_Utente) REFERENCES b.Utente (ID_Utente) ON DELETE CASCADE,
@@ -201,6 +200,7 @@ CREATE TABLE b.Jolly
 (
     Text TEXT
 );
+
 ------------------------------------------------------------------------------------------------------------------------
 
 

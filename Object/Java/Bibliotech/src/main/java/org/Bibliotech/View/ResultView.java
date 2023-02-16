@@ -27,7 +27,7 @@ public class ResultView extends View{
         WindowListener closeWindow = new WindowAdapter() {//listener per la chiusura della finestra
             @Override
             public void windowClosing(WindowEvent we) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Exit Application", JOptionPane.YES_NO_OPTION);
+                int result = JOptionPane.showConfirmDialog(null, "Vuoi tornare alla pagina di ricerca?", "Esci", JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.YES_OPTION) {
                     ResultView.super.dispose(); //chiude la finestra
                     SearchView.getInstance().setLocationRelativeTo(null); //centra la finestra di ricerca

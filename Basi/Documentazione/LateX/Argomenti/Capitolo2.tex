@@ -5,26 +5,26 @@
         
     \section{Analisi della ristrutturazione del Class Diagram}
         In questa fase verranno effettuate delle modifiche al Class Diagram in modo tale da renderlo
-        più adatto a una traduzione al modello logico. \textcolor{red}{(magari scriviamo meglio sta parte)}
+        pi\'u adatto a una traduzione al modello logico. \textcolor{red}{(magari scriviamo meglio sta parte)}
         \subsection{Analisi delle ridondanze}
         Nel Diagramma Concettuale non ci sono ridondanze tali da essere eliminate.
         \subsection{Analisi degli identificativi}
         In questa fase andremo a scegliere un attributo per identificare univocamente
-        le varie entità presenti nello schema precedente, in particolare:
+        le varie entit\`a presenti nello schema precedente, in particolare:
             \begin{enumerate}
-            \item L'entità \textbf{Libro} presenta l'attributo ISBN che rappresenta una possibile chiave primaria,
-                  tuttavia è stato scelto di aggiungere un attributo \textit{ID\_Libro} in modo tale da aumentare
-                  la velocità di accesso agli indici e garantire l'immutabilità della base di dati.
-            \item Per \textbf{Articolo scientifico} la situazione è analoga, è stato quindi aggiunto un attributo
+            \item L'entit\`a \textbf{Libro} presenta l'attributo ISBN che rappresenta una possibile chiave primaria,
+                  tuttavia \`e stato scelto di aggiungere un attributo \textit{ID\_Libro} in modo tale da aumentare
+                  la velocit\`a di accesso agli indici e garantire l'immutabilit\`a della base di dati.
+            \item Per \textbf{Articolo scientifico} la situazione \`e analoga, \`e stato quindi aggiunto un attributo
                   \textit{ID\_Articolo}.
-            \item Nel caso dell'entità \textbf{Rivista}, la quale presenta un attributo ISSN che è chiave candidata,
+            \item Nel caso dell'entit\`a \textbf{Rivista}, la quale presenta un attributo ISSN che \`e chiave candidata,
                   di inserire un ulteriore attributo \textit{ID\_Rivista}.
-            \item Sarebbe possibile identificare un \textbf{Evento} tramite un insieme piuttosto ampio di attributi, è
+            \item Sarebbe possibile identificare un \textbf{Evento} tramite un insieme piuttosto ampio di attributi, \`e
                   stato quindi aggiunto un attributo \textit{ID\_Evento}.
-            \item Per lo stesso motivo di Evento, è stato aggiunto alla tabella \textbf{Autore} un attributo \textit{ID\_Autore}.
-            \item Dato che l'entità \textbf{Negozio} non presenta alcuna chiave candidata, è stato aggiunto l'attributo
+            \item Per lo stesso motivo di Evento, \`e stato aggiunto alla tabella \textbf{Autore} un attributo \textit{ID\_Autore}.
+            \item Dato che l'entit\`a \textbf{Negozio} non presenta alcuna chiave candidata, \`e stato aggiunto l'attributo
                   \textit{ID\_Negozio}.
-            \item \'E stato deciso di aggiungere a \textbf{Serie} un attributo \textit{ID\_Serie} per ridurre il volume degli
+            \item \`E stato deciso di aggiungere a \textbf{Serie} un attributo \textit{ID\_Serie} per ridurre il volume degli
                   indici associati.
             \end{enumerate}
         \subsection{Rimozione degli attributi multivalore}
@@ -32,8 +32,8 @@
         \subsection{Rimozione degli attributi composti}
             Non sono presenti attributi composti.
         \subsection{Partizione/Accorpamento delle associazioni}
-        L'unica associazione 1:1 presente in questo Class Diagram è quella tra un \textbf{Libro} e una \textbf{Presentazione},
-        nonostante ciò, è stato deciso di mantenere la classe associativa tra le classi perché abbiamo ritenuto più idoneo
+        L'unica associazione 1:1 presente in questo Class Diagram \`e quella tra un \textbf{Libro} e una \textbf{Presentazione},
+        nonostante ci\`o, \`e stato deciso di mantenere la classe associativa tra le classi perché abbiamo ritenuto pi\'u idoneo
         avere due classi diverse per associare due tipi di pubblicazione diversi a un Evento.
 
             
@@ -41,12 +41,12 @@
             In questo diagramma sono presenti 2 generalizzazioni e 4 relative specializzazioni.
             In particolare:
 
-            Per quanto riguarda la generalizzazione \textbf{Pubblicazione}, si è scelto di accorpare l'entità padre
-            nelle entità figlie, ottenendo come risultato:
+            Per quanto riguarda la generalizzazione \textbf{Pubblicazione}, si \`e scelto di accorpare l'entit\`a padre
+            nelle entit\`a figlie, ottenendo come risultato:
             \begin{itemize}
-                  \item Una entità \textbf{Libro} aventi tutti gli attributi di \textbf{Pubblicazione} più
-                        gli attributi della precedente entità \textbf{Libro}.
-                  \item Analogamente, l'entità \textbf{Articolo} avrà come attributi, quelli di \textbf{Pubblicazione}
+                  \item Una entit\`a \textbf{Libro} aventi tutti gli attributi di \textbf{Pubblicazione} pi\'u
+                        gli attributi della precedente entit\`a \textbf{Libro}.
+                  \item Analogamente, l'entit\`a \textbf{Articolo} avr\`a come attributi, quelli di \textbf{Pubblicazione}
                         uniti agli attributi di \textbf{Articolo}.
             \end{itemize}
     
@@ -71,9 +71,9 @@
       \multicolumn{1}{|l|}{Presentazione}    & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni relative\\ a presentazioni di libri\end{tabular}}                                                        \\ \hline
       \multicolumn{1}{|l|}{Serie}            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Serie\\ ISSN\\ Nome\end{tabular}}                                                                      & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni relative\\ alle Serie di libri\end{tabular}}                                                             \\ \hline
       \multicolumn{1}{|l|}{Negozio}          & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Negozio\\ Nome\\ Tipo\end{tabular}}                                                                    & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva\\ le informazioni\\ relative ai Negozi presenti\\ nel sistema\end{tabular}}                                                \\ \hline
-      \multicolumn{1}{|l|}{Stock}            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Quantità\end{tabular}}                                                                              & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative ai\\ libri acquistabili da\\ determinati negozi e la \\ relativa quantità\end{tabular}}                                   \\ \hline
+      \multicolumn{1}{|l|}{Stock}            & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Quantit\`a\end{tabular}}                                                                              & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative ai\\ libri acquistabili da\\ determinati negozi e la \\ relativa quantit\`a\end{tabular}}                                   \\ \hline
       \multicolumn{1}{|l|}{Utente}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Utente\\ Username\\ Password\end{tabular}}                                                             & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative\\ agli Utenti registrati sul\\ sistema\end{tabular}}                                            \\ \hline
-      \multicolumn{1}{|l|}{Richiesta}        & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che gestisce le\\ richieste fatte dagli utenti\\ relativamente alle\\ disponibilità di serie\end{tabular}}                              \\ \hline
+      \multicolumn{1}{|l|}{Richiesta}        & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che gestisce le\\ richieste fatte dagli utenti\\ relativamente alle\\ disponibilit\`a di serie\end{tabular}}                              \\ \hline
       \end{longtable}
         \pagebreak
     \section{Dizionario delle associazioni}
@@ -89,20 +89,20 @@
       %
       scritto ... scrive &
         \begin{tabular}[c]{@{}l@{}}Libri e Autore\\ Articoli e Autore.\end{tabular} &
-        \begin{tabular}[c]{@{}l@{}}Uno o più Libri/Articoli vengono\\ scritti da uno o più Autori. {[}*, *{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u Libri/Articoli vengono\\ scritti da uno o pi\'u Autori. {[}*, *{]}\end{tabular} \\ \hline
       venduto ... vende &
         \begin{tabular}[c]{@{}l@{}}Negozio, Stock,\\ Libri.\end{tabular} &
-        \begin{tabular}[c]{@{}l@{}}Uno o più negozi vendono uno o \\ più libri. {[}*, 1..*{]}.\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u negozi vendono uno o \\ pi\'u libri. {[}*, 1..*{]}.\end{tabular} \\ \hline
       raggruppa ... in &
         Riviste e Articoli. &
-        \begin{tabular}[c]{@{}l@{}}Almeno un articolo è pubblicato\\ in una rivista.\\ Una rivista raggruppa diversi articoli.\\  {[}1..*, 0..1{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Almeno un articolo \`e pubblicato\\ in una rivista.\\ Una rivista raggruppa diversi articoli.\\  {[}1..*, 0..1{]}\end{tabular} \\ \hline
       presentato ... presenta &
         \begin{tabular}[c]{@{}l@{}}Articoli, Conferenza,\\ Evento.\\ Libri, Presentazione,\\ Evento.\end{tabular} &
-        \begin{tabular}[c]{@{}l@{}}Uno o più articoli possono essere\\ presentati in una conferenza \\ Un libro può essere presentato\\ durante un evento. {[}0..1, 1...*{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u articoli possono essere\\ presentati in una conferenza \\ Un libro pu\`o essere presentato\\ durante un evento. {[}0..1, 1...*{]}\end{tabular} \\ \hline
       raggruppa ... appartiene &
         Libri, Serie &
-        \begin{tabular}[c]{@{}l@{}}Una serie raggruppa diversi libri,\\ un libro può appartenere al più a una\\ serie. {[}1..*, 0..1{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Una serie raggruppa diversi libri,\\ un libro pu\`o appartenere al pi\'u a una\\ serie. {[}1..*, 0..1{]}\end{tabular} \\ \hline
       richiede ... richiesta &
         Utente, Serie &
-        \begin{tabular}[c]{@{}l@{}}Un utente può richiedere diverse serie.\\ Una serie può essere richiesta\\ da diversi utenti. {[}*..*{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Un utente pu\`o richiedere diverse serie.\\ Una serie pu\`o essere richiesta\\ da diversi utenti. {[}*..*{]}\end{tabular} \\ \hline
       \end{longtable}

@@ -14,7 +14,6 @@ public class ProfiloView extends View {
     private JLabel permessiLabel;
     private JLabel cambiaPasswordTextArea;
     private JPanel infoPanel;
-    private JPanel notifichePanel;
     private JPasswordField vecchiaPasswordField;
     private JPasswordField nuovaPasswordField;
     private JPasswordField confermaPasswordField;
@@ -24,7 +23,8 @@ public class ProfiloView extends View {
     private JLabel nuovaPasswordLabel;
     private JLabel confermaPassordLabel;
     private JButton confermaButton;
-    private JList listaNotifiche;
+    private JList notificheList;
+    private JScrollPane notificheScrollPane;
 
     private ProfiloView() {
         super(nome);

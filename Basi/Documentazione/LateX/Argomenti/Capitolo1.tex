@@ -5,28 +5,28 @@ Si vuole sviluppare un sistema informativo di gestione di una biblioteca digital
 I libri possono essere \textbf{Didattici} o \textbf{Romanzi}.
 
 In particolare, questi ultimi possono essere parte di \textbf{Collane}, raggruppate per caratteristiche
-comuni, e appartenere ad una \textbf{Serie} se hanno uno o più seguiti, gli articoli possono essere parte
+comuni, e appartenere ad una \textbf{Serie} se hanno uno o pi\`u seguiti, gli articoli possono essere parte
 di una \textbf{Rivista} oppure essere presentati durante una \textbf{Conferenza}.
 
-Il sistema dovrà inoltre permettere ad un \textbf{Utente} la ricerca di un libro
+Il sistema dovr\`a inoltre permettere ad un \textbf{Utente} la ricerca di un libro
 e recuperare la lista di \textbf{Negozi} in cui sia possibile acquistare quest'ultimo.
-L'utente potrà inoltre ricercare una serie (o collana) di libri e un negozio in cui
-quest'ultima potrà essere acquistata nel caso in cui al momento della ricerca non ci fosse alcun negozio idoneo,
-l'utente potrà inoltrare una \textbf{Richiesta} di notifica nel momento in cui uno dei negozi avrà tutti i libri 
+L'utente potr\`a inoltre ricercare una serie (o collana) di libri e un negozio in cui
+quest'ultima potr\`a essere acquistata nel caso in cui al momento della ricerca non ci fosse alcun negozio idoneo,
+l'utente potr\`a inoltrare una \textbf{Richiesta} di notifica nel momento in cui uno dei negozi avr\`a tutti i libri 
 appartenenti alla serie.
 
-In particolare sono state identificate le seguenti entità:
+In particolare sono state identificate le seguenti entit\`a:
 \begin{enumerate}
     \item \textbf{Pubblicazione}: Generalizzazione di un libro o un articolo scientifico
     \item \textbf{Libro}: Specializzazione di una Pubblicazione
     \item \textbf{Articolo scientifico}: Specializzazione di una Pubblicazione
-    \item \textbf{Rivista}: Entità che identifica un insieme di articoli
+    \item \textbf{Rivista}: Entit\`a che identifica un insieme di articoli
     \item \textbf{Evento}: Generalizzazione di una Conferenza o di una Presentazione
     \item \textbf{Conferenza}: Specializzazione di un Evento
     \item \textbf{Presentazione}: Specializzazione di un Evento
-    \item \textbf{Autore}: Entità che identifica l'autore di un Libro o di un Articolo
-    \item \textbf{Negozio}: Entità che identifica un Negozio
-    \item \textbf{Serie}: Entità che identifica un insieme di libri con caratteristiche simili
-    \item \textbf{Richiesta}: Entità che identifica la richiesta di disponibilità di una serie da 
+    \item \textbf{Autore}: Entit\`a che identifica l'autore di un Libro o di un Articolo
+    \item \textbf{Negozio}: Entit\`a che identifica un Negozio
+    \item \textbf{Serie}: Entit\`a che identifica un insieme di libri con caratteristiche simili
+    \item \textbf{Richiesta}: Entit\`a che identifica la richiesta di disponibilit\`a di una serie da 
     parte di un utente
 \end{enumerate}
