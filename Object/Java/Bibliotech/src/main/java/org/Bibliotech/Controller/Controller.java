@@ -30,8 +30,7 @@ public class Controller {
         else{
             closeView.hideView();
             openView.showView();
-    }
-
+        }
     }
 
 

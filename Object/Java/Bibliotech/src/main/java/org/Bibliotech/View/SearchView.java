@@ -106,36 +106,45 @@ public class SearchView extends View {
     private JComboBox formatoSerieComboBox;
     private JLabel aggiungiLabel;
     private JLabel richiestaLabel;
-    private final JMenuBar menuBar;
-    private final JMenu menu;
-    private final JMenuItem menuItem;
 
 
     private ArrayList<String> filtriSelezionati;
 
     public SearchView() {
         super(nome);
-        menuBar = new JMenuBar();
-        menu = new JMenu("Profilo");
-        menuItem = new JMenuItem("Visualizza Profilo");
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LoginController.getInstance().switchView(ProfiloView.getInstance(), SearchView.getInstance());
-            }
-        });
-        menu.add(menuItem);
-        menuBar.add(menu);
+        //SETUP BARRA MENU
+        JMenuBar menuBar = new JMenuBar();
+        JMenu profiloMenu = new JMenu("Profilo");
+        JMenuItem profiloItem = new JMenuItem("Visualizza Profilo");
+        JMenuItem logoutItem = new JMenuItem("Logout");
+        profiloMenu.add(profiloItem);
+        profiloMenu.add(logoutItem);
+        menuBar.add(profiloMenu);
         this.setJMenuBar(menuBar);
+
+        //SETUP LOGO
         logoLabel.setIcon(logoLabelIcon); //setta l'icona del logo (logoLabelIcon viene presa da superclasse View)
         this.setVisible(true);
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
-        checkPermessi();
+
+        //CONTROLLI VARI E SETUP FILTRI
         setFiltriInvisibili();
         setFieldsDisabled();
         fillAllComboBoxes();
         //ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
 
+        profiloItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginController.getInstance().switchView(ProfiloView.getInstance(), SearchView.getInstance());
+            }
+        });
+        logoutItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginController.getInstance().logout();
+            }
+        });
         aggiungiLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -347,13 +356,16 @@ public class SearchView extends View {
         });
     }
 
-    private void checkPermessi() {
+    public void checkPermessi() {
         System.out.println("Permessi: " + Utente.getInstance().getPermessi());
         if (Utente.getInstance().getPermessi()<=0) {
             aggiungiLabel.setVisible(false);
             richiestaLabel.setVisible(true);
         }
-
+        if(Utente.getInstance().getPermessi()==1) {
+            aggiungiLabel.setVisible(true);
+            richiestaLabel.setVisible(true);
+        }
     }
 
     //private void ricaricaSearchField(String risorsa) {

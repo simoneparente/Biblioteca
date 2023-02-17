@@ -5,10 +5,7 @@ import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.RegisterController;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 
 
 public class RegisterView extends View {
@@ -62,6 +59,15 @@ private static final String nome = "RegisterView";
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller.getInstance().switchView(LoginView.getInstance(), RegisterView.getInstance());
+            }
+        });
+        passwordField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    registratiButton.doClick();
+                }
             }
         });
     }

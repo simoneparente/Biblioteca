@@ -10,9 +10,9 @@ public class Utente {
     private int  permessi;
 
     Utente(){
-        username = LoginView.getInstance().getUsername();
-        password = LoginView.getInstance().getPassword();
-        permessi = UtenteController.getInstance().getPermessi(username);
+        username = null;
+        password = null;
+        permessi = 0;
     }
 
     public String getUsername() {

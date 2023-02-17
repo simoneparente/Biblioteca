@@ -94,15 +94,17 @@ public class ImplementazioneUtente implements UtenteDao{
     }
 
     public int getPermessi(String username) {
-        String getPermessiQuery = "SELECT Permessi FROM b.Utente WHERE Username = ?";
+        String getPermessiQuery = "SELECT permessi FROM b.Utente WHERE username = ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getPermessiQuery);
             preparedStatement.setString(1, username);
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
-                return rs.getInt("Permessi");
+                return rs.getInt("permessi");
             }
-            else{ return -1;}
+            else{
+                System.out.println("Errore: non è stato possibile ottenere i permessi dell'utente");
+                return -1;}
         }catch(SQLException e){
             e.printStackTrace();
             return -1;

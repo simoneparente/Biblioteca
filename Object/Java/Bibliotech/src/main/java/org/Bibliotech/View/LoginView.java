@@ -28,7 +28,10 @@ public class LoginView extends View {
         logoPanel.setSize(360, 250);
         this.setContentPane(rootPanel);
         logoLabel.setIcon(logoLabelIcon);
-        loginButton.addActionListener(e -> LoginController.getInstance().login(usernameField, passwordField));
+        loginButton.addActionListener(e -> {
+            LoginController.getInstance().login(usernameField, passwordField);
+            //SearchView.getInstance().checkPermessi();
+        });
         registratiLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -61,6 +64,15 @@ public class LoginView extends View {
             usernameField.setText("");
             passwordField.setText("");
         });
+        passwordField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    loginButton.doClick();
+                }
+            }
+        });
     }
 
     public String getUsername(){
@@ -77,5 +89,11 @@ public class LoginView extends View {
             instance = new LoginView();
         }
         return instance;
+    }
+
+    public static void resetFields() {
+        instance.usernameField.setText("");
+        instance.passwordField.setText("");
+        instance.mostraPasswordCheckBox.setSelected(false);
     }
 }

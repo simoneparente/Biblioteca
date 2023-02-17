@@ -26,10 +26,9 @@ public class LoginController extends Controller{
             JOptionPane.showMessageDialog(null, "Inserire username e password");
         }
         else{
-            ImplementazioneUtente iu = new ImplementazioneUtente();
-            if(iu.checkLogin(username, password)){
+            if(UtenteController.getInstance().loginUtente(username, password)){
                 JOptionPane.showMessageDialog(null, "Login effettuato");
-                Utente utente = Utente.getInstance();
+                SearchView.getInstance().checkPermessi();
                 switchView(SearchView.getInstance(), LoginView.getInstance());
             }
             else{
@@ -52,5 +51,11 @@ public class LoginController extends Controller{
             passwordField.setBackground(UIManager.getColor("JTextField.background"));
         }
     }
-
+    public void logout(){
+        Utente.getInstance().setUsername(null);
+        Utente.getInstance().setPassword(null);
+        Utente.getInstance().setPermessi(-1);
+        LoginView.resetFields();
+        switchView(LoginView.getInstance(), SearchView.getInstance());
+    }
 }

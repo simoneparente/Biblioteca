@@ -1,9 +1,7 @@
 package org.Bibliotech.Controller;
 import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
 import org.Bibliotech.Model.Utente;
-import org.Bibliotech.View.ProfiloView;
-
-import javax.swing.*;
+import org.Bibliotech.View.SearchView;
 
 public class UtenteController {
     private static UtenteController instance= null;
@@ -12,10 +10,13 @@ public class UtenteController {
         utente = new ImplementazioneUtente();
     }
 
-    public boolean registraUtente(String username, String password) {
-        return utente.addUser(username, password);
+    public void registraUtente(String username, String password) {
+        utente.addUser(username, password);
     }
     public boolean loginUtente(String username, String password) {
+        Utente.getInstance().setPermessi(utente.getPermessi(username));
+        Utente.getInstance().setUsername(username);
+        Utente.getInstance().setPassword(password);
         return utente.checkLogin(username, password);
     }
 
