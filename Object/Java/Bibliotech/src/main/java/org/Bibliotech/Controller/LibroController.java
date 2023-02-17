@@ -18,7 +18,7 @@ public class LibroController {
         ImplementazioneLibro il = new ImplementazioneLibro();
         ArrayList<Autore> al_autori;
         if (autori.contains(",")) {
-            String autoriStringSenzaSpazi= autori.replace(", ", ","); // rimuove gli spazi dopo la virgola
+            String autoriStringSenzaSpazi = autori.replace(", ", ","); // rimuove gli spazi dopo la virgola
             al_autori = autoriStringToArrayList(autoriStringSenzaSpazi, StringUtils.countMatches(autori, ",") + 1);
         } else {
             al_autori = autoriStringToArrayList(autori, 1);
@@ -31,13 +31,19 @@ public class LibroController {
     }
 
     private static ArrayList<Autore> autoriStringToArrayList(String autori, int count) {
-        ArrayList<Autore> al_autori = new ArrayList<Autore>();
-        for (int i = 0; i < count; i++) {
-            Autore autore =  new Autore(autori.split(",")[i].split("_")[0], autori.split(",")[i].split("_")[1]);
-            System.out.println("istanza i = " +i+ "dati:  "+ autore.getNome() + " " + autore.getCognome() + " " + autore.getNomeCognome());
-            al_autori.add(new Autore(autore.getNome(), autore.getCognome()));
+        try {
+            ArrayList<Autore> al_autori = new ArrayList<Autore>();
+            for (int i = 0; i < count; i++) {
+                Autore autore = new Autore(autori.split(",")[i].split("_")[0], autori.split(",")[i].split("_")[1]);
+                System.out.println("istanza i = " + i + "dati:  " + autore.getNome() + " " + autore.getCognome() + " " + autore.getNomeCognome());
+                al_autori.add(new Autore(autore.getNome(), autore.getCognome()));
+            }
+            return al_autori;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, """
+                    Gli autori devono essere inseriti secondo il seguente \s
+                    formato: Nome1_Cognome1, Nome2_Cognome2, ...""");
+            return null;
         }
-        return al_autori;
     }
-
 }

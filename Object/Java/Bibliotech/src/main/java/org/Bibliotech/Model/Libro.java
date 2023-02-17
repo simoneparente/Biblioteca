@@ -57,6 +57,7 @@ public class Libro {
         return autoriString.substring(0, autoriString.length() - 2);
     }
 
+
     public String getLingua() {
         return lingua;
     }

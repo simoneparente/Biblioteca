@@ -970,3 +970,8 @@ SELECT distinct r.nome as nome,
 FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar)
          JOIN b.riviste as r on ar.id_rivista = r.id_rivista;
 ------------------------------------------------------------------------------------------------------------------------
+
+CREATE VIEW b.notifiche AS
+    SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
+    FROM b.serie NATURAL JOIN b.richiesta
+    WHERE b.getDisponibilitaSerie(id_serie) IS true;

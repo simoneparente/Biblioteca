@@ -56,6 +56,7 @@ public class AggiuntaView extends View {
     private JTextField dataDaConferenzaField;
     private JTextField dataAConferenzaField;
     private JTextField linguaLibroField;
+    private JLabel helpLabel;
 
     public AggiuntaView() {
         super(nome);
@@ -125,49 +126,49 @@ public class AggiuntaView extends View {
             }
 
             private void checkAddLibro() {
+                resetBorders();
+                int check = 0;
                 if(String.valueOf(titoloLibroField.getText()).equals("Titolo")){
                     titoloLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
                 }
-                if(String.valueOf(autoriLibroField.getText()).equals("Autori")){
+                if(String.valueOf(autoriLibroField.getText()).equals("Autori")  || !String.valueOf(autoriLibroField.getText()).contains("_")){
                     autoriLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
                 }
                 if(String.valueOf(genereLibroField.getText()).equals("Genere")){
                     genereLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
                 }
                 if(String.valueOf(editoreLibroField.getText()).equals("Editore")){
                     editoreLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
                 }
                 if(String.valueOf(prezzoLibroField.getText()).equals("Prezzo")){
                     prezzoLibroField.setText("");
                 }
                 if(String.valueOf(isbnLibroField.getText()).equals("ISBN")){
                     isbnLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
                 }
                 if(String.valueOf(dataPublicazioneLibroField.getText()).equals("Data di pubblicazione")){
                     dataPublicazioneLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
                 }
                 if(String.valueOf(formatoLibroComboBox.getSelectedItem()).equals("Formato")){
                     formatoLibroComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
                 }
                 if(String.valueOf(linguaLibroField.getText()).equals("Lingua")){
                     linguaLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
                 }
                     if (ilLibroFaParteCheckBox.isSelected()) {
                         if(String.valueOf(serieLibroBox.getSelectedItem()).equals("・・・Aggiungi nuova serie・・・")) {
-                            LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
-                                    autoriLibroField.getText(), editoreLibroField.getText(),
-                                    prezzoLibroField.getText(), isbnLibroField.getText(),
-                                    dataPublicazioneLibroField.getText(),
-                                    String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
-                                    nomeSerieField.getText(), issnSerieField.getText());
+                            addLibroSerie(check);
                         }
                     } else {
-                        LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
-                                autoriLibroField.getText(), editoreLibroField.getText(),
-                                prezzoLibroField.getText(), isbnLibroField.getText(),
-                                dataPublicazioneLibroField.getText(),
-                                String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
-                                null, null);
+                        addLibro(check);
                     }
                 }
 
@@ -190,6 +191,68 @@ public class AggiuntaView extends View {
                 }
             }
         });
+        helpLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                JOptionPane.showMessageDialog(autoriLibroField, """
+                        Gli autori devono essere inseriti secondo il seguente \s
+                        formato: Nome1_Cognome1, Nome2_Cognome2, ...""");
+            }
+        });
+        helpLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                helpLabel.setBorder(BorderFactory.createLineBorder(Color.decode("#F39524"), 1));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                helpLabel.setBorder(null);
+            }
+        });
+    }
+
+    private void resetBorders() { //resetta i bordi di tutti i JTextField
+        titoloLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        genereLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        autoriLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        editoreLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        prezzoLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        isbnLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        dataPublicazioneLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        formatoLibroComboBox.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        linguaLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+    }
+
+    private void addLibro(int check) {
+        if(check==0) {
+            LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
+                    autoriLibroField.getText(), editoreLibroField.getText(),
+                    prezzoLibroField.getText(), isbnLibroField.getText(),
+                    dataPublicazioneLibroField.getText(),
+                    String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
+                    null, null);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Compilare i campi in rosso");
+        }
+    }
+
+    private void addLibroSerie(int check) {
+        if(check==0) {
+            LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
+                    autoriLibroField.getText(), editoreLibroField.getText(),
+                    prezzoLibroField.getText(), isbnLibroField.getText(),
+                    dataPublicazioneLibroField.getText(),
+                    String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
+                    nomeSerieField.getText(), issnSerieField.getText());
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Compilare i campi in rosso");
+        }
     }
 
     public void setPlaceHolders(){

@@ -105,7 +105,7 @@ CREATE TABLE b.Libri
     CONSTRAINT PK_Libri PRIMARY KEY (ID_Libro),
     CONSTRAINT UK_Libro UNIQUE (ISBN),
     CONSTRAINT CK_Libri CHECK (Prezzo > 0),
-    CONSTRAINT CK_Titolo (Titolo IS NOT NULL)
+    CONSTRAINT CK_Titolo CHECK (Titolo IS NOT NULL)
 );
 
 CREATE TABLE b.AutoreLibro
@@ -184,8 +184,8 @@ CREATE TABLE b.Utente
 
 CREATE TABLE b.Richiesta
 (
-    ID_Utente     SERIAL,
-    ID_Serie      SERIAL,
+    ID_Utente SERIAL,
+    ID_Serie  SERIAL,
 
     CONSTRAINT PK_Richiesta PRIMARY KEY (ID_Utente, ID_Serie),
     CONSTRAINT FK_Richiesta_Utente FOREIGN KEY (ID_Utente) REFERENCES b.Utente (ID_Utente) ON DELETE CASCADE,
@@ -225,9 +225,9 @@ BEGIN
                 INSERT INTO b.autore (nome, cognome) VALUES (autoreNome, autoreCognome);
             END IF;
             idAutore = (SELECT id_autore FROM b.autore WHERE nome = autoreNome AND cognome = autoreCognome);
-            IF(tipoRisorsa = 1) THEN
+            IF (tipoRisorsa = 1) THEN
                 INSERT INTO b.autorelibro (id_autore, id_libro) VALUES (idAutore, idRisorsa);
-            ELSEIF(tipoRisorsa = 0) THEN
+            ELSEIF (tipoRisorsa = 0) THEN
                 INSERT INTO b.autorearticolo (id_autore, id_articolo) VALUES (idAutore, idRisorsa);
             END IF;
         END LOOP;
@@ -313,7 +313,8 @@ BEGIN
         IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issnRivista) THEN
             RAISE NOTICE 'Rivista non presente, verrà inserita';
             INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
-            VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.datapubblicazione, NEW.responsabileRivista, NEW.prezzoRivista);
+            VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.datapubblicazione,
+                    NEW.responsabileRivista, NEW.prezzoRivista);
             --Controllo che la rivista presente nel database abbia la stessa data di pubblicazione
         ELSEIF NOT EXISTS(SELECT datapubblicazione
                           FROM b.riviste
@@ -346,7 +347,6 @@ CREATE OR REPLACE TRIGGER trig_ArticoliRivista
     ON b.ins_ArticoliRivista
     FOR EACH ROW
 EXECUTE FUNCTION b.ftrig_ArticoliRivista();
-
 
 
 --Inserimento Articolo Scientifico e Conferenza dove è stato presentato
@@ -409,7 +409,8 @@ BEGIN
         --Inserisco l'articolo nella conferenza
         idConferenza = (SELECT id_evento
                         FROM b.evento
-                        WHERE nome = NEW.nomeConferenza AND indirizzo = NEW.indirizzoConferenza);
+                        WHERE nome = NEW.nomeConferenza
+                          AND indirizzo = NEW.indirizzoConferenza);
         INSERT INTO b.Conferenza (id_articolo, id_evento) VALUES (idArticolo, idConferenza);
     END IF;
     RETURN NEW;
@@ -458,7 +459,7 @@ BEGIN
         RAISE NOTICE 'Libro già presente';
     ELSE
         --Controllo che la serie di appartenenza del libro non sia già presente nel DataBase in tal caso la inserisco
-            IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issn_serie_di_appartenenza) THEN
+        IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issn_serie_di_appartenenza) THEN
             RAISE NOTICE 'Serie non presente';
             IF NEW.nome_serie_di_appartenenza IS NOT NULL THEN
                 INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
@@ -485,7 +486,7 @@ BEGIN
         idSerie = (SELECT id_serie FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza);
         RAISE NOTICE 'idSerie: %', idSerie;
         IF idSerie IS NOT NULL THEN
-        INSERT INTO b.libriinserie (id_libro, id_serie) VALUES (idLibro, idSerie);
+            INSERT INTO b.libriinserie (id_libro, id_serie) VALUES (idLibro, idSerie);
         END IF;
     END IF;
     RETURN NEW;
@@ -498,7 +499,6 @@ CREATE OR REPLACE TRIGGER trig_Libri
     ON b.ins_libri
     FOR EACH ROW
 EXECUTE FUNCTION b.ftrig_Libri();
-
 
 
 --Trigger per l'inserimento della presentazione di un libro nel DataBase
@@ -703,7 +703,8 @@ BEGIN
         ELSE
             UPDATE b.stock
             SET quantita = quantita + NEW.quantita
-            WHERE id_negozio = NEW.id_negozio AND id_libro = idLibro;
+            WHERE id_negozio = NEW.id_negozio
+              AND id_libro = idLibro;
         END IF;
     END IF;
     RETURN NEW;
@@ -736,5 +737,11 @@ EXECUTE FUNCTION b.ftrig_RimozioneDaStock();
 ------------------------------------------------------------------------------------------------------------------------
 
 
-
 ------------------------------------------------------------------------------------------------------------------------
+
+--FUNZIONI E VIEW PER GESTIRE LE RICHIESTE E LE NOTIFICHE
+
+CREATE VIEW b.notifiche AS
+    SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
+    FROM b.serie NATURAL JOIN b.richiesta
+    WHERE b.getDisponibilitaSerie(id_serie) IS true;

@@ -41,4 +41,7 @@ public class UtenteController {
         return utente.getPermessi(username);
     }
 
+    public boolean checkNotifiche(String username) {
+        return utente.checkNotifiche(username);
+    }
 }

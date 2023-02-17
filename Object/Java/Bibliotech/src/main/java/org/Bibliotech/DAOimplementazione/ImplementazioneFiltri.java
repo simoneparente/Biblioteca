@@ -22,7 +22,7 @@ public class ImplementazioneFiltri implements FiltriDao {
     @Override
     public ArrayList<String> getAutoriLibri() {
         ArrayList<String> autori = new ArrayList<>();
-        String getAutoriQuery = "SELECT DISTINCT nome, cognome FROM b.view_libri_autore";
+        String getAutoriQuery = "SELECT DISTINCT nome, cognome FROM b.view_libri_autore ORDER BY cognome, nome";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getAutoriQuery);
             ResultSet rs = preparedStatement.executeQuery();

@@ -1,9 +1,11 @@
 package org.Bibliotech.View;
 
+import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class ProfiloView extends View {
@@ -23,8 +25,9 @@ public class ProfiloView extends View {
     private JLabel nuovaPasswordLabel;
     private JLabel confermaPassordLabel;
     private JButton confermaButton;
-    private JList notificheList;
-    private JScrollPane notificheScrollPane;
+    private JLabel reloadIcon;
+    private static final Image reloadImage= defaultToolkit.getImage("src/main/Immagini/reload.png");
+    private static final ImageIcon reloadIconImageIcon = new ImageIcon(reloadImage);
 
     private ProfiloView() {
         super(nome);
@@ -33,18 +36,15 @@ public class ProfiloView extends View {
         WindowListener closeWindow = new WindowAdapter() {//listener per la chiusura della finestra
             @Override
             public void windowClosing(WindowEvent we) {
-                int result = JOptionPane.showConfirmDialog(null, "Vuoi tornare alla pagina di ricerca?", "Conferma uscita", JOptionPane.YES_NO_OPTION);
-                if (result == JOptionPane.YES_OPTION) {
-                    ProfiloView.super.dispose(); //chiude la finestra
-                    SearchView.getInstance().showView(); //mostra la finestra di ricerca
+                Controller.getInstance().switchView(SearchView.getInstance(), ProfiloView.getInstance());
                 }
-            }
         };
         super.addWindowListener(closeWindow);
         setVisible(true);
         usernameLabel.setText("Username: " + Utente.getInstance().getUsername());
         permessiLabel.setText("Permessi: " + Utente.getInstance().getPermessi());
         passwordPanel.setVisible(false);
+        reloadIcon.setIcon(reloadIconImageIcon);
 
         cambiaPasswordTextArea.addMouseListener(new MouseAdapter() {
             @Override
@@ -84,6 +84,23 @@ public class ProfiloView extends View {
                 }
             }
         });
+        reloadIcon.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                checkNotifiche(Utente.getInstance().getUsername());
+            }
+        });
+    }
+
+    private void checkNotifiche(String username) {
+        if(UtenteController.getInstance().checkNotifiche(username)){
+            System.out.println("Ci sono notifiche");
+        }
+        else{
+            System.out.println("Non ci sono notifiche");
+        }
+
     }
 
     private boolean checkPasswordFields(String vecchiaPassword, String nuovaPassword, String confermaPassword) {

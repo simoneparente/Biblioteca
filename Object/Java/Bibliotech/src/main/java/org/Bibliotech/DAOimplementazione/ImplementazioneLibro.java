@@ -89,7 +89,7 @@ public class ImplementazioneLibro implements LibroDao {
                 preparedStatement.setDouble(9, Double.parseDouble(libro.getPrezzo()));
             }
 
-            //se il libro non appartiene ad una serie (il checkobox è disabilitato) allora il nome e l'issn della serie sono null
+            //se il libro non appartiene a una serie (il checkobox è disabilitato) allora il nome e l'issn della serie sono null
             if(libro.getSerieDiAppartenenza() == null){
                 preparedStatement.setNull(10, Types.VARCHAR);
                 preparedStatement.setNull(11, Types.VARCHAR);
