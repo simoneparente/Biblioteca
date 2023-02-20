@@ -22,6 +22,9 @@ public interface LibroDao {
     Libri getLibriByPrezzoMax(double prezzoMax);
 
 
+    public String getISSNByNomeSerie(String nomeSerie);
+
+
     //metodo per aggiungere un libro
 
     boolean addLibro(Libro libro);

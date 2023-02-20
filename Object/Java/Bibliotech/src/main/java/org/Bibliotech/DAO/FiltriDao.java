@@ -26,4 +26,5 @@ public interface FiltriDao {
     ArrayList<String> getFormatiSerie();
 
 
+    ArrayList<String> getIssnSerie(String nomeSerie);
 }

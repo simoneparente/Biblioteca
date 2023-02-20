@@ -58,6 +58,8 @@ public class FiltriController {
     public ArrayList<String> leggiLingueSerie(){return filtri.getLingueSerie();}
     public ArrayList<String> leggiFormatiSerie(){return filtri.getFormatiSerie();}
 
+    public ArrayList<String> getIssnSerie(String nomeSerie){return filtri.getIssnSerie(nomeSerie);}
+
 
     public ArrayList<String> getColumns(String nomeTable) { return filtri.getColumns(nomeTable);} //restituisce i nomi delle colonne della tabella
     public Vector<Vector<Object>> getRows(String query){return filtri.getRows(query);} //in funzione della query, restituisce le righe della tabella

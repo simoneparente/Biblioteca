@@ -50,6 +50,22 @@ public class ImplementazioneFiltri implements FiltriDao {
         }
         return generi;
     }
+    @Override
+    public ArrayList<String> getIssnSerie(String nomeSerie){
+        ArrayList<String> issnSerie = new ArrayList<>();
+        String getIssnSerieQuery = "SELECT DISTINCT issn FROM b.serie WHERE nome = ?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getIssnSerieQuery);
+            preparedStatement.setString(1, nomeSerie);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                issnSerie.add(rs.getString("issn"));
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return issnSerie;
+    }
 
     @Override
     public ArrayList<String> getLinguaLibri() {

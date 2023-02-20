@@ -1,12 +1,15 @@
 package org.Bibliotech.DAOimplementazione;
 
 import org.Bibliotech.ConnessioneDB;
+import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.DAO.UtenteDao;
+import org.Bibliotech.Model.Utente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ImplementazioneUtente implements UtenteDao{
     private Connection connection;
@@ -126,41 +129,28 @@ public class ImplementazioneUtente implements UtenteDao{
         return false;
     }
 
-    public String[] getIdSerieRichieste(String username) {
-
-        String[] idSerieRichieste = new String[getCountRichieste(username)];
-        String getIdSerieRichiesteQuery = "SELECT id_serie FROM b.Richiesta WHERE Username = ?";
+    public boolean inviaRichiestaSerie(String username, String issn) {
+        String query= "INSERT INTO b.richiesta(id_utente, id_serie) " +
+                "VALUES ((SELECT id_utente FROM b.utente WHERE username= ?), " +
+                "(SELECT id_serie FROM b.serie WHERE issn= ?))";
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getIdSerieRichiesteQuery);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
-            ResultSet rs = preparedStatement.executeQuery();
-            int i = 0;
-            while(rs.next()){
-                idSerieRichieste[i] = rs.getString("id_serie");
-                i++;
-            }
-            return idSerieRichieste;
-        }catch(SQLException e){
+            preparedStatement.setString(2, issn);
+            preparedStatement.executeUpdate();
+            return true;
+        }catch (SQLException e){
             e.printStackTrace();
-            return null;
+            return false;
         }
+
     }
 
-    private int getCountRichieste(String username) {
-        String getCountRichiesteQuery = "SELECT COUNT(*) FROM b.Richiesta WHERE Username = ?";
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getCountRichiesteQuery);
-            preparedStatement.setString(1, username);
-            ResultSet rs = preparedStatement.executeQuery();
-            if(rs.next()){
-                return rs.getInt("COUNT(*)");
-            }
-            else{
-                System.out.println("Errore: non è stato possibile ottenere il numero di richieste");
-                return -1;}
-        }catch(SQLException e){
-            e.printStackTrace();
-            return -1;
-        }
-    }
+    //public void getNotifiche(){
+    //    String getNotificheQuery= "SELECT "
+    //    if(checkNotifiche(Utente.getInstance().getUsername())){
+    //        ArrayList<ArrayList<String>> notificaNegozio = new ArrayList<>();
+//
+    //    }
+    //}
 }

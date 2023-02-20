@@ -1,7 +1,8 @@
 package org.Bibliotech.View;
 
-import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
+import org.Bibliotech.Controller.UtenteController;
+import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -9,24 +10,25 @@ import java.util.ArrayList;
 
 public class RichiestaView extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton buttonCancel;
+    private JButton inviaButton;
+    private JButton cancellaButton;
     private JComboBox richiediSerieComboBox;
+    private JComboBox richiediISSNComboBox;
 
     public RichiestaView() {
         setContentPane(contentPane);
         setLocationRelativeTo(null);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
-        fillComboBox();
+        getRootPane().setDefaultButton(inviaButton);
+        fillComboBoxes();
 
-        buttonOK.addActionListener(new ActionListener() {
+        inviaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
             }
         });
 
-        buttonCancel.addActionListener(new ActionListener() {
+        cancellaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
@@ -46,17 +48,49 @@ public class RichiestaView extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        richiediSerieComboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    richiediISSNComboBox.removeAllItems();
+                    ArrayList<String> items= FiltriController.getInstance().getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
+                    for (String item : items) {
+                        richiediISSNComboBox.addItem(item);
+                    }
+                }
+            }
+        });
     }
 
-    private void fillComboBox() {
+    private void fillISSNComboBox() {
+        richiediISSNComboBox.removeAllItems();
+        ArrayList<String> items= FiltriController.getInstance().getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
+        for (String item : items) {
+            richiediISSNComboBox.addItem(item);
+        }
+    }
+
+    private void fillTitoliComboBox() {
         ArrayList<String> items= FiltriController.getInstance().leggiSerieLibri();
         for (String item : items) {
             richiediSerieComboBox.addItem(item);
         }
     }
 
+    private void fillComboBoxes(){
+        fillTitoliComboBox();
+        fillISSNComboBox();
+    }
+
+
     private void onOK() {
-        // add your code here
+        if(UtenteController.getInstance().
+                inviaRichiestaSerie(Utente.getInstance().getUsername(), String.valueOf(richiediISSNComboBox.getSelectedItem()))){
+            JOptionPane.showMessageDialog(null, "Richiesta inviata con successo");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Richiesta non inviata");
+        }
         dispose();
     }
 

@@ -185,8 +185,8 @@ CREATE TABLE b.Utente
 
 CREATE TABLE b.Richiesta
 (
-    ID_Utente     SERIAL,
-    ID_Serie      SERIAL,
+    ID_Utente SERIAL,
+    ID_Serie  SERIAL,
 
     CONSTRAINT PK_Richiesta PRIMARY KEY (ID_Utente, ID_Serie),
     CONSTRAINT FK_Richiesta_Utente FOREIGN KEY (ID_Utente) REFERENCES b.Utente (ID_Utente) ON DELETE CASCADE,
@@ -229,9 +229,9 @@ BEGIN
                 INSERT INTO b.autore (nome, cognome) VALUES (autoreNome, autoreCognome);
             END IF;
             idAutore = (SELECT id_autore FROM b.autore WHERE nome = autoreNome AND cognome = autoreCognome);
-            IF(tipoRisorsa = 1) THEN
+            IF (tipoRisorsa = 1) THEN
                 INSERT INTO b.autorelibro (id_autore, id_libro) VALUES (idAutore, idRisorsa);
-            ELSEIF(tipoRisorsa = 0) THEN
+            ELSEIF (tipoRisorsa = 0) THEN
                 INSERT INTO b.autorearticolo (id_autore, id_articolo) VALUES (idAutore, idRisorsa);
             END IF;
         END LOOP;
@@ -317,7 +317,8 @@ BEGIN
         IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issnRivista) THEN
             RAISE NOTICE 'Rivista non presente, verrà inserita';
             INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
-            VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.datapubblicazione, NEW.responsabileRivista, NEW.prezzoRivista);
+            VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.datapubblicazione,
+                    NEW.responsabileRivista, NEW.prezzoRivista);
             --Controllo che la rivista presente nel database abbia la stessa data di pubblicazione
         ELSEIF NOT EXISTS(SELECT datapubblicazione
                           FROM b.riviste
@@ -350,7 +351,6 @@ CREATE OR REPLACE TRIGGER trig_ArticoliRivista
     ON b.ins_ArticoliRivista
     FOR EACH ROW
 EXECUTE FUNCTION b.ftrig_ArticoliRivista();
-
 
 
 --Inserimento Articolo Scientifico e Conferenza dove è stato presentato
@@ -413,7 +413,8 @@ BEGIN
         --Inserisco l'articolo nella conferenza
         idConferenza = (SELECT id_evento
                         FROM b.evento
-                        WHERE nome = NEW.nomeConferenza AND indirizzo = NEW.indirizzoConferenza);
+                        WHERE nome = NEW.nomeConferenza
+                          AND indirizzo = NEW.indirizzoConferenza);
         INSERT INTO b.Conferenza (id_articolo, id_evento) VALUES (idArticolo, idConferenza);
     END IF;
     RETURN NEW;
@@ -489,7 +490,7 @@ BEGIN
         idSerie = (SELECT id_serie FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza);
         RAISE NOTICE 'idSerie: %', idSerie;
         IF idSerie IS NOT NULL THEN
-        INSERT INTO b.libriinserie (id_libro, id_serie) VALUES (idLibro, idSerie);
+            INSERT INTO b.libriinserie (id_libro, id_serie) VALUES (idLibro, idSerie);
         END IF;
     END IF;
     RETURN NEW;
@@ -704,7 +705,8 @@ BEGIN
         ELSE
             UPDATE b.stock
             SET quantita = quantita + NEW.quantita
-            WHERE id_negozio = NEW.id_negozio AND id_libro = idLibro;
+            WHERE id_negozio = NEW.id_negozio
+              AND id_libro = idLibro;
         END IF;
     END IF;
     RETURN NEW;
@@ -914,7 +916,6 @@ FROM (b.Articoli as a NATURAL JOIN b.conferenza as c)
 ------------------------------------------------------------------------------------------------------------------------
 
 
-
 ------------------------------------------------------------------------------------------------------------------------
 --ResultView Applicativo
 ------------------------------------------------------------------------------------------------------------------------
@@ -928,11 +929,12 @@ SELECT DISTINCT titolo,
                 editore,
                 genere,
                 lingua,
-                s.nome AS serie,
+                s.nome                         AS serie,
                 formato,
                 prezzo,
                 b.getDisponibilita(l.id_libro) AS Disponibilità
-FROM (b.libri l FULL OUTER JOIN b.libriinserie lis ON l.id_libro = lis.id_libro) FULL JOIN b.serie S ON lis.id_serie=s.id_serie;
+FROM (b.libri l FULL OUTER JOIN b.libriinserie lis ON l.id_libro = lis.id_libro)
+         FULL JOIN b.serie S ON lis.id_serie = s.id_serie;
 
 --Result View Articoli
 CREATE VIEW b.resultView_articoli AS
@@ -948,13 +950,13 @@ FROM (b.articoli a NATURAL JOIN b.autorearticolo);
 
 --Result View Serie
 CREATE VIEW b.resultView_serie AS
-SELECT DISTINCT ON (s.nome) s.nome as nome, --da valutare se vogliamo fare così, dubito però di base funziona
-                issn,
-                editore,
-                lingua,
-                formato,
-                datapubblicazione,
-                b.getDisponibilitaSerie(issn) AS Disponibilità
+SELECT DISTINCT ON (s.issn) s.nome                        as nome, --da valutare se vogliamo fare così, dubito però di base funziona
+                            issn,
+                            editore,
+                            lingua,
+                            formato,
+                            datapubblicazione,
+                            b.getDisponibilitaSerie(issn) AS Disponibilità
 FROM (b.libri as l NATURAL JOIN b.libriinserie as ls)
          JOIN b.serie as s on ls.id_serie = s.id_serie;
 
@@ -972,6 +974,72 @@ FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar)
 ------------------------------------------------------------------------------------------------------------------------
 
 CREATE VIEW b.notifiche AS
-    SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
-    FROM b.serie NATURAL JOIN b.richiesta
-    WHERE b.getDisponibilitaSerie(id_serie) IS true;
+SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
+FROM b.serie
+         NATURAL JOIN b.richiesta
+WHERE b.getDisponibilitaSerie(id_serie) IS true;
+
+
+CREATE OR REPLACE FUNCTION b.getNegoziConSerie(id_serieIn b.serie.id_serie%TYPE) RETURNS VARCHAR AS
+$$
+DECLARE
+    nomi_negozi  VARCHAR := '';
+    cursore CURSOR FOR (SELECT ne.nome
+                        FROM (b.serie s JOIN b.libriinserie ls ON ls.id_serie = s.id_serie)
+                                 JOIN (b.stock st JOIN b.negozio ne ON st.id_negozio = ne.id_negozio)
+                                      ON st.id_libro = ls.id_libro
+                        WHERE s.id_serie = id_SerieIn);
+    n_negozi     INTEGER=(SELECT COUNT(*)
+                          FROM (b.serie s JOIN b.libriinserie ls ON ls.id_serie = s.id_serie)
+                                   JOIN b.stock st ON st.id_libro = ls.id_libro
+                          WHERE s.id_serie = id_SerieIn);
+    nome_negozio b.negozio.nome%TYPE;
+
+BEGIN
+    OPEN cursore;
+    FOR i IN 1..n_negozi
+        LOOP
+            FETCH cursore INTO nome_negozio;
+            if (i <> n_negozi) then
+                nomi_negozi = nomi_negozi || nome_negozio || ', ';
+            else
+                nomi_negozi = nomi_negozi || nome_negozio;
+            end if;
+        end loop;
+    return nomi_negozi;
+end;
+$$
+    LANGUAGE plpgsql;
+
+--view di serie e libri stock
+SELECT id_serie, se.nome, se.issn, l.titolo, st.id_negozio, st.quantita
+FROM b.libriinserie ls
+         NATURAL JOIN b.serie se
+         NATURAL JOIN b.libri l
+         NATURAL JOIN b.stock st;
+
+
+CREATE OR REPLACE FUNCTION b.getIDSerieByISSN(issnIn b.serie.issn%TYPE) RETURNS b.serie.id_serie%TYPE AS
+$$
+DECLARE
+    id b.serie.id_serie%TYPE;
+BEGIN
+    RAISE NOTICE 'ISSN(%)', issnIn;
+    id = (SELECT id_serie
+          FROM b.serie se
+          WHERE se.issn = issnIn);
+    RAISE NOTICE 'ID{%}', id;
+    RETURN id;
+end;
+$$
+    LANGUAGE plpgsql;
+
+
+--serie disponibili in generale
+SELECT rs.nome, rs.formato, b.getdisponibilitaSerie(b.getIDSerieByISSN(issn)) as disponibilita_serie
+FROM b.resultview_serie as rs
+WHERE b.getdisponibilitaSerie(b.getIDSerieByISSN(issn)) IS TRUE;
+
+
+SELECT b.getnegoziconserie(b.getIDSeriebyissn('983-533158791'));
+

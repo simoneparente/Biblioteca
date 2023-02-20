@@ -200,6 +200,11 @@ public class ImplementazioneLibro implements LibroDao {
         return getLibri(getLibroByPrezzoMAXQuery, prezzo);
     }
 
+    @Override
+    public String getISSNByNomeSerie(String nomeSerie) {
+        return null;
+    }
+
     //Get tramite altre tabelle
     @Override
     public Libri getLibriByAutore(String nome, String cognome){
@@ -218,4 +223,21 @@ public class ImplementazioneLibro implements LibroDao {
         String searchLibroQuery = query;
         return getLibri(libri, searchLibroQuery);
     }
+
+  //  @Override
+////    public String getISSNByNomeSerie(String nomeSerie)
+////{
+////    String getISSNByNomeSerieQuery = "SELECT issn FROM b.serie WHERE nome_serie = ?";
+////    String issn;
+////    try {
+////        PreparedStatement preparedStatement = connection.prepareStatement(getISSNByNomeSerieQuery);
+////        preparedStatement.setString(1, nomeSerie);
+////        ResultSet rs = preparedStatement.executeQuery();
+////        while(rs.next()){
+////            issn = rs.getString("issn");
+////        }
+////    } catch (SQLException e) {
+////        e.printStackTrace();
+////    }
+//    return issn;
 }
