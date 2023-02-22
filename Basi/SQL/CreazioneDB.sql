@@ -679,7 +679,8 @@ SELECT id_negozio,
        isbn,
        quantita
 FROM b.libri,
-     b.stock;
+     b.stock
+WHERE libri.isbn is NULL;
 
 --Funzione del trigger per lo stock di un negozio
 CREATE OR REPLACE FUNCTION b.ftrig_stock() RETURNS TRIGGER AS

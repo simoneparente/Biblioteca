@@ -68,6 +68,38 @@ public class ImplementazioneFiltri implements FiltriDao {
     }
 
     @Override
+    public ArrayList<String> getRiviste() {
+        ArrayList<String> riviste = new ArrayList<>();
+        String getRivisteQuery = "SELECT DISTINCT nome FROM b.riviste";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getRivisteQuery);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                riviste.add(rs.getString("nome"));
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return riviste;
+    }
+
+    @Override
+    public ArrayList<String> getConferenze() {
+        ArrayList<String> conferenze = new ArrayList<>();
+        String getConferenzeQuery = "SELECT DISTINCT nome FROM b.conferenza NATURAL JOIN b.evento";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getConferenzeQuery);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                conferenze.add(rs.getString("nome"));
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return conferenze;
+    }
+
+    @Override
     public ArrayList<String> getLinguaLibri() {
         ArrayList<String> lingue = new ArrayList<>();
         String getLinguaQuery = "SELECT DISTINCT lingua FROM b.libri";
