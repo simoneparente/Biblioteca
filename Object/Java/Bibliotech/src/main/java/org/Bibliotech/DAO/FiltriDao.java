@@ -27,4 +27,8 @@ public interface FiltriDao {
 
 
     ArrayList<String> getIssnSerie(String nomeSerie);
+
+    ArrayList<String> getRiviste();
+
+    ArrayList<String> getConferenze();
 }

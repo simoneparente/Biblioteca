@@ -57,6 +57,9 @@ public class AggiuntaView extends View {
     private JTextField dataAConferenzaField;
     private JTextField linguaLibroField;
     private JLabel helpLabel;
+    private JComboBox rivistaComboBox;
+    private JComboBox conferenzaComboBox;
+    private JPanel rcPanel;
 
     public AggiuntaView() {
         super(nome);
@@ -65,7 +68,9 @@ public class AggiuntaView extends View {
         this.setContentPane(rootPanel); //setta il contentPanel come contentPane del JFrame
         setPlaceHolders();
         setPanelInvisibili();
-        serieLibroBox.setEnabled(false);
+        serieLibroBox.setEnabled(false); //disabilita il combobox delle serie
+        rivistaComboBox.setVisible(false); //setta invisibili i combobox delle riviste e delle conferenze
+        conferenzaComboBox.setVisible(false);
         fillAllComboBoxes();
         risorsaComboBox.addItemListener(new ItemListener() {
             @Override
@@ -80,10 +85,8 @@ public class AggiuntaView extends View {
             public void actionPerformed(ActionEvent e) {
                 if (ilLibroFaParteCheckBox.isSelected()) {
                     serieLibroBox.setEnabled(true);
-                    PresentatoInBox.setEnabled(true);
                 } else {
                     serieLibroBox.setEnabled(false);
-                    PresentatoInBox.setEnabled(false);
                 }
             }
         });
@@ -182,11 +185,20 @@ public class AggiuntaView extends View {
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(String.valueOf(PresentatoInBox.getSelectedItem()).equals("Rivista")){ //se è stato selezionato rivista
-                        rivistaPanel.setVisible(true);//rendo visibile il pannello rivista
+                        //rivistaPanel.setVisible(true);//rendo visibile il pannello rivista
                         conferenzaPanel.setVisible(false); //rendo invisibile il pannello conferenza
+                        rivistaComboBox.setVisible(true);
+                        conferenzaComboBox.setVisible(false);
                     } else if (String.valueOf(PresentatoInBox.getSelectedItem()).equals("Conferenza")){ //se è stato selezionato conferenza
-                        conferenzaPanel.setVisible(true);//rendo visibile il pannello conferenza
+                        //conferenzaPanel.setVisible(true);//rendo visibile il pannello conferenza
                         rivistaPanel.setVisible(false); //rendo invisibile il pannello rivista
+                        conferenzaComboBox.setVisible(true);
+                        rivistaComboBox.setVisible(false);
+                    } else {
+                        conferenzaPanel.setVisible(false);
+                        rivistaPanel.setVisible(false);
+                        conferenzaComboBox.setVisible(false);
+                        rivistaComboBox.setVisible(false);
                     }
                 }
             }
@@ -211,6 +223,31 @@ public class AggiuntaView extends View {
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
                 helpLabel.setBorder(null);
+            }
+        });
+        rivistaComboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    if(!String.valueOf(rivistaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova rivista・・・")){
+                        rivistaPanel.setVisible(false);
+                    }else {
+                        rivistaPanel.setVisible(true);
+                    }
+                }
+            }
+        });
+
+        conferenzaComboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED){
+                    if(!String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・")){
+                        conferenzaPanel.setVisible(false);
+                    }else {
+                        conferenzaPanel.setVisible(true);
+                    }
+                }
             }
         });
     }
@@ -302,6 +339,8 @@ public class AggiuntaView extends View {
 
     private void fillAllComboBoxes() {
         fillComboBox(serieLibroBox, FiltriController.getInstance().leggiSerieLibri());
+        fillComboBox(rivistaComboBox, FiltriController.getInstance().leggiRiviste());
+        fillComboBox(conferenzaComboBox, FiltriController.getInstance().leggiConferenze());
     }
 
     private void fillComboBox(JComboBox<String> comboBox, ArrayList<String> items) {
@@ -310,6 +349,17 @@ public class AggiuntaView extends View {
             comboBox.addItem("");
             comboBox.addItem("・・・Aggiungi nuova serie・・・");
             comboBox.addItem("");
+        }
+        if(comboBox.equals(rivistaComboBox)){
+            comboBox.addItem("");
+            comboBox.addItem("・・・Aggiungi nuova rivista・・・");
+            comboBox.addItem("");
+        }
+        if(comboBox.equals(conferenzaComboBox)){
+            comboBox.addItem("");
+            comboBox.addItem("・・・Aggiungi nuova conferenza・・・");
+            comboBox.addItem("");
+
         }
         for (String item : items) {
             comboBox.addItem(item);
