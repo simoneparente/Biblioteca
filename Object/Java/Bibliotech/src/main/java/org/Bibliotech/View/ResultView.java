@@ -57,8 +57,7 @@ public class ResultView extends View{
             ArrayList<String> columns = fc.getColumns(nomeTabella);
             Vector<Vector<Object>> rows = fc.getRows(query);
 
-            //model.setRowCount(0);
-            //Object[] rows = fc.getRows(query);
+
             for (String column : columns) {
                 model.addColumn(column);
             }

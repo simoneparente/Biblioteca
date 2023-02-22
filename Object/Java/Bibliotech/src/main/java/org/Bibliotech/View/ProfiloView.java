@@ -1,12 +1,16 @@
 package org.Bibliotech.View;
 
 import org.Bibliotech.Controller.Controller;
+import org.Bibliotech.Controller.FiltriController;
 import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class ProfiloView extends View {
     private static ProfiloView instance = null;
@@ -26,6 +30,9 @@ public class ProfiloView extends View {
     private JLabel confermaPassordLabel;
     private JButton confermaButton;
     private JLabel reloadIcon;
+    private JTable notificheTable;
+    private JScrollPane notificheScrollPanel;
+    private JPanel notifichePanel;
     private static final Image reloadImage= defaultToolkit.getImage("src/main/Immagini/reload.png");
     private static final ImageIcon reloadIconImageIcon = new ImageIcon(reloadImage);
 
@@ -45,6 +52,7 @@ public class ProfiloView extends View {
         permessiLabel.setText("Permessi: " + Utente.getInstance().getPermessi());
         passwordPanel.setVisible(false);
         reloadIcon.setIcon(reloadIconImageIcon);
+        refreshTable();
 
         cambiaPasswordTextArea.addMouseListener(new MouseAdapter() {
             @Override
@@ -70,9 +78,9 @@ public class ProfiloView extends View {
         confermaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String vecchiaPassword = new String(vecchiaPasswordField.getPassword());
-                String nuovaPassword = new String(nuovaPasswordField.getPassword());
-                String confermaPassword = new String(confermaPasswordField.getPassword());
+                String vecchiaPassword = String.valueOf((vecchiaPasswordField.getPassword()));
+                String nuovaPassword = String.valueOf((nuovaPasswordField.getPassword()));
+                String confermaPassword = String.valueOf((confermaPasswordField.getPassword()));
                 if(checkPasswordFields(vecchiaPassword, nuovaPassword, confermaPassword)){
                     if(UtenteController.getInstance().cambiaPassword(Utente.getInstance().getUsername(), Utente.getInstance().getPassword(), nuovaPassword)){
                         JOptionPane.showMessageDialog(null, "Password cambiata con successo", "Successo", JOptionPane.INFORMATION_MESSAGE);
@@ -89,8 +97,33 @@ public class ProfiloView extends View {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 checkNotifiche(Utente.getInstance().getUsername());
+                UtenteController.getInstance().getNotifiche(Utente.getInstance().getUsername());
             }
         });
+    }
+
+    private void refreshTable() {;
+        emptyTable();
+        String query = "SELECT * FROM b.notifiche WHERE username = '" + Utente.getInstance().getUsername() + "'";
+        FiltriController fc = FiltriController.getInstance();
+        DefaultTableModel model = (DefaultTableModel) notificheTable.getModel();
+        ArrayList<String> columns = fc.getColumns("notifiche");
+        Vector<Vector<Object>> rows = fc.getRows(query);
+
+        //model.setRowCount(0);
+        //Object[] rows = fc.getRows(query);
+        for (String column : columns) {
+            model.addColumn(column);
+        }
+        for (Vector<Object> row : rows) {
+            model.addRow(row);
+        }
+    }
+
+    private void emptyTable() {
+        DefaultTableModel model = (DefaultTableModel) notificheTable.getModel();
+        model.setRowCount(0);
+        model.setColumnCount(0);
     }
 
     private void checkNotifiche(String username) {
@@ -125,5 +158,7 @@ public class ProfiloView extends View {
         }
         return instance;
     }
+
+
 }
 

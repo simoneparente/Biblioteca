@@ -1,6 +1,9 @@
 package org.Bibliotech.Controller;
 import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
+import org.Bibliotech.Model.Notifica;
 import org.Bibliotech.Model.Utente;
+
+import java.util.ArrayList;
 
 public class UtenteController {
     private static UtenteController instance = null;
@@ -47,6 +50,10 @@ public class UtenteController {
 
     public boolean checkNotifiche(String username) {
         return utente.checkNotifiche(username);
+    }
+
+    public ArrayList<Notifica> getNotifiche(String username) {
+        return utente.getNotifiche();
     }
 
 

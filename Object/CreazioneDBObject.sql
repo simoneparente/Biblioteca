@@ -973,11 +973,6 @@ FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar)
          JOIN b.riviste as r on ar.id_rivista = r.id_rivista;
 ------------------------------------------------------------------------------------------------------------------------
 
-CREATE VIEW b.notifiche AS
-SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
-FROM b.serie
-         NATURAL JOIN b.richiesta
-WHERE b.getDisponibilitaSerie(id_serie) IS true;
 
 
 CREATE OR REPLACE FUNCTION b.getNegoziConSerie(id_serieIn b.serie.id_serie%TYPE) RETURNS VARCHAR AS
@@ -1043,3 +1038,15 @@ WHERE b.getdisponibilitaSerie(b.getIDSerieByISSN(issn)) IS TRUE;
 
 SELECT b.getnegoziconserie(b.getIDSeriebyissn('983-533158791'));
 
+
+
+CREATE VIEW b.notifiche AS
+SELECT nome, username, b.getNegoziConSerie(b.getIDSerieByISSN(issn)) as Disponibile_in
+FROM b.serie s JOIN b.richiesta r ON s.id_serie=r.id_serie JOIN b.utente u ON u.id_utente=r.id_utente
+WHERE b.getDisponibilitaSerie(r.id_serie) IS true;
+
+--CREATE VIEW b.notifiche AS
+--SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
+--FROM b.serie
+--         NATURAL JOIN b.richiesta
+--WHERE b.getDisponibilitaSerie(id_serie) IS true;
