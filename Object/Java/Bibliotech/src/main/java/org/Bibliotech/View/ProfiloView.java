@@ -52,6 +52,7 @@ public class ProfiloView extends View {
         permessiLabel.setText("Permessi: " + Utente.getInstance().getPermessi());
         passwordPanel.setVisible(false);
         reloadIcon.setIcon(reloadIconImageIcon);
+        notificheTable.setDefaultEditor(Object.class, null);
         refreshTable();
 
         cambiaPasswordTextArea.addMouseListener(new MouseAdapter() {
@@ -96,25 +97,25 @@ public class ProfiloView extends View {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                checkNotifiche(Utente.getInstance().getUsername());
+                refreshTable();
                 UtenteController.getInstance().getNotifiche(Utente.getInstance().getUsername());
             }
         });
     }
 
-    private void refreshTable() {;
+    void refreshTable() {;
         emptyTable();
-        String query = "SELECT * FROM b.notifiche WHERE username = '" + Utente.getInstance().getUsername() + "'";
+        String query = "SELECT nome, Disponibile_in FROM b.notifiche n WHERE n.username='"+ Utente.getInstance().getUsername() +"'";
         FiltriController fc = FiltriController.getInstance();
         DefaultTableModel model = (DefaultTableModel) notificheTable.getModel();
-        ArrayList<String> columns = fc.getColumns("notifiche");
+        ArrayList<String> columns = fc.getColumns("resultview_notifiche");
         Vector<Vector<Object>> rows = fc.getRows(query);
 
-        //model.setRowCount(0);
-        //Object[] rows = fc.getRows(query);
         for (String column : columns) {
             model.addColumn(column);
         }
+        notificheTable.getColumnModel().getColumn(0).setPreferredWidth(200);
+        notificheTable.getColumnModel().getColumn(1).setPreferredWidth(400);
         for (Vector<Object> row : rows) {
             model.addRow(row);
         }
@@ -126,15 +127,6 @@ public class ProfiloView extends View {
         model.setColumnCount(0);
     }
 
-    private void checkNotifiche(String username) {
-        if(UtenteController.getInstance().checkNotifiche(username)){
-            System.out.println("Ci sono notifiche");
-        }
-        else{
-            System.out.println("Non ci sono notifiche");
-        }
-
-    }
 
     private boolean checkPasswordFields(String vecchiaPassword, String nuovaPassword, String confermaPassword) {
         if (vecchiaPassword.isBlank() || nuovaPassword.isBlank() || confermaPassword.isBlank()) {
@@ -160,5 +152,11 @@ public class ProfiloView extends View {
     }
 
 
+    public void refreshPage() {
+        usernameLabel.setText("Username: " + Utente.getInstance().getUsername());
+        permessiLabel.setText("Permessi: " + Utente.getInstance().getPermessi());
+        passwordPanel.setVisible(false);
+        refreshTable();
+    }
 }
 

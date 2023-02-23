@@ -3,6 +3,7 @@ package org.Bibliotech.View;
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
 import org.Bibliotech.Controller.LoginController;
+import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
@@ -136,6 +137,7 @@ public class SearchView extends View {
         profiloItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ProfiloView.getInstance().refreshPage();
                 LoginController.getInstance().switchView(ProfiloView.getInstance(), SearchView.getInstance());
             }
         });
@@ -351,13 +353,11 @@ public class SearchView extends View {
                 RichiestaView dialog = new RichiestaView();
                 dialog.pack();
                 dialog.setVisible(true);
-                //JOptionPane.showMessageDialog(richiestaView.);
             }
         });
     }
 
-    public void checkPermessi() {
-        System.out.println("Permessi: " + Utente.getInstance().getPermessi());
+    public void checkPermessiNotifiche() {
         if (Utente.getInstance().getPermessi()<=0) {
             aggiungiLabel.setVisible(false);
             richiestaLabel.setVisible(true);
@@ -366,6 +366,7 @@ public class SearchView extends View {
             aggiungiLabel.setVisible(true);
             richiestaLabel.setVisible(true);
         }
+        checkNotifiche(Utente.getInstance().getUsername());
     }
 
     //private void ricaricaSearchField(String risorsa) {
@@ -686,6 +687,12 @@ public class SearchView extends View {
             finalQuery = finalQuery.substring(0, finalQuery.length() - 3) + ";";
         }
         return finalQuery;
+    }
+
+    private void checkNotifiche(String username) {
+        if(UtenteController.getInstance().checkNotifiche(username)){
+            JOptionPane.showMessageDialog(null, "Ci sono nuove notifiche", "Notifiche", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
 }

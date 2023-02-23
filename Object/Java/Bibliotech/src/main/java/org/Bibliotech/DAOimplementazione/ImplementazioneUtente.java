@@ -116,7 +116,7 @@ public class ImplementazioneUtente implements UtenteDao {
     }
 
     public boolean checkNotifiche(String username) {
-        String checkRichiesteQuery = "SELECT id_serie FROM b.notifiche WHERE id_utente = (SELECT id_utente FROM b.utente WHERE username= ?)";
+        String checkRichiesteQuery = "SELECT * FROM b.notifiche WHERE username= ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(checkRichiesteQuery);
             preparedStatement.setString(1, username);
@@ -177,7 +177,7 @@ public class ImplementazioneUtente implements UtenteDao {
     }
 
     public ArrayList<String> getISSNSerieRichiesta() {
-        String query = "SELECT issn FROM b.notifiche WHERE id_utente = (SELECT id_utente FROM b.utente WHERE username= ?)";
+        String query = "SELECT issn FROM b.notifiche WHERE username=?";
         ArrayList<String> al_issn = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);

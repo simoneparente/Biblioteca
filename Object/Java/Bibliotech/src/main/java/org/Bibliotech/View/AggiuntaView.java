@@ -27,12 +27,12 @@ public class AggiuntaView extends View {
     private JCheckBox ilLibroFaParteCheckBox;
     private JComboBox<String> serieLibroBox;
     private JTextField titoloArticoliField;
-    private JTextField DisciplinaField;
+    private JTextField disciplinaArticoloField;
     private JTextField autoriArticoloField;
     private JComboBox formatoArticoliComboBox;
     private JTextField editoreArticoliField;
     private JTextField doiField;
-    private JComboBox PresentatoInBox;
+    private JComboBox presentatoInBox;
     private JTextField isbnLibroField;
     private JTextField dataPublicazioneLibroField;
     private JLabel logoLabel;
@@ -121,7 +121,7 @@ public class AggiuntaView extends View {
                 if (String.valueOf(risorsaComboBox.getSelectedItem()).equals("Libro")) {
                     checkAddLibro();
                 } else if (String.valueOf(risorsaComboBox.getSelectedItem()).equals("Articolo")) {
-                    checkFieldsArticolo();
+                    checkAddArticolo();
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Selezionare una risorsa");
@@ -129,7 +129,7 @@ public class AggiuntaView extends View {
             }
 
             private void checkAddLibro() {
-                resetBorders();
+                resetLibroBorders();
                 int check = 0;
                 if(String.valueOf(titoloLibroField.getText()).equals("Titolo")){
                     titoloLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
@@ -175,21 +175,57 @@ public class AggiuntaView extends View {
                     }
                 }
 
-            private void checkFieldsArticolo() {
+            private void checkAddArticolo() {
+                resetArticoloBorders();
+                int check = 0;
+                if(String.valueOf(titoloArticoliField.getText()).equals("Titolo")){
+                    titoloArticoliField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
+                }
+                if(String.valueOf(autoriArticoloField.getText()).equals("Autori") || !String.valueOf(autoriArticoloField.getText()).contains("_")){
+                    autoriArticoloField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
+                }
+                if(String.valueOf(editoreArticoliField.getText()).equals("Editore")){
+                    editoreArticoliField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
+                }
+                if(String.valueOf(disciplinaArticoloField.getText()).equals("Disciplina")){
+                    disciplinaArticoloField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
+                }
+                if(String.valueOf(formatoArticoliComboBox).equals("Formato")){
+                    formatoArticoliComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
+                }
+                if(String.valueOf(doiField).equals("")){
+                    doiField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
+                }
+                if(check==0){
+                    if(checkConferenzaOrRivista().equals("Rivista")){
+                        //addArticoloRivista();
+                    } else if(checkConferenzaOrRivista().equals("Conferenza")){
+                        //addArticoloConferenza();
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(presentatoInBox, "Selezionare una rivista o una conferenza");
+                    }
+                }
             }
 
 
         });
-        PresentatoInBox.addItemListener(new ItemListener() {
+        presentatoInBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    if(String.valueOf(PresentatoInBox.getSelectedItem()).equals("Rivista")){ //se è stato selezionato rivista
+                    if(String.valueOf(presentatoInBox.getSelectedItem()).equals("Rivista")){ //se è stato selezionato rivista
                         //rivistaPanel.setVisible(true);//rendo visibile il pannello rivista
                         conferenzaPanel.setVisible(false); //rendo invisibile il pannello conferenza
                         rivistaComboBox.setVisible(true);
                         conferenzaComboBox.setVisible(false);
-                    } else if (String.valueOf(PresentatoInBox.getSelectedItem()).equals("Conferenza")){ //se è stato selezionato conferenza
+                    } else if (String.valueOf(presentatoInBox.getSelectedItem()).equals("Conferenza")){ //se è stato selezionato conferenza
                         //conferenzaPanel.setVisible(true);//rendo visibile il pannello conferenza
                         rivistaPanel.setVisible(false); //rendo invisibile il pannello rivista
                         conferenzaComboBox.setVisible(true);
@@ -252,7 +288,40 @@ public class AggiuntaView extends View {
         });
     }
 
-    private void resetBorders() { //resetta i bordi di tutti i JTextField
+    private String checkConferenzaOrRivista() {
+        return String.valueOf(presentatoInBox.getSelectedItem());
+        }
+
+    private void resetArticoloBorders(){ //resetta i bordi di tutti i JTextField di Articoli, conferenze e riviste associate
+        //reset articolo
+        titoloArticoliField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        autoriArticoloField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        editoreArticoliField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        titoloArticoliField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        disciplinaArticoloField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        formatoArticoliComboBox.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        doiField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        presentatoInBox.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        rivistaComboBox.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        //reset conferenza
+        conferenzaComboBox.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        nomeConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        responsabileConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        strutturaConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        indirizzoConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        dataDaConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        dataAConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        //reset rivista
+        nomeRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        issnRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        argomentoRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        responsabileRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        datapubblicazioneRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        prezzoRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+
+    }
+
+    private void resetLibroBorders() { //resetta i bordi di tutti i JTextField
         titoloLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         genereLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         autoriLibroField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
@@ -303,9 +372,9 @@ public class AggiuntaView extends View {
         setPlaceholderText(linguaLibroField, "Lingua");
         setPlaceholderText(doiField, "DOI");
         setPlaceholderText(titoloArticoliField, "Titolo");
-        setPlaceholderText(DisciplinaField, "Disciplina");
+        setPlaceholderText(disciplinaArticoloField, "Disciplina");
         setPlaceholderText(autoriArticoloField, "Autori");
-        setPlaceholderText(editoreArticoliField, "Titolo");
+        setPlaceholderText(editoreArticoliField, "Editore");
         setPlaceholderText(issnSerieField, "ISSN");
         setPlaceholderText(nomeSerieField, "Nome della serie");
         setPlaceholderText(nomeConferenzaField, "Nome della conferenza");

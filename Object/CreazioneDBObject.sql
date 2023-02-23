@@ -1002,6 +1002,7 @@ BEGIN
             end if;
         end loop;
     return nomi_negozi;
+    CLOSE cursore;
 end;
 $$
     LANGUAGE plpgsql;
@@ -1041,12 +1042,17 @@ SELECT b.getnegoziconserie(b.getIDSeriebyissn('983-533158791'));
 
 
 CREATE VIEW b.notifiche AS
-SELECT nome, username, b.getNegoziConSerie(b.getIDSerieByISSN(issn)) as Disponibile_in
+SELECT nome, b.getNegoziConSerie(b.getIDSerieByISSN(issn)) as Disponibile_in, issn, username
 FROM b.serie s JOIN b.richiesta r ON s.id_serie=r.id_serie JOIN b.utente u ON u.id_utente=r.id_utente
 WHERE b.getDisponibilitaSerie(r.id_serie) IS true;
+
+CREATE VIEW b.resultview_notifiche AS
+SELECT nome, Disponibile_in FROM b.notifiche;
 
 --CREATE VIEW b.notifiche AS
 --SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
 --FROM b.serie
 --         NATURAL JOIN b.richiesta
 --WHERE b.getDisponibilitaSerie(id_serie) IS true;
+
+

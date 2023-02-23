@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="12" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1372" height="996"/>
+      <xy x="20" y="20" width="1372" height="1016"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -212,7 +212,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="dd429" class="javax.swing.JComboBox" binding="PresentatoInBox">
+          <component id="dd429" class="javax.swing.JComboBox" binding="presentatoInBox">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -232,7 +232,7 @@
               <text value="Presentato in una:"/>
             </properties>
           </component>
-          <component id="40445" class="javax.swing.JTextField" binding="DisciplinaField">
+          <component id="40445" class="javax.swing.JTextField" binding="disciplinaArticoloField">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>

@@ -1,6 +1,5 @@
 package org.Bibliotech.Controller;
 
-import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
 import org.Bibliotech.Model.Utente;
 import org.Bibliotech.View.LoginView;
 import org.Bibliotech.View.SearchView;
@@ -28,7 +27,7 @@ public class LoginController extends Controller{
         else{
             if(UtenteController.getInstance().loginUtente(username, password)){
                 JOptionPane.showMessageDialog(null, "Login effettuato");
-                SearchView.getInstance().checkPermessi();
+                SearchView.getInstance().checkPermessiNotifiche();
                 switchView(SearchView.getInstance(), LoginView.getInstance());
             }
             else{
