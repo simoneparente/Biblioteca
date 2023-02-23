@@ -36,8 +36,11 @@ private static final String nome = "RegisterView";
                 if(RegisterController.getInstance().register(usernameField, passwordField, confermaPasswordField)){
                     JOptionPane.showMessageDialog(null, "Registrazione avvenuta con successo");
                     Controller.getInstance().switchView(LoginView.getInstance(), RegisterView.getInstance());
+                    LoginView.getInstance().refreshFields();
+                    refreshFields();
                 }
                 else {
+                    LoginView.getInstance().hideView();
                     JOptionPane.showMessageDialog(null, "Errore durante la registrazione");
                 }
             }
@@ -70,6 +73,12 @@ private static final String nome = "RegisterView";
                 }
             }
         });
+    }
+
+    private void refreshFields() {
+        usernameField.setText("");
+        passwordField.setText("");
+        confermaPasswordField.setText("");
     }
 
     public static View getInstance() {

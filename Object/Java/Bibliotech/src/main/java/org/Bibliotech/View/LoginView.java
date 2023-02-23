@@ -28,6 +28,8 @@ public class LoginView extends View {
         logoPanel.setSize(360, 250);
         this.setContentPane(rootPanel);
         logoLabel.setIcon(logoLabelIcon);
+
+
         loginButton.addActionListener(e -> {
             LoginController.getInstance().login(usernameField, passwordField);
             //SearchView.getInstance().checkPermessi();
@@ -95,5 +97,13 @@ public class LoginView extends View {
         instance.usernameField.setText("");
         instance.passwordField.setText("");
         instance.mostraPasswordCheckBox.setSelected(false);
+    }
+
+    public void refreshFields() {
+        //usernameField.setText("");
+        //passwordField.setText("");
+        mostraPasswordCheckBox.setSelected(false);
+        usernameField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        passwordField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
     }
 }

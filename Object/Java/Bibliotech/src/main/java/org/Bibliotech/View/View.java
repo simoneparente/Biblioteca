@@ -21,7 +21,7 @@ public class View extends JFrame{
         FlatDarkLaf.setup();
         this.setTitle(nome); //nome visualizzato sul JFrame
         this.setIconImage(iconaFinestre.getImage()); //icona del JFrame
-        this.setSize(720,560); //dimensione del JFrame
+        this.setSize(720,720); //dimensione del JFrame
         this.setVisible(false);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -29,8 +29,9 @@ public class View extends JFrame{
         try{
             taskbar.setIconImage(imageIconaFinestre);
         } catch (final UnsupportedOperationException u){
+            System.out.print("Eccezione TaskBar - UnsupportedOperationException");
         } catch (final SecurityException e){
-            System.out.print("Eccezione TaskBar");
+            System.out.print("Eccezione TaskBar - SecurityException");
         }
     }
 

@@ -24,11 +24,10 @@ public class Controller {
         if(openView == null){
             System.out.println("openView non può essere null");
         }
-        else if(closeView == null) {
-            openView.showView();
-        }
-        else{
-            closeView.hideView();
+        else {
+            if (closeView != null) {
+                closeView.hideView();
+            }
             openView.showView();
         }
     }

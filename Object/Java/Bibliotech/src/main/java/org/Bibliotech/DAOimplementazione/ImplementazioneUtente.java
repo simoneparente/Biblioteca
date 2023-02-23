@@ -5,6 +5,8 @@ import org.Bibliotech.DAO.UtenteDao;
 import org.Bibliotech.Model.Notifica;
 import org.Bibliotech.Model.Utente;
 
+import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ImplementazioneUtente implements UtenteDao {
-    private Connection connection;
+    private  Connection connection;
 
     public ImplementazioneUtente() {
         try {
@@ -22,15 +24,16 @@ public class ImplementazioneUtente implements UtenteDao {
         }
     }
 
-    public boolean checkUserExistInDatabase(String username) {
+    public boolean checkUserExistInDatabase(JTextField usernameField) {
         String checkUserExistInDatabase = "SELECT * FROM b.utente WHERE username= ?";
         try {
             PreparedStatement checkUserExistInDatabaseQuery = connection.prepareStatement(checkUserExistInDatabase);
-            checkUserExistInDatabaseQuery.setString(1, username);
+            checkUserExistInDatabaseQuery.setString(1, usernameField.getText());
             ResultSet rs = checkUserExistInDatabaseQuery.executeQuery();
             return rs.next(); //se esiste un utente con quel nome ritorna true
         } catch (SQLException e) {
             e.printStackTrace();
+            usernameField.setBorder(BorderFactory.createLineBorder(Color.red, 2));;
             return false;
         }
     }

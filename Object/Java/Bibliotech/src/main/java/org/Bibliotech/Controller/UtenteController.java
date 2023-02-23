@@ -3,6 +3,7 @@ import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
 import org.Bibliotech.Model.Notifica;
 import org.Bibliotech.Model.Utente;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class UtenteController {
@@ -24,8 +25,8 @@ public class UtenteController {
         return utente.checkLogin(username, password);
     }
 
-    public boolean checkUserExistInDatabase(String username) {
-        return utente.checkUserExistInDatabase(username);
+    public boolean checkUserExistInDatabase(JTextField usernameField) {
+        return utente.checkUserExistInDatabase(usernameField);
     }
     //se non esiste ritorna false, se esiste ritorna true
 

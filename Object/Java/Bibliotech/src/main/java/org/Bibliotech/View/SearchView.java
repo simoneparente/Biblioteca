@@ -105,22 +105,30 @@ public class SearchView extends View {
     private JTextField dataPubblicazioneASerieField;
     private JPanel formatoSeriePanel;
     private JComboBox formatoSerieComboBox;
-    private JLabel aggiungiLabel;
-    private JLabel richiestaLabel;
 
 
     private ArrayList<String> filtriSelezionati;
+    private final JMenuItem aggiungiItem;
 
     public SearchView() {
         super(nome);
         //SETUP BARRA MENU
         JMenuBar menuBar = new JMenuBar();
+
         JMenu profiloMenu = new JMenu("Profilo");
         JMenuItem profiloItem = new JMenuItem("Visualizza Profilo");
         JMenuItem logoutItem = new JMenuItem("Logout");
         profiloMenu.add(profiloItem);
         profiloMenu.add(logoutItem);
+
+        JMenu gestioneMenu = new JMenu("Gestione");
+        aggiungiItem = new JMenuItem("Aggiungi Risorsa");
+        JMenuItem richiediItem = new JMenuItem("Richiedi Serie");
+        gestioneMenu.add(aggiungiItem);
+        gestioneMenu.add(richiediItem);
+
         menuBar.add(profiloMenu);
+        menuBar.add(gestioneMenu);
         this.setJMenuBar(menuBar);
 
         //SETUP LOGO
@@ -133,6 +141,10 @@ public class SearchView extends View {
         setFieldsDisabled();
         fillAllComboBoxes();
         //ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
+
+
+
+
 
         profiloItem.addActionListener(new ActionListener() {
             @Override
@@ -147,25 +159,18 @@ public class SearchView extends View {
                 LoginController.getInstance().logout();
             }
         });
-        aggiungiLabel.addMouseListener(new MouseAdapter() {
+            richiediItem.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    RichiestaView dialog = new RichiestaView();
+                    dialog.pack();
+                    dialog.setVisible(true);
+                }
+            });
+        aggiungiItem.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void actionPerformed(ActionEvent e) {
                 LoginController.getInstance().switchView(AggiuntaView.getInstance(), SearchView.getInstance());
-            }
-        });
-        aggiungiLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-                aggiungiLabel.setBorder(BorderFactory.createLineBorder(Color.decode("#F39524"), 1));
-            }
-        });
-        aggiungiLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-                aggiungiLabel.setBorder(null);
             }
         });
 
@@ -324,47 +329,14 @@ public class SearchView extends View {
                 }
             }
         });
-        aggiungiLabel.addMouseListener(new MouseAdapter() {
-        });
-        richiestaLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-                richiestaLabel.setBorder(BorderFactory.createLineBorder(Color.decode("#F39524"), 1));
-            }
-        });
-        richiestaLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-                richiestaLabel.setBorder(null);
-            }
-        });
-        richiestaLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                RichiestaView dialog = new RichiestaView();
-                dialog.pack();
-                dialog.setVisible(true);
-            }
-        });
     }
 
     public void checkPermessiNotifiche() {
         if (Utente.getInstance().getPermessi()<=0) {
-            aggiungiLabel.setVisible(false);
-            richiestaLabel.setVisible(true);
+            aggiungiItem.setEnabled(false);
         }
         if(Utente.getInstance().getPermessi()==1) {
-            aggiungiLabel.setVisible(true);
-            richiestaLabel.setVisible(true);
+            aggiungiItem.setEnabled(true);
         }
         checkNotifiche(Utente.getInstance().getUsername());
     }

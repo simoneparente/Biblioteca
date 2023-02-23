@@ -194,17 +194,25 @@ public class AggiuntaView extends View {
                     disciplinaArticoloField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(formatoArticoliComboBox).equals("Formato")){
+                if(String.valueOf(formatoArticoliComboBox.getSelectedItem()).equals("Formato")){
                     formatoArticoliComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(doiField).equals("")){
+                if(String.valueOf(doiField.getText()).equals("DOI")){
                     doiField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(check==0){
-                    if(checkConferenzaOrRivista().equals("Rivista")){
-                        //addArticoloRivista();
+                if(String.valueOf(presentatoInBox.getSelectedItem()).isBlank())
+                {
+                    presentatoInBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                    check++;
+                }
+                if(checkConferenzaOrRivista().equals("Rivista")){
+                        if(String.valueOf(rivistaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova rivista・・・")){
+                            addArticoloAddRivista();
+                        }else {
+                            addArticoloRivista();
+                        }
                     } else if(checkConferenzaOrRivista().equals("Conferenza")){
                         //addArticoloConferenza();
                     }
@@ -212,9 +220,6 @@ public class AggiuntaView extends View {
                         JOptionPane.showMessageDialog(presentatoInBox, "Selezionare una rivista o una conferenza");
                     }
                 }
-            }
-
-
         });
         presentatoInBox.addItemListener(new ItemListener() {
             @Override
@@ -286,6 +291,79 @@ public class AggiuntaView extends View {
                 }
             }
         });
+        rivistaComboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                refreshRivistaFields();
+            }
+        });
+    }
+
+    private void addArticoloRivista() { //aggiunge articolo in rivista già presente
+        if(checkRivistaFields()) {
+            System.out.println("aggiungere query");
+        }
+        System.out.println("Implementare addArticoloRivista");
+    }
+
+    private void addArticoloAddRivista() { //aggiunge sia articolo che rivista
+        if(checkRivistaFields()) {
+            System.out.println("aggiungere query");
+        }
+        System.out.println("Implementare addArticoloAddRivista");
+    }
+
+    private boolean checkRivistaFields() {
+        int check = 0;
+        refreshRivistaFields();
+        if(String.valueOf(rivistaComboBox.getSelectedItem()).isEmpty()){
+            rivistaComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(nomeRivistaField.getText()).equals("Nome")){
+            nomeRivistaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(issnRivistaField.getText()).equals("ISSN")){
+            issnRivistaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(argomentoRivistaField.getText()).equals("Argomento")){
+            argomentoRivistaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(responsabileRivistaField.getText()).equals("Responsabile")){
+            responsabileRivistaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(datapubblicazioneRivistaField.getText()).equals("Data pubblicazione")){
+            datapubblicazioneRivistaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(prezzoRivistaField.getText()).equals("Prezzo")){
+            prezzoRivistaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(datapubblicazioneRivistaField.getText()).equals("Data di pubblicazione")){
+            datapubblicazioneRivistaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(check==0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void refreshRivistaFields() {
+        rivistaComboBox.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        nomeRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        issnRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        argomentoRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        responsabileRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        datapubblicazioneRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        prezzoRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        datapubblicazioneRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
     }
 
     private String checkConferenzaOrRivista() {
@@ -318,7 +396,6 @@ public class AggiuntaView extends View {
         responsabileRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         datapubblicazioneRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         prezzoRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
-
     }
 
     private void resetLibroBorders() { //resetta i bordi di tutti i JTextField
@@ -376,19 +453,19 @@ public class AggiuntaView extends View {
         setPlaceholderText(autoriArticoloField, "Autori");
         setPlaceholderText(editoreArticoliField, "Editore");
         setPlaceholderText(issnSerieField, "ISSN");
-        setPlaceholderText(nomeSerieField, "Nome della serie");
-        setPlaceholderText(nomeConferenzaField, "Nome della conferenza");
+        setPlaceholderText(nomeSerieField, "Nome");
+        setPlaceholderText(nomeConferenzaField, "Nome");
         setPlaceholderText(dataDaConferenzaField, "Data inizio");
         setPlaceholderText(dataAConferenzaField, "Data fine");
         setPlaceholderText(strutturaConferenzaField, "Struttura Ospitante");
         setPlaceholderText(indirizzoConferenzaField, "Indirizzo");
         setPlaceholderText(responsabileConferenzaField, "Responsabile");
-        setPlaceholderText(argomentoRivistaField, "Argomento rivista");
-        setPlaceholderText(datapubblicazioneRivistaField, "Data pubblicazione");
+        setPlaceholderText(argomentoRivistaField, "Argomento");
+        setPlaceholderText(datapubblicazioneRivistaField, "Data di pubblicazione");
         setPlaceholderText(issnRivistaField, "ISSN");
         setPlaceholderText(responsabileRivistaField, "Responsabile");
-        setPlaceholderText(prezzoRivistaField, "Autori");
-        setPlaceholderText(nomeRivistaField, "Nome della rivista");
+        setPlaceholderText(prezzoRivistaField, "Prezzo");
+        setPlaceholderText(nomeRivistaField, "Nome");
     }
     public void setPlaceholderText(JTextField field, String text) {
         field.setText(text);

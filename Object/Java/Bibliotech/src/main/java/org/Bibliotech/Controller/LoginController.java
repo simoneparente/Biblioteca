@@ -32,8 +32,8 @@ public class LoginController extends Controller{
             }
             else{
                 JOptionPane.showMessageDialog(null, "Username o password errati");
-                usernameField.setBackground(Color.red);
-                passwordField.setBackground(Color.red);
+                usernameField.setBorder(BorderFactory.createLineBorder(Color.red, 2));
+                passwordField.setBorder(BorderFactory.createLineBorder(Color.red, 2));
             }
         }
     }

@@ -797,14 +797,6 @@
           <grid row="1" column="0" row-span="10" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="223a0" class="javax.swing.JLabel" binding="aggiungiLabel">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Non trovi ciò che cerchi? Clicca qui per aggiungerlo."/>
-        </properties>
-      </component>
       <vspacer id="35e2d">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
@@ -815,14 +807,6 @@
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="66d4d" class="javax.swing.JLabel" binding="richiestaLabel">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="La serie che cerchi non è disponibile in nessun negozio? Clicca qui per inoltrare una richiesta."/>
-        </properties>
-      </component>
     </children>
   </grid>
 </form>
