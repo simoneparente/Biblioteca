@@ -50,7 +50,8 @@ CREATE TABLE b.Riviste
     Responsabile      VARCHAR(128),
     Prezzo            FLOAT,
 
-    CONSTRAINT PK_Riviste PRIMARY KEY (ID_Rivista)
+    CONSTRAINT PK_Riviste PRIMARY KEY (ID_Rivista),
+    CONSTRAINT UQ_ISSN    UNIQUE (ISSN)
 );
 
 CREATE TABLE b.ArticoliInRiviste
