@@ -20,142 +20,19 @@ public class ImplementazioneArticolo implements ArticoloDao {
         }
     }
 
-    //Get Articoli tramite parametri
     @Override
-    public Articoli getArticoli(String query, String parametro){
-        Articoli articoli = new Articoli();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, parametro);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Articolo articolo = new Articolo();
-                articolo.setTitolo(resultSet.getString("titolo"));
-                articolo.setDataPubblicazione(resultSet.getString("doi"));
-                articolo.setEditore(resultSet.getString("dataPubblicazione"));
-                articolo.setDoi(resultSet.getString("disciplina"));
-                articolo.setLingua(resultSet.getString("editore"));
-                articolo.setFormato(resultSet.getString("lingua"));
-                articolo.setDisciplina(resultSet.getString("formato"));
-                articoli.addArticolo(articolo);
-            }
-        } catch (Exception e) {
+    public boolean addArticolo(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String nomeRivista) {
+        String getISSNquery = "SELECT ISSN FROM b.rivista WHERE nomeRivista = ?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getISSNquery);
+        }catch (SQLException e){
             e.printStackTrace();
         }
-        return articoli;
-    }
-    @Override
-    public Articoli getArticoli(String query, String parametro1, String parametro2){
-        Articoli articoli = new Articoli();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, parametro1);
-            preparedStatement.setString(2, parametro2);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Articolo articolo = new Articolo();
-                articolo.setTitolo(resultSet.getString("titolo"));
-                articolo.setDataPubblicazione(resultSet.getString("doi"));
-                articolo.setEditore(resultSet.getString("dataPubblicazione"));
-                articolo.setDoi(resultSet.getString("disciplina"));
-                articolo.setLingua(resultSet.getString("editore"));
-                articolo.setFormato(resultSet.getString("lingua"));
-                articolo.setDisciplina(resultSet.getString("formato"));
-                articoli.addArticolo(articolo);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return articoli;
-    }
 
-    //Get tramite tabella Articolo
-    @Override
-    public Articoli getArticoli(){
-        Articoli articoli = new Articoli();
-        String getArticoliQuery = "SELECT * FROM b.articoli";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(getArticoliQuery);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Articolo articolo = new Articolo();
-                articolo.setDoi(resultSet.getString("doi"));
-                articolo.setTitolo(resultSet.getString("titolo"));
-                articolo.setDataPubblicazione(resultSet.getString("dataPubblicazione"));
-                articolo.setEditore(resultSet.getString("editore"));
-                articolo.setLingua(resultSet.getString("lingua"));
-                articolo.setDisciplina(resultSet.getString("disciplina"));
-                articolo.setFormato(resultSet.getString("formato"));
-                articoli.addArticolo(articolo);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return articoli;
+        String query = "INSERT INTO articolo (titoloArticolo, autori, editore, disciplina, formato, doi, nomeRivista) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        return false;
     }
     @Override
-    public Articoli getArticoliByTitolo(String titolo){
-        String getArticoloByTitoloQuery = "SELECT * FROM b.articoli WHERE titolo = ?";
-        return getArticoli(getArticoloByTitoloQuery, titolo);
-    }
-    @Override
-    public Articoli getArticoloByDoi(String doi){
-        String getArticoloByDoiQuery = "SELECT * FROM b.articoli WHERE doi = ?";
-        return getArticoli(getArticoloByDoiQuery, doi);
-    }
-    @Override
-    public Articoli getArticoliByDataPubblicazioneMin(String dataPubblicazione){
-        String getArticoloByDataPubblicazioneQuery = "SELECT * FROM b.articoli WHERE dataPubblicazione >= ?";
-        return getArticoli(getArticoloByDataPubblicazioneQuery, dataPubblicazione);
-    }
-    @Override
-    public Articoli getArticoliByDataPubblicazioneMax(String dataPubblicazione){
-        String getArticoloByDataPubblicazioneQuery = "SELECT * FROM b.articoli WHERE dataPubblicazione <= ?";
-        return getArticoli(getArticoloByDataPubblicazioneQuery, dataPubblicazione);
-    }
-    @Override
-    public Articoli getArticoliByRangeDataPubblicazione(String dataPubblicazioneMIN, String dataPubblicazioneMAX){
-        String getArticoloByDataPubblicazioneQuery = "SELECT * FROM b.articoli WHERE dataPubblicazione = ?";
-        return getArticoli(getArticoloByDataPubblicazioneQuery, dataPubblicazioneMIN, dataPubblicazioneMAX);
-    }
-    @Override
-    public Articoli getArticoliByDisciplina(String disciplina){
-        String getArticoloByDisciplinaQuery = "SELECT * FROM b.articoli WHERE disciplina = ?";
-        return getArticoli(getArticoloByDisciplinaQuery, disciplina);
-    }
-    @Override
-    public Articoli getArticoliByEditore(String editore){
-        String getArticoloByEditoreQuery = "SELECT * FROM b.articoli WHERE editore = ?";
-        return getArticoli(getArticoloByEditoreQuery, editore);
-    }
-    @Override
-    public Articoli getArticoliByLingua(String lingua){
-        String getArticoloByLinguaQuery = "SELECT * FROM b.articoli WHERE lingua = ?";
-        return getArticoli(getArticoloByLinguaQuery, lingua);
-    }
-    @Override
-    public Articoli getArticoliByFormato(String formato){
-        String getArticoloByFormatoQuery = "SELECT * FROM b.articoli WHERE formato = ?";
-        return getArticoli(getArticoloByFormatoQuery, formato);
-    }
-
-    //Get tramite altre tabelle
-    @Override
-    public Articoli getArticoliByAutore(String nome, String cognome){
-        String getArticoloByAutoreQuery = "SELECT DISTINCT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato FROM view_articoli_autore a WHERE au.nome = ? AND au.cognome = ?";
-        return getArticoli(getArticoloByAutoreQuery, nome, cognome);
-    }
-    @Override
-    public Articoli getArticoliByRivista(String rivista){
-        String getArticoloByRivistaQuery = "SELECT DISTINCT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato FROM view_articoli_rivista a WHERE r.nome = ?";
-        return getArticoli(getArticoloByRivistaQuery, rivista);
-    }
-    @Override
-    public Articoli getArticoliByConferenza(String conferenza){
-        String getArticoloByConferenzaQuery = "SELECT DISTINCT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato FROM view_articoli_conferenza a WHERE titolo_conferenza = ?";
-        return getArticoli(getArticoloByConferenzaQuery, conferenza);
-    }
-
     public boolean addArticoloAddRivistaInDB(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String nomeRivista, String issn, String argomento, String responsabile, String dataPubblicazioneRivista, Double prezzo) {
     return true;
     }

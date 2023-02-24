@@ -212,11 +212,11 @@ public class AggiuntaView extends View {
                 if(checkConferenzaOrRivista().equals("Rivista")){
                         if(String.valueOf(rivistaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova rivista・・・")){
                             addArticoloAddRivista();
-                        }else {
+                        }else if(!String.valueOf(rivistaComboBox.getSelectedItem()).equals(" ")){
                             addArticoloRivista();
                         }
                     } else if(checkConferenzaOrRivista().equals("Conferenza")){
-                        //addArticoloConferenza();
+                        addArticoloConferenza();
                     }
                     else {
                         JOptionPane.showMessageDialog(presentatoInBox, "Selezionare una rivista o una conferenza");
@@ -301,18 +301,19 @@ public class AggiuntaView extends View {
         });
     }
 
+    private void addArticoloConferenza() {
+    }
+
     private void addArticoloRivista() { //aggiunge articolo in rivista già presente
-        if(checkRivistaFields()) {
-            System.out.println("aggiungere query");
-        }
-        System.out.println("Implementare addArticoloRivista");
+        //ArticoloController.getInstance().addArticolo();
     }
 
     private void addArticoloAddRivista() { //aggiunge sia articolo che rivista
         if(checkRivistaFields()) {
-            ArticoloController.getInstance();
+           // ArticoloController.getInstance().addArticolo();
             System.out.println("aggiungere query");
         }
+
         System.out.println("Implementare addArticoloAddRivista");
     }
 
