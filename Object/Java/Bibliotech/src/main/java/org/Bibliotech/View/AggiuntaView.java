@@ -282,6 +282,7 @@ public class AggiuntaView extends View {
         conferenzaComboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
+                refreshConferenzaFields();
                 if(e.getStateChange() == ItemEvent.SELECTED){
                     if(!String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・")){
                         conferenzaPanel.setVisible(false);
@@ -294,6 +295,59 @@ public class AggiuntaView extends View {
     }
 
     private void addArticoloConferenza() {
+        if(checkConferenzaFields()) {
+            //ArticoloController.getInstance().addArticolo();
+            System.out.println("aggiungere query");
+        }
+        System.out.println("Implementare addArticoloConferenza");
+    }
+
+    private boolean checkConferenzaFields() {
+        int check = 0;
+        refreshConferenzaFields();
+        if(String.valueOf(conferenzaComboBox.getSelectedItem()).isEmpty()){
+            conferenzaComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(nomeConferenzaField.getText()).equals("Nome")){
+            nomeConferenzaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(responsabileConferenzaField.getText()).equals("Responsabile")){
+            responsabileConferenzaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(strutturaConferenzaField.getText()).equals("Struttura Ospitante")){
+            strutturaConferenzaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(indirizzoConferenzaField.getText()).equals("Indirizzo")){
+            indirizzoConferenzaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(String.valueOf(dataDaConferenzaField.getText()).equals("Data inizio")){
+            dataDaConferenzaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(dataAConferenzaField.getText().equals("Data fine")){
+            dataAConferenzaField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            check++;
+        }
+        if(check == 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void refreshConferenzaFields() {
+        conferenzaComboBox.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        nomeConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        responsabileConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        strutturaConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        indirizzoConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        dataDaConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        dataAConferenzaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
     }
 
     private void addArticoloRivista() { //aggiunge articolo in rivista già presente
