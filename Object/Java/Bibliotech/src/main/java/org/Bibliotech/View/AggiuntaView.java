@@ -1,8 +1,10 @@
 package org.Bibliotech.View;
 
+import org.Bibliotech.Controller.ArticoloController;
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
 import org.Bibliotech.Controller.LibroController;
+import org.Bibliotech.DAOimplementazione.ImplementazioneArticolo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -308,6 +310,7 @@ public class AggiuntaView extends View {
 
     private void addArticoloAddRivista() { //aggiunge sia articolo che rivista
         if(checkRivistaFields()) {
+            ArticoloController.getInstance();
             System.out.println("aggiungere query");
         }
         System.out.println("Implementare addArticoloAddRivista");

@@ -155,4 +155,8 @@ public class ImplementazioneArticolo implements ArticoloDao {
         String getArticoloByConferenzaQuery = "SELECT DISTINCT a.titolo, a.doi, a.datapubblicazione, a.disciplina, a.editore, a.lingua, a.formato FROM view_articoli_conferenza a WHERE titolo_conferenza = ?";
         return getArticoli(getArticoloByConferenzaQuery, conferenza);
     }
+
+    public boolean addArticoloAddRivistaInDB(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String nomeRivista, String issn, String argomento, String responsabile, String dataPubblicazioneRivista, Double prezzo) {
+    return true;
+    }
 }

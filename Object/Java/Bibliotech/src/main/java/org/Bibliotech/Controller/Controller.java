@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Controller {
-    private static Controller instance;
+    private static Controller instance = null;
 
     public Controller() {
         //switchView(SearchView.getInstance(), null);
