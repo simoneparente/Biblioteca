@@ -219,6 +219,7 @@ public class AggiuntaView extends View {
                             JOptionPane.showMessageDialog(null, "Selezionare una rivista");
                         } else{
                             addArticoloRivista();
+                            System.out.println("ahahahahaaha");
                         }
                     }
 
@@ -353,7 +354,11 @@ public class AggiuntaView extends View {
     }
 
     private void addArticoloRivista() { //aggiunge articolo in rivista già presente
-        //ArticoloController.getInstance().addArticolo();
+        if(ArticoloController.getInstance().addArticolo(titoloArticoliField.getText(), autoriArticoloField.getText(),
+                editoreArticoliField.getText(), disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()),
+                doiField.getText(), linguaArticoloField.getText(), String.valueOf(rivistaComboBox.getSelectedItem()), String.valueOf(rivistaISSNComboBox.getSelectedItem()))){
+            JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
+        };
     }
 
     private void addArticoloAddRivista() { //aggiunge sia articolo che rivista

@@ -17,19 +17,28 @@ public class ImplementazioneArticolo implements ArticoloDao {
             e.printStackTrace();
         }
     }
-
     @Override
-    public boolean addArticolo(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String nomeRivista) {
-        String getISSNquery = "SELECT ISSN FROM b.rivista WHERE nomeRivista = ?";
+    public boolean addArticolo(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeRivista, String issn) {
+        String query="INSERT INTO b.ins_ArticoliRivista(titolo, autorinome_cognome, editore, disciplina, formato, doi, lingua, nomerivista, issnrivista) VALUES(?,?,?,?,?,?,?,?,?)";
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(getISSNquery);
-        }catch (SQLException e){
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, titoloArticolo);
+            preparedStatement.setString(2, autori);
+            preparedStatement.setString(3, editore);
+            preparedStatement.setString(4, disciplina);
+            preparedStatement.setString(5, formato);
+            preparedStatement.setString(6, doi);
+            preparedStatement.setString(7, lingua);
+            preparedStatement.setString(8, nomeRivista);
+            preparedStatement.setString(9, issn);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-
-        String query = "INSERT INTO articolo (titoloArticolo, autori, editore, disciplina, formato, doi, nomeRivista) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        return false;
     }
+
 
     @Override
     public boolean addArticoloAddRivistaInDB(String titoloArticolo, String autori, String editore, String disciplina, String formato,
