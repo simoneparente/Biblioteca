@@ -1,10 +1,8 @@
 package org.Bibliotech.View;
 
-import org.Bibliotech.Controller.ArticoloController;
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
 import org.Bibliotech.Controller.LibroController;
-import org.Bibliotech.DAOimplementazione.ImplementazioneArticolo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,6 +60,7 @@ public class AggiuntaView extends View {
     private JComboBox rivistaComboBox;
     private JComboBox conferenzaComboBox;
     private JPanel rcPanel;
+    private JComboBox rivistaISSNComboBox;
 
     public AggiuntaView() {
         super(nome);
@@ -72,6 +71,7 @@ public class AggiuntaView extends View {
         setPanelInvisibili();
         serieLibroBox.setEnabled(false); //disabilita il combobox delle serie
         rivistaComboBox.setVisible(false); //setta invisibili i combobox delle riviste e delle conferenze
+        rivistaISSNComboBox.setVisible(false);
         conferenzaComboBox.setVisible(false);
         fillAllComboBoxes();
         risorsaComboBox.addItemListener(new ItemListener() {
@@ -237,11 +237,13 @@ public class AggiuntaView extends View {
                         rivistaPanel.setVisible(false); //rendo invisibile il pannello rivista
                         conferenzaComboBox.setVisible(true);
                         rivistaComboBox.setVisible(false);
+                        rivistaISSNComboBox.setVisible(false);
                     } else {
                         conferenzaPanel.setVisible(false);
                         rivistaPanel.setVisible(false);
                         conferenzaComboBox.setVisible(false);
                         rivistaComboBox.setVisible(false);
+                        rivistaISSNComboBox.setVisible(false);
                     }
                 }
             }
@@ -268,15 +270,11 @@ public class AggiuntaView extends View {
                 helpLabel.setBorder(null);
             }
         });
-        rivistaComboBox.addItemListener(new ItemListener() {
+        rivistaComboBox.addItemListener(new ItemListener() { //qui
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED){
-                    if(!String.valueOf(rivistaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova rivista・・・")){
-                        rivistaPanel.setVisible(false);
-                    }else {
-                        rivistaPanel.setVisible(true);
-                    }
+                    refreshRivistaFields();
                 }
             }
         });
@@ -291,12 +289,6 @@ public class AggiuntaView extends View {
                         conferenzaPanel.setVisible(true);
                     }
                 }
-            }
-        });
-        rivistaComboBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                refreshRivistaFields();
             }
         });
     }
@@ -359,7 +351,7 @@ public class AggiuntaView extends View {
         }
     }
 
-    private void refreshRivistaFields() {
+    private void refreshRivistaFields() { //qui2
         rivistaComboBox.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         nomeRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         issnRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
@@ -368,6 +360,18 @@ public class AggiuntaView extends View {
         datapubblicazioneRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         prezzoRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         datapubblicazioneRivistaField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
+        if(String.valueOf(rivistaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova rivista・・・")){
+            rivistaPanel.setVisible(true);
+            rivistaISSNComboBox.setVisible(false);
+        } else if(String.valueOf(rivistaComboBox.getSelectedItem()).isBlank()){
+            rivistaPanel.setVisible(false);
+            rivistaISSNComboBox.setVisible(false);
+            rivistaComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+        } else {
+            rivistaPanel.setVisible(false);
+            rivistaISSNComboBox.setVisible(true);
+        }
+        fillComboBox(rivistaISSNComboBox, FiltriController.getInstance().leggiRivisteISSN(String.valueOf(rivistaComboBox.getSelectedItem())));
     }
 
     private String checkConferenzaOrRivista() {
@@ -491,6 +495,7 @@ public class AggiuntaView extends View {
         fillComboBox(serieLibroBox, FiltriController.getInstance().leggiSerieLibri());
         fillComboBox(rivistaComboBox, FiltriController.getInstance().leggiRiviste());
         fillComboBox(conferenzaComboBox, FiltriController.getInstance().leggiConferenze());
+        fillComboBox(rivistaISSNComboBox, FiltriController.getInstance().leggiRivisteISSN(String.valueOf(rivistaComboBox.getSelectedItem())));
     }
 
     private void fillComboBox(JComboBox<String> comboBox, ArrayList<String> items) {

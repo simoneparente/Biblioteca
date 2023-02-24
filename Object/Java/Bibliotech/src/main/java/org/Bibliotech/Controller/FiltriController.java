@@ -65,6 +65,8 @@ public class FiltriController {
     public Vector<Vector<Object>> getRows(String query){return filtri.getRows(query);} //in funzione della query, restituisce le righe della tabella
 
     public ArrayList<String> leggiRiviste() {return filtri.getRiviste();}
+
+    public ArrayList<String> leggiRivisteISSN(String nomerivista) {return filtri.getRivisteISSN(nomerivista);}
     public ArrayList<String> leggiConferenze() {return filtri.getConferenze();}
 
 }

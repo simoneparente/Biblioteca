@@ -426,4 +426,18 @@ public class ImplementazioneFiltri implements FiltriDao {
         return null;
     }
 
+    public ArrayList<String> getRivisteISSN(String nomerivista) {
+        ArrayList<String> riviste = new ArrayList<>();
+        String getRivistaQuery = "SELECT DISTINCT issn FROM b.riviste WHERE nome='" + nomerivista + "'";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getRivistaQuery);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                riviste.add(rs.getString("issn"));
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return riviste;
+    }
 }
