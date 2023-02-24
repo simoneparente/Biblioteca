@@ -24,6 +24,7 @@ public class ResultView extends View{
         super.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         super.setResizable(true);
         super.setContentPane(rootPanel);
+        resultTable.setDefaultEditor(Object.class, null);
         WindowListener closeWindow = new WindowAdapter() {//listener per la chiusura della finestra
             @Override
             public void windowClosing(WindowEvent we) {

@@ -16,6 +16,7 @@ public class RichiestaView extends JDialog {
     private JComboBox richiediISSNComboBox;
 
     public RichiestaView() {
+        setTitle("Richiedi serie");
         setContentPane(contentPane);
         setLocationRelativeTo(null);
         setModal(true);
