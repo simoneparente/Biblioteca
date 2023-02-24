@@ -219,7 +219,6 @@ public class AggiuntaView extends View {
                             JOptionPane.showMessageDialog(null, "Selezionare una rivista");
                         } else{
                             addArticoloRivista();
-                            System.out.println("ahahahahaaha");
                         }
                     }
 
