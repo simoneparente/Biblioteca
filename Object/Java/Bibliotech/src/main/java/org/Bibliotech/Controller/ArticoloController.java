@@ -11,16 +11,20 @@ public class ArticoloController {
         return instance;
     }
 
-    public boolean addArticoloAddRivistaInDB(String titoloArticolo, String autori, String editore, String Disciplina,
-                                             String Formato, String DOI, String nomeRivista, String ISSN, String Argomento,
-                                             String Responsabile, String DataPubblicazioneRivista, Double Prezzo){
+    public boolean addArticoloAddRivistaInDB(String titoloArticolo, String autori, String editore, String disciplina, String formato,
+                                         String doi, String lingua, String nomeRivista, String issn, String argomento, String dataPubblicazione,
+                                         String responsabile, Double prezzo){
         ImplementazioneArticolo ia= new ImplementazioneArticolo();
-        return ia.addArticoloAddRivistaInDB(titoloArticolo, autori, editore, Disciplina, Formato, DOI, nomeRivista, ISSN, Argomento, Responsabile, DataPubblicazioneRivista, Prezzo);
+        return ia.addArticoloAddRivistaInDB(titoloArticolo, autori, editore, disciplina, formato,
+                doi, lingua, nomeRivista, issn, argomento, dataPubblicazione,
+                responsabile, prezzo);
     }
 
-    public boolean addArticolo(String titoloArticolo, String autori, String editore, String Disciplina,
-                               String Formato, String DOI, String nomeRivista) {
-        ImplementazioneArticolo ia = new ImplementazioneArticolo();
-        return ia.addArticolo(titoloArticolo, autori, editore, Disciplina, Formato, DOI, nomeRivista);
-    }
+    //public boolean addArticoloAddConferenzaInDB(
+
+    //public boolean addArticolo(String titoloArticolo, String autori, String editore, String rivista,
+    //                           String formato, String doi, String nomeRivista) {
+    //    ImplementazioneArticolo ia = new ImplementazioneArticolo();
+    //    return ia.addArticolo(titoloArticolo, autori, editore, rivista, formato, doi, nomeRivista);
+    //}
 }

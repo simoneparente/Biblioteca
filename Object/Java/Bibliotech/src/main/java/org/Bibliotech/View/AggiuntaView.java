@@ -1,5 +1,6 @@
 package org.Bibliotech.View;
 
+import org.Bibliotech.Controller.ArticoloController;
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
 import org.Bibliotech.Controller.LibroController;
@@ -61,6 +62,7 @@ public class AggiuntaView extends View {
     private JComboBox conferenzaComboBox;
     private JPanel rcPanel;
     private JComboBox rivistaISSNComboBox;
+    private JTextField linguaArticoloField;
 
     public AggiuntaView() {
         super(nome);
@@ -124,8 +126,7 @@ public class AggiuntaView extends View {
                     checkAddLibro();
                 } else if (String.valueOf(risorsaComboBox.getSelectedItem()).equals("Articolo")) {
                     checkAddArticolo();
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Selezionare una risorsa");
                 }
             }
@@ -133,95 +134,96 @@ public class AggiuntaView extends View {
             private void checkAddLibro() {
                 resetLibroBorders();
                 int check = 0;
-                if(String.valueOf(titoloLibroField.getText()).equals("Titolo")){
+                if (String.valueOf(titoloLibroField.getText()).equals("Titolo")) {
                     titoloLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(autoriLibroField.getText()).equals("Autori")  || !String.valueOf(autoriLibroField.getText()).contains("_")){
+                if (String.valueOf(autoriLibroField.getText()).equals("Autori") || !String.valueOf(autoriLibroField.getText()).contains("_")) {
                     autoriLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(genereLibroField.getText()).equals("Genere")){
+                if (String.valueOf(genereLibroField.getText()).equals("Genere")) {
                     genereLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(editoreLibroField.getText()).equals("Editore")){
+                if (String.valueOf(editoreLibroField.getText()).equals("Editore")) {
                     editoreLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(prezzoLibroField.getText()).equals("Prezzo")){
+                if (String.valueOf(prezzoLibroField.getText()).equals("Prezzo")) {
                     prezzoLibroField.setText("");
                 }
-                if(String.valueOf(isbnLibroField.getText()).equals("ISBN")){
+                if (String.valueOf(isbnLibroField.getText()).equals("ISBN")) {
                     isbnLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(dataPublicazioneLibroField.getText()).equals("Data di pubblicazione")){
+                if (String.valueOf(dataPublicazioneLibroField.getText()).equals("Data di pubblicazione")) {
                     dataPublicazioneLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(formatoLibroComboBox.getSelectedItem()).equals("Formato")){
+                if (String.valueOf(formatoLibroComboBox.getSelectedItem()).equals("Formato")) {
                     formatoLibroComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(linguaLibroField.getText()).equals("Lingua")){
+                if (String.valueOf(linguaLibroField.getText()).equals("Lingua")) {
                     linguaLibroField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                    if (ilLibroFaParteCheckBox.isSelected()) {
-                        if(String.valueOf(serieLibroBox.getSelectedItem()).equals("・・・Aggiungi nuova serie・・・")) {
-                            addLibroSerie(check);
-                        }
-                    } else {
-                        addLibro(check);
+                if (ilLibroFaParteCheckBox.isSelected()) {
+                    if (String.valueOf(serieLibroBox.getSelectedItem()).equals("・・・Aggiungi nuova serie・・・")) {
+                        addLibroSerie(check);
                     }
+                } else {
+                    addLibro(check);
                 }
+            }
 
             private void checkAddArticolo() {
                 resetArticoloBorders();
                 int check = 0;
-                if(String.valueOf(titoloArticoliField.getText()).equals("Titolo")){
+                if (String.valueOf(titoloArticoliField.getText()).equals("Titolo")) {
                     titoloArticoliField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(autoriArticoloField.getText()).equals("Autori") || !String.valueOf(autoriArticoloField.getText()).contains("_")){
+                if (String.valueOf(autoriArticoloField.getText()).equals("Autori") || !String.valueOf(autoriArticoloField.getText()).contains("_")) {
                     autoriArticoloField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(editoreArticoliField.getText()).equals("Editore")){
+                if (String.valueOf(editoreArticoliField.getText()).equals("Editore")) {
                     editoreArticoliField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(disciplinaArticoloField.getText()).equals("Disciplina")){
+                if (String.valueOf(disciplinaArticoloField.getText()).equals("Disciplina")) {
                     disciplinaArticoloField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(formatoArticoliComboBox.getSelectedItem()).equals("Formato")){
+                if (String.valueOf(formatoArticoliComboBox.getSelectedItem()).equals("Formato")) {
                     formatoArticoliComboBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(doiField.getText()).equals("DOI")){
+                if (String.valueOf(doiField.getText()).equals("DOI")) {
                     doiField.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(String.valueOf(presentatoInBox.getSelectedItem()).isBlank())
-                {
+                if (String.valueOf(presentatoInBox.getSelectedItem()).isBlank()) {
                     presentatoInBox.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     check++;
                 }
-                if(checkConferenzaOrRivista().equals("Rivista")){
-                        if(String.valueOf(rivistaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova rivista・・・")){
+                if (check != 0) {
+                    JOptionPane.showMessageDialog(null, "Controllare i campi in rosso");
+                } else {
+                    if (checkConferenzaOrRivista().equals("Rivista")) {
+                        if (String.valueOf(rivistaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova rivista・・・")) {
                             addArticoloAddRivista();
-                        }else if(!String.valueOf(rivistaComboBox.getSelectedItem()).equals(" ")){
+                        } else if(String.valueOf(rivistaComboBox.getSelectedItem()).isBlank()){
+                            JOptionPane.showMessageDialog(null, "Selezionare una rivista");
+                        } else{
                             addArticoloRivista();
                         }
-                    } else if(checkConferenzaOrRivista().equals("Conferenza")){
-                        addArticoloConferenza();
                     }
-                    else {
-                        JOptionPane.showMessageDialog(presentatoInBox, "Selezionare una rivista o una conferenza");
-                    }
-                }
+
+            }
+        }
         });
         presentatoInBox.addItemListener(new ItemListener() {
             @Override
@@ -356,11 +358,16 @@ public class AggiuntaView extends View {
 
     private void addArticoloAddRivista() { //aggiunge sia articolo che rivista
         if(checkRivistaFields()) {
-           // ArticoloController.getInstance().addArticolo();
-            System.out.println("aggiungere query");
+            ArticoloController.getInstance().addArticoloAddRivistaInDB(titoloArticoliField.getText(), autoriArticoloField.getText(),
+                    editoreArticoliField.getText(), disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()),
+                    doiField.getText(), linguaArticoloField.getText(), nomeRivistaField.getText(), issnRivistaField.getText(), argomentoRivistaField.getText(),
+                    datapubblicazioneRivistaField.getText(), responsabileRivistaField.getText(), Double.parseDouble(prezzoRivistaField.getText()));
+            JOptionPane.showMessageDialog(null, "Articolo e rivista aggiunti con successo");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Errore nell'inserimento");
         }
 
-        System.out.println("Implementare addArticoloAddRivista");
     }
 
     private boolean checkRivistaFields() {
