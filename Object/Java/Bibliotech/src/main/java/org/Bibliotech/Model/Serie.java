@@ -6,7 +6,7 @@ public class Serie {
     private String ISSN;
     private String nomeSerie;
 
-    public Serie(){
+    public Serie() {
     }
 
     public int getIdSerie() {

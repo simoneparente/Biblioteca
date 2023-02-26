@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ImplementazioneUtente implements UtenteDao {
-    private  Connection connection;
+    private Connection connection;
 
     public ImplementazioneUtente() {
         try {
@@ -33,7 +33,7 @@ public class ImplementazioneUtente implements UtenteDao {
             return rs.next(); //se esiste un utente con quel nome ritorna true
         } catch (SQLException e) {
             e.printStackTrace();
-            usernameField.setBorder(BorderFactory.createLineBorder(Color.red, 2));;
+            usernameField.setBorder(BorderFactory.createLineBorder(Color.red, 2));
             return false;
         }
     }

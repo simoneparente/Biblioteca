@@ -5,40 +5,41 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.*;
 import java.awt.*;
 
-public class View extends JFrame{
-    final ImageIcon logoLabelIcon = new ImageIcon("src/main/Immagini/logoIcon.png");
-    final Taskbar taskbar = Taskbar.getTaskbar();  //TaskBar per mac
+public class View extends JFrame {
     final static Toolkit defaultToolkit = Toolkit.getDefaultToolkit(); //TaskBar per mac
     private final static Image imageIconaFinestre = defaultToolkit.getImage("src/main/Immagini/iconaFinestre.png");
     private static final ImageIcon iconaFinestre = new ImageIcon(imageIconaFinestre);
+    final ImageIcon logoLabelIcon = new ImageIcon("src/main/Immagini/logoIcon.png");
+    final Taskbar taskbar = Taskbar.getTaskbar();  //TaskBar per mac
     private JPanel rootPanel;
     private JPanel logoPanel;
     private JPanel contentPanel;
     private JLabel logoLabel;
 
 
-    View(String nome){
+    View(String nome) {
         FlatDarkLaf.setup();
         this.setTitle(nome); //nome visualizzato sul JFrame
         this.setIconImage(iconaFinestre.getImage()); //icona del JFrame
-        this.setSize(720,720); //dimensione del JFrame
+        this.setSize(720, 720); //dimensione del JFrame
         this.setVisible(false);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        try{
+        try {
             taskbar.setIconImage(imageIconaFinestre);
-        } catch (final UnsupportedOperationException u){
+        } catch (final UnsupportedOperationException u) {
             System.out.print("Eccezione TaskBar - UnsupportedOperationException");
-        } catch (final SecurityException e){
+        } catch (final SecurityException e) {
             System.out.print("Eccezione TaskBar - SecurityException");
         }
     }
 
-    public void showView(){
+    public void showView() {
         this.setVisible(true);
     }
-    public void hideView(){
+
+    public void hideView() {
         this.setVisible(false);
     }
 

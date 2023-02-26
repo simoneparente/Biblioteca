@@ -4,17 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnessioneDB{
+public class ConnessioneDB {
     private static ConnessioneDB instance;
     public Connection connection = null;
-    private final String nome = "postgres";
-    private final String password = "1234";
-    private final String url = "jdbc:postgresql://localhost:5432/postgres"; // postgres è il nome del database
-    private final String driver = "org.postgresql.Driver";
 
     private ConnessioneDB() throws SQLException {
         try {
+            String driver = "org.postgresql.Driver";
             Class.forName(driver);
+            String nome = "postgres";
+            String password = "1234";
+            // postgres è il nome del database
+            String url = "jdbc:postgresql://localhost:5432/postgres";
             connection = DriverManager.getConnection(url, nome, password);
 
         } catch (ClassNotFoundException ex) {
@@ -23,6 +24,7 @@ public class ConnessioneDB{
         }
 
     }
+
     public static ConnessioneDB getInstance() throws SQLException {
         if (instance == null) {
             instance = new ConnessioneDB();

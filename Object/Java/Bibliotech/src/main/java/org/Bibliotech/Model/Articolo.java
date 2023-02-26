@@ -35,11 +35,13 @@ public class Articolo {
         this.rivista = rivista;
     }
 
-    public Articolo() {}
+    public Articolo() {
+    }
 
     public String getTitolo() {
         return titolo;
     }
+
     public void setTitolo(String titolo) {
         this.titolo = titolo;
     }
@@ -54,36 +56,47 @@ public class Articolo {
     public ArrayList<Autore> getAutori() {
         return autori;
     }
+
     public void setAutori(ArrayList<Autore> autori) {
         this.autori = autori;
     }
+
     public String getDataPubblicazione() {
         return dataPubblicazione;
     }
+
     public void setDataPubblicazione(String dataPubblicazione) {
         this.dataPubblicazione = dataPubblicazione;
     }
+
     public String getEditore() {
         return editore;
     }
+
     public void setEditore(String editore) {
         this.editore = editore;
     }
+
     public String getDoi() {
         return doi;
     }
+
     public void setDoi(String doi) {
         this.doi = doi;
     }
+
     public String getLingua() {
         return lingua;
     }
+
     public void setLingua(String lingua) {
         this.lingua = lingua;
     }
+
     public String getFormato() {
         return formato;
     }
+
     public void setFormato(String formato) {
         this.formato = formato;
     }
@@ -91,12 +104,15 @@ public class Articolo {
     public String getDisciplina() {
         return disciplina;
     }
+
     public void setDisciplina(String disciplina) {
         this.disciplina = disciplina;
     }
+
     public String getRivista() {
         return rivista;
     }
+
     public void setRivista(String rivista) {
         this.rivista = rivista;
     }

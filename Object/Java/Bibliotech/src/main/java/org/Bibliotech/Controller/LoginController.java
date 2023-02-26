@@ -7,8 +7,9 @@ import org.Bibliotech.View.SearchView;
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginController extends Controller{
+public class LoginController extends Controller {
     private static LoginController instance;
+
     public static LoginController getInstance() {
         if (instance == null) {
             instance = new LoginController();
@@ -16,21 +17,19 @@ public class LoginController extends Controller{
         return instance;
     }
 
-    public void login(JTextField usernameField, JPasswordField passwordField){
+    public void login(JTextField usernameField, JPasswordField passwordField) {
 
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
         changeLoginFieldsColor(usernameField, passwordField);
-        if(username.isBlank() || password.isBlank()){
+        if (username.isBlank() || password.isBlank()) {
             JOptionPane.showMessageDialog(null, "Inserire username e password");
-        }
-        else{
-            if(UtenteController.getInstance().loginUtente(username, password)){
+        } else {
+            if (UtenteController.getInstance().loginUtente(username, password)) {
                 JOptionPane.showMessageDialog(null, "Login effettuato");
                 SearchView.getInstance().checkPermessiNotifiche();
                 switchView(SearchView.getInstance(), LoginView.getInstance());
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Username o password errati");
                 usernameField.setBorder(BorderFactory.createLineBorder(Color.red, 2));
                 passwordField.setBorder(BorderFactory.createLineBorder(Color.red, 2));
@@ -50,7 +49,8 @@ public class LoginController extends Controller{
             passwordField.setBackground(UIManager.getColor("JTextField.background"));
         }
     }
-    public void logout(){
+
+    public void logout() {
         Utente.getInstance().setUsername(null);
         Utente.getInstance().setPassword(null);
         Utente.getInstance().setPermessi(-1);

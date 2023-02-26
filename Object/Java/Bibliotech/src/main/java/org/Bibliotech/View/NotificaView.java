@@ -13,7 +13,7 @@ public class NotificaView extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-        libroDisponibileLabel.setText("Il libro \"" + titoloLibro  +"\" è disponibile per l'acquisto presso: " + nomeNegozio);
+        libroDisponibileLabel.setText("Il libro \"" + titoloLibro + "\" è disponibile per l'acquisto presso: " + nomeNegozio);
         this.setVisible(true);
         this.pack();
 
@@ -24,12 +24,12 @@ public class NotificaView extends JDialog {
         });
     }
 
-    private void onOK() {
-        dispose();
-    }
-
     public static void main(String[] args) {
         //NotificaView dialog = new NotificaView("ciao", getNomiNegozi());
         System.exit(0);
+    }
+
+    private void onOK() {
+        dispose();
     }
 }

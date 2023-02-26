@@ -7,19 +7,18 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class ResultView extends View{
-    private static final String nome="Result";
+public class ResultView extends View {
+    private static final String nome = "Result";
     private static ResultView instance = null;
     private JPanel rootPanel;
     private JTable resultTable;
     private JScrollPane resultScrollPane;
     private ArrayList<String> filtri;
 
-    ResultView(FiltriController fc){
+    ResultView(FiltriController fc) {
         super(nome);
         super.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         super.setResizable(true);
@@ -39,7 +38,6 @@ public class ResultView extends View{
     }
 
 
-
     public static ResultView getInstance() {
         if (instance == null) {
             instance = new ResultView(FiltriController.getInstance());
@@ -47,10 +45,9 @@ public class ResultView extends View{
         return instance;
     }
 
-    public void updateTable(String nomeTabellaIn, String query){
-        if(nomeTabellaIn.isBlank()) {
-        }
-        else {
+    public void updateTable(String nomeTabellaIn, String query) {
+        if (nomeTabellaIn.isBlank()) {
+        } else {
             String nomeTabella = "resultview_" + nomeTabellaIn;
             emptyTable();
             FiltriController fc = FiltriController.getInstance();
@@ -76,7 +73,6 @@ public class ResultView extends View{
         model.setColumnCount(0);
     }
 
-    
 
 }
 

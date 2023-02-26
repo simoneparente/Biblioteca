@@ -1,14 +1,11 @@
 package org.Bibliotech.Model;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.sql.Date;
 import java.util.ArrayList;
 
 public class Libro {
     private String titolo;
     private ArrayList<Autore> autori;
-    private String autoriString = "";
     private String genere;
     private String editore;
     private Date dataPubblicazione;
@@ -20,7 +17,10 @@ public class Libro {
 
 
     private String ISSNSerieDiAppartenenza;
-    public Libro() {}
+
+    public Libro() {
+    }
+
     public Libro(String titolo, String genere, ArrayList<Autore> autori, String editore, String prezzo,
                  String isbn, String dataPubblicazioneIn, String formato, String lingua, String serieDiAppartenenza, String ISSNSerieDiAppartenenza) {
         Date dataPubblicazione = Date.valueOf(dataPubblicazioneIn);
@@ -49,14 +49,17 @@ public class Libro {
         return autori;
     }
 
+    public void setAutori(ArrayList<Autore> autori) {
+        this.autori = autori;
+    }
+
     public String getAutoriString() {
-        autoriString = "";
+        String autoriString = "";
         for (Autore autore : autori) {
             autoriString = autoriString + autore.getNomeCognome() + ", ";
         }
         return autoriString.substring(0, autoriString.length() - 2);
     }
-
 
     public String getLingua() {
         return lingua;
@@ -64,9 +67,6 @@ public class Libro {
 
     public void setLingua(String lingua) {
         this.lingua = lingua;
-    }
-    public void setAutori(ArrayList<Autore> autori) {
-        this.autori = autori;
     }
 
     public String getGenere() {

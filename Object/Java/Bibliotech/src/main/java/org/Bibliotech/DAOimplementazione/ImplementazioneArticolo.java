@@ -7,17 +7,19 @@ import java.sql.*;
 
 public class ImplementazioneArticolo implements ArticoloDao {
     private Connection connection;
-    public ImplementazioneArticolo(){
+
+    public ImplementazioneArticolo() {
         try {
             connection = ConnessioneDB.getInstance().connection;
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public boolean addArticolo(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeRivista, String issn) {
-        String query="INSERT INTO b.ins_ArticoliRivista(titolo, autorinome_cognome, datapubblicazione, editore, disciplina, formato, doi, lingua, nomerivista, issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try{
+        String query = "INSERT INTO b.ins_ArticoliRivista(titolo, autorinome_cognome, datapubblicazione, editore, disciplina, formato, doi, lingua, nomerivista, issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, titoloArticolo);
             preparedStatement.setString(2, autori);
@@ -42,12 +44,12 @@ public class ImplementazioneArticolo implements ArticoloDao {
     }
 
     private Date getDateByISSN(String issn) {
-        String query="SELECT dataPubblicazione FROM b.riviste WHERE issn=?";
-        try{
+        String query = "SELECT dataPubblicazione FROM b.riviste WHERE issn=?";
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, issn);
             ResultSet rs = preparedStatement.executeQuery();
-            if(rs.next()) return rs.getDate(1);
+            if (rs.next()) return rs.getDate(1);
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -56,12 +58,12 @@ public class ImplementazioneArticolo implements ArticoloDao {
     }
 
     private double getPrezoByISSN(String issn) {
-        String query="SELECT prezzo FROM b.riviste WHERE issn=?";
-        try{
+        String query = "SELECT prezzo FROM b.riviste WHERE issn=?";
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, issn);
             ResultSet rs = preparedStatement.executeQuery();
-            if(rs.next()) return rs.getDouble(1);
+            if (rs.next()) return rs.getDouble(1);
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -70,12 +72,12 @@ public class ImplementazioneArticolo implements ArticoloDao {
     }
 
     private String getResponsabileByISSN(String issn) {
-        String query="SELECT responsabile FROM b.riviste WHERE issn=?";
-        try{
+        String query = "SELECT responsabile FROM b.riviste WHERE issn=?";
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, issn);
             ResultSet rs = preparedStatement.executeQuery();
-            if(rs.next()) return rs.getString(1);
+            if (rs.next()) return rs.getString(1);
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -84,12 +86,12 @@ public class ImplementazioneArticolo implements ArticoloDao {
     }
 
     private String getArgomentoByISSN(String issn) {
-        String query="SELECT argomento FROM b.riviste WHERE issn=?";
-        try{
+        String query = "SELECT argomento FROM b.riviste WHERE issn=?";
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, issn);
             ResultSet rs = preparedStatement.executeQuery();
-            if(rs.next())return rs.getString(1);
+            if (rs.next()) return rs.getString(1);
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -100,12 +102,12 @@ public class ImplementazioneArticolo implements ArticoloDao {
 
     @Override
     public boolean addArticoloAddRivistaInDB(String titoloArticolo, String autori, String editore, String disciplina, String formato,
-                                         String doi, String lingua,  String nomeRivista, String issn, String argomento, String dataPubblicazione,
-                                         String responsabile, Double prezzo){
-        String query="INSERT INTO b.ins_ArticoliRivista(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, " +
+                                             String doi, String lingua, String nomeRivista, String issn, String argomento, String dataPubblicazione,
+                                             String responsabile, Double prezzo) {
+        String query = "INSERT INTO b.ins_ArticoliRivista(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, " +
                 "editore, lingua, formato, nomerivista, " + "issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES" +
                 "(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try{
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, titoloArticolo);
             preparedStatement.setString(2, doi);
@@ -122,7 +124,7 @@ public class ImplementazioneArticolo implements ArticoloDao {
             preparedStatement.setDouble(13, prezzo);
             preparedStatement.executeUpdate();
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }

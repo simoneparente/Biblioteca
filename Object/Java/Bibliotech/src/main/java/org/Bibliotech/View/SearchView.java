@@ -7,13 +7,13 @@ import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
 public class SearchView extends View {
-    private static SearchView instance = null;
     private static final String nome = "Search";
+    private static SearchView instance = null;
+    private final JMenuItem aggiungiItem;
     private JPanel rootPanel;
     private JPanel logoPanel;
     private JLabel logoLabel;
@@ -26,31 +26,31 @@ public class SearchView extends View {
     private JCheckBox formatoLibroCheckBox;
     private JCheckBox prezzoLibroCheckBox;
     private JPanel autoreLibroPanel;
-    private JComboBox autoreLibroComboBox;
+    private JComboBox<String> autoreLibroComboBox;
     private JPanel editoreLibroPanel;
-    private JComboBox editoreLibroComboBox;
+    private JComboBox<String> editoreLibroComboBox;
     private JPanel genereLibroPanel;
-    private JComboBox genereLibroComboBox;
+    private JComboBox<String> genereLibroComboBox;
     private JPanel linguaLibroPanel;
-    private JComboBox linguaLibroComboBox;
+    private JComboBox<String> linguaLibroComboBox;
     private JPanel dataPubblicazioneLibroPanel;
     private JTextField dataDaLibroField;
     private JTextField dataALibroField;
     private JPanel formatoLibroPanel;
-    private JComboBox formatoLibroComboBox;
+    private JComboBox<String> formatoLibroComboBox;
     private JPanel prezzoLibroPanel;
     private JTextField prezzoDaLibroField;
     private JTextField prezzoALibroField;
     private JCheckBox serieLibroCheckBox;
-    private JComboBox serieLibroComboBox;
+    private JComboBox<String> serieLibroComboBox;
     private JPanel filtriArticoliPanel;
     private JCheckBox disciplinaArticoloCheckBox;
-    private JComboBox disciplinaArticoloComboBox;
+    private JComboBox<String> disciplinaArticoloComboBox;
     private JCheckBox conferenzaArticoloCheckBox;
-    private JComboBox conferenzaArticoloComboBox;
+    private JComboBox<String> conferenzaArticoloComboBox;
     private JPanel filtriRivistePanel;
     private JCheckBox argomentoRivisteCheckBox;
-    private JComboBox argomentoRivisteComboBox;
+    private JComboBox<String> argomentoRivisteComboBox;
     private JCheckBox autoreArticoloCheckBox;
     private JCheckBox editoreArticoloCheckBox;
     private JCheckBox linguaArticoloCheckBox;
@@ -64,17 +64,17 @@ public class SearchView extends View {
     private JPanel dataPubblicazioneArticoloPanel;
     private JPanel formatoArticoloPanel;
     private JPanel rivistaArticoloPanel;
-    private JComboBox autoreArticoloComboBox;
-    private JComboBox editoreArticoloComboBox;
-    private JComboBox linguaArticoloComboBox;
+    private JComboBox<String> autoreArticoloComboBox;
+    private JComboBox<String> editoreArticoloComboBox;
+    private JComboBox<String> linguaArticoloComboBox;
     private JTextField dataPubblicazioneDaArticoloField;
     private JTextField dataPubblicazioneAArticoloField;
-    private JComboBox formatoArticoloComboBox;
-    private JComboBox rivistaArticoloComboBox;
+    private JComboBox<String> formatoArticoloComboBox;
+    private JComboBox<String> rivistaArticoloComboBox;
     private JCheckBox linguaRivisteCheckBox;
     private JCheckBox dataPubblicazioneRivisteCheckBox;
     private JCheckBox formatoRivisteCheckBox;
-    private JComboBox linguaRivisteComboBox;
+    private JComboBox<String> linguaRivisteComboBox;
     private JTextField dataPubblicazioneDaRivisteField;
     private JTextField dataPubblicazioneARivisteField;
     private JPanel argomentoRivistePanel;
@@ -82,13 +82,13 @@ public class SearchView extends View {
     private JCheckBox prezzoRivisteCheckBox;
     private JPanel formatoRivistePanel;
     private JPanel dataPubblicazioneRivistePanel;
-    private JComboBox formatoRivisteComboBox;
+    private JComboBox<String> formatoRivisteComboBox;
     private JPanel prezzoRivistePanel;
     private JTextField prezzoDaRivisteField;
     private JTextField prezzoARivisteField;
     private JPanel searchPanel;
     private JTextField searchField;
-    private JComboBox risorsaComboBox;
+    private JComboBox<String> risorsaComboBox;
     private JCheckBox filtriCheckBox;
     private JButton searchButton;
     private JPanel filtriSeriePanel;
@@ -97,18 +97,15 @@ public class SearchView extends View {
     private JCheckBox dataPubblicazioneSerieCheckBox;
     private JCheckBox formatoSerieCheckBox;
     private JPanel editoreSeriePanel;
-    private JComboBox editoreSerieComboBox;
+    private JComboBox<String> editoreSerieComboBox;
     private JPanel linguaSeriePanel;
-    private JComboBox linguaSerieComboBox;
+    private JComboBox<String> linguaSerieComboBox;
     private JPanel dataPubblicazioneSeriePanel;
     private JTextField dataPubblicazioneDaSerieField;
     private JTextField dataPubblicazioneASerieField;
     private JPanel formatoSeriePanel;
-    private JComboBox formatoSerieComboBox;
-
-
+    private JComboBox<String> formatoSerieComboBox;
     private ArrayList<String> filtriSelezionati;
-    private final JMenuItem aggiungiItem;
 
     public SearchView() {
         super(nome);
@@ -143,9 +140,6 @@ public class SearchView extends View {
         //ricaricaSearchField(String.valueOf(risorsaComboBox.getSelectedItem()));
 
 
-
-
-
         profiloItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,14 +153,14 @@ public class SearchView extends View {
                 LoginController.getInstance().logout();
             }
         });
-            richiediItem.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    RichiestaView dialog = new RichiestaView();
-                    dialog.pack();
-                    dialog.setVisible(true);
-                }
-            });
+        richiediItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RichiestaView dialog = new RichiestaView();
+                dialog.pack();
+                dialog.setVisible(true);
+            }
+        });
         aggiungiItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -191,10 +185,9 @@ public class SearchView extends View {
         //aggiunge un listener al searchButton che, quando viene premuto, apre la ResultView, implementare ricerca
         searchButton.addActionListener(e -> {
 
-            if(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase().isBlank()){
+            if (String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase().isBlank()) {
                 JOptionPane.showMessageDialog(null, "Selezionare una risorsa");
-            }
-            else {
+            } else {
                 Controller.getInstance().switchView(ResultView.getInstance(), null); //apre la ResultView
                 adjustSearchPosition();
                 ResultView.getInstance().updateTable(String.valueOf(risorsaComboBox.getSelectedItem()).toLowerCase(), buildQueryByFiltri());
@@ -331,14 +324,11 @@ public class SearchView extends View {
         });
     }
 
-    public void checkPermessiNotifiche() {
-        if (Utente.getInstance().getPermessi()<=0) {
-            aggiungiItem.setEnabled(false);
+    public static SearchView getInstance() {
+        if (instance == null) {
+            instance = new SearchView();
         }
-        if(Utente.getInstance().getPermessi()==1) {
-            aggiungiItem.setEnabled(true);
-        }
-        checkNotifiche(Utente.getInstance().getUsername());
+        return instance;
     }
 
     //private void ricaricaSearchField(String risorsa) {
@@ -353,8 +343,58 @@ public class SearchView extends View {
     //    }
     //}
 
-    private void setFieldsDisabled() { //NON è COMPLETO
+    public void checkPermessiNotifiche() {
+        if (Utente.getInstance().getPermessi() <= 0) {
+            aggiungiItem.setEnabled(false);
+        }
+        if (Utente.getInstance().getPermessi() == 1) {
+            aggiungiItem.setEnabled(true);
+        }
+        checkNotifiche(Utente.getInstance().getUsername());
+    }
+
+    private void setFieldsDisabled() {
         //libri
+        setLibriFieldsDisabled();
+        //Articoli
+        setArticoliFieldsDisabled();
+        //Riviste
+        setRivisteFieldsDisabled();
+        //Serie
+        setSerieFieldsDisabled();
+    }
+
+    private void setSerieFieldsDisabled() {
+        editoreSerieComboBox.setEnabled(false);
+        linguaSerieComboBox.setEnabled(false);
+        dataPubblicazioneDaSerieField.setEnabled(false);
+        dataPubblicazioneASerieField.setEnabled(false);
+        formatoSerieComboBox.setEnabled(false);
+    }
+
+    private void setRivisteFieldsDisabled() {
+        argomentoRivisteComboBox.setEnabled(false);
+        linguaRivisteComboBox.setEnabled(false);
+        dataPubblicazioneDaRivisteField.setEnabled(false);
+        dataPubblicazioneARivisteField.setEnabled(false);
+        formatoRivisteComboBox.setEnabled(false);
+        prezzoDaRivisteField.setEnabled(false);
+        prezzoARivisteField.setEnabled(false);
+    }
+
+    private void setArticoliFieldsDisabled() {
+        autoreArticoloComboBox.setEnabled(false);
+        editoreArticoloComboBox.setEnabled(false);
+        disciplinaArticoloComboBox.setEnabled(false);
+        linguaArticoloComboBox.setEnabled(false);
+        dataPubblicazioneDaArticoloField.setEnabled(false);
+        dataPubblicazioneAArticoloField.setEnabled(false);
+        formatoArticoloComboBox.setEnabled(false);
+        rivistaArticoloComboBox.setEnabled(false);
+        conferenzaArticoloComboBox.setEnabled(false);
+    }
+
+    private void setLibriFieldsDisabled() {
         autoreLibroComboBox.setEnabled(false);
         editoreLibroComboBox.setEnabled(false);
         genereLibroComboBox.setEnabled(false);
@@ -366,30 +406,6 @@ public class SearchView extends View {
         prezzoDaLibroField.setEnabled(false);
         prezzoALibroField.setEnabled(false);
         serieLibroComboBox.setEnabled(false);
-        //Articoli
-        autoreArticoloComboBox.setEnabled(false);
-        editoreArticoloComboBox.setEnabled(false);
-        disciplinaArticoloComboBox.setEnabled(false);
-        linguaArticoloComboBox.setEnabled(false);
-        dataPubblicazioneDaArticoloField.setEnabled(false);
-        dataPubblicazioneAArticoloField.setEnabled(false);
-        formatoArticoloComboBox.setEnabled(false);
-        rivistaArticoloComboBox.setEnabled(false);
-        conferenzaArticoloComboBox.setEnabled(false);
-        //Riviste
-        argomentoRivisteComboBox.setEnabled(false);
-        linguaRivisteComboBox.setEnabled(false);
-        dataPubblicazioneDaRivisteField.setEnabled(false);
-        dataPubblicazioneARivisteField.setEnabled(false);
-        formatoRivisteComboBox.setEnabled(false);
-        prezzoDaRivisteField.setEnabled(false);
-        prezzoARivisteField.setEnabled(false);
-        //Serie
-        editoreSerieComboBox.setEnabled(false);
-        linguaSerieComboBox.setEnabled(false);
-        dataPubblicazioneDaSerieField.setEnabled(false);
-        dataPubblicazioneASerieField.setEnabled(false);
-        formatoSerieComboBox.setEnabled(false);
     }
 
     private void setFiltriInvisibili() {
@@ -409,13 +425,6 @@ public class SearchView extends View {
             default -> {
             }
         }
-    }
-
-    public static SearchView getInstance() {
-        if (instance == null) {
-            instance = new SearchView();
-        }
-        return instance;
     }
 
     public void fillAllComboBoxes() {
@@ -440,7 +449,7 @@ public class SearchView extends View {
         fillComboBox(formatoSerieComboBox, FiltriController.getInstance().leggiFormatiSerie());
     }
 
-    public void fillComboBox(JComboBox comboBox, ArrayList<String> items) {
+    public void fillComboBox(JComboBox<String> comboBox, ArrayList<String> items) {
         comboBox.removeAllItems();
         for (String item : items) {
             comboBox.addItem(item);
@@ -496,7 +505,7 @@ public class SearchView extends View {
             } else if (!dataPubblicazioneDa.equals("") || dataPubblicazioneA.equals("")) {
                 finalQuery += "(datapubblicazione >= '" + dataPubblicazioneDa + "') AND";
             } else if (dataPubblicazioneDa.equals("") || !dataPubblicazioneA.equals("")) {
-            finalQuery += "(datapubblicazione <= '" + dataPubblicazioneA + "') AND";
+                finalQuery += "(datapubblicazione <= '" + dataPubblicazioneA + "') AND";
             }
         }
         if (finalQuery.endsWith("AND ")) {
@@ -662,7 +671,7 @@ public class SearchView extends View {
     }
 
     private void checkNotifiche(String username) {
-        if(UtenteController.getInstance().checkNotifiche(username)){
+        if (UtenteController.getInstance().checkNotifiche(username)) {
             JOptionPane.showMessageDialog(null, "Ci sono nuove notifiche", "Notifiche", JOptionPane.INFORMATION_MESSAGE);
         }
     }

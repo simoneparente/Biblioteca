@@ -7,9 +7,10 @@ public class Notifica {
     private String issn;
     private String negozi;
 
-    public Notifica(String username){
+    public Notifica(String username) {
         this.username = username;
     }
+
     public String getUsername() {
         return username;
     }
@@ -34,12 +35,11 @@ public class Notifica {
         this.issn = issn;
     }
 
+    public String getNegozi() {
+        return negozi;
+    }
 
     public void setNegozi(String negozi) {
         this.negozi = negozi;
-    }
-
-    public String getNegozi() {
-        return negozi;
     }
 }

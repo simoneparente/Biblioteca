@@ -1,4 +1,5 @@
 package org.Bibliotech.Controller;
+
 import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
 import org.Bibliotech.Model.Notifica;
 import org.Bibliotech.Model.Utente;
@@ -14,6 +15,13 @@ public class UtenteController {
         utente = new ImplementazioneUtente();
     }
 
+    public static UtenteController getInstance() {
+        if (instance == null) {
+            instance = new UtenteController();
+        }
+        return instance;
+    }
+
     public void registraUtente(String username, String password) {
         utente.addUser(username, password);
     }
@@ -24,17 +32,10 @@ public class UtenteController {
         Utente.getInstance().setPassword(password);
         return utente.checkLogin(username, password);
     }
+    //se non esiste ritorna false, se esiste ritorna true
 
     public boolean checkUserExistInDatabase(JTextField usernameField) {
         return utente.checkUserExistInDatabase(usernameField);
-    }
-    //se non esiste ritorna false, se esiste ritorna true
-
-    public static UtenteController getInstance() {
-        if (instance == null) {
-            instance = new UtenteController();
-        }
-        return instance;
     }
 
     public boolean cambiaPassword(String username, String vecchiaPassword, String nuovaPassword) {
@@ -59,6 +60,6 @@ public class UtenteController {
 
 
     public boolean inviaRichiestaSerie(String username, String issn) {
-         return utente.inviaRichiestaSerie(username, issn);
+        return utente.inviaRichiestaSerie(username, issn);
     }
 }

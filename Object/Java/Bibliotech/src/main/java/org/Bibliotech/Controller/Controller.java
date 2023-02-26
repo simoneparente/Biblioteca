@@ -1,10 +1,7 @@
 package org.Bibliotech.Controller;
 
-import org.Bibliotech.DAOimplementazione.*;
-import org.Bibliotech.View.*;
-
-import javax.swing.*;
-import java.awt.*;
+import org.Bibliotech.View.LoginView;
+import org.Bibliotech.View.View;
 
 public class Controller {
     private static Controller instance = null;
@@ -20,11 +17,11 @@ public class Controller {
         }
         return instance;
     }
-    public void switchView(View openView, View closeView){
-        if(openView == null){
+
+    public void switchView(View openView, View closeView) {
+        if (openView == null) {
             System.out.println("openView non può essere null");
-        }
-        else {
+        } else {
             if (closeView != null) {
                 closeView.hideView();
             }

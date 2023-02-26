@@ -1,17 +1,20 @@
 package org.Bibliotech.DAOimplementazione;
 
 import org.Bibliotech.ConnessioneDB;
-import org.Bibliotech.Model.Libri;
+import org.Bibliotech.DAO.LibroDao;
 import org.Bibliotech.Model.Libro;
-import org.Bibliotech.DAO.*;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
 
 public class ImplementazioneLibro implements LibroDao {
     private Connection connection;
+
     public ImplementazioneLibro() {
         try {
-            connection= ConnessioneDB.getInstance().connection;
+            connection = ConnessioneDB.getInstance().connection;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -19,8 +22,8 @@ public class ImplementazioneLibro implements LibroDao {
 
     public boolean addLibro(Libro libro) {
         String addLibroQuery = "INSERT INTO b.ins_Libri (titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, " +
-                               "formato, prezzo, nome_serie_di_appartenenza, issn_serie_di_appartenenza) " +
-                               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "formato, prezzo, nome_serie_di_appartenenza, issn_serie_di_appartenenza) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(addLibroQuery);
             preparedStatement.setString(1, libro.getTitolo());
@@ -31,18 +34,17 @@ public class ImplementazioneLibro implements LibroDao {
             preparedStatement.setString(6, libro.getGenere());
             preparedStatement.setString(7, libro.getLingua());
             preparedStatement.setString(8, libro.getFormato());
-            if(libro.getPrezzo().equals("")) {
+            if (libro.getPrezzo().equals("")) {
                 preparedStatement.setNull(9, Types.DOUBLE);
-            } else{
+            } else {
                 preparedStatement.setDouble(9, Double.parseDouble(libro.getPrezzo()));
             }
 
             //se il libro non appartiene a una serie (il checkobox è disabilitato) allora il nome e l'issn della serie sono null
-            if(libro.getSerieDiAppartenenza() == null){
+            if (libro.getSerieDiAppartenenza() == null) {
                 preparedStatement.setNull(10, Types.VARCHAR);
                 preparedStatement.setNull(11, Types.VARCHAR);
-            }
-            else{
+            } else {
                 preparedStatement.setString(10, libro.getSerieDiAppartenenza());
                 preparedStatement.setString(11, libro.getISSNSerieDiAppartenenza());
             }

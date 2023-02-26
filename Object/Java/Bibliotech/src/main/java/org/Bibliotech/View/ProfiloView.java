@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class ProfiloView extends View {
-    private static ProfiloView instance = null;
     private static final String nome = "ProfiloView";
+    private static final Image reloadImage = defaultToolkit.getImage("src/main/Immagini/reload.png");
+    private static final ImageIcon reloadIconImageIcon = new ImageIcon(reloadImage);
+    private static ProfiloView instance = null;
     private JPanel rootPanel;
     private JLabel usernameLabel;
     private JLabel permessiLabel;
@@ -33,8 +35,6 @@ public class ProfiloView extends View {
     private JTable notificheTable;
     private JScrollPane notificheScrollPanel;
     private JPanel notifichePanel;
-    private static final Image reloadImage= defaultToolkit.getImage("src/main/Immagini/reload.png");
-    private static final ImageIcon reloadIconImageIcon = new ImageIcon(reloadImage);
 
     private ProfiloView() {
         super(nome);
@@ -44,7 +44,7 @@ public class ProfiloView extends View {
             @Override
             public void windowClosing(WindowEvent we) {
                 Controller.getInstance().switchView(SearchView.getInstance(), ProfiloView.getInstance());
-                }
+            }
         };
         super.addWindowListener(closeWindow);
         setVisible(true);
@@ -82,8 +82,8 @@ public class ProfiloView extends View {
                 String vecchiaPassword = String.valueOf((vecchiaPasswordField.getPassword()));
                 String nuovaPassword = String.valueOf((nuovaPasswordField.getPassword()));
                 String confermaPassword = String.valueOf((confermaPasswordField.getPassword()));
-                if(checkPasswordFields(vecchiaPassword, nuovaPassword, confermaPassword)){
-                    if(UtenteController.getInstance().cambiaPassword(Utente.getInstance().getUsername(), Utente.getInstance().getPassword(), nuovaPassword)){
+                if (checkPasswordFields(vecchiaPassword, nuovaPassword, confermaPassword)) {
+                    if (UtenteController.getInstance().cambiaPassword(Utente.getInstance().getUsername(), Utente.getInstance().getPassword(), nuovaPassword)) {
                         JOptionPane.showMessageDialog(null, "Password cambiata con successo", "Successo", JOptionPane.INFORMATION_MESSAGE);
                         Utente.getInstance().setPassword(nuovaPassword);
                         passwordPanel.setVisible(false);
@@ -103,9 +103,16 @@ public class ProfiloView extends View {
         });
     }
 
-    void refreshTable() {;
+    public static ProfiloView getInstance() {
+        if (instance == null) {
+            instance = new ProfiloView();
+        }
+        return instance;
+    }
+
+    void refreshTable() {
         emptyTable();
-        String query = "SELECT nome, Disponibile_in FROM b.notifiche n WHERE n.username='"+ Utente.getInstance().getUsername() +"'";
+        String query = "SELECT nome, Disponibile_in FROM b.notifiche n WHERE n.username='" + Utente.getInstance().getUsername() + "'";
         FiltriController fc = FiltriController.getInstance();
         DefaultTableModel model = (DefaultTableModel) notificheTable.getModel();
         ArrayList<String> columns = fc.getColumns("resultview_notifiche");
@@ -127,7 +134,6 @@ public class ProfiloView extends View {
         model.setColumnCount(0);
     }
 
-
     private boolean checkPasswordFields(String vecchiaPassword, String nuovaPassword, String confermaPassword) {
         if (vecchiaPassword.isBlank() || nuovaPassword.isBlank() || confermaPassword.isBlank()) {
             JOptionPane.showMessageDialog(null, "Inserisci tutte le password", "Errore", JOptionPane.ERROR_MESSAGE);
@@ -138,19 +144,10 @@ public class ProfiloView extends View {
         } else if (!nuovaPassword.equals(confermaPassword)) {
             JOptionPane.showMessageDialog(null, "Le password non coincidono", "Errore", JOptionPane.ERROR_MESSAGE);
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
-
-    public static ProfiloView getInstance() {
-        if (instance == null) {
-            instance = new ProfiloView();
-        }
-        return instance;
-    }
-
 
     public void refreshPage() {
         usernameLabel.setText("Username: " + Utente.getInstance().getUsername());

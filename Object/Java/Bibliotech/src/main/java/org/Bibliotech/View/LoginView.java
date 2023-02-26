@@ -4,7 +4,10 @@ import org.Bibliotech.Controller.LoginController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LoginView extends View {
     static final String nome = "Login";
@@ -77,15 +80,6 @@ public class LoginView extends View {
         });
     }
 
-    public String getUsername(){
-        return usernameField.getText();
-    }
-
-    public String getPassword(){
-        return String.valueOf(passwordField.getPassword());
-    }
-
-
     public static LoginView getInstance() {
         if (instance == null) {
             instance = new LoginView();
@@ -97,6 +91,14 @@ public class LoginView extends View {
         instance.usernameField.setText("");
         instance.passwordField.setText("");
         instance.mostraPasswordCheckBox.setSelected(false);
+    }
+
+    public String getUsername() {
+        return usernameField.getText();
+    }
+
+    public String getPassword() {
+        return String.valueOf(passwordField.getPassword());
     }
 
     public void refreshFields() {

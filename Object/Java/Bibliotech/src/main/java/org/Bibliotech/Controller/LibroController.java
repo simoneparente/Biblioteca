@@ -2,12 +2,10 @@ package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneLibro;
 import org.Bibliotech.Model.Autore;
-import org.Bibliotech.Model.Libri;
 import org.Bibliotech.Model.Libro;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class LibroController {

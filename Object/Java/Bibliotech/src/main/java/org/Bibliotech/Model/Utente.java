@@ -1,18 +1,22 @@
 package org.Bibliotech.Model;
 
-import org.Bibliotech.Controller.UtenteController;
-import org.Bibliotech.View.LoginView;
-
 public class Utente {
     private static Utente instance = null;
     private String username;
     private String password;
-    private int  permessi;
+    private int permessi;
 
-    Utente(){
+    Utente() {
         username = null;
         password = null;
         permessi = 0;
+    }
+
+    public static Utente getInstance() {
+        if (instance == null) {
+            instance = new Utente();
+        }
+        return instance;
     }
 
     public String getUsername() {
@@ -37,12 +41,5 @@ public class Utente {
 
     public void setPermessi(int permessi) {
         this.permessi = permessi;
-    }
-
-    public static Utente getInstance(){
-        if(instance == null){
-            instance = new Utente();
-        }
-        return instance;
     }
 }

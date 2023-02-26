@@ -12,8 +12,8 @@ public class RichiestaView extends JDialog {
     private JPanel contentPane;
     private JButton inviaButton;
     private JButton cancellaButton;
-    private JComboBox richiediSerieComboBox;
-    private JComboBox richiediISSNComboBox;
+    private JComboBox<String> richiediSerieComboBox;
+    private JComboBox<String> richiediISSNComboBox;
 
     public RichiestaView() {
         setTitle("Richiedi serie");
@@ -52,9 +52,9 @@ public class RichiestaView extends JDialog {
         richiediSerieComboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                if(e.getStateChange() == ItemEvent.SELECTED){
+                if (e.getStateChange() == ItemEvent.SELECTED) {
                     richiediISSNComboBox.removeAllItems();
-                    ArrayList<String> items= FiltriController.getInstance().getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
+                    ArrayList<String> items = FiltriController.getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
                     for (String item : items) {
                         richiediISSNComboBox.addItem(item);
                     }
@@ -65,31 +65,30 @@ public class RichiestaView extends JDialog {
 
     private void fillISSNComboBox() {
         richiediISSNComboBox.removeAllItems();
-        ArrayList<String> items= FiltriController.getInstance().getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
+        ArrayList<String> items = FiltriController.getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
         for (String item : items) {
             richiediISSNComboBox.addItem(item);
         }
     }
 
     private void fillTitoliComboBox() {
-        ArrayList<String> items= FiltriController.getInstance().leggiSerieLibri();
+        ArrayList<String> items = FiltriController.getInstance().leggiSerieLibri();
         for (String item : items) {
             richiediSerieComboBox.addItem(item);
         }
     }
 
-    private void fillComboBoxes(){
+    private void fillComboBoxes() {
         fillTitoliComboBox();
         fillISSNComboBox();
     }
 
 
     private void onOK() {
-        if(UtenteController.getInstance().
-                inviaRichiestaSerie(Utente.getInstance().getUsername(), String.valueOf(richiediISSNComboBox.getSelectedItem()))){
+        if (UtenteController.getInstance().
+                inviaRichiestaSerie(Utente.getInstance().getUsername(), String.valueOf(richiediISSNComboBox.getSelectedItem()))) {
             JOptionPane.showMessageDialog(null, "Richiesta inviata con successo");
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Richiesta non inviata");
         }
         dispose();
@@ -99,11 +98,4 @@ public class RichiestaView extends JDialog {
         // add your code here if necessary
         dispose();
     }
-
-    //public static void main(String[] args) {
-    //    RichiestaView dialog = new RichiestaView();
-    //    dialog.pack();
-    //    dialog.setVisible(true);
-    //    System.exit(0);
-    //}
 }

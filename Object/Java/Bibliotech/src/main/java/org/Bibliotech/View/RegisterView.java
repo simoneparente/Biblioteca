@@ -9,7 +9,7 @@ import java.awt.event.*;
 
 
 public class RegisterView extends View {
-private static final String nome = "RegisterView";
+    private static final String nome = "RegisterView";
     private static RegisterView instance;
     private JPanel rootPanel;
     private JPanel logoPanel;
@@ -25,6 +25,8 @@ private static final String nome = "RegisterView";
     private JPanel fieldsPanel;
     private JButton registratiButton;
     private JButton annullaButton;
+    private JPanel buttonsPanel;
+
     RegisterView() {
         super(nome); //nome della view passato al costruttore
         logoPanel.setSize(360, 250);
@@ -33,13 +35,12 @@ private static final String nome = "RegisterView";
         registratiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(RegisterController.getInstance().register(usernameField, passwordField, confermaPasswordField)){
+                if (RegisterController.getInstance().register(usernameField, passwordField, confermaPasswordField)) {
                     JOptionPane.showMessageDialog(null, "Registrazione avvenuta con successo");
                     Controller.getInstance().switchView(LoginView.getInstance(), RegisterView.getInstance());
                     LoginView.getInstance().refreshFields();
                     refreshFields();
-                }
-                else {
+                } else {
                     LoginView.getInstance().hideView();
                     JOptionPane.showMessageDialog(null, "Errore durante la registrazione");
                 }
@@ -75,16 +76,16 @@ private static final String nome = "RegisterView";
         });
     }
 
-    private void refreshFields() {
-        usernameField.setText("");
-        passwordField.setText("");
-        confermaPasswordField.setText("");
-    }
-
     public static View getInstance() {
         if (instance == null) {
             instance = new RegisterView();
         }
         return instance;
+    }
+
+    private void refreshFields() {
+        usernameField.setText("");
+        passwordField.setText("");
+        confermaPasswordField.setText("");
     }
 }
