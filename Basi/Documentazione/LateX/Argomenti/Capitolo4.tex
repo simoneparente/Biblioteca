@@ -285,6 +285,19 @@ $$ language plpgsql;
 \end{lstlisting}
 
 \section{Trigger Gestione Articoli}
+Per gestire l'inserimento degli articoli, vengono utilizzati due trigger,
+\texttt{trig\_ArticoliRivista} e \texttt{trig\_ArticoliConferenze}, che agiscono sulle view
+\texttt{ins\_ArticoliRivista} e \texttt{ins\_ArticoliConferenza}. Questi trigger verificano che la rivista 
+o la conferenza non siano già presenti nel database e, in caso contrario, provvedono all'inserimento. Successivamente, 
+l'articolo viene inserito e la tabella di relazione tra articoli e riviste o conferenze viene aggiornata. 
+Inoltre, viene richiamata la procedura \texttt{insAutori}, che verifica se gli autori sono già presenti 
+nel database e, in caso contrario, procede con il loro inserimento, seguendo l'aggiornamento della tabella 
+di relazione tra articoli ed autori.
+Per rimuovere gli articoli dal database, viene utilizzato il trigger \texttt{trig\_RimozioneArticoli}, che 
+agisce sulla tabella \texttt{Articoli} in \texttt{BEFORE DELETE}. Questo trigger verifica che gli autori 
+dell'articolo non abbiano scritto altro e, in caso affermativo, procede con la loro rimozione. Controlla 
+inoltre che la rivista in cui potrebbe essere stato presentato l'articolo non abbia altri articoli e, in 
+questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferenze.
 \subsection{Inserimento Articolo e Rivista}
 \begin{lstlisting}
     --View da dove viene inserito un articolo scientifico e la rivista dove è stato presentato
@@ -492,6 +505,20 @@ EXECUTE PROCEDURE b.ftrig_rimozineArticoli();
 \end{lstlisting}
 
 \section{Trigger Gestione Libri}
+Il trigger \texttt{trig\_Libri} agisce sulla view \texttt{ins\_Libri} per l'inserimento di un libro.
+Questo trigger controlla se il libro è già presente nel database, e se fa parte di una serie. Se la 
+serie non è presente nel database, la inserisce. Inoltre, riempie la tabella di relazione tra libri e serie, 
+e richiama la procedura \texttt{insAutori}, che verifica che gli autori siano già presenti nel database; in 
+caso negativo, li inserisce e riempie la tabella di relazione tra libri ed autori.
+Per l'inserimento di una possibile presentazione di un libro si usa il trigger \texttt{trig\_presentazione}, 
+che agisce sulla view \texttt{ins\_presentazione}. Tale trigger controlla che il libro sia presente nel DB, 
+e se non abbia già abbia una presentazione. In tal caso, aggiunge la presentazione nella tabella \texttt{Evento}, 
+riempiendo poi la tabella \texttt{Presentazione} (la tabella associativa tra \texttt{Libro} ed \texttt{Evento}).
+Per la rimozione dei libri dal DB utilizziamo il trigger \texttt{trig\_rimozionelibri}, che agisce sulla tabella 
+\texttt{Libri} in \texttt{BEFORE DELETE}. Questo trigger controlla che gli autori di quel libro non abbiano scritto 
+altro, ed in tal caso rimuove tali autori. Controlla inoltre se la serie in cui è possibile che il libro sia presente 
+non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale presentazione di quel libro.
+
 \subsection{Inserimento Libro}
 \begin{lstlisting}
     --View da dove viene inserito un libro
@@ -732,4 +759,16 @@ EXECUTE PROCEDURE b.ftrig_rimozineLibri();
         ON b.stock
         FOR EACH ROW
     EXECUTE FUNCTION b.ftrig_RimozioneDaStock();
+\end{lstlisting}
+
+\section{Gestione Notifiche}
+L'utente può richiedere la disponibilità di una serie, riempiendo la tabella \textit{richieste}. Qualora 
+l'utente debba essere notificato, si utilizza la view \textit{notifiche}.
+
+\subsection{View Notifiche}
+\begin{lstlisting}
+    CREATE VIEW b.notifiche AS
+    SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
+    FROM b.serie NATURAL JOIN b.richiesta
+    WHERE b.getDisponibilitaSerie(id_serie) IS true;
 \end{lstlisting}
