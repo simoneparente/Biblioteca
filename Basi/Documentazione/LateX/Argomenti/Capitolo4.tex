@@ -2,7 +2,7 @@
 
 In questo ultimo capitolo esamineremo i meccanismi necessari per la traduzione di uno schema logico 
 in uno schema fisico. Andremo a definire le tabelle con i relativi attributi e tipi dei dati, le
-funzioni, le procedure, i trigger e i vincoli. Con questi elementi, sarà possibile creare un database
+funzioni, le procedure, i trigger e i vincoli. Con questi elementi, sar\`a possibile creare un database
 relazionale con una struttura specifica che soddisfi i requisiti identificati nel Capitolo \ref{Capitolo1}.
 
 \section{Creazione Tabelle}
@@ -207,7 +207,7 @@ CREATE TABLE b.ArticoliInRiviste
 \section{Creazione Funzioni}
 
 \subsection{Tabella Jolly}
-La tabella Jolly è una tabella che contiene un solo attributo di tipo text, che permette di
+La tabella Jolly \`e una tabella che contiene un solo attributo di tipo text, che permette di
 inserire una stringa di lunghezza arbitraria negli inserimenti tramite view, se necessario.
 \begin{lstlisting}
     CREATE TABLE b.Jolly
@@ -230,7 +230,7 @@ DECLARE
             autoreNome = split_part(autori[i], '_', 1);
             autoreCognome = split_part(autori[i], '_', 2);
             IF NOT EXISTS(SELECT * FROM b.autore WHERE nome = autoreNome AND cognome = autoreCognome) THEN
-                RAISE NOTICE 'Autore non presente, verrà inserito';
+                RAISE NOTICE 'Autore non presente, verr\`a inserito';
                 INSERT INTO b.autore (nome, cognome) VALUES (autoreNome, autoreCognome);
             END IF;
             idAutore = (SELECT id_autore FROM b.autore WHERE nome = autoreNome AND cognome = autoreCognome);
@@ -244,7 +244,7 @@ END
 $$ LANGUAGE plpgsql;
 \end{lstlisting}
 
-\subsection{Funzione Disponibilità Libro}
+\subsection{Funzione Disponibilit\`a Libro}
 \begin{lstlisting}
 CREATE OR REPLACE FUNCTION b.getDisponibilitaLibro(inputLibro b.libri.id_libro%TYPE) RETURNS boolean AS
 $$
@@ -259,7 +259,7 @@ END;
 $$ language plpgsql;
 \end{lstlisting}
 
-\subsection{Funzione Disponibilità Serie}
+\subsection{Funzione Disponibilit\`a Serie}
 \begin{lstlisting}
 CREATE OR REPLACE FUNCTION b.getDisponibilitaSerie(inputSerie b.Serie.id_serie%TYPE) RETURNS boolean AS
 $$
@@ -288,9 +288,9 @@ $$ language plpgsql;
 Per gestire l'inserimento degli articoli, vengono utilizzati due trigger,
 \texttt{trig\_ArticoliRivista} e \texttt{trig\_ArticoliConferenze}, che agiscono sulle view
 \texttt{ins\_ArticoliRivista} e \texttt{ins\_ArticoliConferenza}. Questi trigger verificano che la rivista 
-o la conferenza non siano già presenti nel database e, in caso contrario, provvedono all'inserimento. Successivamente, 
+o la conferenza non siano gi\`a presenti nel database e, in caso contrario, provvedono all'inserimento. Successivamente, 
 l'articolo viene inserito e la tabella di relazione tra articoli e riviste o conferenze viene aggiornata. 
-Inoltre, viene richiamata la procedura \texttt{insAutori}, che verifica se gli autori sono già presenti 
+Inoltre, viene richiamata la procedura \texttt{insAutori}, che verifica se gli autori sono gi\`a presenti 
 nel database e, in caso contrario, procede con il loro inserimento, seguendo l'aggiornamento della tabella 
 di relazione tra articoli ed autori.
 Per rimuovere gli articoli dal database, viene utilizzato il trigger \texttt{trig\_RimozioneArticoli}, che 
@@ -300,7 +300,7 @@ inoltre che la rivista in cui potrebbe essere stato presentato l'articolo non ab
 questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferenze.
 \subsection{Inserimento Articolo e Rivista}
 \begin{lstlisting}
-    --View da dove viene inserito un articolo scientifico e la rivista dove è stato presentato
+    --View da dove viene inserito un articolo scientifico e la rivista dove \`e stato presentato
     CREATE OR REPLACE VIEW b.ins_ArticoliRivista AS
     SELECT a.doi,
            a.titolo,
@@ -326,13 +326,13 @@ questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferen
         idRivista  b.riviste.id_rivista%TYPE;
         idArticolo INTEGER;
     BEGIN
-        --Controllo che l'articolo non sia già presente nel DataBase
+        --Controllo che l'articolo non sia gi\`a presente nel DataBase
         IF EXISTS(SELECT * FROM b.articoli WHERE doi = NEW.doi) THEN
-            RAISE NOTICE 'Articolo già presente, non verrà inserito';
+            RAISE NOTICE 'Articolo gi\`a presente, non verr\`a inserito';
         ELSE
-            --Controllo che la rivista non sia già presente nel DataBase in tal caso la inserisco
+            --Controllo che la rivista non sia gi\`a presente nel DataBase in tal caso la inserisco
             IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issnRivista) THEN
-                RAISE NOTICE 'Rivista non presente, verrà inserita';
+                RAISE NOTICE 'Rivista non presente, verr\`a inserita';
                 INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
                 VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.datapubblicazione, NEW.responsabileRivista, NEW.prezzoRivista);
                 --Controllo che la rivista presente nel database abbia la stessa data di pubblicazione
@@ -340,7 +340,7 @@ questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferen
                               FROM b.riviste
                               WHERE issn = NEW.issnRivista
                                 AND datapubblicazione = NEW.datapubblicazione) THEN
-                RAISE NOTICE 'Rivista già presente ma con data di pubblicazione diversa, l''articolo non verrà inserito';
+                RAISE NOTICE 'Rivista gi\`a presente ma con data di pubblicazione diversa, l''articolo non verr\`a inserito';
                 RETURN NEW;
             END IF;
             --Inserisco l'articolo
@@ -361,7 +361,7 @@ questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferen
     END;
     $$ LANGUAGE plpgsql;
     
-    --Trigger per l'inserimento di un articolo scientifico e la rivista dove è stato presentato
+    --Trigger per l'inserimento di un articolo scientifico e la rivista dove \`e stato presentato
     CREATE OR REPLACE TRIGGER trig_ArticoliRivista
         INSTEAD OF INSERT
         ON b.ins_ArticoliRivista
@@ -371,7 +371,7 @@ questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferen
 
 \subsection{Inserimento Articolo e Conferenza}
 \begin{lstlisting}
---View da dove viene inserito un articolo scientifico e la conferenza dove è stato presentato
+--View da dove viene inserito un articolo scientifico e la conferenza dove \`e stato presentato
 CREATE OR REPLACE VIEW b.ins_articoliConferenze AS
 SELECT a.doi,
        a.titolo,
@@ -398,20 +398,20 @@ DECLARE
     idArticolo   INTEGER;
     idConferenza b.evento.id_evento%TYPE;
 BEGIN
-    --Controllo che l'articolo non sia già presente nel DataBase
+    --Controllo che l'articolo non sia gi\`a presente nel DataBase
     IF EXISTS(SELECT * FROM b.articoli WHERE doi = NEW.doi) THEN
-        RAISE NOTICE 'Articolo già presente, non verrà inserito';
-        --Controllo se la data di pubblicazione dell'articolo è compresa tra la data di inizio e la data di fine della conferenza
+        RAISE NOTICE 'Articolo gi\`a presente, non verr\`a inserito';
+        --Controllo se la data di pubblicazione dell'articolo \`e compresa tra la data di inizio e la data di fine della conferenza
     ELSEIF (NEW.datapubblicazione < NEW.datainizioConferenza OR NEW.datapubblicazione > NEW.datafineConferenza) THEN
-        RAISE NOTICE 'La data di pubblicazione dell''articolo non è compresa tra la data di inizio e la data di fine della conferenza, l''articolo non verrà inserito';
+        RAISE NOTICE 'La data di pubblicazione dell''articolo non \`e compresa tra la data di inizio e la data di fine della conferenza, l''articolo non verr\`a inserito';
     ELSE
-        --Controllo che la conferenza non sia già presente nel DataBase in tal caso la inserisco
+        --Controllo che la conferenza non sia gi\`a presente nel DataBase in tal caso la inserisco
         IF NOT EXISTS(SELECT *
                       FROM b.evento
                       WHERE nome = NEW.nomeConferenza
                         AND indirizzo = NEW.indirizzoConferenza
                         AND datainizio = NEW.dataInizioConferenza) THEN
-            RAISE NOTICE 'Conferenza non presente, verrà inserita';
+            RAISE NOTICE 'Conferenza non presente, verr\`a inserita';
             INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine, responsabile)
             VALUES (NEW.nomeConferenza, NEW.indirizzoConferenza, NEW.strutturaospitanteConferenza,
                     NEW.datainizioConferenza, NEW.datafineConferenza, NEW.responsabileConferenza);
@@ -436,7 +436,7 @@ BEGIN
 END ;
 $$ LANGUAGE plpgsql;
 
---Trigger per l'inserimento di un articolo scientifico e la conferenza dove è stato presentato
+--Trigger per l'inserimento di un articolo scientifico e la conferenza dove \`e stato presentato
 CREATE OR REPLACE TRIGGER trig_ArticoliConferenze
     INSTEAD OF INSERT
     ON b.ins_ArticoliConferenze
@@ -506,17 +506,17 @@ EXECUTE PROCEDURE b.ftrig_rimozineArticoli();
 
 \section{Trigger Gestione Libri}
 Il trigger \texttt{trig\_Libri} agisce sulla view \texttt{ins\_Libri} per l'inserimento di un libro.
-Questo trigger controlla se il libro è già presente nel database, e se fa parte di una serie. Se la 
-serie non è presente nel database, la inserisce. Inoltre, riempie la tabella di relazione tra libri e serie, 
-e richiama la procedura \texttt{insAutori}, che verifica che gli autori siano già presenti nel database; in 
+Questo trigger controlla se il libro \`e gi\`a presente nel database, e se fa parte di una serie. Se la 
+serie non \`e presente nel database, la inserisce. Inoltre, riempie la tabella di relazione tra libri e serie, 
+e richiama la procedura \texttt{insAutori}, che verifica che gli autori siano gi\`a presenti nel database; in 
 caso negativo, li inserisce e riempie la tabella di relazione tra libri ed autori.
 Per l'inserimento di una possibile presentazione di un libro si usa il trigger \texttt{trig\_presentazione}, 
 che agisce sulla view \texttt{ins\_presentazione}. Tale trigger controlla che il libro sia presente nel DB, 
-e se non abbia già abbia una presentazione. In tal caso, aggiunge la presentazione nella tabella \texttt{Evento}, 
+e se non abbia gi\`a abbia una presentazione. In tal caso, aggiunge la presentazione nella tabella \texttt{Evento}, 
 riempiendo poi la tabella \texttt{Presentazione} (la tabella associativa tra \texttt{Libro} ed \texttt{Evento}).
 Per la rimozione dei libri dal DB utilizziamo il trigger \texttt{trig\_rimozionelibri}, che agisce sulla tabella 
 \texttt{Libri} in \texttt{BEFORE DELETE}. Questo trigger controlla che gli autori di quel libro non abbiano scritto 
-altro, ed in tal caso rimuove tali autori. Controlla inoltre se la serie in cui è possibile che il libro sia presente 
+altro, ed in tal caso rimuove tali autori. Controlla inoltre se la serie in cui \`e possibile che il libro sia presente 
 non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale presentazione di quel libro.
 
 \subsection{Inserimento Libro}
@@ -545,22 +545,22 @@ non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale pres
         idLibro b.libri.ID_Libro%TYPE;
         idSerie b.serie.ID_Serie%TYPE;
     BEGIN
-        --Controllo che il libro non sia già presente nel DataBase
+        --Controllo che il libro non sia gi\`a presente nel DataBase
         IF EXISTS(SELECT * FROM b.libri WHERE isbn = NEW.isbn) THEN
-            RAISE NOTICE 'Libro già presente';
+            RAISE NOTICE 'Libro gi\`a presente';
         ELSE
-            --Controllo che la serie di appartenenza del libro non sia già presente nel DataBase in tal caso la inserisco
+            --Controllo che la serie di appartenenza del libro non sia gi\`a presente nel DataBase in tal caso la inserisco
                 IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issn_serie_di_appartenenza) THEN
                 RAISE NOTICE 'Serie non presente';
                 IF NEW.nome_serie_di_appartenenza IS NOT NULL THEN
                     INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
                 END IF;
-                --Controllo che il formato del libro sia compatibile con la serie già presente nel DataBase
+                --Controllo che il formato del libro sia compatibile con la serie gi\`a presente nel DataBase
             ELSEIF NOT EXISTS(SELECT *
                               FROM (b.serie s NATURAL JOIN libriinserie ls)
                                        JOIN libri l ON ls.id_libro = l.id_libro
                               WHERE l.formato = NEW.formato) THEN
-                RAISE NOTICE 'Il formato del libro non è compatibile con la serie, libro non inserito';
+                RAISE NOTICE 'Il formato del libro non \`e compatibile con la serie, libro non inserito';
                 RETURN NEW;
             END IF;
             --Inserisco il libro
@@ -615,10 +615,10 @@ non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale pres
         IF NOT EXISTS(SELECT * FROM b.libri WHERE isbn = NEW.ISBN) THEN --Controllo se il libri esiste
             RAISE NOTICE 'Il libri non esiste!! Presentazione non inserita';
         ELSEIF EXISTS(SELECT *
-                      FROM (b.evento as e NATURAL JOIN b.presentazione as p) --Controllo se esiste già una presentazione per quel libri
+                      FROM (b.evento as e NATURAL JOIN b.presentazione as p) --Controllo se esiste gi\`a una presentazione per quel libri
                                JOIN b.libri as l ON p.id_libro = l.id_libro
                       WHERE ISBN = NEW.ISBN) THEN
-            RAISE NOTICE 'Esista già una presentazione per questo libro!! Presentazione non inserita';
+            RAISE NOTICE 'Esista gi\`a una presentazione per questo libro!! Presentazione non inserita';
         ELSE --Inserisco la presentazione
             INSERT INTO b.evento (nome, indirizzo, strutturaospitante, datainizio, datafine,
                                   responsabile) --Inserisco l'¬evento
@@ -715,17 +715,17 @@ EXECUTE PROCEDURE b.ftrig_rimozineLibri();
                                          FROM b.libri
                                          WHERE isbn = NEW.isbn);
     BEGIN
-        --Controllo se il libro è presente nel database
+        --Controllo se il libro \`e presente nel database
         IF NOT EXISTS(SELECT * FROM b.libri WHERE isbn = NEW.isbn) THEN
             RAISE NOTICE 'Libro non presente, inserimento non possibile';
-            --Controllo se il negozio è presente nel database
+            --Controllo se il negozio \`e presente nel database
         ELSEIF NOT EXISTS(SELECT * FROM b.negozio WHERE id_negozio = NEW.id_negozio) THEN
             RAISE NOTICE 'Negozio non presente, inserimento non possibile';
         ELSE
-            --Controllo se il libro non è presente nello stock del negozio ed in tal caso lo inserisco
+            --Controllo se il libro non \`e presente nello stock del negozio ed in tal caso lo inserisco
             IF NOT EXISTS(SELECT * FROM b.stock WHERE id_negozio = NEW.id_negozio AND id_libro = idLibro) THEN
                 INSERT INTO b.stock (id_negozio, id_libro, quantita) VALUES (NEW.id_negozio, idLibro, NEW.quantita);
-                --Altrimenti aggiorno la quantità del libro nello stock del negozio
+                --Altrimenti aggiorno la quantit\`a del libro nello stock del negozio
             ELSE
                 UPDATE b.stock
                 SET quantita = quantita + NEW.quantita
@@ -746,7 +746,7 @@ EXECUTE PROCEDURE b.ftrig_rimozineLibri();
     CREATE OR REPLACE FUNCTION b.ftrig_RimozioneDaStock() RETURNS trigger AS
     $$
     BEGIN
-        --Controllo se la quantit\`a è 0 e in tal caso rimuovo il libro dallo stock
+        --Controllo se la quantit\`a \`e 0 e in tal caso rimuovo il libro dallo stock
         if (NEW.quantita = 0) then
             DELETE FROM b.stock WHERE id_libro = OLD.id_libro;
         end if;
@@ -762,7 +762,7 @@ EXECUTE PROCEDURE b.ftrig_rimozineLibri();
 \end{lstlisting}
 
 \section{Gestione Notifiche}
-L'utente può richiedere la disponibilità di una serie, riempiendo la tabella \textit{richieste}. Qualora 
+L'utente pu\`o richiedere la disponibilit\`a di una serie, riempiendo la tabella \textit{richieste}. Qualora 
 l'utente debba essere notificato, si utilizza la view \textit{notifiche}.
 
 \subsection{View Notifiche}
