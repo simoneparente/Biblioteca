@@ -47,4 +47,4 @@
 \contentsline {subsection}{\numberline {4.4.3}Rimozione Libro}{32}{subsection.4.4.3}%
 \contentsline {section}{\numberline {4.5}Trigger Gestione Stock}{33}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Gestione Notifiche}{34}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}View Notifiche}{34}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.1}View Notifiche}{35}{subsection.4.6.1}%

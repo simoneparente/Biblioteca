@@ -698,6 +698,11 @@ EXECUTE PROCEDURE b.ftrig_rimozineLibri();
 \end{lstlisting}
 
 \section{Trigger Gestione Stock}
+Utilizziamo il trigger \textit{trig\_stock} che agisce sulla view \textit{ins\_stock} per gestire lo stock. 
+Il trigger verifica che il libro sia presente nel database, poi controlla se il libro sia gi\`a in stock in 
+quel negozio ed, in tal caso, aggiorna la quantit\`a dello stock. Per rimuovere un libro dallo stock c'\`e 
+il trigger \textit{trig\_RimozioneDaStock} che aggiorna la quantit\`a del libro in stock, e se questa diventa 
+zero elimina la tupla riferita a quel libro dalla tabella stock.
 \begin{lstlisting}
     --View da dove inserisco i dati per aggiungere un libro allo stock
     CREATE VIEW b.ins_stock AS
