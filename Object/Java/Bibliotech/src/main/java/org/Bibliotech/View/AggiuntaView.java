@@ -4,6 +4,7 @@ import org.Bibliotech.Controller.ArticoloController;
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.FiltriController;
 import org.Bibliotech.Controller.LibroController;
+import org.Bibliotech.DAOimplementazione.ImplementazioneArticolo;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -64,6 +65,7 @@ public class AggiuntaView extends View {
     private JPanel rivistaConferenzaPanel;
     private JComboBox<String> rivistaISSNComboBox;
     private JTextField linguaArticoloField;
+    private JComboBox<String> conferenzaDataInizioComboBox;
 
     public AggiuntaView() {
         super(nome);
@@ -76,6 +78,7 @@ public class AggiuntaView extends View {
         rivistaComboBox.setVisible(false); //setta invisibili i combobox delle riviste e delle conferenze
         rivistaISSNComboBox.setVisible(false);
         conferenzaComboBox.setVisible(false);
+        conferenzaDataInizioComboBox.setVisible(false);
         fillAllComboBoxes();
         risorsaComboBox.addItemListener(new ItemListener() {
             @Override
@@ -227,6 +230,16 @@ public class AggiuntaView extends View {
                         } else {
                             addArticoloRivista();
                         }
+                    } else if(checkConferenzaOrRivista().equals("Conferenza")){
+                        if (String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・")) {
+                            System.out.println("Aggiungi conferenza");
+                            addArticoloAddConferenza();
+                        } else if (String.valueOf(conferenzaComboBox.getSelectedItem()).isBlank()) {
+                            JOptionPane.showMessageDialog(null, "Selezionare una conferenza");
+                        } else {
+                            System.out.println("Aggiungi articolo");
+                            addArticoloConferenza();
+                        }
                     }
 
                 }
@@ -240,18 +253,21 @@ public class AggiuntaView extends View {
                         presentatoInBox.setBorder(getDefaultJComboBoxBorder());
                         //rivistaPanel.setVisible(true);//rendo visibile il pannello rivista
                         conferenzaPanel.setVisible(false); //rendo invisibile il pannello conferenza
+                        conferenzaDataInizioComboBox.setVisible(false);
                         rivistaComboBox.setVisible(true);
                         conferenzaComboBox.setVisible(false);
                     } else if (String.valueOf(presentatoInBox.getSelectedItem()).equals("Conferenza")) { //se è stato selezionato conferenza
                         //conferenzaPanel.setVisible(true);//rendo visibile il pannello conferenza
                         rivistaPanel.setVisible(false); //rendo invisibile il pannello rivista
                         conferenzaComboBox.setVisible(true);
+                        conferenzaDataInizioComboBox.setVisible(false);
                         rivistaComboBox.setVisible(false);
                         rivistaISSNComboBox.setVisible(false);
                     } else {
                         conferenzaPanel.setVisible(false);
                         rivistaPanel.setVisible(false);
                         conferenzaComboBox.setVisible(false);
+                        conferenzaDataInizioComboBox.setVisible(false);
                         rivistaComboBox.setVisible(false);
                         rivistaISSNComboBox.setVisible(false);
                     }
@@ -294,10 +310,29 @@ public class AggiuntaView extends View {
             public void itemStateChanged(ItemEvent e) {
                 refreshConferenzaFields();
                 if (e.getStateChange() == ItemEvent.SELECTED) {
+
                     conferenzaPanel.setVisible(String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・"));
+                    //conferenzaDataInizioComboBox.setVisible(!String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・"));
+                    conferenzaDataInizioComboBox.setVisible((!String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・")) && !(String.valueOf(conferenzaComboBox.getSelectedItem()).equals("")));
+                    if(!conferenzaPanel.isVisible()){
+                        fillComboBox(conferenzaDataInizioComboBox, ArticoloController.getInstance().getConferenzaDataInizio(String.valueOf(conferenzaComboBox.getSelectedItem())));
                 }
             }
+        }
         });
+    }
+
+    private void addArticoloAddConferenza() {
+        ImplementazioneArticolo ia= new ImplementazioneArticolo();
+            if( ia.addArticoloAddConferenza(titoloArticoliField.getText(), autoriArticoloField.getText(), editoreArticoliField.getText(),
+                disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
+                linguaArticoloField.getText(), nomeConferenzaField.getText(), responsabileConferenzaField.getText(),
+                strutturaConferenzaField.getText(), indirizzoConferenzaField.getText(), dataDaConferenzaField.getText(),
+                dataAConferenzaField.getText())){
+                JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
+            } else {
+                JOptionPane.showMessageDialog(null, "Errore nell'aggiunta dell'articolo");
+            }
     }
 
     private Border getDefaultJComboBoxBorder() {
@@ -318,42 +353,50 @@ public class AggiuntaView extends View {
 
     private void addArticoloConferenza() {
         if (checkConferenzaFields()) {
-            //ArticoloController.getInstance().addArticolo();
-            System.out.println("aggiungere query");
+            if(ArticoloController.getInstance().addArticoloConferenza(titoloArticoliField.getText(),
+                    autoriArticoloField.getText(), editoreArticoliField.getText(), disciplinaArticoloField.getText(),
+                    String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
+                    linguaArticoloField.getText(), String.valueOf(conferenzaComboBox.getSelectedItem()),
+                    String.valueOf(conferenzaDataInizioComboBox.getSelectedItem()))){
+                JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
+            } else {
+                JOptionPane.showMessageDialog(null, "Errore nell'aggiunta dell'articolo");
+            }
         }
-        System.out.println("Implementare addArticoloConferenza");
     }
 
     private boolean checkConferenzaFields() {
         int check = 0;
         refreshConferenzaFields();
-        if (String.valueOf(conferenzaComboBox.getSelectedItem()).isEmpty()) {
-            conferenzaComboBox.setBorder(getRedBorder());
-            check++;
-        }
-        if (String.valueOf(nomeConferenzaField.getText()).equals("Nome")) {
-            nomeConferenzaField.setBorder(getRedBorder());
-            check++;
-        }
-        if (String.valueOf(responsabileConferenzaField.getText()).equals("Responsabile")) {
-            responsabileConferenzaField.setBorder(getRedBorder());
-            check++;
-        }
-        if (String.valueOf(strutturaConferenzaField.getText()).equals("Struttura Ospitante")) {
-            strutturaConferenzaField.setBorder(getRedBorder());
-            check++;
-        }
-        if (String.valueOf(indirizzoConferenzaField.getText()).equals("Indirizzo")) {
-            indirizzoConferenzaField.setBorder(getRedBorder());
-            check++;
-        }
-        if (String.valueOf(dataDaConferenzaField.getText()).equals("Data inizio")) {
-            dataDaConferenzaField.setBorder(getRedBorder());
-            check++;
-        }
-        if (dataAConferenzaField.getText().equals("Data fine")) {
-            dataAConferenzaField.setBorder(getRedBorder());
-            check++;
+        if(String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・")) {
+            if (String.valueOf(conferenzaComboBox.getSelectedItem()).isEmpty()) {
+                conferenzaComboBox.setBorder(getRedBorder());
+                check++;
+            }
+            if (String.valueOf(nomeConferenzaField.getText()).equals("Nome")) {
+                nomeConferenzaField.setBorder(getRedBorder());
+                check++;
+            }
+            if (String.valueOf(responsabileConferenzaField.getText()).equals("Responsabile")) {
+                responsabileConferenzaField.setBorder(getRedBorder());
+                check++;
+            }
+            if (String.valueOf(strutturaConferenzaField.getText()).equals("Struttura Ospitante")) {
+                strutturaConferenzaField.setBorder(getRedBorder());
+                check++;
+            }
+            if (String.valueOf(indirizzoConferenzaField.getText()).equals("Indirizzo")) {
+                indirizzoConferenzaField.setBorder(getRedBorder());
+                check++;
+            }
+            if (String.valueOf(dataDaConferenzaField.getText()).equals("Data inizio")) {
+                dataDaConferenzaField.setBorder(getRedBorder());
+                check++;
+            }
+            if (dataAConferenzaField.getText().equals("Data fine")) {
+                dataAConferenzaField.setBorder(getRedBorder());
+                check++;
+            }
         }
         return check == 0;
     }
@@ -369,7 +412,7 @@ public class AggiuntaView extends View {
     }
 
     private void addArticoloRivista() { //aggiunge articolo in rivista già presente
-        if (ArticoloController.getInstance().addArticolo(titoloArticoliField.getText(), autoriArticoloField.getText(),
+        if (ArticoloController.getInstance().addArticoloRivista(titoloArticoliField.getText(), autoriArticoloField.getText(),
                 editoreArticoliField.getText(), disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()),
                 doiField.getText(), linguaArticoloField.getText(), String.valueOf(rivistaComboBox.getSelectedItem()), String.valueOf(rivistaISSNComboBox.getSelectedItem()))) {
             JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
@@ -386,8 +429,8 @@ public class AggiuntaView extends View {
         } else {
             JOptionPane.showMessageDialog(null, "Errore nell'inserimento");
         }
-
     }
+
 
     private boolean checkRivistaFields() {
         int check = 0;
@@ -471,6 +514,7 @@ public class AggiuntaView extends View {
 
     private void resetConferenzaBorders() { //resetta i bordi di tutti i JTextField di Conferenza
         conferenzaComboBox.setBorder(getDefaultJComboBoxBorder());
+        conferenzaDataInizioComboBox.setBorder(getDefaultJComboBoxBorder());
         nomeConferenzaField.setBorder(getDefaultJTextFieldBorder());
         responsabileConferenzaField.setBorder(getDefaultJTextFieldBorder());
         strutturaConferenzaField.setBorder(getDefaultJTextFieldBorder());
