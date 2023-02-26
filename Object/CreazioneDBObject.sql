@@ -77,7 +77,7 @@ CREATE TABLE b.Evento
 
     CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento),
     CONSTRAINT CK_Date CHECK (DataInizio <= DataFine),
-    CONSTRAINT UK_Nome UNIQUE (Nome)
+    CONSTRAINT UK_Nome_DataInizio UNIQUE (Nome, DataInizio)
 );
 
 CREATE TABLE b.Conferenza
