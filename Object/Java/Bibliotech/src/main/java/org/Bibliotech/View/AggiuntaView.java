@@ -64,6 +64,7 @@ public class AggiuntaView extends View {
     private JComboBox<String> rivistaISSNComboBox;
     private JTextField linguaArticoloField;
     private JComboBox<String> conferenzaDataInizioComboBox;
+    private JComboBox issnSerieLibroBox;
 
     public AggiuntaView() {
         super(nome);
@@ -73,6 +74,7 @@ public class AggiuntaView extends View {
         setAllPlaceHolders();
         setPanelInvisibili();
         serieLibroBox.setEnabled(false); //disabilita il combobox delle serie
+        issnSerieLibroBox.setVisible(false);
         rivistaComboBox.setVisible(false); //setta invisibili i combobox delle riviste e delle conferenze
         rivistaISSNComboBox.setVisible(false);
         conferenzaComboBox.setVisible(false);
@@ -104,6 +106,13 @@ public class AggiuntaView extends View {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     if (!serieLibroBox.getSelectedItem().equals("・・・Aggiungi nuova serie・・・")) {
                         seriePanel.setVisible(false);
+                        if(!(serieLibroBox.getSelectedItem().equals(""))) {
+                            issnSerieLibroBox.setVisible(true);
+                            issnSerieLibroBox.removeAllItems();
+                            fillComboBox(issnSerieLibroBox, RisorsaController.getInstance().getIssnSerie(serieLibroBox.getSelectedItem().toString()));
+                        }else{
+                            issnSerieLibroBox.setVisible(false);
+                        }
                     }
                 }
                 if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -174,6 +183,9 @@ public class AggiuntaView extends View {
                     } else {
                         serieLibroBox.setBorder(getDefaultJComboBoxBorder());
                         if (String.valueOf(serieLibroBox.getSelectedItem()).equals("・・・Aggiungi nuova serie・・・")) {
+                            addLibroAddSerie(check);
+                        }
+                        else{
                             addLibroSerie(check);
                         }
                     }
@@ -570,6 +582,18 @@ public class AggiuntaView extends View {
                     prezzoLibroField.getText(), isbnLibroField.getText(),
                     dataPublicazioneLibroField.getText(),
                     String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
+                    String.valueOf(String.valueOf(serieLibroBox.getSelectedItem())), String.valueOf(issnSerieLibroBox.getSelectedItem()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Compilare i campi in rosso");
+        }
+    }
+    private void addLibroAddSerie(int check) {
+        if (check == 0) {
+            RisorsaController.getInstance().addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
+                    autoriLibroField.getText(), editoreLibroField.getText(),
+                    prezzoLibroField.getText(), isbnLibroField.getText(),
+                    dataPublicazioneLibroField.getText(),
+                    String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
                     nomeSerieField.getText(), issnSerieField.getText());
         } else {
             JOptionPane.showMessageDialog(null, "Compilare i campi in rosso");
@@ -642,6 +666,7 @@ public class AggiuntaView extends View {
 
     private void fillAllComboBoxes() {
         fillComboBox(serieLibroBox, RisorsaController.getInstance().leggiSerieLibri());
+        fillComboBox(issnSerieLibroBox, RisorsaController.getInstance().getIssnSerie(String.valueOf(serieLibroBox.getSelectedItem())));
         fillComboBox(rivistaComboBox, RisorsaController.getInstance().leggiRiviste());
         fillComboBox(conferenzaComboBox, RisorsaController.getInstance().leggiConferenze());
         fillComboBox(rivistaISSNComboBox, RisorsaController.getInstance().leggiRivisteISSN(String.valueOf(rivistaComboBox.getSelectedItem())));

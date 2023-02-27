@@ -428,7 +428,7 @@ public class ImplementazioneRisorsa implements risorsaDao {
     }
 
     public boolean addLibro(Libro libro) {
-        String addLibroQuery = "INSERT INTO b.ins_Libri (titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, " + "formato, prezzo, nome_serie_di_appartenenza, issn_serie_di_appartenenza) " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String addLibroQuery = "INSERT INTO b.ins_Libri (titolo, isbn, autorinome_cognome, datapubblicazione, editore, genere, lingua, formato, prezzo, nome_serie_di_appartenenza, issn_serie_di_appartenenza) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(addLibroQuery);
             preparedStatement.setString(1, libro.getTitolo());
@@ -695,5 +695,6 @@ public class ImplementazioneRisorsa implements risorsaDao {
         }
         return null;
     }
+
 }
 
