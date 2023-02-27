@@ -10,3 +10,10 @@ SELECT * FROM b.resultview_libri WHERE (titolo LIKE '%%' OR isbn LIKE '%%')
 
 
 SELECT * FROM b.notifiche WHERE username = 'a'
+
+
+SELECT * FROM b.riviste WHERE issn ='983-965210823';
+
+SELECT *
+FROM (b.serie s NATURAL JOIN b.libriinserie ls)
+JOIN b.libri l ON ls.id_libro = l.id_libro;

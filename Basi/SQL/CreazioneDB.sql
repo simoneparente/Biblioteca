@@ -467,8 +467,8 @@ BEGIN
             END IF;
             --Controllo che il formato del libro sia compatibile con la serie già presente nel DataBase
         ELSEIF NOT EXISTS(SELECT *
-                          FROM (b.serie s NATURAL JOIN libriinserie ls)
-                                   JOIN libri l ON ls.id_libro = l.id_libro
+                          FROM (b.serie s NATURAL JOIN b.libriinserie ls)
+                                   JOIN b.libri l ON ls.id_libro = l.id_libro
                           WHERE l.formato = NEW.formato) THEN
             RAISE NOTICE 'Il formato del libro non è compatibile con la serie, libro non inserito';
             RETURN NEW;
@@ -743,7 +743,150 @@ EXECUTE FUNCTION b.ftrig_RimozioneDaStock();
 
 --FUNZIONI E VIEW PER GESTIRE LE RICHIESTE E LE NOTIFICHE
 
+--Funzione che dato un ISSN restituisce l'id della serie
+CREATE OR REPLACE FUNCTION b.getIDSerieByISSN(issnIn b.serie.issn%TYPE) RETURNS b.serie.id_serie%TYPE AS
+$$
+DECLARE
+    id b.serie.id_serie%TYPE;
+BEGIN
+    RAISE NOTICE 'ISSN(%)', issnIn;
+    id = (SELECT id_serie
+          FROM b.serie se
+          WHERE se.issn = issnIn);
+    RAISE NOTICE 'ID{%}', id;
+    RETURN id;
+end;
+$$
+    LANGUAGE plpgsql;
+
+--Funzione che dato un id di un libro restituisce i nomi dei negozi che lo hanno in stock
+CREATE OR REPLACE FUNCTION b.getNegoziConSerie(id_serieIn b.serie.id_serie%TYPE) RETURNS VARCHAR AS
+$$
+DECLARE
+    nomi_negozi  VARCHAR := '';
+    cursore CURSOR FOR (SELECT ne.nome
+                        FROM (b.serie s JOIN b.libriinserie ls ON ls.id_serie = s.id_serie)
+                                 JOIN (b.stock st JOIN b.negozio ne ON st.id_negozio = ne.id_negozio)
+                                      ON st.id_libro = ls.id_libro
+                        WHERE s.id_serie = id_SerieIn);
+    n_negozi     INTEGER=(SELECT COUNT(*)
+                          FROM (b.serie s JOIN b.libriinserie ls ON ls.id_serie = s.id_serie)
+                                   JOIN b.stock st ON st.id_libro = ls.id_libro
+                          WHERE s.id_serie = id_SerieIn);
+    nome_negozio b.negozio.nome%TYPE;
+
+BEGIN
+    OPEN cursore;
+    FOR i IN 1..n_negozi
+        LOOP
+            FETCH cursore INTO nome_negozio;
+            if (i <> n_negozi) then
+                nomi_negozi = nomi_negozi || nome_negozio || ', ';
+            else
+                nomi_negozi = nomi_negozi || nome_negozio;
+            end if;
+        end loop;
+    return nomi_negozi;
+    CLOSE cursore;
+end;
+$$
+    LANGUAGE plpgsql;
+
+
 CREATE VIEW b.notifiche AS
-    SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
-    FROM b.serie NATURAL JOIN b.richiesta
-    WHERE b.getDisponibilitaSerie(id_serie) IS true;
+SELECT nome, b.getNegoziConSerie(b.getIDSerieByISSN(issn)) as Disponibile_in, issn, username
+FROM b.serie s JOIN b.richiesta r ON s.id_serie=r.id_serie JOIN b.utente u ON u.id_utente=r.id_utente
+WHERE b.getDisponibilitaSerie(r.id_serie) IS true;
+
+------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------
+--VIEW E FUNZIONI UTILI PER LA VISUALIZZAZIONE DEI DATI
+
+--Funzione che dato un id di un libro restituisce i nomi degli autori in una stringa
+CREATE OR REPLACE FUNCTION b.getAutoriByLibro(inputIdLibro b.libri.id_libro%TYPE) RETURNS TEXT AS
+$$
+DECLARE
+    returnAutori  TEXT;
+    cursore CURSOR FOR (SELECT nome, cognome
+                        FROM (b.autore a NATURAL JOIN b.autorelibro al)
+                                 JOIN b.libri l ON l.id_libro = al.id_libro
+                        WHERE l.id_libro = inputIdLibro);
+    autoreNome    b.autore.nome%TYPE;
+    autoreCognome b.autore.cognome%TYPE;
+    controllo     bool= false; --se è a false non sono stati inseriti ancora autori in returnAutori
+BEGIN
+    OPEN cursore;
+    LOOP
+        FETCH cursore INTO autoreNome, autoreCognome;
+        EXIT WHEN NOT FOUND;
+        if controllo IS false THEN
+            returnAutori = autoreNome || ' ' || autoreCognome;
+            controllo = true;
+        else
+            returnAutori = returnAutori || ', ' || autoreNome || ' ' || autoreCognome;
+        end if;
+    END LOOP;
+    CLOSE cursore;
+    return returnAutori;
+END;
+$$
+    LANGUAGE plpgsql;
+
+--VIEW PER LIBRI E RELATIVE SERIE
+CREATE VIEW b.view_libri_autori_serie AS
+SELECT DISTINCT titolo,
+                isbn,
+                b.getAutoriByLibro(l.id_libro) AS Autori,
+                dataPubblicazione,
+                editore,
+                genere,
+                lingua,
+                s.nome                         AS serie,
+                formato,
+                prezzo,
+                b.getDisponibilitaLibro(l.id_libro) AS Disponibilità
+FROM (b.libri l FULL OUTER JOIN b.libriinserie lis ON l.id_libro = lis.id_libro)
+         FULL JOIN b.serie S ON lis.id_serie = s.id_serie;
+
+
+--VIEW PER ARTICOLI E AUTORI
+CREATE VIEW b.view_Articoli_autore AS
+SELECT a.titolo,
+       a.doi,
+       a.datapubblicazione,
+       a.disciplina,
+       a.editore,
+       a.lingua,
+       a.formato,
+       au.nome,
+       au.cognome
+FROM (b.Articoli as a NATURAL JOIN b.autoreArticolo as aa)
+         JOIN b.autore as au on aa.id_autore = au.id_autore;
+
+
+--VIEW PER ARTICOLI E RIVISTE IN CUI SONO PUBBLICATI
+CREATE VIEW b.view_Articoli_riviste AS
+SELECT a.titolo,
+       a.doi,
+       a.datapubblicazione,
+       a.disciplina,
+       a.editore,
+       a.lingua,
+       a.formato,
+       r.nome as titolo_riviste
+FROM (b.Articoli as a NATURAL JOIN b.Articoliinriviste as ar)
+         JOIN b.riviste as r on ar.id_rivista = r.id_rivista;
+
+--VIEW PER ARTICOLI E CONFERENZE IN CUI SONO PRESENTATI
+CREATE VIEW b.view_Articoli_conferenza AS
+SELECT a.titolo,
+       a.doi,
+       a.datapubblicazione,
+       a.disciplina,
+       a.editore,
+       a.lingua,
+       a.formato,
+       e.nome as titolo_conferenza
+FROM (b.Articoli as a NATURAL JOIN b.conferenza as c)
+         JOIN b.evento as e on c.id_evento = e.id_evento;
