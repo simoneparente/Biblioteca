@@ -2,49 +2,50 @@
 \babel@toc {italian}{}\relax 
 \contentsline {chapter}{\numberline {1}Requisiti identificati}{4}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Progettazione concettuale}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Class Diagram}{7}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Analisi della ristrutturazione del Class Diagram}{8}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Analisi delle ridondanze}{8}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Analisi degli identificativi}{8}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Rimozione degli attributi multivalore}{8}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Rimozione degli attributi composti}{8}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Partizione/Accorpamento delle associazioni}{9}{subsection.2.2.5}%
-\contentsline {subsection}{\numberline {2.2.6}Rimozione delle gerarchie}{9}{subsection.2.2.6}%
-\contentsline {section}{\numberline {2.3}Class Diagram ristrutturato}{10}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Dizionario delle classi}{11}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Dizionario delle associazioni}{13}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Schema logico}{14}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Schema Fisico}{16}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Creazione Tabelle}{16}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Tabella Articoli}{16}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Tabella Autore}{16}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Tabella AutoreArticolo}{17}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Tabella Riviste}{17}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Tabella ArticoliInRiviste}{17}{subsection.4.1.5}%
-\contentsline {subsection}{\numberline {4.1.6}Tabella Evento}{18}{subsection.4.1.6}%
-\contentsline {subsection}{\numberline {4.1.7}Conferenza}{18}{subsection.4.1.7}%
-\contentsline {subsection}{\numberline {4.1.8}Tabella Libri}{18}{subsection.4.1.8}%
-\contentsline {subsection}{\numberline {4.1.9}Tabella AutoreLibro}{19}{subsection.4.1.9}%
-\contentsline {subsection}{\numberline {4.1.10}Tabella Presentazione}{19}{subsection.4.1.10}%
-\contentsline {subsection}{\numberline {4.1.11}Tabella Serie}{19}{subsection.4.1.11}%
-\contentsline {subsection}{\numberline {4.1.12}Tabella LibriInSerie}{20}{subsection.4.1.12}%
-\contentsline {subsection}{\numberline {4.1.13}Tabella Negozio}{20}{subsection.4.1.13}%
-\contentsline {subsection}{\numberline {4.1.14}Tabella Stock}{20}{subsection.4.1.14}%
-\contentsline {subsection}{\numberline {4.1.15}Tabella Utente}{20}{subsection.4.1.15}%
-\contentsline {subsection}{\numberline {4.1.16}Tabella Richiesta}{21}{subsection.4.1.16}%
-\contentsline {section}{\numberline {4.2}Creazione Funzioni}{21}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Tabella Jolly}{21}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Procedura inserimento Autori}{21}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Funzione Disponibilit\`a Libro}{22}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Funzione Disponibilit\`a Serie}{22}{subsection.4.2.4}%
-\contentsline {section}{\numberline {4.3}Trigger Gestione Articoli}{23}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Inserimento Articolo e Rivista}{23}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Inserimento Articolo e Conferenza}{25}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Rimozione Articolo}{27}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Trigger Gestione Libri}{28}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Inserimento Libro}{29}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Inserimento Presentazione di un libro}{30}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Rimozione Libro}{32}{subsection.4.4.3}%
-\contentsline {section}{\numberline {4.5}Trigger Gestione Stock}{33}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Gestione Notifiche}{34}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}View Notifiche}{35}{subsection.4.6.1}%
+\contentsline {section}{\numberline {2.1}Class Diagram}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Analisi della ristrutturazione del Class Diagram}{6}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Analisi delle ridondanze}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Analisi degli identificativi}{7}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Rimozione degli attributi multivalore}{7}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Rimozione degli attributi composti}{7}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Partizione/Accorpamento delle associazioni}{7}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Rimozione delle gerarchie}{8}{subsection.2.2.6}%
+\contentsline {section}{\numberline {2.3}Class Diagram ristrutturato}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Dizionario delle classi}{9}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Dizionario delle associazioni}{11}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Schema logico}{12}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Schema Fisico}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Creazione Tabelle}{14}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Tabella Articoli}{14}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Tabella Autore}{14}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Tabella AutoreArticolo}{15}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Tabella Riviste}{15}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Tabella ArticoliInRiviste}{15}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Tabella Evento}{16}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.7}Tabella Conferenza}{16}{subsection.4.1.7}%
+\contentsline {subsection}{\numberline {4.1.8}Tabella Libri}{16}{subsection.4.1.8}%
+\contentsline {subsection}{\numberline {4.1.9}Tabella AutoreLibro}{17}{subsection.4.1.9}%
+\contentsline {subsection}{\numberline {4.1.10}Tabella Presentazione}{17}{subsection.4.1.10}%
+\contentsline {subsection}{\numberline {4.1.11}Tabella Serie}{17}{subsection.4.1.11}%
+\contentsline {subsection}{\numberline {4.1.12}Tabella LibriInSerie}{18}{subsection.4.1.12}%
+\contentsline {subsection}{\numberline {4.1.13}Tabella Negozio}{18}{subsection.4.1.13}%
+\contentsline {subsection}{\numberline {4.1.14}Tabella Stock}{18}{subsection.4.1.14}%
+\contentsline {subsection}{\numberline {4.1.15}Tabella Utente}{18}{subsection.4.1.15}%
+\contentsline {subsubsection}{TipoUtente}{18}{section*.2}%
+\contentsline {subsection}{\numberline {4.1.16}Tabella Richiesta}{19}{subsection.4.1.16}%
+\contentsline {subsection}{\numberline {4.1.17}Tabella Jolly}{19}{subsection.4.1.17}%
+\contentsline {section}{\numberline {4.2}Creazione Funzioni}{19}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Procedura inserimento Autori}{19}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Funzione Disponibilit\`a Libro}{20}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Funzione Disponibilit\`a Serie}{20}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Trigger Gestione Articoli}{21}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Inserimento Articolo e Rivista}{21}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Inserimento Articolo e Conferenza}{23}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Rimozione Articolo}{25}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Trigger Gestione Libri}{26}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Inserimento Libro}{27}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Inserimento Presentazione di un libro}{28}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Rimozione Libro}{30}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Trigger Gestione Stock}{31}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Gestione Notifiche}{32}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}View Notifiche}{33}{subsection.4.6.1}%

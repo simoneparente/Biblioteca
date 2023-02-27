@@ -1,7 +1,7 @@
 \chapter{Progettazione concettuale}
     \section{Class Diagram}
 
-    \includegraphics[scale=0.22]{Immagini/SchemaConcettuale.png}
+    \includegraphics[scale=0.15]{Immagini/SchemaConcettuale.png}
         
     \section{Analisi della ristrutturazione del Class Diagram}
         In questa fase verranno effettuate delle modifiche al Class Diagram in modo tale da renderlo
@@ -51,7 +51,7 @@
             \end{itemize}
     
     \section{Class Diagram ristrutturato}
-    \includegraphics[scale=0.25]{Immagini/SchemaRistrutturato.png}
+    \includegraphics[scale=0.18]{Immagini/SchemaRistrutturato.png}
         \pagebreak
     \section{Dizionario delle classi}
     \begin{longtable}{lll}
@@ -89,20 +89,20 @@
       %
       scritto ... scrive &
         \begin{tabular}[c]{@{}l@{}}Libri e Autore\\ Articoli e Autore.\end{tabular} &
-        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u Libri/Articoli vengono\\ scritti da uno o pi\'u Autori. {[}*, *{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u Libri/Articoli \\ vengono scritti da uno \\ o pi\'u Autori. {[}*, *{]}\end{tabular} \\ \hline
       venduto ... vende &
         \begin{tabular}[c]{@{}l@{}}Negozio, Stock,\\ Libri.\end{tabular} &
-        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u negozi vendono uno o \\ pi\'u libri. {[}*, 1..*{]}.\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u negozi \\ vendono uno o \\ pi\'u libri. {[}*, 1..*{]}.\end{tabular} \\ \hline
       raggruppa ... in &
         Riviste e Articoli. &
-        \begin{tabular}[c]{@{}l@{}}Almeno un articolo \`e pubblicato\\ in una rivista.\\ Una rivista raggruppa diversi articoli.\\  {[}1..*, 0..1{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Almeno un articolo \\ \`e pubblicato in \\ una rivista. Una \\ rivista raggruppa \\ diversi articoli.\\  {[}1..*, 0..1{]}\end{tabular} \\ \hline
       presentato ... presenta &
         \begin{tabular}[c]{@{}l@{}}Articoli, Conferenza,\\ Evento.\\ Libri, Presentazione,\\ Evento.\end{tabular} &
-        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u articoli possono essere\\ presentati in una conferenza \\ Un libro pu\`o essere presentato\\ durante un evento. {[}0..1, 1...*{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Uno o pi\'u articoli \\ possono essere \\ presentati in una \\ conferenza. Un libro \\ pu\`o essere presentato\\ durante un evento.n\\ {[}0..1, 1...*{]}\end{tabular} \\ \hline
       raggruppa ... appartiene &
         Libri, Serie &
-        \begin{tabular}[c]{@{}l@{}}Una serie raggruppa diversi libri,\\ un libro pu\`o appartenere al pi\'u a una\\ serie. {[}1..*, 0..1{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Una serie raggruppa \\ diversi libri, un \\ libro pu\`o appartenere \\ al pi\'u a una serie. \\{[}1..*, 0..1{]}\end{tabular} \\ \hline
       richiede ... richiesta &
         Utente, Serie &
-        \begin{tabular}[c]{@{}l@{}}Un utente pu\`o richiedere diverse serie.\\ Una serie pu\`o essere richiesta\\ da diversi utenti. {[}*..*{]}\end{tabular} \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Un utente pu\`o \\ richiedere diverse\\ serie. Una serie pu\`o \\ essere richiesta\\ da diversi utenti. \\{[}*..*{]}\end{tabular} \\ \hline
       \end{longtable}

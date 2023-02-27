@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  26 FEB 2023 18:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  27 FEB 2023 10:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -238,54 +238,59 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
- (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks21
+\AP@partial=\box57
+\AP@footins=\box58
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
-\l__pdf_internal_box=\box57
+\l__pdf_internal_box=\box59
 ) (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
  (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count294
 \scratchdimen=\dimen164
-\scratchbox=\box58
+\scratchbox=\box60
 \nofMPsegments=\count295
 \nofMParguments=\count296
-\everyMPshowfont=\toks21
+\everyMPshowfont=\toks22
 \MPscratchCnt=\count297
 \MPscratchDim=\dimen165
 \MPnumerator=\count298
 \makeMPintoPDFobject=\count299
-\everyMPtoPDFconversion=\toks22
+\everyMPtoPDFconversion=\toks23
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \it@ocap on input line 35.
-LaTeX Info: Redefining \it@ccap on input line 35.
+LaTeX Info: Redefining \it@ocap on input line 37.
+LaTeX Info: Redefining \it@ccap on input line 37.
 
 
 File italian.ldf warning: 
@@ -293,9 +298,9 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 35.
+italian.ldf    on input line 37.
 
-Package hyperref Info: Link coloring OFF on input line 35.
+Package hyperref Info: Link coloring OFF on input line 37.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
@@ -305,9 +310,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count300
 )
-LaTeX Info: Redefining \ref on input line 35.
-LaTeX Info: Redefining \pageref on input line 35.
-LaTeX Info: Redefining \nameref on input line 35.
+LaTeX Info: Redefining \ref on input line 37.
+LaTeX Info: Redefining \pageref on input line 37.
+LaTeX Info: Redefining \nameref on input line 37.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -316,12 +321,12 @@ LaTeX Info: Redefining \nameref on input line 35.
 <Immagini/FedericoII.png, id=196, 134.75343pt x 139.27031pt>
 File: Immagini/FedericoII.png Graphic file (type png)
 <use Immagini/FedericoII.png>
-Package pdftex.def Info: Immagini/FedericoII.png  used on input line 39.
+Package pdftex.def Info: Immagini/FedericoII.png  used on input line 44.
 (pdftex.def)             Requested size: 86.25pt x 89.14117pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 43.
+(Font)              using `OT1/cmr/bx/n' instead on input line 50.
 
 [1
 
@@ -331,6 +336,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 5.
  [2
+
 
 ])
 \tf@toc=\write4
@@ -353,10 +359,10 @@ Capitolo 2.
 File: Immagini/SchemaConcettuale.png Graphic file (type png)
 <use Immagini/SchemaConcettuale.png>
 Package pdftex.def Info: Immagini/SchemaConcettuale.png  used on input line 4.
-(pdftex.def)             Requested size: 477.42513pt x 349.34624pt.
+(pdftex.def)             Requested size: 325.50208pt x 238.1796pt.
 
-Overfull \hbox (132.42513pt too wide) in paragraph at lines 4--5
-[] 
+Underfull \hbox (badness 3333) in paragraph at lines 6--6
+[]\OT1/cmr/bx/n/14.4 Analisi del-la ri-strut-tu-ra-zio-ne del Class
  []
 
 [6
@@ -364,52 +370,25 @@ Overfull \hbox (132.42513pt too wide) in paragraph at lines 4--5
 
 
 
-]
-Overfull \vbox (6.04898pt too high) has occurred while \output is active []
-
- [7 <./Immagini/SchemaConcettuale.png>]
-Underfull \hbox (badness 3333) in paragraph at lines 6--6
-[]\OT1/cmr/bx/n/14.4 Analisi del-la ri-strut-tu-ra-zio-ne del Class
- []
-
+ <./Immagini/SchemaConcettuale.png>]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
-[8]
+
 Underfull \hbox (badness 6380) in paragraph at lines 41--43
 \OT1/cmr/m/n/10 In que-sto dia-gram-ma so-no pre-sen-ti 2 ge-ne-ra-liz-za-zio-ni e 4 re-la-ti-ve
  []
 
-
+[7]
 Underfull \hbox (badness 5245) in paragraph at lines 49--51
 []\OT1/cmr/m/n/10 Analogamente, l'en-tit^^Ra \OT1/cmr/bx/n/10 Ar-ti-co-lo \OT1/cmr/m/n/10 avr^^Ra co-me at-tri-bu-ti, quel-li di
  []
 
-<Immagini/SchemaRistrutturato.png, id=307, 1897.0875pt x 1585.925pt>
+<Immagini/SchemaRistrutturato.png, id=303, 1897.0875pt x 1585.925pt>
 File: Immagini/SchemaRistrutturato.png Graphic file (type png)
 <use Immagini/SchemaRistrutturato.png>
 Package pdftex.def Info: Immagini/SchemaRistrutturato.png  used on input line 54.
-(pdftex.def)             Requested size: 474.27072pt x 396.48029pt.
-
-Overfull \hbox (129.27072pt too wide) in paragraph at lines 54--56
-[]
- []
-
-[9] [10 <./Immagini/SchemaRistrutturato.png>] [11] [12]
-Overfull \hbox (56.08403pt too wide) in alignment at lines 81--86
- [] [] [] 
- []
-
-
-Overfull \hbox (56.08403pt too wide) in alignment at lines 86--88
- [] [] [] 
- []
-
-
-Overfull \hbox (56.08403pt too wide) in alignment at lines 88--108
- [] [] [] 
- []
-
-) [13]
+(pdftex.def)             Requested size: 341.46101pt x 285.45418pt.
+[8 <./Immagini/SchemaRistrutturato.png>] [9] [10]) [11]
 \openout2 = `Argomenti/Capitolo3.aux'.
 
  (./Argomenti/Capitolo3.tex
@@ -459,7 +438,7 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 117--122
 [] 
  []
 
-[14
+[12
 
 
 
@@ -499,48 +478,48 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 220--225
 [] 
  []
 
-) [15]
+) [13]
 \openout2 = `Argomenti/Capitolo4.aux'.
 
  (./Argomenti/Capitolo4.tex
 Capitolo 4.
-[16
+[14
 
 
 
 
-] [17] [18] [19] [20]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 220.
+] [15] [16] [17] [18]
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 225.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [21] [22]
-Underfull \hbox (badness 3271) in paragraph at lines 288--301
+) [19] [20]
+Underfull \hbox (badness 3271) in paragraph at lines 293--306
 \OT1/cmr/m/n/10 Per ge-sti-re l'in-se-ri-men-to de-gli ar-ti-co-li, ven-go-no uti-liz-za-ti due trig-ger,
  []
 
-[23] [24] [25] [26] [27] [28] [29] [30]
+[21] [22] [23] [24] [25] [26] [27] [28]
 Missing character: There is no Â in font cmtt9!
 Missing character: There is no ¬ in font cmtt9!
-[31] [32] [33] [34]) [35] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
+[29] [30] [31] [32]) [33] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C1E26DF5B06167D9F3EAA7DB1F981966;8291.
+(rerunfilecheck)             Checksum: 7B82A34BC5D61956C1C8E472F8043E5C;8335.
  ) 
 Here is how much of TeX's memory you used:
- 12658 strings out of 478268
- 199686 string characters out of 5846347
- 817523 words of memory out of 5000000
- 29961 multiletter control sequences out of 15000+600000
+ 12694 strings out of 478268
+ 200519 string characters out of 5846347
+ 817977 words of memory out of 5000000
+ 29994 multiletter control sequences out of 15000+600000
  474203 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,10n,63p,575b,2015s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 60i,10n,63p,575b,2018s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on main.pdf (35 pages, 582148 bytes).
+Output written on main.pdf (33 pages, 583190 bytes).
 PDF statistics:
- 1285 PDF objects out of 1440 (max. 8388607)
- 1207 compressed objects within 13 object streams
- 747 named destinations out of 1000 (max. 500000)
+ 1280 PDF objects out of 1440 (max. 8388607)
+ 1204 compressed objects within 13 object streams
+ 748 named destinations out of 1000 (max. 500000)
  400 words of extra memory for PDF output out of 10000 (max. 10000000)
 

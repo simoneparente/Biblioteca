@@ -83,7 +83,7 @@ CREATE TABLE b.ArticoliInRiviste
     CONSTRAINT UK_Evento UNIQUE (Indirizzo, StrutturaOspitante, DataInizio, DataFine, Responsabile);
 \end{lstlisting}
 
-\subsection{Conferenza}
+\subsection{Tabella Conferenza}
 \begin{lstlisting}
     CREATE TABLE b.Conferenza
     ID_Articolo SERIAL,
@@ -191,6 +191,11 @@ CREATE TABLE b.ArticoliInRiviste
     CONSTRAINT UK_Utente UNIQUE (Username);
 \end{lstlisting}
 
+\subsubsection{TipoUtente}
+\begin{lstlisting}
+    CREATE TYPE b.TipoUtente AS ENUM ('0', '1', '2');
+\end{lstlisting}
+
 \newpage
 
 \subsection{Tabella Richiesta}
@@ -204,8 +209,6 @@ CREATE TABLE b.ArticoliInRiviste
     CONSTRAINT FK_Richiesta_Serie FOREIGN KEY (ID_Serie) REFERENCES b.Serie (ID_Serie) ON DELETE CASCADE;
 \end{lstlisting}
 
-\section{Creazione Funzioni}
-
 \subsection{Tabella Jolly}
 La tabella Jolly \`e una tabella che contiene un solo attributo di tipo text, che permette di
 inserire una stringa di lunghezza arbitraria negli inserimenti tramite view, se necessario.
@@ -213,6 +216,8 @@ inserire una stringa di lunghezza arbitraria negli inserimenti tramite view, se 
     CREATE TABLE b.Jolly
     Text TEXT;
 \end{lstlisting}
+
+\section{Creazione Funzioni}
 
 \subsection{Procedura inserimento Autori}
 \begin{lstlisting}
