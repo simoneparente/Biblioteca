@@ -48,7 +48,6 @@ relazionale con una struttura specifica che soddisfi i requisiti identificati ne
     ISSN              VARCHAR(128),
     Nome              VARCHAR(128),
     Argomento         VARCHAR(128),
-    DataPubblicazione DATE,
     Responsabile      VARCHAR(128),
     Prezzo            FLOAT,
 
@@ -80,7 +79,7 @@ CREATE TABLE b.ArticoliInRiviste
 
     CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento),
     CONSTRAINT CK_Date CHECK (DataInizio <= DataFine),
-    CONSTRAINT UK_Evento UNIQUE (Indirizzo, StrutturaOspitante, DataInizio, DataFine, Responsabile);
+    CONSTRAINT UK_Evento UNIQUE CONSTRAINT UK_Evento UNIQUE (Nome, Indirizzo, DataInizio)
 \end{lstlisting}
 
 \subsection{Tabella Conferenza}
@@ -185,7 +184,6 @@ CREATE TABLE b.ArticoliInRiviste
     ID_Utente SERIAL,
     Username  VARCHAR(128),
     Password  VARCHAR(128),
-    Permessi  b.TipoUtente DEFAULT '0',
 
     CONSTRAINT PK_Utente PRIMARY KEY (ID_Utente),
     CONSTRAINT UK_Utente UNIQUE (Username);
