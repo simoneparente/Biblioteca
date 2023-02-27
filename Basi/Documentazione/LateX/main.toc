@@ -40,12 +40,14 @@
 \contentsline {subsection}{\numberline {4.2.2}Funzione Disponibilit\`a Libro}{20}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Funzione Disponibilit\`a Serie}{20}{subsection.4.2.3}%
 \contentsline {section}{\numberline {4.3}Trigger Gestione Articoli}{21}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Inserimento Articolo e Rivista}{21}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Inserimento Articolo e Conferenza}{23}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Rimozione Articolo}{25}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.1}Gestione inserimenti di articoli}{21}{subsection.4.3.1}%
+\contentsline {subsubsection}{Inserimento Articolo e Rivista}{21}{section*.2}%
+\contentsline {subsubsection}{Inserimento Articolo e Conferenza}{23}{section*.3}%
+\contentsline {subsection}{\numberline {4.3.2}Rimozione di articoli}{25}{subsection.4.3.2}%
+\contentsline {subsubsection}{Rimozione Articolo}{25}{section*.4}%
 \contentsline {section}{\numberline {4.4}Trigger Gestione Libri}{26}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Inserimento Libro}{27}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Inserimento Presentazione di un libro}{29}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.2}Inserimento Presentazione di un libro}{28}{subsection.4.4.2}%
 \contentsline {subsection}{\numberline {4.4.3}Rimozione Libro}{30}{subsection.4.4.3}%
 \contentsline {section}{\numberline {4.5}Trigger Gestione Stock}{31}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Gestione Notifiche}{33}{section.4.6}%

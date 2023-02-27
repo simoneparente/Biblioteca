@@ -283,20 +283,15 @@ $$ language plpgsql;
 \end{lstlisting}
 
 \section{Trigger Gestione Articoli}
-Per gestire l'inserimento degli articoli, vengono utilizzati due trigger,
-\texttt{trig\_ArticoliRivista} e \texttt{trig\_ArticoliConferenze}, che agiscono sulle view
-\texttt{ins\_ArticoliRivista} e \texttt{ins\_ArticoliConferenza}. Questi trigger verificano che la rivista 
-o la conferenza non siano gi\`a presenti nel database e, in caso contrario, provvedono all'inserimento. Successivamente, 
-l'articolo viene inserito e la tabella di relazione tra articoli e riviste o conferenze viene aggiornata. 
-Inoltre, viene richiamata la procedura \texttt{insAutori}, che verifica se gli autori sono gi\`a presenti 
-nel database e, in caso contrario, procede con il loro inserimento, seguendo l'aggiornamento della tabella 
-di relazione tra articoli ed autori.
-Per rimuovere gli articoli dal database, viene utilizzato il trigger \texttt{trig\_RimozioneArticoli}, che 
-agisce sulla tabella \texttt{Articoli} in \texttt{BEFORE DELETE}. Questo trigger verifica che gli autori 
-dell'articolo non abbiano scritto altro e, in caso affermativo, procede con la loro rimozione. Controlla 
-inoltre che la rivista in cui potrebbe essere stato presentato l'articolo non abbia altri articoli e, in 
-questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferenze.
-
+\subsection{Gestione inserimenti di articoli}
+%Per gestire l'inserimento degli articoli, vengono utilizzati due trigger,
+%\texttt{trig\_ArticoliRivista} e \texttt{trig\_ArticoliConferenze}, che agiscono sulle view
+%\texttt{ins\_ArticoliRivista} e \texttt{ins\_ArticoliConferenza}. Questi trigger verificano che la rivista 
+%o la conferenza non siano gi\`a presenti nel database e, in caso contrario, provvedono all'inserimento. Successivamente, 
+%l'articolo viene inserito e la tabella di relazione tra articoli e riviste o conferenze viene aggiornata. 
+%Inoltre, viene richiamata la procedura \texttt{insAutori}, che verifica se gli autori sono gi\`a presenti 
+%nel database e, in caso contrario, procede con il loro inserimento, seguendo l'aggiornamento della tabella 
+%di relazione tra articoli ed autori.
 
 Per la gestione l'inserimento degli articoli ci sono due appositi trigger: \texttt{trig\_ArticoliRivista} e 
 \texttt{trig\_ArticoliConferenze}, questi trigger si attivano nel momento in cui vengono inseriti dei dati
@@ -304,12 +299,12 @@ nelle view \texttt{ins\_ArticoliRivista} e \texttt{ins\_ArticoliConferenza}. \\
 Questi trigger provvedono a:
 \begin{itemize}
     \item Verificare che la conferenza o la rivista siano già presenti nel database. In caso contrario,
-          provvede all'inserimento e all'aggiornamento della relativa tabella associativa.
-    \item Verificare che gli autori siano già presenti nel database. In caso contrario provvede all'inserimento
+          provvedono all'inserimento e all'aggiornamento della relativa tabella associativa.
+    \item Verificare che gli autori siano già presenti nel database. In caso contrario provvedono all'inserimento
     e  all'aggiornamento della relativa tabella associativa.
 \end{itemize}
 
-\subsection{Inserimento Articolo e Rivista}
+\subsubsection{Inserimento Articolo e Rivista}
 \begin{lstlisting}
     --View da dove viene inserito un articolo scientifico e la rivista dove \`e stato presentato
     CREATE OR REPLACE VIEW b.ins_ArticoliRivista AS
@@ -380,7 +375,7 @@ Questi trigger provvedono a:
     EXECUTE FUNCTION b.ftrig_ArticoliRivista();
 \end{lstlisting}
 
-\subsection{Inserimento Articolo e Conferenza}
+\subsubsection{Inserimento Articolo e Conferenza}
 \begin{lstlisting}
 --View da dove viene inserito un articolo scientifico e la conferenza dove \`e stato presentato
 CREATE OR REPLACE VIEW b.ins_articoliConferenze AS
@@ -455,7 +450,23 @@ CREATE OR REPLACE TRIGGER trig_ArticoliConferenze
 EXECUTE FUNCTION b.ftrig_ArticoliConferenze();
 \end{lstlisting}
 
-\subsection{Rimozione Articolo}
+\subsection{Rimozione di articoli}
+%Per la rimozione di articoli dal database viene utilizzato il trigger \texttt{trig\_RimozioneArticoli}, che 
+%agisce sulla tabella \texttt{Articoli} in \texttt{BEFORE DELETE}. Questo trigger verifica che gli autori 
+%dell'articolo non abbiano scritto altro e, in caso affermativo, procede con la loro rimozione. Controlla 
+%inoltre che la rivista in cui potrebbe essere stato presentato l'articolo non abbia altri articoli e, in 
+%questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferenze.
+
+Per la rimozione di un articolo dal database viene utilizzato il trigger \texttt{trig\_RimozioneArticoli},
+esso agisce sulla tabella \texttt{Articoli} nell'istante \texttt{BEFORE DELETE} e provvede a:
+\begin{itemize}
+    \item Verificare che gli autori dell'articolo non ne abbiano scritto alcun altro, in caso affermativo, procede
+          alla loro rimozione dalla tabella \texttt{Autore}.
+    \item Verificare che la rivista o la conferenza in cui l'articolo è stato pubblicato non ne contenga altri,
+          in caso affermativo, procede alla rimozione nelle tabelle \texttt{Riviste} o \texttt{Conferenza}. 
+\end{itemize}
+
+\subsubsection{Rimozione Articolo}
 \begin{lstlisting}
     CREATE OR REPLACE FUNCTION b.ftrig_rimozineArticoli() RETURNS trigger AS
 $$
