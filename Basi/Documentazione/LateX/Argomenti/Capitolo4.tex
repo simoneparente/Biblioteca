@@ -79,7 +79,7 @@ CREATE TABLE b.ArticoliInRiviste
 
     CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento),
     CONSTRAINT CK_Date CHECK (DataInizio <= DataFine),
-    CONSTRAINT UK_Evento UNIQUE CONSTRAINT UK_Evento UNIQUE (Nome, Indirizzo, DataInizio)
+    CONSTRAINT UK_Nome_Indirizzo_DataInizio UNIQUE (Nome, Indirizzo, DataInizio)
 \end{lstlisting}
 
 \subsection{Tabella Conferenza}
@@ -189,11 +189,6 @@ CREATE TABLE b.ArticoliInRiviste
     CONSTRAINT UK_Utente UNIQUE (Username);
 \end{lstlisting}
 
-\subsubsection{TipoUtente}
-\begin{lstlisting}
-    CREATE TYPE b.TipoUtente AS ENUM ('0', '1', '2');
-\end{lstlisting}
-
 \newpage
 
 \subsection{Tabella Richiesta}
@@ -301,6 +296,19 @@ agisce sulla tabella \texttt{Articoli} in \texttt{BEFORE DELETE}. Questo trigger
 dell'articolo non abbiano scritto altro e, in caso affermativo, procede con la loro rimozione. Controlla 
 inoltre che la rivista in cui potrebbe essere stato presentato l'articolo non abbia altri articoli e, in 
 questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferenze.
+
+
+Per la gestione l'inserimento degli articoli ci sono due appositi trigger: \texttt{trig\_ArticoliRivista} e 
+\texttt{trig\_ArticoliConferenze}, questi trigger si attivano nel momento in cui vengono inseriti dei dati
+nelle view \texttt{ins\_ArticoliRivista} e \texttt{ins\_ArticoliConferenza}. \\
+Questi trigger provvedono a:
+\begin{itemize}
+    \item Verificare che la conferenza o la rivista siano già presenti nel database. In caso contrario,
+          provvede all'inserimento e all'aggiornamento della relativa tabella associativa.
+    \item Verificare che gli autori siano già presenti nel database. In caso contrario provvede all'inserimento
+    e  all'aggiornamento della relativa tabella associativa.
+\end{itemize}
+
 \subsection{Inserimento Articolo e Rivista}
 \begin{lstlisting}
     --View da dove viene inserito un articolo scientifico e la rivista dove \`e stato presentato
@@ -560,8 +568,8 @@ non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale pres
                 END IF;
                 --Controllo che il formato del libro sia compatibile con la serie gi\`a presente nel DataBase
             ELSEIF NOT EXISTS(SELECT *
-                              FROM (b.serie s NATURAL JOIN libriinserie ls)
-                                       JOIN libri l ON ls.id_libro = l.id_libro
+                              FROM (b.serie s NATURAL JOIN b.libriinserie ls)
+                                       JOIN b.libri l ON ls.id_libro = l.id_libro
                               WHERE l.formato = NEW.formato) THEN
                 RAISE NOTICE 'Il formato del libro non \`e compatibile con la serie, libro non inserito';
                 RETURN NEW;

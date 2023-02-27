@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  27 FEB 2023 12:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  27 FEB 2023 15:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -497,14 +497,18 @@ Capitolo 4.
 
 
 ] [15] [16] [17] [18]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 223.
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 218.
  (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [19] [20]
-Underfull \hbox (badness 3271) in paragraph at lines 291--304
+Underfull \hbox (badness 3271) in paragraph at lines 286--299
 \OT1/cmr/m/n/10 Per ge-sti-re l'in-se-ri-men-to de-gli ar-ti-co-li, ven-go-no uti-liz-za-ti due trig-ger,
  []
 
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no   in font cmr10!
 [21] [22] [23] [24] [25] [26] [27] [28]
 Missing character: There is no Â in font cmtt9!
 Missing character: There is no ¬ in font cmtt9!
@@ -516,17 +520,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 7B82A34BC5D61956C1C8E472F8043E5C;8335.
  ) 
 Here is how much of TeX's memory you used:
- 12819 strings out of 475380
- 207503 string characters out of 2776300
- 874337 words of memory out of 3000000
- 33283 multiletter control sequences out of 15000+600000
+ 12814 strings out of 475380
+ 207457 string characters out of 2776300
+ 867337 words of memory out of 3000000
+ 33281 multiletter control sequences out of 15000+600000
  474203 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,10n,77p,593b,2156s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,10n,77p,593b,2158s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\Simone\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt0900.pk> <C:\Users\Simone\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (33 pages, 667914 bytes).
+Output written on main.pdf (33 pages, 667946 bytes).
 PDF statistics:
- 1263 PDF objects out of 1440 (max. 8388607)
- 746 named destinations out of 1000 (max. 500000)
+ 1259 PDF objects out of 1440 (max. 8388607)
+ 743 named destinations out of 1000 (max. 500000)
  400 words of extra memory for PDF output out of 10000 (max. 10000000)
 
