@@ -20,7 +20,7 @@ public class ProfiloView extends View {
     private JPanel rootPanel;
     private JLabel usernameLabel;
     private JLabel permessiLabel;
-    private JLabel cambiaPasswordTextArea;
+    private JLabel cambiaPasswordLabel;
     private JPanel infoPanel;
     private JPasswordField vecchiaPasswordField;
     private JPasswordField nuovaPasswordField;
@@ -35,6 +35,9 @@ public class ProfiloView extends View {
     private JTable notificheTable;
     private JScrollPane notificheScrollPanel;
     private JPanel notifichePanel;
+    private JPanel reloadIconPanel;
+    private JLabel userLabel;
+    private JLabel permLabel;
 
     private ProfiloView() {
         super(nome);
@@ -48,14 +51,17 @@ public class ProfiloView extends View {
         };
         super.addWindowListener(closeWindow);
         setVisible(true);
-        usernameLabel.setText("Username: " + Utente.getInstance().getUsername());
-        permessiLabel.setText("Permessi: " + Utente.getInstance().getPermessi());
+        userLabel.setText(Utente.getInstance().getUsername());
+        userLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        permLabel.setText(String.valueOf(Utente.getInstance().getPermessi()));
+        permLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        cambiaPasswordLabel.setFont(new Font("CALIBRI", Font.BOLD, 14));
         passwordPanel.setVisible(false);
         reloadIcon.setIcon(reloadIconImageIcon);
         notificheTable.setDefaultEditor(Object.class, null);
         refreshTable();
 
-        cambiaPasswordTextArea.addMouseListener(new MouseAdapter() {
+        cambiaPasswordLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -99,6 +105,34 @@ public class ProfiloView extends View {
                 super.mouseClicked(e);
                 refreshTable();
                 UtenteController.getInstance().getNotifiche(Utente.getInstance().getUsername());
+            }
+        });
+        reloadIcon.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                reloadIcon.setBorder(BorderFactory.createLineBorder(Color.decode("#E69941"), 2));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+                super.mouseExited(e);
+                reloadIcon.setBorder(null);
+            }
+        });
+
+        cambiaPasswordLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                cambiaPasswordLabel.setBorder(BorderFactory.createLineBorder(Color.decode("#E69941"), 2));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                cambiaPasswordLabel.setBorder(null);
             }
         });
     }
@@ -150,8 +184,8 @@ public class ProfiloView extends View {
     }
 
     public void refreshPage() {
-        usernameLabel.setText("Username: " + Utente.getInstance().getUsername());
-        permessiLabel.setText("Permessi: " + Utente.getInstance().getPermessi());
+        userLabel.setText(Utente.getInstance().getUsername());
+        permLabel.setText(String.valueOf(Utente.getInstance().getPermessi()));
         passwordPanel.setVisible(false);
         refreshTable();
     }

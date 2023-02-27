@@ -41,17 +41,6 @@ public class Libro {
         return titolo;
     }
 
-    public void setTitolo(String titolo) {
-        this.titolo = titolo;
-    }
-
-    public ArrayList<Autore> getAutori() {
-        return autori;
-    }
-
-    public void setAutori(ArrayList<Autore> autori) {
-        this.autori = autori;
-    }
 
     public String getAutoriString() {
         String autoriString = "";
@@ -65,56 +54,28 @@ public class Libro {
         return lingua;
     }
 
-    public void setLingua(String lingua) {
-        this.lingua = lingua;
-    }
-
     public String getGenere() {
         return genere;
-    }
-
-    public void setGenere(String genere) {
-        this.genere = genere;
     }
 
     public String getEditore() {
         return editore;
     }
 
-    public void setEditore(String editore) {
-        this.editore = editore;
-    }
-
     public Date getDataPubblicazione() {
         return dataPubblicazione;
-    }
-
-    public void setDataPubblicazione(Date dataPubblicazione) {
-        this.dataPubblicazione = dataPubblicazione;
     }
 
     public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
     public String getFormato() {
         return formato;
     }
 
-    public void setFormato(String formato) {
-        this.formato = formato;
-    }
-
     public String getPrezzo() {
         return prezzo;
-    }
-
-    public void setPrezzo(String prezzo) {
-        this.prezzo = prezzo;
     }
 
     public String getSerieDiAppartenenza() {

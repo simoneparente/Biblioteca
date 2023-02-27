@@ -322,13 +322,12 @@ public class AggiuntaView extends View {
         });
     }
 
-    private void addArticoloAddConferenza() {
-        ImplementazioneArticolo ia= new ImplementazioneArticolo();
-            if( ia.addArticoloAddConferenza(titoloArticoliField.getText(), autoriArticoloField.getText(), editoreArticoliField.getText(),
-                disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
-                linguaArticoloField.getText(), nomeConferenzaField.getText(), responsabileConferenzaField.getText(),
-                strutturaConferenzaField.getText(), indirizzoConferenzaField.getText(), dataDaConferenzaField.getText(),
-                dataAConferenzaField.getText())){
+    private void addArticoloConferenza() {
+        if(ArticoloController.getInstance().addArticoloConferenza(titoloArticoliField.getText(),
+                autoriArticoloField.getText(), editoreArticoliField.getText(), disciplinaArticoloField.getText(),
+                String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
+                linguaArticoloField.getText(), String.valueOf(conferenzaComboBox.getSelectedItem()),
+                String.valueOf(conferenzaDataInizioComboBox.getSelectedItem()))){
                 JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
             } else {
                 JOptionPane.showMessageDialog(null, "Errore nell'aggiunta dell'articolo");
@@ -351,13 +350,14 @@ public class AggiuntaView extends View {
         return BorderFactory.createLineBorder(Color.RED, 2);
     }
 
-    private void addArticoloConferenza() {
+    private void addArticoloAddConferenza() {
         if (checkConferenzaFields()) {
-            if(ArticoloController.getInstance().addArticoloConferenza(titoloArticoliField.getText(),
-                    autoriArticoloField.getText(), editoreArticoliField.getText(), disciplinaArticoloField.getText(),
-                    String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
-                    linguaArticoloField.getText(), String.valueOf(conferenzaComboBox.getSelectedItem()),
-                    String.valueOf(conferenzaDataInizioComboBox.getSelectedItem()))){
+            ImplementazioneArticolo ia= new ImplementazioneArticolo();
+            if( ia.addArticoloAddConferenza(titoloArticoliField.getText(), autoriArticoloField.getText(), editoreArticoliField.getText(),
+                    disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
+                    linguaArticoloField.getText(), nomeConferenzaField.getText(), responsabileConferenzaField.getText(),
+                    strutturaConferenzaField.getText(), indirizzoConferenzaField.getText(), dataDaConferenzaField.getText(),
+                    dataAConferenzaField.getText())) {
                 JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
             } else {
                 JOptionPane.showMessageDialog(null, "Errore nell'aggiunta dell'articolo");
