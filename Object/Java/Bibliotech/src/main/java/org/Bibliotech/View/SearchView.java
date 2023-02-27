@@ -1,7 +1,7 @@
 package org.Bibliotech.View;
 
 import org.Bibliotech.Controller.Controller;
-import org.Bibliotech.Controller.FiltriController;
+import org.Bibliotech.Controller.RisorsaController;
 import org.Bibliotech.Controller.LoginController;
 import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.Model.Utente;
@@ -428,25 +428,25 @@ public class SearchView extends View {
     }
 
     public void fillAllComboBoxes() {
-        fillComboBox(autoreLibroComboBox, FiltriController.getInstance().leggiAutoriLibri());
-        fillComboBox(editoreLibroComboBox, FiltriController.getInstance().leggiEditoriLibri());
-        fillComboBox(genereLibroComboBox, FiltriController.getInstance().leggiGeneriLibri());
-        fillComboBox(linguaLibroComboBox, FiltriController.getInstance().leggiLingueLibri());
-        fillComboBox(serieLibroComboBox, FiltriController.getInstance().leggiSerieLibri());
-        fillComboBox(formatoLibroComboBox, FiltriController.getInstance().leggiFormatiLibri());
-        fillComboBox(autoreArticoloComboBox, FiltriController.getInstance().leggiAutoriArticoli());
-        fillComboBox(editoreArticoloComboBox, FiltriController.getInstance().leggiEditoriArticoli());
-        fillComboBox(disciplinaArticoloComboBox, FiltriController.getInstance().leggiDisciplineArticoli());
-        fillComboBox(linguaArticoloComboBox, FiltriController.getInstance().leggiLingueArticoli());
-        fillComboBox(rivistaArticoloComboBox, FiltriController.getInstance().leggiRivisteArticoli());
-        fillComboBox(conferenzaArticoloComboBox, FiltriController.getInstance().leggiConferenzeArticoli());
-        fillComboBox(formatoArticoloComboBox, FiltriController.getInstance().leggiFormatiArticoli());
-        fillComboBox(argomentoRivisteComboBox, FiltriController.getInstance().leggiArgomentiRiviste());
-        fillComboBox(linguaRivisteComboBox, FiltriController.getInstance().leggiLingueRiviste());
-        fillComboBox(formatoRivisteComboBox, FiltriController.getInstance().leggiFormatiRiviste());
-        fillComboBox(editoreSerieComboBox, FiltriController.getInstance().leggiEditoriSerie());
-        fillComboBox(linguaSerieComboBox, FiltriController.getInstance().leggiLingueSerie());
-        fillComboBox(formatoSerieComboBox, FiltriController.getInstance().leggiFormatiSerie());
+        fillComboBox(autoreLibroComboBox, RisorsaController.getInstance().leggiAutoriLibri());
+        fillComboBox(editoreLibroComboBox, RisorsaController.getInstance().leggiEditoriLibri());
+        fillComboBox(genereLibroComboBox, RisorsaController.getInstance().leggiGeneriLibri());
+        fillComboBox(linguaLibroComboBox, RisorsaController.getInstance().leggiLingueLibri());
+        fillComboBox(serieLibroComboBox, RisorsaController.getInstance().leggiSerieLibri());
+        fillComboBox(formatoLibroComboBox, RisorsaController.getInstance().leggiFormatiLibri());
+        fillComboBox(autoreArticoloComboBox, RisorsaController.getInstance().leggiAutoriArticoli());
+        fillComboBox(editoreArticoloComboBox, RisorsaController.getInstance().leggiEditoriArticoli());
+        fillComboBox(disciplinaArticoloComboBox, RisorsaController.getInstance().leggiDisciplineArticoli());
+        fillComboBox(linguaArticoloComboBox, RisorsaController.getInstance().leggiLingueArticoli());
+        fillComboBox(rivistaArticoloComboBox, RisorsaController.getInstance().leggiRivisteArticoli());
+        fillComboBox(conferenzaArticoloComboBox, RisorsaController.getInstance().leggiConferenzeArticoli());
+        fillComboBox(formatoArticoloComboBox, RisorsaController.getInstance().leggiFormatiArticoli());
+        fillComboBox(argomentoRivisteComboBox, RisorsaController.getInstance().leggiArgomentiRiviste());
+        fillComboBox(linguaRivisteComboBox, RisorsaController.getInstance().leggiLingueRiviste());
+        fillComboBox(formatoRivisteComboBox, RisorsaController.getInstance().leggiFormatiRiviste());
+        fillComboBox(editoreSerieComboBox, RisorsaController.getInstance().leggiEditoriSerie());
+        fillComboBox(linguaSerieComboBox, RisorsaController.getInstance().leggiLingueSerie());
+        fillComboBox(formatoSerieComboBox, RisorsaController.getInstance().leggiFormatiSerie());
     }
 
     public void fillComboBox(JComboBox<String> comboBox, ArrayList<String> items) {

@@ -1,6 +1,6 @@
 package org.Bibliotech.View;
 
-import org.Bibliotech.Controller.FiltriController;
+import org.Bibliotech.Controller.RisorsaController;
 import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.Model.Utente;
 
@@ -54,7 +54,7 @@ public class RichiestaView extends JDialog {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     richiediISSNComboBox.removeAllItems();
-                    ArrayList<String> items = FiltriController.getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
+                    ArrayList<String> items = RisorsaController.getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
                     for (String item : items) {
                         richiediISSNComboBox.addItem(item);
                     }
@@ -65,14 +65,14 @@ public class RichiestaView extends JDialog {
 
     private void fillISSNComboBox() {
         richiediISSNComboBox.removeAllItems();
-        ArrayList<String> items = FiltriController.getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
+        ArrayList<String> items = RisorsaController.getInstance().getIssnSerie(String.valueOf(richiediSerieComboBox.getSelectedItem()));
         for (String item : items) {
             richiediISSNComboBox.addItem(item);
         }
     }
 
     private void fillTitoliComboBox() {
-        ArrayList<String> items = FiltriController.getInstance().leggiSerieLibri();
+        ArrayList<String> items = RisorsaController.getInstance().leggiSerieLibri();
         for (String item : items) {
             richiediSerieComboBox.addItem(item);
         }

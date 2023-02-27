@@ -1,7 +1,7 @@
 package org.Bibliotech.View;
 
 import org.Bibliotech.Controller.Controller;
-import org.Bibliotech.Controller.FiltriController;
+import org.Bibliotech.Controller.RisorsaController;
 import org.Bibliotech.Controller.UtenteController;
 import org.Bibliotech.Model.Utente;
 
@@ -147,7 +147,7 @@ public class ProfiloView extends View {
     void refreshTable() {
         emptyTable();
         String query = "SELECT nome, Disponibile_in FROM b.notifiche n WHERE n.username='" + Utente.getInstance().getUsername() + "'";
-        FiltriController fc = FiltriController.getInstance();
+        RisorsaController fc = RisorsaController.getInstance();
         DefaultTableModel model = (DefaultTableModel) notificheTable.getModel();
         ArrayList<String> columns = fc.getColumns("resultview_notifiche");
         Vector<Vector<Object>> rows = fc.getRows(query);

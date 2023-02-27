@@ -1,10 +1,8 @@
 package org.Bibliotech.View;
 
-import org.Bibliotech.Controller.ArticoloController;
 import org.Bibliotech.Controller.Controller;
-import org.Bibliotech.Controller.FiltriController;
-import org.Bibliotech.Controller.LibroController;
-import org.Bibliotech.DAOimplementazione.ImplementazioneArticolo;
+import org.Bibliotech.Controller.RisorsaController;
+import org.Bibliotech.DAOimplementazione.ImplementazioneRisorsa;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -315,7 +313,7 @@ public class AggiuntaView extends View {
                     //conferenzaDataInizioComboBox.setVisible(!String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・"));
                     conferenzaDataInizioComboBox.setVisible((!String.valueOf(conferenzaComboBox.getSelectedItem()).equals("・・・Aggiungi nuova conferenza・・・")) && !(String.valueOf(conferenzaComboBox.getSelectedItem()).equals("")));
                     if(!conferenzaPanel.isVisible()){
-                        fillComboBox(conferenzaDataInizioComboBox, ArticoloController.getInstance().getConferenzaDataInizio(String.valueOf(conferenzaComboBox.getSelectedItem())));
+                        fillComboBox(conferenzaDataInizioComboBox, RisorsaController.getInstance().getConferenzaDataInizio(String.valueOf(conferenzaComboBox.getSelectedItem())));
                 }
             }
         }
@@ -323,7 +321,7 @@ public class AggiuntaView extends View {
     }
 
     private void addArticoloConferenza() {
-        if(ArticoloController.getInstance().addArticoloConferenza(titoloArticoliField.getText(),
+        if(RisorsaController.getInstance().addArticoloConferenza(titoloArticoliField.getText(),
                 autoriArticoloField.getText(), editoreArticoliField.getText(), disciplinaArticoloField.getText(),
                 String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
                 linguaArticoloField.getText(), String.valueOf(conferenzaComboBox.getSelectedItem()),
@@ -352,8 +350,8 @@ public class AggiuntaView extends View {
 
     private void addArticoloAddConferenza() {
         if (checkConferenzaFields()) {
-            ImplementazioneArticolo ia= new ImplementazioneArticolo();
-            if( ia.addArticoloAddConferenza(titoloArticoliField.getText(), autoriArticoloField.getText(), editoreArticoliField.getText(),
+            ImplementazioneRisorsa ifl= new ImplementazioneRisorsa();
+            if( ifl.addArticoloAddConferenza(titoloArticoliField.getText(), autoriArticoloField.getText(), editoreArticoliField.getText(),
                     disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
                     linguaArticoloField.getText(), nomeConferenzaField.getText(), responsabileConferenzaField.getText(),
                     strutturaConferenzaField.getText(), indirizzoConferenzaField.getText(), dataDaConferenzaField.getText(),
@@ -412,7 +410,7 @@ public class AggiuntaView extends View {
     }
 
     private void addArticoloRivista() { //aggiunge articolo in rivista già presente
-        if (ArticoloController.getInstance().addArticoloRivista(titoloArticoliField.getText(), autoriArticoloField.getText(),
+        if (RisorsaController.getInstance().addArticoloRivista(titoloArticoliField.getText(), autoriArticoloField.getText(),
                 editoreArticoliField.getText(), disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()),
                 doiField.getText(), linguaArticoloField.getText(), String.valueOf(rivistaComboBox.getSelectedItem()), String.valueOf(rivistaISSNComboBox.getSelectedItem()))) {
             JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
@@ -421,7 +419,7 @@ public class AggiuntaView extends View {
 
     private void addArticoloAddRivista() { //aggiunge sia articolo che rivista
         if (checkRivistaFields()) {
-            ArticoloController.getInstance().addArticoloAddRivistaInDB(titoloArticoliField.getText(), autoriArticoloField.getText(),
+            RisorsaController.getInstance().addArticoloAddRivistaInDB(titoloArticoliField.getText(), autoriArticoloField.getText(),
                     editoreArticoliField.getText(), disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()),
                     doiField.getText(), linguaArticoloField.getText(), nomeRivistaField.getText(), issnRivistaField.getText(), argomentoRivistaField.getText(),
                     datapubblicazioneRivistaField.getText(), responsabileRivistaField.getText(), Double.parseDouble(prezzoRivistaField.getText()));
@@ -490,7 +488,7 @@ public class AggiuntaView extends View {
             rivistaPanel.setVisible(false);
             rivistaISSNComboBox.setVisible(true);
         }
-        fillComboBox(rivistaISSNComboBox, FiltriController.getInstance().leggiRivisteISSN(String.valueOf(rivistaComboBox.getSelectedItem())));
+        fillComboBox(rivistaISSNComboBox, RisorsaController.getInstance().leggiRivisteISSN(String.valueOf(rivistaComboBox.getSelectedItem())));
     }
 
     private String checkConferenzaOrRivista() {
@@ -554,7 +552,7 @@ public class AggiuntaView extends View {
 
     private void addLibro(int check) {
         if (check == 0) {
-            LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
+            RisorsaController.getInstance().addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
                     autoriLibroField.getText(), editoreLibroField.getText(),
                     prezzoLibroField.getText(), isbnLibroField.getText(),
                     dataPublicazioneLibroField.getText(),
@@ -567,7 +565,7 @@ public class AggiuntaView extends View {
 
     private void addLibroSerie(int check) {
         if (check == 0) {
-            LibroController.addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
+            RisorsaController.getInstance().addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
                     autoriLibroField.getText(), editoreLibroField.getText(),
                     prezzoLibroField.getText(), isbnLibroField.getText(),
                     dataPublicazioneLibroField.getText(),
@@ -643,10 +641,10 @@ public class AggiuntaView extends View {
     }
 
     private void fillAllComboBoxes() {
-        fillComboBox(serieLibroBox, FiltriController.getInstance().leggiSerieLibri());
-        fillComboBox(rivistaComboBox, FiltriController.getInstance().leggiRiviste());
-        fillComboBox(conferenzaComboBox, FiltriController.getInstance().leggiConferenze());
-        fillComboBox(rivistaISSNComboBox, FiltriController.getInstance().leggiRivisteISSN(String.valueOf(rivistaComboBox.getSelectedItem())));
+        fillComboBox(serieLibroBox, RisorsaController.getInstance().leggiSerieLibri());
+        fillComboBox(rivistaComboBox, RisorsaController.getInstance().leggiRiviste());
+        fillComboBox(conferenzaComboBox, RisorsaController.getInstance().leggiConferenze());
+        fillComboBox(rivistaISSNComboBox, RisorsaController.getInstance().leggiRivisteISSN(String.valueOf(rivistaComboBox.getSelectedItem())));
     }
 
     private void fillComboBox(JComboBox<String> comboBox, ArrayList<String> items) {

@@ -1,6 +1,6 @@
 package org.Bibliotech.View;
 
-import org.Bibliotech.Controller.FiltriController;
+import org.Bibliotech.Controller.RisorsaController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +18,7 @@ public class ResultView extends View {
     private JScrollPane resultScrollPane;
     private ArrayList<String> filtri;
 
-    ResultView(FiltriController fc) {
+    ResultView(RisorsaController fc) {
         super(nome);
         super.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         super.setResizable(true);
@@ -40,7 +40,7 @@ public class ResultView extends View {
 
     public static ResultView getInstance() {
         if (instance == null) {
-            instance = new ResultView(FiltriController.getInstance());
+            instance = new ResultView(RisorsaController.getInstance());
         }
         return instance;
     }
@@ -50,7 +50,7 @@ public class ResultView extends View {
         } else {
             String nomeTabella = "resultview_" + nomeTabellaIn;
             emptyTable();
-            FiltriController fc = FiltriController.getInstance();
+            RisorsaController fc = RisorsaController.getInstance();
             DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
             ArrayList<String> columns = fc.getColumns(nomeTabella);
             Vector<Vector<Object>> rows = fc.getRows(query);
