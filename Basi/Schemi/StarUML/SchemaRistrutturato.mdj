@@ -2073,6 +2073,7 @@
 											"model": {
 												"$ref": "AAAAAAGFpPy+8zenqbs="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 845,
 											"top": 242,
@@ -2092,7 +2093,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 845,
-											"top": 257,
+											"top": 242,
 											"width": 150.6806640625,
 											"height": 13,
 											"text": "+Responsabile: String",
@@ -2109,7 +2110,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 845,
-											"top": 272,
+											"top": 257,
 											"width": 150.6806640625,
 											"height": 13,
 											"text": "+Prezzo: Double",
@@ -2120,7 +2121,7 @@
 									"left": 840,
 									"top": 177,
 									"width": 160.6806640625,
-									"height": 113
+									"height": 98
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -2133,7 +2134,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 840,
-									"top": 290,
+									"top": 275,
 									"width": 160.6806640625,
 									"height": 10
 								},
@@ -7798,7 +7799,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGGjqXRIrRhvTY="
 							},
-							"name": "0"
+							"name": "0",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -7806,7 +7808,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGGjqXRIrRhvTY="
 							},
-							"name": "1"
+							"name": "1",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -7814,7 +7817,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGGjqXRIrRhvTY="
 							},
-							"name": "2"
+							"name": "2",
+							"type": ""
 						}
 					]
 				}
