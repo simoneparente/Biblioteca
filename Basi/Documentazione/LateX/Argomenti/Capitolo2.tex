@@ -1,8 +1,6 @@
 \chapter{Progettazione concettuale}
     \section{Class Diagram}
-
     \includegraphics[scale=0.15]{Immagini/SchemaConcettuale.png}
-        
     \section{Analisi della ristrutturazione del Class Diagram}
     Durante questa fase, verranno apportate alcune modifiche al diagramma delle 
     classi al fine di renderlo pi\`u adatto per una traduzione al modello logico.
@@ -54,8 +52,10 @@
             \end{itemize}
     
     \section{Class Diagram ristrutturato}
-    \includegraphics[scale=0.19]{Immagini/SchemaRistrutturato.png}
-        \pagebreak
+    \subsection{UML Diagram}
+    \includegraphics[scale=0.15]{Immagini/SchemaRistrutturato.png}
+    \subsection{ER Diagram}
+    \includegraphics[scale=0.30]{Immagini/ER.png}
     \section{Dizionario delle classi}
     \begin{longtable}{lll}
       \hline
@@ -78,7 +78,6 @@
       \multicolumn{1}{|l|}{Utente}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ID\_Utente\\ Username\\ Password\end{tabular}}                                                             & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che conserva le\\ informazioni relative\\ agli Utenti registrati sul\\ sistema\end{tabular}}                                            \\ \hline
       \multicolumn{1}{|l|}{Richiesta}        & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}\end{tabular}}                                                               & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Classe che gestisce le\\ richieste fatte dagli utenti\\ relativamente alle\\ disponibilit\`a di serie\end{tabular}}                              \\ \hline
       \end{longtable}
-        \pagebreak
     \section{Dizionario delle associazioni}
 
     \begin{longtable}[c]{|l|l|l|}
