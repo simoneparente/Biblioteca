@@ -77,7 +77,7 @@ CREATE TABLE b.Evento
 
     CONSTRAINT PK_Evento PRIMARY KEY (ID_Evento),
     CONSTRAINT CK_Date CHECK (DataInizio <= DataFine),
-    CONSTRAINT UK_Nome_DataInizio UNIQUE (Nome, DataInizio)
+    CONSTRAINT UK_Nome_Indirizzo_DataInizio UNIQUE (Nome, Indirizzo, DataInizio)
 );
 
 CREATE TABLE b.Conferenza
@@ -464,15 +464,15 @@ BEGIN
         RAISE NOTICE 'Libro già presente';
     ELSE
         --Controllo che la serie di appartenenza del libro non sia già presente nel DataBase in tal caso la inserisco
-        IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issn_serie_di_appartenenza) THEN
+        IF NOT EXISTS(SELECT * FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza) THEN
             RAISE NOTICE 'Serie non presente';
             IF NEW.nome_serie_di_appartenenza IS NOT NULL THEN
                 INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
             END IF;
             --Controllo che il formato del libro sia compatibile con la serie già presente nel DataBase
         ELSEIF NOT EXISTS(SELECT *
-                          FROM (b.serie s NATURAL JOIN libriinserie ls)
-                                   JOIN libri l ON ls.id_libro = l.id_libro
+                          FROM (b.serie s NATURAL JOIN b.libriinserie ls)
+                                   JOIN b.libri l ON ls.id_libro = l.id_libro
                           WHERE l.formato = NEW.formato) THEN
             RAISE NOTICE 'Il formato del libro non è compatibile con la serie, libro non inserito';
             RETURN NEW;
