@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  27 FEB 2023 15:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  27 FEB 2023 17:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -324,7 +324,7 @@ Package hyperref Info: Link coloring OFF on input line 37.
 \openout3 = `main.out'.
 
 \c@lstlisting=\count301
-<Immagini/FedericoII.png, id=199, 134.75343pt x 139.27031pt>
+<Immagini/FedericoII.png, id=203, 134.75343pt x 139.27031pt>
 File: Immagini/FedericoII.png Graphic file (type png)
 <use Immagini/FedericoII.png>
 Package pdftex.def Info: Immagini/FedericoII.png  used on input line 44.
@@ -361,7 +361,7 @@ Capitolo 1.
 
  (Argomenti/Capitolo2.tex
 Capitolo 2.
-<Immagini/SchemaConcettuale.png, id=287, 2170.1075pt x 1298.8525pt>
+<Immagini/SchemaConcettuale.png, id=292, 2170.1075pt x 1298.8525pt>
 File: Immagini/SchemaConcettuale.png Graphic file (type png)
 <use Immagini/SchemaConcettuale.png>
 Package pdftex.def Info: Immagini/SchemaConcettuale.png  used on input line 3.
@@ -386,12 +386,12 @@ Underfull \hbox (badness 5245) in paragraph at lines 50--52
 []\OT1/cmr/m/n/10 Analogamente, l'en-tit^^Ra \OT1/cmr/bx/n/10 Ar-ti-co-lo \OT1/cmr/m/n/10 avr^^Ra co-me at-tri-bu-ti, quel-li di
  []
 
-<Immagini/SchemaRistrutturato.png, id=306, 1897.0875pt x 1425.325pt>
+<Immagini/SchemaRistrutturato.png, id=311, 1897.0875pt x 1425.325pt>
 File: Immagini/SchemaRistrutturato.png Graphic file (type png)
 <use Immagini/SchemaRistrutturato.png>
 Package pdftex.def Info: Immagini/SchemaRistrutturato.png  used on input line 56.
 (pdftex.def)             Requested size: 284.55084pt x 213.78952pt.
-<Immagini/ER.png, id=307, 1115.16624pt x 674.52pt>
+<Immagini/ER.png, id=312, 1115.16624pt x 674.52pt>
 File: Immagini/ER.png Graphic file (type png)
 <use Immagini/ER.png>
 Package pdftex.def Info: Immagini/ER.png  used on input line 58.
@@ -505,10 +505,6 @@ Underfull \hbox (badness 1194) in paragraph at lines 296--300
 \OT1/cmr/m/n/10 Per la ge-stio-ne l'in-se-ri-men-to de-gli ar-ti-co-li ci so-no due ap-po-si-ti trig-ger:
  []
 
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
 [21] [22] [23] [24]
 Underfull \hbox (badness 1189) in paragraph at lines 460--462
 \OT1/cmr/m/n/10 Per la ri-mo-zio-ne di un ar-ti-co-lo dal da-ta-ba-se vie-ne uti-liz-za-to il trig-ger
@@ -519,30 +515,38 @@ Underfull \hbox (badness 1533) in paragraph at lines 460--462
 \OT1/cmtt/m/n/10 trig[]RimozioneArticoli\OT1/cmr/m/n/10 , es-so agi-sce sul-la ta-bel-la \OT1/cmtt/m/n/10 Articoli \OT1/cmr/m/n/10 nel-l'i-stan-te
  []
 
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
 [25] [26] [27] [28]
+Underfull \hbox (badness 1721) in paragraph at lines 642--643
+[]\OT1/cmr/m/n/10 Il li-bro sia gi^^Ra pre-sen-te nel da-ta-ba-se, in ca-so con-tra-rio, an-nul-la
+ []
+
+[29]
 Missing character: There is no Â in font cmtt9!
 Missing character: There is no ¬ in font cmtt9!
-[29] [30] [31] [32]) [33] (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux) (Argomenti/Capitolo4.aux))
+[30] [31] [32] [33]
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¨ in font cmr10!
+) [34] (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux) (Argomenti/Capitolo4.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 97A7BE33BA56D3CC8F489D8E30A1C6E5;8362.
+(rerunfilecheck)             Checksum: 2E2EEA5CCCACEE8BF4653349055A170D;8530.
  ) 
 Here is how much of TeX's memory you used:
- 12826 strings out of 475380
- 207648 string characters out of 2776300
- 869337 words of memory out of 3000000
- 33288 multiletter control sequences out of 15000+600000
+ 12833 strings out of 475380
+ 207763 string characters out of 2776300
+ 874337 words of memory out of 3000000
+ 33293 multiletter control sequences out of 15000+600000
  474203 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,10n,77p,593b,2154s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,10n,77p,593b,2158s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\Simone\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt0900.pk> <C:\Users\Simone\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (33 pages, 755309 bytes).
+Output written on main.pdf (34 pages, 758431 bytes).
 PDF statistics:
- 1270 PDF objects out of 1440 (max. 8388607)
- 747 named destinations out of 1000 (max. 500000)
- 413 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1280 PDF objects out of 1440 (max. 8388607)
+ 749 named destinations out of 1000 (max. 500000)
+ 421 words of extra memory for PDF output out of 10000 (max. 10000000)
 

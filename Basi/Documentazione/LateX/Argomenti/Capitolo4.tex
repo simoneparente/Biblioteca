@@ -298,9 +298,9 @@ Per la gestione l'inserimento degli articoli ci sono due appositi trigger: \text
 nelle view \texttt{ins\_ArticoliRivista} e \texttt{ins\_ArticoliConferenza}. \\
 Questi trigger provvedono a:
 \begin{itemize}
-    \item Verificare che la conferenza o la rivista siano già presenti nel database. In caso contrario,
+    \item Verificare che la conferenza o la rivista siano gi\`a presenti nel database. In caso contrario,
           provvedono all'inserimento e all'aggiornamento della relativa tabella associativa.
-    \item Verificare che gli autori siano già presenti nel database. In caso contrario provvedono all'inserimento
+    \item Verificare che gli autori siano gi\`a presenti nel database. In caso contrario provvedono all'inserimento
     e  all'aggiornamento della relativa tabella associativa.
 \end{itemize}
 
@@ -462,7 +462,7 @@ esso agisce sulla tabella \texttt{Articoli} nell'istante \texttt{BEFORE DELETE} 
 \begin{itemize}
     \item Verificare che gli autori dell'articolo non ne abbiano scritto alcun altro, in caso affermativo, procede
           alla loro rimozione dalla tabella \texttt{Autore}.
-    \item Verificare che la rivista o la conferenza in cui l'articolo è stato pubblicato non ne contenga altri,
+    \item Verificare che la rivista o la conferenza in cui l'articolo \`e stato pubblicato non ne contenga altri,
           in caso affermativo, procede alla rimozione nelle tabelle \texttt{Riviste} o \texttt{Conferenza}. 
 \end{itemize}
 
@@ -526,22 +526,42 @@ CREATE TRIGGER trig_rimozioneArticoli
 EXECUTE PROCEDURE b.ftrig_rimozineArticoli();
 \end{lstlisting}
 
+\newpage
+
 \section{Trigger Gestione Libri}
-Il trigger \texttt{trig\_Libri} agisce sulla view \texttt{ins\_Libri} per l'inserimento di un libro.
-Questo trigger controlla se il libro \`e gi\`a presente nel database, e se fa parte di una serie. Se la 
-serie non \`e presente nel database, la inserisce. Inoltre, riempie la tabella di relazione tra libri e serie, 
-e richiama la procedura \texttt{insAutori}, che verifica che gli autori siano gi\`a presenti nel database; in 
-caso negativo, li inserisce e riempie la tabella di relazione tra libri ed autori.
-Per l'inserimento di una possibile presentazione di un libro si usa il trigger \texttt{trig\_presentazione}, 
-che agisce sulla view \texttt{ins\_presentazione}. Tale trigger controlla che il libro sia presente nel DB, 
-e se non abbia gi\`a abbia una presentazione. In tal caso, aggiunge la presentazione nella tabella \texttt{Evento}, 
-riempiendo poi la tabella \texttt{Presentazione} (la tabella associativa tra \texttt{Libro} ed \texttt{Evento}).
+%Il trigger \texttt{trig\_Libri} agisce sulla view \texttt{ins\_Libri} per l'inserimento di un libro.
+%Questo trigger controlla se il libro \`e gi\`a presente nel database, e se fa parte di una serie. Se la 
+%serie non \`e presente nel database, la inserisce. Inoltre, riempie la tabella di relazione tra libri e serie, 
+%e richiama la procedura \texttt{insAutori}, che verifica che gli autori siano gi\`a presenti nel database; in 
+%caso negativo, li inserisce e riempie la tabella di relazione tra libri ed autori.
+%Per l'inserimento di una possibile presentazione di un libro si usa il trigger \texttt{trig\_presentazione}, 
+%che agisce sulla view \texttt{ins\_presentazione}. Tale trigger controlla che il libro sia presente nel DB, 
+%e se non abbia gi\`a abbia una presentazione. In tal caso, aggiunge la presentazione nella tabella \texttt{Evento}, 
+%riempiendo poi la tabella \texttt{Presentazione} (la tabella associativa tra \texttt{Libro} ed \texttt{Evento}).
 Per la rimozione dei libri dal DB utilizziamo il trigger \texttt{trig\_rimozionelibri}, che agisce sulla tabella 
-\texttt{Libri} in \texttt{BEFORE DELETE}. Questo trigger controlla che gli autori di quel libro non abbiano scritto 
-altro, ed in tal caso rimuove tali autori. Controlla inoltre se la serie in cui \`e possibile che il libro sia presente 
-non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale presentazione di quel libro.
+%\texttt{Libri} in \texttt{BEFORE DELETE}. Questo trigger controlla che gli autori di quel libro non abbiano scritto 
+%altro, ed in tal caso rimuove tali autori. Controlla inoltre se la serie in cui \`e possibile che il libro sia presente 
+%non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale presentazione di quel libro.
+%\subsection{Inserimento di libri}
+
 
 \subsection{Inserimento Libro}
+Per l'inserimento di un libro nel database bisogna agire sulla view \texttt{ins\_libri}.
+Inserire una tupla in questa view azione l'effetto del trigger \texttt{trig\_libri}, questo trigger provvede a:
+\begin{itemize}
+    \item Verificare che il libro non sia gi\`a presente nel database, in caso affermativo, annulla l'inserimento.
+    \item Verificare che il libro faccia o meno parte di una serie. In particolare
+    \begin{itemize}
+        \item Se il libro fa parte di una serie abbiamo due ulteriori casi:
+        \begin{itemize}
+            \item Se la serie non \`e presente nel database, provvede a inserirla e collegarla al libro tramite la tabella \texttt{LibriInSerie}.
+            \item Se la serie \`e gi\`a presente nel database, viene semplicemente congiunta al libro tramite la suddetta tabella.
+        \end{itemize}
+        \item In caso contrario, continua:
+    \end{itemize}
+    \item Verificare che gli autori siano gi\`a presenti nel database, in caso affermativo, aggiorna la tabella \texttt{AutoreLibro}.
+    \item Altrimenti aggiunge gli autori alla tabella \texttt{Autore}.
+\end{itemize}
 \begin{lstlisting}
     --View da dove viene inserito un libro
     CREATE OR REPLACE VIEW b.ins_Libri AS
@@ -572,7 +592,7 @@ non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale pres
             RAISE NOTICE 'Libro gi\`a presente';
         ELSE
             --Controllo che la serie di appartenenza del libro non sia gi\`a presente nel DataBase in tal caso la inserisco
-                IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issn_serie_di_appartenenza) THEN
+                IF NOT EXISTS(SELECT * FROM b.serie WHERE issn = NEW.issn_serie_di_appartenenza) THEN
                 RAISE NOTICE 'Serie non presente';
                 IF NEW.nome_serie_di_appartenenza IS NOT NULL THEN
                     INSERT INTO b.serie(nome, issn) values (NEW.nome_serie_di_appartenenza, NEW.issn_serie_di_appartenenza);
@@ -615,6 +635,15 @@ non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale pres
 \end{lstlisting}
 
 \subsection{Inserimento Presentazione di un libro}
+Per l'inserimento di una presentazione di un libro bisogna agire sulla view \texttt{ins\_presentazione},
+la quale attiva il trigger \texttt{trig\_presentazione}.
+Tale trigger verifica che:
+\begin{itemize}
+    \item Il libro sia gi\`a presente nel database, in caso contrario, annulla l'inserimento.
+    \item Non esista gi\`a una presentazione per il libro in questione.
+    \item Nel caso in cui queste condizioni siano verificate, procede all'inserimento nella tabella
+          \texttt{Evento} e alla congiunzione dell'evento al libro tramite la tabella \texttt{Presentazione}.
+\end{itemize}
 \begin{lstlisting}
     --View da dove viene inserito una presentazione
     CREATE OR REPLACE VIEW b.ins_presentazione AS
@@ -670,7 +699,23 @@ non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale pres
     EXECUTE FUNCTION b.ftrig_presentazione();
 \end{lstlisting}
 
+
+\newpage
+
+
 \subsection{Rimozione Libro}
+Per la rimozione di un libro dal database bisogna agire sulla tabella \texttt{Libri}, nell'istante
+\texttt{BEFORE DELETE} verr\`a attivato il trigger \texttt{trig\_rimozionelibri}. Questo trigger provvede a:
+\begin{itemize}
+    \item Verificare che gli autori del libro non abbiano scritto altre risorse presenti nel database, in
+          caso affermativo, il trigger rimuove questi ultimi.
+    \item Verificare che il libro appartenga a una serie. In caso affermativo:
+    \begin{itemize}
+        \item Verifica che la serie non abbia altri libri che vi appartengono. In caso affermativo,
+        procede con la rimozione della serie dal database.
+    \end{itemize}
+\end{itemize}
+
 \begin{lstlisting}
     CREATE OR REPLACE FUNCTION b.ftrig_rimozineLibri() RETURNS trigger AS
 $$
@@ -720,11 +765,16 @@ EXECUTE PROCEDURE b.ftrig_rimozineLibri();
 \end{lstlisting}
 
 \section{Trigger Gestione Stock}
-Utilizziamo il trigger \textit{trig\_stock} che agisce sulla view \textit{ins\_stock} per gestire lo stock. 
-Il trigger verifica che il libro sia presente nel database, poi controlla se il libro sia gi\`a in stock in 
-quel negozio ed, in tal caso, aggiorna la quantit\`a dello stock. Per rimuovere un libro dallo stock c'\`e 
-il trigger \textit{trig\_RimozioneDaStock} che aggiorna la quantit\`a del libro in stock, e se questa diventa 
-zero elimina la tupla riferita a quel libro dalla tabella stock.
+
+\subsection{Inserimento in stock}
+Utilizziamo il trigger \textit{trig\_stock} che agisce sulla view \textit{ins\_stock} per gestire lo stock dei negozi. 
+Il trigger verifica che:
+\begin{itemize}
+    \item Il libro e il negozio siano presenti nel database, in caso affermativo, procede, in caso contrario, annulla l'inserimento.
+    \item Se il libro \`e gi\`a presente nella tabella stock (nello stesso negozio), aggiorna la quantit\`a.
+    \item Se la quantit\`a raggiunge lo zero, la tupla interessata viene rimossa dalla tabella.
+\end{itemize}
+
 \begin{lstlisting}
     --View da dove inserisco i dati per aggiungere un libro allo stock
     CREATE VIEW b.ins_stock AS
@@ -789,13 +839,20 @@ zero elimina la tupla riferita a quel libro dalla tabella stock.
 \end{lstlisting}
 
 \section{Gestione Notifiche}
-L'utente pu\`o richiedere la disponibilit\`a di una serie, riempiendo la tabella \textit{richieste}. Qualora 
-l'utente debba essere notificato, si utilizza la view \textit{notifiche}.
+L'utente ha la possibilità di richiedere di essere notificato qualora una serie da lui richiesta
+diventasse disponibile in uno dei negozi. Il risultato viene mostrato nella view \texttt{Notifiche},
+in particolare:
+\begin{itemize}
+    \item La colonna \textit{Nome} indica il nome della serie. 
+    \item La colonna \textit{Disponibile\_in} contiene una serie di stringhe composte dai negozi in cui la serie richiesta
+    dall'utente è attualmente disponibile.
+    \item La colonna \textit{Username} indica gli utenti che hanno richiesto la serie
+\end{itemize}
 
 \subsection{View Notifiche}
 \begin{lstlisting}
     CREATE VIEW b.notifiche AS
-    SELECT *, b.getDisponibilitaSerie(id_serie) AS disponibilita
-    FROM b.serie NATURAL JOIN b.richiesta
-    WHERE b.getDisponibilitaSerie(id_serie) IS true;
+    SELECT nome, b.getNegoziConSerie(b.getIDSerieByISSN(issn)) as Disponibile_in, issn, username
+    FROM b.serie s JOIN b.richiesta r ON s.id_serie=r.id_serie JOIN b.utente u ON u.id_utente=r.id_utente
+    WHERE b.getDisponibilitaSerie(r.id_serie) IS true;
 \end{lstlisting}

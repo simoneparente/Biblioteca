@@ -1002,8 +1002,8 @@ BEGIN
                 nomi_negozi = nomi_negozi || nome_negozio;
             end if;
         end loop;
-    return nomi_negozi;
     CLOSE cursore;
+    return nomi_negozi;
 end;
 $$
     LANGUAGE plpgsql;
