@@ -6,9 +6,9 @@ funzioni, le procedure, i trigger e i vincoli. Con questi elementi, sar\`a possi
 relazionale con una struttura specifica che soddisfi i requisiti identificati nel Capitolo \ref{Capitolo1}.
 
 \subsection{Scelte Progettuali}
-Per la gestione del database \'e stata scelta l'utilizzo di \textit{view} al fine di semplificare 
+Per la gestione del database \`e stata scelta l'utilizzo di \textit{view} al fine di semplificare 
 l'inserimento dei dati nelle varie tabelle. Per ogni \textit{view} di inserimento sono stati creati 
-dei \textit{trigger} che riempiono più tabelle relative alla singola risorsa, rendendo più semplice 
+dei \textit{trigger} che riempiono pi\`u tabelle relative alla singola risorsa, rendendo pi\`u semplice 
 l'inserimento di questa.
 
 \section{Creazione Tabelle}
@@ -191,7 +191,7 @@ CREATE TABLE b.ArticoliInRiviste
     Username  VARCHAR(128),
     Password  VARCHAR(128),
 
-    CONSTRAINT PK_Utente PRIMARY KEY (ID_Utente),
+    CONSTRAINT PK_Utente  KEY (ID_Utente),
     CONSTRAINT UK_Utente UNIQUE (Username);
 \end{lstlisting}
 
@@ -290,14 +290,6 @@ $$ language plpgsql;
 
 \section{Trigger Gestione Articoli}
 \subsection{Gestione inserimenti di articoli}
-%Per gestire l'inserimento degli articoli, vengono utilizzati due trigger,
-%\texttt{trig\_ArticoliRivista} e \texttt{trig\_ArticoliConferenze}, che agiscono sulle view
-%\texttt{ins\_ArticoliRivista} e \texttt{ins\_ArticoliConferenza}. Questi trigger verificano che la rivista 
-%o la conferenza non siano gi\`a presenti nel database e, in caso contrario, provvedono all'inserimento. Successivamente, 
-%l'articolo viene inserito e la tabella di relazione tra articoli e riviste o conferenze viene aggiornata. 
-%Inoltre, viene richiamata la procedura \texttt{insAutori}, che verifica se gli autori sono gi\`a presenti 
-%nel database e, in caso contrario, procede con il loro inserimento, seguendo l'aggiornamento della tabella 
-%di relazione tra articoli ed autori.
 
 Per la gestione l'inserimento degli articoli ci sono due appositi trigger: \texttt{trig\_ArticoliRivista} e 
 \texttt{trig\_ArticoliConferenze}, questi trigger si attivano nel momento in cui vengono inseriti dei dati
@@ -459,11 +451,6 @@ EXECUTE FUNCTION b.ftrig_ArticoliConferenze();
 \end{lstlisting}
 
 \subsection{Rimozione di articoli}
-%Per la rimozione di articoli dal database viene utilizzato il trigger \texttt{trig\_RimozioneArticoli}, che 
-%agisce sulla tabella \texttt{Articoli} in \texttt{BEFORE DELETE}. Questo trigger verifica che gli autori 
-%dell'articolo non abbiano scritto altro e, in caso affermativo, procede con la loro rimozione. Controlla 
-%inoltre che la rivista in cui potrebbe essere stato presentato l'articolo non abbia altri articoli e, in 
-%questo caso, provvede alla sua rimozione. La stessa cosa avviene per le conferenze.
 
 Per la rimozione di un articolo dal database viene utilizzato il trigger \texttt{trig\_RimozioneArticoli},
 esso agisce sulla tabella \texttt{Articoli} nell'istante \texttt{BEFORE DELETE} e provvede a:
@@ -537,20 +524,11 @@ EXECUTE PROCEDURE b.ftrig_rimozineArticoli();
 \newpage
 
 \section{Trigger Gestione Libri}
-%Il trigger \texttt{trig\_Libri} agisce sulla view \texttt{ins\_Libri} per l'inserimento di un libro.
-%Questo trigger controlla se il libro \`e gi\`a presente nel database, e se fa parte di una serie. Se la 
-%serie non \`e presente nel database, la inserisce. Inoltre, riempie la tabella di relazione tra libri e serie, 
-%e richiama la procedura \texttt{insAutori}, che verifica che gli autori siano gi\`a presenti nel database; in 
-%caso negativo, li inserisce e riempie la tabella di relazione tra libri ed autori.
-%Per l'inserimento di una possibile presentazione di un libro si usa il trigger \texttt{trig\_presentazione}, 
-%che agisce sulla view \texttt{ins\_presentazione}. Tale trigger controlla che il libro sia presente nel DB, 
-%e se non abbia gi\`a abbia una presentazione. In tal caso, aggiunge la presentazione nella tabella \texttt{Evento}, 
-%riempiendo poi la tabella \texttt{Presentazione} (la tabella associativa tra \texttt{Libro} ed \texttt{Evento}).
 Per la rimozione dei libri dal DB utilizziamo il trigger \texttt{trig\_rimozionelibri}, che agisce sulla tabella 
-%\texttt{Libri} in \texttt{BEFORE DELETE}. Questo trigger controlla che gli autori di quel libro non abbiano scritto 
-%altro, ed in tal caso rimuove tali autori. Controlla inoltre se la serie in cui \`e possibile che il libro sia presente 
-%non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale presentazione di quel libro.
-%\subsection{Inserimento di libri}
+\texttt{Libri} in \texttt{BEFORE DELETE}. Questo trigger controlla che gli autori di quel libro non abbiano scritto 
+altro, ed in tal caso rimuove tali autori. Controlla inoltre se la serie in cui \`e possibile che il libro sia presente 
+non ha altri libri, rimuovendo la serie stessa. Infine, rimuove l'eventuale presentazione di quel libro.
+\subsection{Inserimento di libri}
 
 
 \subsection{Inserimento Libro}
@@ -854,7 +832,7 @@ in particolare:
 \begin{itemize}
     \item La colonna \textit{Nome} indica il nome della serie. 
     \item La colonna \textit{Disponibile\_in} contiene una serie di stringhe composte dai negozi in cui la serie richiesta
-    dall'utente è attualmente disponibile.
+    dall'utente \`e attualmente disponibile.
     \item La colonna \textit{Username} indica gli utenti che hanno richiesto la serie
 \end{itemize}
 
