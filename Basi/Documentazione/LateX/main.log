@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  28 FEB 2023 09:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  28 FEB 2023 09:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -318,7 +318,7 @@ LaTeX Info: Redefining \nameref on input line 37.
 \openout3 = `main.out'.
 
 \c@lstlisting=\count301
-<Immagini/FedericoII.png, id=205, 134.75343pt x 139.27031pt>
+<Immagini/FedericoII.png, id=209, 134.75343pt x 139.27031pt>
 File: Immagini/FedericoII.png Graphic file (type png)
 <use Immagini/FedericoII.png>
 Package pdftex.def Info: Immagini/FedericoII.png  used on input line 44.
@@ -355,7 +355,7 @@ Capitolo 1.
 
  (./Argomenti/Capitolo2.tex
 Capitolo 2.
-<Immagini/SchemaConcettuale.png, id=294, 2170.1075pt x 1298.8525pt>
+<Immagini/SchemaConcettuale.png, id=299, 2170.1075pt x 1298.8525pt>
 File: Immagini/SchemaConcettuale.png Graphic file (type png)
 <use Immagini/SchemaConcettuale.png>
 Package pdftex.def Info: Immagini/SchemaConcettuale.png  used on input line 3.
@@ -380,12 +380,12 @@ Underfull \hbox (badness 5245) in paragraph at lines 50--52
 []\OT1/cmr/m/n/10 Analogamente, l'en-tit^^Ra \OT1/cmr/bx/n/10 Ar-ti-co-lo \OT1/cmr/m/n/10 avr^^Ra co-me at-tri-bu-ti, quel-li di
  []
 
-<Immagini/SchemaRistrutturato.png, id=314, 1897.0875pt x 1425.325pt>
+<Immagini/SchemaRistrutturato.png, id=319, 1897.0875pt x 1425.325pt>
 File: Immagini/SchemaRistrutturato.png Graphic file (type png)
 <use Immagini/SchemaRistrutturato.png>
 Package pdftex.def Info: Immagini/SchemaRistrutturato.png  used on input line 56.
 (pdftex.def)             Requested size: 341.46101pt x 256.54742pt.
-<Immagini/ER.png, id=315, 1115.16624pt x 674.52pt>
+<Immagini/ER.png, id=320, 1115.16624pt x 674.52pt>
 File: Immagini/ER.png Graphic file (type png)
 <use Immagini/ER.png>
 Package pdftex.def Info: Immagini/ER.png  used on input line 58.
@@ -485,32 +485,40 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 220--225
 
  (./Argomenti/Capitolo4.tex
 Capitolo 4.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 8.
+
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¹ in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¹ in font cmr10!
 [14
 
 
 
 
 ] [15] [16] [17] [18]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 218.
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 224.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [19] [20]
-Underfull \hbox (badness 1194) in paragraph at lines 296--300
+Underfull \hbox (badness 1194) in paragraph at lines 302--306
 \OT1/cmr/m/n/10 Per la ge-stio-ne l'in-se-ri-men-to de-gli ar-ti-co-li ci so-no due ap-po-si-ti trig-ger:
  []
 
 [21] [22] [23] [24]
-Underfull \hbox (badness 1189) in paragraph at lines 462--464
+Underfull \hbox (badness 1189) in paragraph at lines 468--470
 \OT1/cmr/m/n/10 Per la ri-mo-zio-ne di un ar-ti-co-lo dal da-ta-ba-se vie-ne uti-liz-za-to il trig-ger
  []
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 462--464
+Underfull \hbox (badness 1533) in paragraph at lines 468--470
 \OT1/cmtt/m/n/10 trig[]RimozioneArticoli\OT1/cmr/m/n/10 , es-so agi-sce sul-la ta-bel-la \OT1/cmtt/m/n/10 Articoli \OT1/cmr/m/n/10 nel-l'i-stan-te
  []
 
 [25] [26] [27] [28]
-Underfull \hbox (badness 1721) in paragraph at lines 644--645
+Underfull \hbox (badness 1721) in paragraph at lines 650--651
 []\OT1/cmr/m/n/10 Il li-bro sia gi^^Ra pre-sen-te nel da-ta-ba-se, in ca-so con-tra-rio, an-nul-la
  []
 
@@ -527,21 +535,21 @@ Missing character: There is no ¨ in font cmr10!
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2E2EEA5CCCACEE8BF4653349055A170D;8530.
+(rerunfilecheck)             Checksum: 22284FF8195280A09726EA4CB63C6AD6;8683.
  ) 
 Here is how much of TeX's memory you used:
- 12709 strings out of 478268
- 200791 string characters out of 5846347
+ 12711 strings out of 478268
+ 200825 string characters out of 5846347
  817977 words of memory out of 5000000
- 30004 multiletter control sequences out of 15000+600000
+ 30005 multiletter control sequences out of 15000+600000
  474203 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,10n,63p,575b,2020s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on main.pdf (34 pages, 649562 bytes).
+Output written on main.pdf (34 pages, 650333 bytes).
 PDF statistics:
- 1298 PDF objects out of 1440 (max. 8388607)
- 1219 compressed objects within 13 object streams
- 752 named destinations out of 1000 (max. 500000)
- 421 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1303 PDF objects out of 1440 (max. 8388607)
+ 1224 compressed objects within 13 object streams
+ 753 named destinations out of 1000 (max. 500000)
+ 429 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,6 +5,12 @@ in uno schema fisico. Andremo a definire le tabelle con i relativi attributi e t
 funzioni, le procedure, i trigger e i vincoli. Con questi elementi, sar\`a possibile creare un database
 relazionale con una struttura specifica che soddisfi i requisiti identificati nel Capitolo \ref{Capitolo1}.
 
+\subsection{Scelte Progettuali}
+Per la gestione del database \'e stata scelta l'utilizzo di \textit{view} al fine di semplificare 
+l'inserimento dei dati nelle varie tabelle. Per ogni \textit{view} di inserimento sono stati creati 
+dei \textit{trigger} che riempiono più tabelle relative alla singola risorsa, rendendo più semplice 
+l'inserimento di questa.
+
 \section{Creazione Tabelle}
 \subsection{Tabella Articoli}
 \begin{lstlisting}
