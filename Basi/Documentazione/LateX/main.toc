@@ -47,9 +47,10 @@
 \contentsline {subsection}{\numberline {4.3.2}Rimozione di articoli}{25}{subsection.4.3.2}%
 \contentsline {subsubsection}{Rimozione Articolo}{25}{section*.4}%
 \contentsline {section}{\numberline {4.4}Trigger Gestione Libri}{27}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Inserimento Libro}{27}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Inserimento Presentazione di un libro}{29}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Rimozione Libro}{31}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.1}Inserimento di libri}{27}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Inserimento Libro}{27}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Inserimento Presentazione di un libro}{29}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Rimozione Libro}{31}{subsection.4.4.4}%
 \contentsline {section}{\numberline {4.5}Trigger Gestione Stock}{32}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Inserimento in stock}{32}{subsection.4.5.1}%
 \contentsline {section}{\numberline {4.6}Gestione Notifiche}{34}{section.4.6}%
