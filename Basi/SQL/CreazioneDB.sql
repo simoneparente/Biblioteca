@@ -1,8 +1,6 @@
 DROP SCHEMA IF EXISTS b CASCADE;
 CREATE SCHEMA b;
 
-CREATE TYPE b.TipoUtente AS ENUM ('0', '1', '2');
-
 ------------------------------------------------------------------------------------------------------------------------
 --Creazione tabelle
 ------------------------------------------------------------------------------------------------------------------------
@@ -42,16 +40,15 @@ CREATE TABLE b.AutoreArticolo
 
 CREATE TABLE b.Riviste
 (
-    ID_Rivista        SERIAL,
-    ISSN              VARCHAR(128),
-    Nome              VARCHAR(128),
-    Argomento         VARCHAR(128),
-    DataPubblicazione DATE,
-    Responsabile      VARCHAR(128),
-    Prezzo            FLOAT,
+    ID_Rivista   SERIAL,
+    ISSN         VARCHAR(128),
+    Nome         VARCHAR(128),
+    Argomento    VARCHAR(128),
+    Responsabile VARCHAR(128),
+    Prezzo       FLOAT,
 
     CONSTRAINT PK_Riviste PRIMARY KEY (ID_Rivista),
-    CONSTRAINT UQ_ISSN    UNIQUE (ISSN)
+    CONSTRAINT UQ_ISSN UNIQUE (ISSN)
 );
 
 CREATE TABLE b.ArticoliInRiviste
@@ -177,7 +174,6 @@ CREATE TABLE b.Utente
     ID_Utente SERIAL,
     Username  VARCHAR(128),
     Password  VARCHAR(128),
-    Permessi  b.TipoUtente DEFAULT '0',
 
     CONSTRAINT PK_Utente PRIMARY KEY (ID_Utente),
     CONSTRAINT UK_Utente UNIQUE (Username)
@@ -313,14 +309,15 @@ BEGIN
         --Controllo che la rivista non sia già presente nel DataBase in tal caso la inserisco
         IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issnRivista) THEN
             RAISE NOTICE 'Rivista non presente, verrà inserita';
-            INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
-            VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.datapubblicazione,
+            INSERT INTO b.riviste (nome, issn, argomento, responsabile, prezzo)
+            VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista,
                     NEW.responsabileRivista, NEW.prezzoRivista);
             --Controllo che la rivista presente nel database abbia la stessa data di pubblicazione
-        ELSEIF NOT EXISTS(SELECT datapubblicazione
-                          FROM b.riviste
-                          WHERE issn = NEW.issnRivista
-                            AND datapubblicazione = NEW.datapubblicazione) THEN
+        ELSEIF NOT EXISTS(SELECT a.datapubblicazione
+                          FROM (b.riviste AS r JOIN articoliinriviste ar on r.id_rivista = ar.id_rivista)
+                                   JOIN articoli as a on ar.id_articolo = a.id_articolo
+                          WHERE r.issn = NEW.issnRivista
+                            AND a.datapubblicazione = NEW.datapubblicazione) THEN
             RAISE NOTICE 'Rivista già presente ma con data di pubblicazione diversa, l''articolo non verrà inserito';
             RETURN NEW;
         END IF;
@@ -514,7 +511,8 @@ SELECT l.ISBN,
        e.DataFine,
        e.Responsabile
 FROM b.evento as e,
-     b.libri as l;
+     b.libri as l
+WHERE 1=0;
 
 --Funzione del trigger per l'inserimento di una presentazione
 CREATE OR REPLACE FUNCTION b.ftrig_presentazione()
@@ -795,7 +793,9 @@ $$
 
 CREATE VIEW b.notifiche AS
 SELECT nome, b.getNegoziConSerie(b.getIDSerieByISSN(issn)) as Disponibile_in, issn, username
-FROM b.serie s JOIN b.richiesta r ON s.id_serie=r.id_serie JOIN b.utente u ON u.id_utente=r.id_utente
+FROM b.serie s
+         JOIN b.richiesta r ON s.id_serie = r.id_serie
+         JOIN b.utente u ON u.id_utente = r.id_utente
 WHERE b.getDisponibilitaSerie(r.id_serie) IS true;
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -837,12 +837,12 @@ $$
 CREATE VIEW b.view_libri_autori_serie AS
 SELECT DISTINCT titolo,
                 isbn,
-                b.getAutoriByLibro(l.id_libro) AS Autori,
+                b.getAutoriByLibro(l.id_libro)      AS Autori,
                 dataPubblicazione,
                 editore,
                 genere,
                 lingua,
-                s.nome                         AS serie,
+                s.nome                              AS serie,
                 formato,
                 prezzo,
                 b.getDisponibilitaLibro(l.id_libro) AS Disponibilità

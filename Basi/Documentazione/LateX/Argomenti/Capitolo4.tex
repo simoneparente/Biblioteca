@@ -339,13 +339,15 @@ Questi trigger provvedono a:
             --Controllo che la rivista non sia gi\`a presente nel DataBase in tal caso la inserisco
             IF NOT EXISTS(SELECT * FROM b.riviste WHERE issn = NEW.issnRivista) THEN
                 RAISE NOTICE 'Rivista non presente, verr\`a inserita';
-                INSERT INTO b.riviste (nome, issn, argomento, datapubblicazione, responsabile, prezzo)
-                VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.datapubblicazione, NEW.responsabileRivista, NEW.prezzoRivista);
+                INSERT INTO b.riviste (nome, issn, argomento, responsabile, prezzo)
+                VALUES (NEW.nomeRivista, NEW.issnRivista, NEW.argomentoRivista, NEW.responsabileRivista, NEW.prezzoRivista);
                 --Controllo che la rivista presente nel database abbia la stessa data di pubblicazione
-            ELSEIF NOT EXISTS(SELECT datapubblicazione
-                              FROM b.riviste
-                              WHERE issn = NEW.issnRivista
-                                AND datapubblicazione = NEW.datapubblicazione) THEN
+            ELSEIF NOT EXISTS(SELECT a.datapubblicazione
+                            FROM (b.riviste AS r JOIN articoliinriviste ar on r.id_rivista = ar.id_rivista)
+                            JOIN articoli as a on ar.id_articolo = a.id_articolo
+                            WHERE r.issn = NEW.issnRivista
+                            AND a.datapubblicazione = NEW.datapubblicazione) THEN
+
                 RAISE NOTICE 'Rivista gi\`a presente ma con data di pubblicazione diversa, l''articolo non verr\`a inserito';
                 RETURN NEW;
             END IF;
@@ -655,7 +657,8 @@ Tale trigger verifica che:
            e.DataFine,
            e.Responsabile
     FROM b.evento as e,
-         b.libri as l;
+         b.libri as l
+    WHERE 1=0;
     
     --Funzione del trigger per l'inserimento di una presentazione
     CREATE OR REPLACE FUNCTION b.ftrig_presentazione()
