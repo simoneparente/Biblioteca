@@ -1,0 +1,552 @@
+@startuml
+class org.Bibliotech.DAOimplementazione.ImplementazioneUtente {
+- Connection connection
++ boolean checkUserExistInDatabase(JTextField)
++ boolean checkLogin(String,String)
++ boolean addUser(String,String)
++ boolean changePassword(String,String)
++ int getPermessi(String)
++ boolean checkNotifiche(String)
++ boolean inviaRichiestaSerie(String,String)
++ ArrayList<Notifica> getNotifiche()
++ ArrayList<String> getISSNSerieRichiesta()
+}
+class org.Bibliotech.Controller.Controller {
+- {static} Controller instance
++ {static} Controller getInstance()
++ void switchView(View,View)
+}
+class org.Bibliotech.Main {
++ {static} void main(String[])
+}
+class org.Bibliotech.Model.Utente {
+- {static} Utente instance
+- String username
+- String password
+- int permessi
++ {static} Utente getInstance()
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ int getPermessi()
++ void setPermessi(int)
+}
+class org.Bibliotech.View.RichiestaView {
+- JPanel contentPane
+- JButton inviaButton
+- JButton cancellaButton
+- JComboBox<String> richiediSerieComboBox
+- JComboBox<String> richiediISSNComboBox
+- void fillISSNComboBox()
+- void fillTitoliComboBox()
+- void fillComboBoxes()
+- void onOK()
+- void onCancel()
+}
+class org.Bibliotech.View.ResultView {
+- {static} String nome
+- {static} ResultView instance
+- JPanel rootPanel
+- JTable resultTable
+- JScrollPane resultScrollPane
+- ArrayList<String> filtri
++ {static} ResultView getInstance()
++ void updateTable(String,String)
+- void emptyTable()
+}
+class org.Bibliotech.View.RegisterView {
+- {static} String nome
+- {static} RegisterView instance
+- JPanel rootPanel
+- JPanel logoPanel
+- JLabel logoLabel
+- JPanel contentPanel
+- JTextField usernameField
+- JLabel usernameLabel
+- JPasswordField passwordField
+- JLabel passwordLabel
+- JPasswordField confermaPasswordField
+- JLabel confermaPasswordLabel
+- JCheckBox mostraPasswordCheckBox
+- JPanel fieldsPanel
+- JButton registratiButton
+- JButton annullaButton
+- JPanel buttonsPanel
++ {static} RegisterView getInstance()
+- void refreshFields()
+}
+class org.Bibliotech.View.ProfiloView {
+- {static} String nome
+- {static} Image reloadImage
+- {static} ImageIcon reloadIconImageIcon
+- {static} ProfiloView instance
+- JPanel rootPanel
+- JLabel usernameLabel
+- JLabel permessiLabel
+- JLabel cambiaPasswordLabel
+- JPanel infoPanel
+- JPasswordField vecchiaPasswordField
+- JPasswordField nuovaPasswordField
+- JPasswordField confermaPasswordField
+- JCheckBox mostraPasswordCheckBox
+- JPanel passwordPanel
+- JLabel vecchiaPasswordLabel
+- JLabel nuovaPasswordLabel
+- JLabel confermaPassordLabel
+- JButton confermaButton
+- JLabel reloadIcon
+- JTable notificheTable
+- JScrollPane notificheScrollPanel
+- JPanel notifichePanel
+- JPanel reloadIconPanel
+- JLabel userLabel
+- JLabel permLabel
++ {static} ProfiloView getInstance()
+~ void refreshTable()
+- void emptyTable()
+- boolean checkPasswordFields(String,String,String)
++ void refreshPage()
+}
+interface org.Bibliotech.DAO.risorsaDao {
+~ boolean addLibro(Libro)
+~ boolean addArticoloRivista(String,String,String,String,String,String,String,String,String)
+~ boolean addArticoloAddRivistaInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double)
++ boolean addArticoloConferenza(String,String,String,String,String,String,String,String,String)
++ boolean addArticoloAddConferenza(String,String,String,String,String,String,String,String,String,String,String,String,String)
+~ ArrayList<String> getAutoriLibri()
+~ ArrayList<String> getGenereLibri()
+~ ArrayList<String> getLinguaLibri()
+~ ArrayList<String> getEditoreLibri()
+~ ArrayList<String> getFormatoLibri()
+~ ArrayList<String> getSerieLibri()
+~ ArrayList<String> getAutoriArticoli()
+~ ArrayList<String> getDisciplinaArticoli()
+~ ArrayList<String> getLinguaArticoli()
+~ ArrayList<String> getEditoreArticoli()
+~ ArrayList<String> getFormatoArticoli()
+~ ArrayList<String> getRivistaArticoli()
+~ ArrayList<String> getConferenzeArticoli()
+~ ArrayList<String> getArgomentiRiviste()
+~ ArrayList<String> getLingueRiviste()
+~ ArrayList<String> getFormatiRiviste()
+~ ArrayList<String> getEditoriSerie()
+~ ArrayList<String> getLingueSerie()
+~ ArrayList<String> getFormatiSerie()
+~ ArrayList<String> getIssnSerie(String)
+~ ArrayList<String> getRiviste()
+~ ArrayList<String> getConferenze()
+}
+class org.Bibliotech.Controller.LoginController {
+- {static} LoginController instance
++ {static} LoginController getInstance()
++ void login(JTextField,JPasswordField)
+- void changeLoginFieldsColor(JTextField,JPasswordField)
++ void logout()
+}
+class org.Bibliotech.Controller.RisorsaController {
+- {static} RisorsaController instance
+~ ImplementazioneRisorsa filtri
++ {static} RisorsaController getInstance()
++ ArrayList<String> leggiAutoriLibri()
++ ArrayList<String> leggiGeneriLibri()
++ ArrayList<String> leggiEditoriLibri()
++ ArrayList<String> leggiFormatiLibri()
++ ArrayList<String> leggiLingueLibri()
++ ArrayList<String> leggiSerieLibri()
++ ArrayList<String> leggiAutoriArticoli()
++ ArrayList<String> leggiDisciplineArticoli()
++ ArrayList<String> leggiEditoriArticoli()
++ ArrayList<String> leggiFormatiArticoli()
++ ArrayList<String> leggiLingueArticoli()
++ ArrayList<String> leggiRivisteArticoli()
++ ArrayList<String> leggiConferenzeArticoli()
++ ArrayList<String> leggiArgomentiRiviste()
++ ArrayList<String> leggiLingueRiviste()
++ ArrayList<String> leggiFormatiRiviste()
++ ArrayList<String> leggiEditoriSerie()
++ ArrayList<String> leggiLingueSerie()
++ ArrayList<String> leggiFormatiSerie()
++ ArrayList<String> getIssnSerie(String)
++ ArrayList<String> getColumns(String)
++ Vector<Vector<Object>> getRows(String)
++ ArrayList<String> leggiRiviste()
++ ArrayList<String> leggiRivisteISSN(String)
++ ArrayList<String> leggiConferenze()
++ boolean addArticoloAddRivistaInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double)
++ boolean addArticoloRivista(String,String,String,String,String,String,String,String,String)
++ boolean addArticoloAddConferenza(String,String,String,String,String,String,String,String,String,String,String,String,String)
++ boolean addArticoloConferenza(String,String,String,String,String,String,String,String,String)
++ ArrayList<String> getConferenzaDataInizio(String)
++ void addLibroInDB(String,String,String,String,String,String,String,String,String,String,String)
+- ArrayList<Autore> autoriStringToArrayList(String,int)
+}
+class org.Bibliotech.View.NotificaView {
+- JPanel contentPane
+- JButton buttonOK
+- JLabel libroDisponibileLabel
+- void onOK()
+}
+class org.Bibliotech.Controller.RegisterController {
++ {static} RegisterController instance
++ {static} RegisterController getInstance()
++ boolean register(JTextField,JPasswordField,JPasswordField)
+- boolean checkRegisterPasswordMatch(JPasswordField,JPasswordField)
+- boolean checkRegisterFields(JTextField,JPasswordField,JPasswordField)
+}
+class org.Bibliotech.Model.Autore {
+- String nome
+- String cognome
++ String getNome()
++ String getCognome()
++ String getNomeCognome()
+}
+class org.Bibliotech.Controller.UtenteController {
+- {static} UtenteController instance
+- ImplementazioneUtente utente
++ {static} UtenteController getInstance()
++ void registraUtente(String,String)
++ boolean loginUtente(String,String)
++ boolean checkUserExistInDatabase(JTextField)
++ boolean cambiaPassword(String,String,String)
++ int getPermessi(String)
++ boolean checkNotifiche(String)
++ ArrayList<Notifica> getNotifiche(String)
++ boolean inviaRichiestaSerie(String,String)
+}
+class org.Bibliotech.View.View {
+~ {static} Toolkit defaultToolkit
+- {static} Image imageIconaFinestre
+- {static} ImageIcon iconaFinestre
+~ ImageIcon logoLabelIcon
+~ Taskbar taskbar
+- JPanel rootPanel
+- JPanel logoPanel
+- JPanel contentPanel
+- JLabel logoLabel
++ void showView()
++ void hideView()
++ void adjustSearchPosition()
+}
+class org.Bibliotech.ConnessioneDB {
+- {static} ConnessioneDB instance
++ Connection connection
++ {static} ConnessioneDB getInstance()
+}
+class org.Bibliotech.Model.Libro {
+- String titolo
+- ArrayList<Autore> autori
+- String genere
+- String editore
+- Date dataPubblicazione
+- String isbn
+- String formato
+- String lingua
+- String prezzo
+- String serieDiAppartenenza
+- String ISSNSerieDiAppartenenza
++ String getTitolo()
++ String getAutoriString()
++ String getLingua()
++ String getGenere()
++ String getEditore()
++ Date getDataPubblicazione()
++ String getIsbn()
++ String getFormato()
++ String getPrezzo()
++ String getSerieDiAppartenenza()
++ String getISSNSerieDiAppartenenza()
+}
+class org.Bibliotech.View.SearchView {
+- {static} String nome
+- {static} SearchView instance
+- JMenuItem aggiungiItem
+- JPanel rootPanel
+- JPanel logoPanel
+- JLabel logoLabel
+- JPanel filtriLibriPanel
+- JCheckBox autoreLibroCheckBox
+- JCheckBox editoreLibroCheckBox
+- JCheckBox genereLibroCheckBox
+- JCheckBox linguaLibroCheckBox
+- JCheckBox dataPubblicazioneLibroCheckBox
+- JCheckBox formatoLibroCheckBox
+- JCheckBox prezzoLibroCheckBox
+- JPanel autoreLibroPanel
+- JComboBox<String> autoreLibroComboBox
+- JPanel editoreLibroPanel
+- JComboBox<String> editoreLibroComboBox
+- JPanel genereLibroPanel
+- JComboBox<String> genereLibroComboBox
+- JPanel linguaLibroPanel
+- JComboBox<String> linguaLibroComboBox
+- JPanel dataPubblicazioneLibroPanel
+- JTextField dataDaLibroField
+- JTextField dataALibroField
+- JPanel formatoLibroPanel
+- JComboBox<String> formatoLibroComboBox
+- JPanel prezzoLibroPanel
+- JTextField prezzoDaLibroField
+- JTextField prezzoALibroField
+- JCheckBox serieLibroCheckBox
+- JComboBox<String> serieLibroComboBox
+- JPanel filtriArticoliPanel
+- JCheckBox disciplinaArticoloCheckBox
+- JComboBox<String> disciplinaArticoloComboBox
+- JCheckBox conferenzaArticoloCheckBox
+- JComboBox<String> conferenzaArticoloComboBox
+- JPanel filtriRivistePanel
+- JCheckBox argomentoRivisteCheckBox
+- JComboBox<String> argomentoRivisteComboBox
+- JCheckBox autoreArticoloCheckBox
+- JCheckBox editoreArticoloCheckBox
+- JCheckBox linguaArticoloCheckBox
+- JCheckBox dataPubblicazioneArticoloCheckBox
+- JCheckBox formatoArticoloCheckBox
+- JCheckBox rivistaArticoloCheckBox
+- JPanel autoreArticoloPanel
+- JPanel editoreArticoloPanel
+- JPanel disciplinaArticoloPanel
+- JPanel linguaArticoloPanel
+- JPanel dataPubblicazioneArticoloPanel
+- JPanel formatoArticoloPanel
+- JPanel rivistaArticoloPanel
+- JComboBox<String> autoreArticoloComboBox
+- JComboBox<String> editoreArticoloComboBox
+- JComboBox<String> linguaArticoloComboBox
+- JTextField dataPubblicazioneDaArticoloField
+- JTextField dataPubblicazioneAArticoloField
+- JComboBox<String> formatoArticoloComboBox
+- JComboBox<String> rivistaArticoloComboBox
+- JCheckBox linguaRivisteCheckBox
+- JCheckBox dataPubblicazioneRivisteCheckBox
+- JCheckBox formatoRivisteCheckBox
+- JComboBox<String> linguaRivisteComboBox
+- JTextField dataPubblicazioneDaRivisteField
+- JTextField dataPubblicazioneARivisteField
+- JPanel argomentoRivistePanel
+- JPanel linguaRivistePanel
+- JCheckBox prezzoRivisteCheckBox
+- JPanel formatoRivistePanel
+- JPanel dataPubblicazioneRivistePanel
+- JComboBox<String> formatoRivisteComboBox
+- JPanel prezzoRivistePanel
+- JTextField prezzoDaRivisteField
+- JTextField prezzoARivisteField
+- JPanel searchPanel
+- JTextField searchField
+- JComboBox<String> risorsaComboBox
+- JCheckBox filtriCheckBox
+- JButton searchButton
+- JPanel filtriSeriePanel
+- JCheckBox editoreSerieCheckBox
+- JCheckBox linguaSerieCheckBox
+- JCheckBox dataPubblicazioneSerieCheckBox
+- JCheckBox formatoSerieCheckBox
+- JPanel editoreSeriePanel
+- JComboBox<String> editoreSerieComboBox
+- JPanel linguaSeriePanel
+- JComboBox<String> linguaSerieComboBox
+- JPanel dataPubblicazioneSeriePanel
+- JTextField dataPubblicazioneDaSerieField
+- JTextField dataPubblicazioneASerieField
+- JPanel formatoSeriePanel
+- JComboBox<String> formatoSerieComboBox
+- ArrayList<String> filtriSelezionati
++ {static} SearchView getInstance()
++ void checkPermessiNotifiche()
+- void setFieldsDisabled()
+- void setSerieFieldsDisabled()
+- void setRivisteFieldsDisabled()
+- void setArticoliFieldsDisabled()
+- void setLibriFieldsDisabled()
+- void setFiltriInvisibili()
+- void ricaricaFiltri(String)
++ void fillAllComboBoxes()
++ void fillComboBox(JComboBox<String>,ArrayList<String>)
++ String buildQueryByFiltri()
+- String buildQueryByFiltriSerie()
+- String buildQueryByFiltriRiviste()
+- String buildQueryByFiltriLibri()
+- String buildQueryByFiltriArticoli()
+- void checkNotifiche(String)
+}
+class org.Bibliotech.View.AggiuntaView {
+- {static} String nome
+- {static} AggiuntaView instance
+- JPanel rootPanel
+- JPanel imagePanel
+- JPanel risorsaPanel
+- JPanel libriPanel
+- JPanel articoliPanel
+- JComboBox<String> risorsaComboBox
+- JButton addButton
+- JTextField titoloLibroField
+- JTextField autoriLibroField
+- JTextField editoreLibroField
+- JTextField genereLibroField
+- JTextField prezzoLibroField
+- JCheckBox libroFaParteCheckBox
+- JComboBox<String> serieLibroBox
+- JTextField titoloArticoliField
+- JTextField disciplinaArticoloField
+- JTextField autoriArticoloField
+- JComboBox<String> formatoArticoliComboBox
+- JTextField editoreArticoliField
+- JTextField doiField
+- JComboBox<String> presentatoInBox
+- JTextField isbnLibroField
+- JTextField dataPublicazioneLibroField
+- JLabel logoLabel
+- JButton annullaButton
+- JPanel seriePanel
+- JTextField nomeSerieField
+- JTextField issnSerieField
+- JComboBox<String> formatoLibroComboBox
+- JTextField nomeRivistaField
+- JTextField issnRivistaField
+- JTextField argomentoRivistaField
+- JTextField responsabileRivistaField
+- JTextField datapubblicazioneRivistaField
+- JTextField prezzoRivistaField
+- JPanel rivistaPanel
+- JPanel conferenzaPanel
+- JTextField nomeConferenzaField
+- JTextField responsabileConferenzaField
+- JTextField strutturaConferenzaField
+- JTextField indirizzoConferenzaField
+- JTextField dataDaConferenzaField
+- JTextField dataAConferenzaField
+- JTextField linguaLibroField
+- JLabel helpLabel
+- JComboBox<String> rivistaComboBox
+- JComboBox<String> conferenzaComboBox
+- JPanel rivistaConferenzaPanel
+- JComboBox<String> rivistaISSNComboBox
+- JTextField linguaArticoloField
+- JComboBox<String> conferenzaDataInizioComboBox
+- JComboBox issnSerieLibroBox
+- void addArticoloConferenza()
+- Border getDefaultJComboBoxBorder()
++ {static} AggiuntaView getInstance()
+- Border getRedBorder()
+- void addArticoloAddConferenza()
+- boolean checkConferenzaFields()
+- void refreshConferenzaFields()
+- void addArticoloRivista()
+- void addArticoloAddRivista()
+- boolean checkRivistaFields()
+- void refreshRivistaFields()
+- String checkConferenzaOrRivista()
+- void resetAllArticoloBorders()
+- void resetRivistaBorders()
+- void resetConferenzaBorders()
+- void resetArticoloBorders()
+- Border getDefaultJTextFieldBorder()
+- void resetLibroBorders()
+- void addLibro(int)
+- void addLibroSerie(int)
+- void addLibroAddSerie(int)
++ void setAllPlaceHolders()
+- void setRivistaPlaceHolders()
+- void setConferenzaPlaceHolders()
+- void setArticoloPlaceHolders()
+- void setLibroPlaceHolders()
++ void setPlaceholderText(JTextField,String)
+- void fillAllComboBoxes()
+- void fillComboBox(JComboBox<String>,ArrayList<String>)
+- void setPanelInvisibili()
+- void ricaricaPanel(String)
+}
+interface org.Bibliotech.DAO.UtenteDao {
+~ boolean checkLogin(String,String)
+~ boolean addUser(String,String)
+~ boolean changePassword(String,String)
+~ int getPermessi(String)
+~ boolean checkNotifiche(String)
+}
+class org.Bibliotech.Model.Notifica {
+- String username
+- String negozi
++ void setNegozi(String)
+}
+class org.Bibliotech.View.LoginView {
+~ {static} String nome
+- {static} LoginView instance
+- JPanel logoPanel
+- JPanel contentPanel
+- JLabel logoLabel
+- JPanel rootPanel
+- JTextField usernameField
+- JPasswordField confermaPasswordField
+- JPasswordField passwordField
+- JCheckBox mostraPasswordCheckBox
+- JButton loginButton
+- JPanel fieldsPanel
+- JButton annullaButton
+- JLabel registratiLabel
+- JLabel usernameLabel
++ {static} LoginView getInstance()
++ {static} void resetFields()
++ String getUsername()
++ String getPassword()
++ void refreshFields()
+}
+class org.Bibliotech.DAOimplementazione.ImplementazioneRisorsa {
+- Connection connection
++ ArrayList<String> getAutoriLibri()
++ ArrayList<String> getGenereLibri()
++ ArrayList<String> getIssnSerie(String)
++ ArrayList<String> getRiviste()
++ ArrayList<String> getConferenze()
++ ArrayList<String> getLinguaLibri()
++ ArrayList<String> getEditoreLibri()
++ ArrayList<String> getFormatoLibri()
++ ArrayList<String> getSerieLibri()
++ ArrayList<String> getAutoriArticoli()
++ ArrayList<String> getDisciplinaArticoli()
++ ArrayList<String> getLinguaArticoli()
++ ArrayList<String> getEditoreArticoli()
++ ArrayList<String> getFormatoArticoli()
++ ArrayList<String> getRivistaArticoli()
++ ArrayList<String> getConferenzeArticoli()
++ ArrayList<String> getArgomentiRiviste()
++ ArrayList<String> getLingueRiviste()
++ ArrayList<String> getFormatiRiviste()
++ ArrayList<String> getEditoriSerie()
++ ArrayList<String> getLingueSerie()
++ ArrayList<String> getFormatiSerie()
++ ArrayList<String> getColumns(String)
++ Vector<Vector<Object>> getRows(String)
++ ArrayList<String> getRivisteISSN(String)
++ boolean addLibro(Libro)
++ boolean addArticoloRivista(String,String,String,String,String,String,String,String,String)
++ boolean addArticoloAddRivistaInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double)
++ ArrayList<String> getConferenzaDataInizio(String)
++ boolean addArticoloConferenza(String,String,String,String,String,String,String,String,String)
+- String getDataFineConferenza(String,String)
+- String getIndirizzoConferenza(String,String)
+- String getStrutturaOspitanteConferenza(String,String)
+- String getResponsabileConferenza(String,String)
++ boolean addArticoloAddConferenza(String,String,String,String,String,String,String,String,String,String,String,String,String)
+- Date getDateByISSN(String)
+- double getPrezoByISSN(String)
+- String getResponsabileByISSN(String)
+- String getArgomentoByISSN(String)
+}
+
+
+org.Bibliotech.DAO.UtenteDao <|.. org.Bibliotech.DAOimplementazione.ImplementazioneUtente
+org.Bibliotech.View.JDialog <|-- org.Bibliotech.View.RichiestaView
+org.Bibliotech.View.View <|-- org.Bibliotech.View.ResultView
+org.Bibliotech.View.View <|-- org.Bibliotech.View.RegisterView
+org.Bibliotech.View.View <|-- org.Bibliotech.View.ProfiloView
+org.Bibliotech.Controller.Controller <|-- org.Bibliotech.Controller.LoginController
+org.Bibliotech.View.JDialog <|-- org.Bibliotech.View.NotificaView
+org.Bibliotech.Controller.Controller <|-- org.Bibliotech.Controller.RegisterController
+org.Bibliotech.View.JFrame <|-- org.Bibliotech.View.View
+org.Bibliotech.View.View <|-- org.Bibliotech.View.SearchView
+org.Bibliotech.View.View <|-- org.Bibliotech.View.AggiuntaView
+org.Bibliotech.View.View <|-- org.Bibliotech.View.LoginView
+org.Bibliotech.DAO.risorsaDao <|.. org.Bibliotech.DAOimplementazione.ImplementazioneRisorsa
+@enduml
