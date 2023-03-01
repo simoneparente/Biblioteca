@@ -76,7 +76,7 @@ public class RegisterView extends View {
         });
     }
 
-    public static View getInstance() {
+    public static RegisterView getInstance() {
         if (instance == null) {
             instance = new RegisterView();
         }

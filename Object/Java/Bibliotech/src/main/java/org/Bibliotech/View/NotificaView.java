@@ -24,11 +24,6 @@ public class NotificaView extends JDialog {
         });
     }
 
-    public static void main(String[] args) {
-        //NotificaView dialog = new NotificaView("ciao", getNomiNegozi());
-        System.exit(0);
-    }
-
     private void onOK() {
         dispose();
     }
