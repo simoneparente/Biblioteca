@@ -104,7 +104,6 @@ public class ProfiloView extends View {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 refreshTable();
-                UtenteController.getInstance().getNotifiche(Utente.getInstance().getUsername());
             }
         });
         reloadIcon.addMouseListener(new MouseAdapter() {

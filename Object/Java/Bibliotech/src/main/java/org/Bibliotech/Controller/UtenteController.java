@@ -53,9 +53,6 @@ public class UtenteController {
         return utente.checkNotifiche(username);
     }
 
-    public ArrayList<Notifica> getNotifiche(String username) {
-        return utente.getNotifiche();
-    }
 
 
     public boolean inviaRichiestaSerie(String username, String issn) {
