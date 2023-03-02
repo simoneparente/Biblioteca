@@ -1,0 +1,12 @@
+@startuml ciao
+participant SearchView
+participant Utente
+participant JMenuItem
+
+activate SearchView
+o->SearchView : checkPermessiNotifiche()
+alt permessi <=0
+    JMenuItem -> aggiungiItem: setEnabled(false)
+    
+end
+@enduml
