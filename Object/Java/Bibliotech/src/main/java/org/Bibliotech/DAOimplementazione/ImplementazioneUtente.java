@@ -2,7 +2,6 @@ package org.Bibliotech.DAOimplementazione;
 
 import org.Bibliotech.ConnessioneDB;
 import org.Bibliotech.DAO.UtenteDao;
-import org.Bibliotech.Model.Notifica;
 import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
@@ -11,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ImplementazioneUtente implements UtenteDao {
     private Connection connection;
@@ -133,53 +131,4 @@ public class ImplementazioneUtente implements UtenteDao {
         }
 
     }
-
-    public ArrayList<Notifica> getNotifiche() {
-        ArrayList<Notifica> al_notifiche = new ArrayList<>();
-        if (checkNotifiche(Utente.getInstance().getUsername())) {
-            String queryNegozi = "SELECT b.getnegoziconserie(b.getIDSeriebyissn(?))"; //chiama funzione del db che ritorna
-            // una stringa con i negozi che hanno la serie
-            String negozi;
-            ArrayList<String> al_issn = getISSNSerieRichiesta();
-            try {
-                for (String issn : al_issn) {
-                    PreparedStatement preparedStatement = connection.prepareStatement(queryNegozi);
-                    preparedStatement.setString(1, issn);
-                    ResultSet rs = preparedStatement.executeQuery();
-                    if (rs.next()) {
-                        negozi = rs.getString(1);
-                        Notifica notifica = new Notifica(Utente.getInstance().getUsername());
-                        notifica.setNegozi(negozi);
-                        al_notifiche.add(notifica);
-                    }
-                    //return al_notifiche;
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                //return null;
-            }
-
-        }
-        return al_notifiche;
-    }
-
-    public ArrayList<String> getISSNSerieRichiesta() {
-        String query = "SELECT issn FROM b.notifiche WHERE username=?";
-        ArrayList<String> al_issn = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, Utente.getInstance().getUsername());
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                al_issn.add(rs.getString("issn"));
-            }
-            return al_issn;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
-
-
 }

@@ -1,7 +1,6 @@
 package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
-import org.Bibliotech.Model.Notifica;
 import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
