@@ -3,19 +3,31 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage[italian]{babel}
+\usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{afterpage}
+\afterpage{\clearpage}
+\UseRawInputEncoding
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
 
 
 \begin{document}
+\begin{sloppypar}
     \begin{figure}[htbp!]
         \begin{center}
-            \includegraphics[width=.25\textwidth]{Immagini/FedericoII.png}
+            UNIVERSTIT\`A DEGLI STUDI DI NAPOLI "FEDERICO II" \\
+            Scuola Politecnica e Delle Scienze di Base \\
+            Dipartimento di Ingegneria Elettrica e delle Tecnologie dell'Informazione \\
+            \includegraphics[width=.25\textwidth]{Immagini/FedericoII.png} \\
+            Corso di Laurea in Informatica \\
+            Progetto di Basi di Dati \\
         \end{center}
     \end{figure}
-    
-    \begin{center}
-        {\scshape\Large\bfseries Progettazione e sviluppo di un applicativo in Java dotato di GUI per la gestione di una Biblioteca Online}
-    \end{center}
 
     \begin{center}
         Mario Penna N86003308 \\ Simone Parente Martone N86004297 \\ Davide Santi N86004773
@@ -28,4 +40,6 @@
     \include{Argomenti/Capitolo1}
     \include{Argomenti/Capitolo2}
     \include{Argomenti/Capitolo3}
+    
+\end{sloppypar}
 \end{document}
