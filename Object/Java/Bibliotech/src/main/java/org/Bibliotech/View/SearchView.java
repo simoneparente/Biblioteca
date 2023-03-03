@@ -331,18 +331,6 @@ public class SearchView extends View {
         return instance;
     }
 
-    //private void ricaricaSearchField(String risorsa) {
-    //    switch (risorsa) {
-    //        case "Libri" -> searchField.setText("Cerca un libro...");
-    //        case "Serie" -> searchField.setText("Cerca una serie...");
-    //        case "Articoli" -> searchField.setText("Cerca un articolo...");
-    //        case "Riviste" -> searchField.setText("Cerca una rivista...");
-    //        default -> {
-    //            searchField.setText("Selezionare una risorsa...");
-    //        }
-    //    }
-    //}
-
     public void checkPermessiNotifiche() {
         if (Utente.getInstance().getPermessi() <= 0) {
             aggiungiItem.setEnabled(false);
