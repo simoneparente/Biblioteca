@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  3 MAR 2023 21:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  4 MAR 2023 16:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -247,7 +247,7 @@ Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
 \l__pdf_internal_box=\box59
-) (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux))
+) (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
@@ -316,7 +316,7 @@ LaTeX Info: Redefining \nameref on input line 19.
 \openout3 = `main.out'.
 
 \c@lstlisting=\count301
-<Immagini/FedericoII.png, id=72, 134.75343pt x 139.27031pt>
+<Immagini/FedericoII.png, id=64, 134.75343pt x 139.27031pt>
 File: Immagini/FedericoII.png Graphic file (type png)
 <use Immagini/FedericoII.png>
 Package pdftex.def Info: Immagini/FedericoII.png  used on input line 26.
@@ -328,6 +328,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 4.
+
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no   in font cmr10!
 )
 \tf@toc=\write4
 \openout4 = `main.toc'.
@@ -397,16 +400,14 @@ Missing character: There is no ¨ in font cmr10!
 [3
 
 
-]) [4]
+]
+Missing character: There is no Ã in font cmbx12!
+Missing character: There is no   in font cmbx12!
+) [4]
 \openout2 = `Argomenti/Capitolo2.aux'.
 
  (./Argomenti/Capitolo2.tex
 Capitolo 2.
-
-Underfull \hbox (badness 3333) in paragraph at lines 4--4
-[]\OT1/cmr/bx/n/14.4 Analisi del-la ri-strut-tu-ra-zio-ne del Class
- []
-
 ) [5
 
 
@@ -422,23 +423,33 @@ Capitolo 3.
 
 
 
-] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux))
+]
+\openout2 = `Argomenti/Capitolo4.aux'.
+
+ (./Argomenti/Capitolo4.tex
+Capitolo 4.
+) [7
+
+
+
+
+] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9BF22739C658F7EDB6F4D9441645D0C5;3318.
+(rerunfilecheck)             Checksum: 062FFAACC889D9548620C086BD9614EF;2842.
  ) 
 Here is how much of TeX's memory you used:
- 11413 strings out of 478268
- 180796 string characters out of 5846347
- 494998 words of memory out of 5000000
- 29457 multiletter control sequences out of 15000+600000
+ 11438 strings out of 478268
+ 181731 string characters out of 5846347
+ 494398 words of memory out of 5000000
+ 29476 multiletter control sequences out of 15000+600000
  472335 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,6n,63p,877b,470s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 60i,6n,63p,877b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (6 pages, 103040 bytes).
+Output written on main.pdf (7 pages, 102714 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 142 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 146 PDF objects out of 1000 (max. 8388607)
+ 125 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
