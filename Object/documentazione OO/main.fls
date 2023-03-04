@@ -594,6 +594,8 @@ INPUT ./Argomenti/Capitolo3.tex
 INPUT Argomenti/Capitolo3.tex
 INPUT ./Argomenti/Capitolo3.tex
 INPUT Argomenti/Capitolo3.tex
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./Immagini/AddArtConf_SD.png
 INPUT ./Immagini/AddArtConf_SD.png
 INPUT Immagini/AddArtConf_SD.png
@@ -614,8 +616,6 @@ INPUT ./Argomenti/Capitolo4.tex
 INPUT Argomenti/Capitolo4.tex
 INPUT ./Argomenti/Capitolo4.tex
 INPUT Argomenti/Capitolo4.tex
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT main.aux
 INPUT ./Argomenti/Capitolo1.aux
 INPUT Argomenti/Capitolo1.aux
