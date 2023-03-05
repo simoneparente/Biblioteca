@@ -4,7 +4,6 @@ import org.Bibliotech.DAOimplementazione.ImplementazioneUtente;
 import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class UtenteController {
     private static UtenteController instance = null;

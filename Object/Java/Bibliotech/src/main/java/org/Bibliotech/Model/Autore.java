@@ -1,8 +1,8 @@
 package org.Bibliotech.Model;
 
 public class Autore {
-    private String nome;
-    private String cognome;
+    private final String nome;
+    private final String cognome;
 
     public Autore(String nome, String cognome) {
         this.nome = nome;

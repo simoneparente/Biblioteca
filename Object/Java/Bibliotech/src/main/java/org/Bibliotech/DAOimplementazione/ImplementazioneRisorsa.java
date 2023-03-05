@@ -391,7 +391,7 @@ public class ImplementazioneRisorsa implements risorsaDao {
     }
 
     public Vector<Vector<Object>> getRows(String query) {
-        int i = 0, j;
+        int i;
         Vector<Vector<Object>> data = new Vector<Vector<Object>>();
         try {
             PreparedStatement ps = connection.prepareStatement(query);

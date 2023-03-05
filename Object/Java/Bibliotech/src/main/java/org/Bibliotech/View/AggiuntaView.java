@@ -179,7 +179,6 @@ public class AggiuntaView extends View {
                 if (libroFaParteCheckBox.isSelected()) {
                     if(String.valueOf(serieLibroBox.getSelectedItem()).isBlank()){
                         serieLibroBox.setBorder(getRedBorder());
-                        check++;
                     } else {
                         serieLibroBox.setBorder(getDefaultJComboBoxBorder());
                         if (String.valueOf(serieLibroBox.getSelectedItem()).equals("・・・Aggiungi nuova serie・・・")) {

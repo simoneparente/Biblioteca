@@ -2,7 +2,6 @@ package org.Bibliotech.DAOimplementazione;
 
 import org.Bibliotech.ConnessioneDB;
 import org.Bibliotech.DAO.UtenteDao;
-import org.Bibliotech.Model.Utente;
 
 import javax.swing.*;
 import java.awt.*;

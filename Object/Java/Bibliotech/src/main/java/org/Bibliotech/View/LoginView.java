@@ -102,8 +102,6 @@ public class LoginView extends View {
     }
 
     public void refreshFields() {
-        //usernameField.setText("");
-        //passwordField.setText("");
         mostraPasswordCheckBox.setSelected(false);
         usernameField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
         passwordField.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
