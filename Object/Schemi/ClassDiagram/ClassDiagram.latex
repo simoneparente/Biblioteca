@@ -983,9 +983,9 @@
 \node at (4835pt,165.0986pt)[below right,color=black]{boolean addArticoloRivista(String,String,String,String,String,String,String,String,String)};
 \draw[pstyle9] (4826pt,186.7466pt) -- (4822pt,192.7466pt) -- (4830pt,192.7466pt) -- cycle;
 \node at (4835pt,181.1973pt)[below right,color=black]{boolean addArticoloAddRivistaInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double)};
-\draw[pstyle6] (4826pt,206.8452pt) ellipse (3pt and 3pt);
+\draw[pstyle9] (4826pt,202.8452pt) -- (4822pt,208.8452pt) -- (4830pt,208.8452pt) -- cycle;
 \node at (4835pt,197.2959pt)[below right,color=black]{boolean addArticoloConferenza(String,String,String,String,String,String,String,String,String)};
-\draw[pstyle6] (4826pt,222.9438pt) ellipse (3pt and 3pt);
+\draw[pstyle9] (4826pt,218.9438pt) -- (4822pt,224.9438pt) -- (4830pt,224.9438pt) -- cycle;
 \node at (4835pt,213.3945pt)[below right,color=black]{boolean addArticoloAddConferenza(String,String,String,String,String,String,String,String,String,String,String,String,String)};
 \draw[pstyle9] (4826pt,235.0425pt) -- (4822pt,241.0425pt) -- (4830pt,241.0425pt) -- cycle;
 \node at (4835pt,229.4932pt)[below right,color=black]{ArrayList\textless String\textgreater  getAutoriLibri()};
