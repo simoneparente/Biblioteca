@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  5 MAR 2023 15:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  5 MAR 2023 16:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -316,7 +316,7 @@ LaTeX Info: Redefining \nameref on input line 19.
 \openout3 = `main.out'.
 
 \c@lstlisting=\count301
-<Immagini/FedericoII.png, id=68, 134.75343pt x 139.27031pt>
+<Immagini/FedericoII.png, id=88, 134.75343pt x 139.27031pt>
 File: Immagini/FedericoII.png Graphic file (type png)
 <use Immagini/FedericoII.png>
 Package pdftex.def Info: Immagini/FedericoII.png  used on input line 26.
@@ -412,12 +412,12 @@ Capitolo 2.
 
  (./Argomenti/Capitolo3.tex
 Capitolo 3.
-<Immagini/PDiagram.png, id=114, 6208.19376pt x 3326.4275pt>
+<Immagini/PDiagram.png, id=138, 6208.19376pt x 3326.4275pt>
 File: Immagini/PDiagram.png Graphic file (type png)
 <use Immagini/PDiagram.png>
 Package pdftex.def Info: Immagini/PDiagram.png  used on input line 4.
 (pdftex.def)             Requested size: 310.42787pt x 166.33112pt.
-<Immagini/AddArtConf_SD.png, id=115, 2142.0025pt x 1834.855pt>
+<Immagini/AddArtConf_SD.png, id=139, 2142.0025pt x 1834.855pt>
 File: Immagini/AddArtConf_SD.png Graphic file (type png)
 <use Immagini/AddArtConf_SD.png>
 Package pdftex.def Info: Immagini/AddArtConf_SD.png  used on input line 7.
@@ -428,7 +428,7 @@ Package pdftex.def Info: Immagini/AddArtConf_SD.png  used on input line 7.
 
 
  <./Immagini/PDiagram.png>]
-<Immagini/checkPermNot_SD.jpg, id=121, 1216.545pt x 865.2325pt>
+<Immagini/checkPermNot_SD.jpg, id=145, 1216.545pt x 865.2325pt>
 File: Immagini/checkPermNot_SD.jpg Graphic file (type jpg)
 <use Immagini/checkPermNot_SD.jpg>
 Package pdftex.def Info: Immagini/checkPermNot_SD.jpg  used on input line 9.
@@ -438,28 +438,115 @@ Package pdftex.def Info: Immagini/checkPermNot_SD.jpg  used on input line 9.
 
  (./Argomenti/Capitolo4.tex
 Capitolo 4.
-) [9
+<Immagini/Schermate/Login_Register/LoginPage.png, id=157, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Login_Register/LoginPage.png Graphic file (type png)
+<use Immagini/Schermate/Login_Register/LoginPage.png>
+Package pdftex.def Info: Immagini/Schermate/Login_Register/LoginPage.png  used on input line 4.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+<Immagini/Schermate/Login_Register/RegisterPage.png, id=158, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Login_Register/RegisterPage.png Graphic file (type png)
+<use Immagini/Schermate/Login_Register/RegisterPage.png>
+Package pdftex.def Info: Immagini/Schermate/Login_Register/RegisterPage.png  used on input line 7.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+[9
 
 
 
 
-] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
+ <./Immagini/Schermate/Login_Register/LoginPage.png>]
+<Immagini/Schermate/Search/SearchPage.png, id=164, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Search/SearchPage.png Graphic file (type png)
+<use Immagini/Schermate/Search/SearchPage.png>
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage.png  used on input line 10.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+<Immagini/Schermate/Search/SearchPage-FiltriLibro.png, id=165, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Search/SearchPage-FiltriLibro.png Graphic file (type png)
+<use Immagini/Schermate/Search/SearchPage-FiltriLibro.png>
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriLibro.png  used on input line 12.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+ [10 <./Immagini/Schermate/Login_Register/RegisterPage.png> <./Immagini/Schermate/Search/SearchPage.png>]
+<Immagini/Schermate/Search/SearchPage-FiltriSerie.png, id=172, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Search/SearchPage-FiltriSerie.png Graphic file (type png)
+<use Immagini/Schermate/Search/SearchPage-FiltriSerie.png>
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriSerie.png  used on input line 14.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+<Immagini/Schermate/Search/SearchPage-FiltriArticoli.png, id=173, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png Graphic file (type png)
+<use Immagini/Schermate/Search/SearchPage-FiltriArticoli.png>
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png  used on input line 16.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+ [11 <./Immagini/Schermate/Search/SearchPage-FiltriLibro.png> <./Immagini/Schermate/Search/SearchPage-FiltriSerie.png>]
+<Immagini/Schermate/Search/SearchPage-FiltriRiviste.png, id=182, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png Graphic file (type png)
+<use Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png  used on input line 18.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+<Immagini/Schermate/Search/ResultPage.png, id=183, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Search/ResultPage.png Graphic file (type png)
+<use Immagini/Schermate/Search/ResultPage.png>
+Package pdftex.def Info: Immagini/Schermate/Search/ResultPage.png  used on input line 21.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+ [12 <./Immagini/Schermate/Search/SearchPage-FiltriArticoli.png> <./Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage.png, id=192, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Insert/InserisciRisorsaPage.png Graphic file (type png)
+<use Immagini/Schermate/Insert/InserisciRisorsaPage.png>
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage.png  used on input line 24.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+<Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png, id=193, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png Graphic file (type png)
+<use Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png>
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png  used on input line 27.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+ [13 <./Immagini/Schermate/Search/ResultPage.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png, id=201, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png Graphic file (type png)
+<use Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png  used on input line 29.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+<Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png, id=202, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png Graphic file (type png)
+<use Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png>
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png  used on input line 32.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+ [14 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png, id=211, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png Graphic file (type png)
+<use Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png  used on input line 34.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png, id=212, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png Graphic file (type png)
+<use Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png>
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png  used on input line 36.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+ [15 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>]
+<Immagini/Schermate/Utente/NotificheUtente.png, id=221, 835.12pt x 835.12pt>
+File: Immagini/Schermate/Utente/NotificheUtente.png Graphic file (type png)
+<use Immagini/Schermate/Utente/NotificheUtente.png>
+Package pdftex.def Info: Immagini/Schermate/Utente/NotificheUtente.png  used on input line 40.
+(pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+<Immagini/Schermate/Utente/RichiediDisponibilità.png, id=222, 334.24875pt x 239.89626pt>
+File: Immagini/Schermate/Utente/RichiediDisponibilità.png Graphic file (type png)
+<use Immagini/Schermate/Utente/RichiediDisponibilità.png>
+Package pdftex.def Info: Immagini/Schermate/Utente/RichiediDisponibilità.png  used on input line 42.
+(pdftex.def)             Requested size: 167.12396pt x 119.94783pt.
+) [16 <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png> <./Immagini/Schermate/Utente/NotificheUtente.png>] [17 <./Immagini/Schermate/Utente/RichiediDisponibilità.png>] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C347400945F54B6E2557ACE447A091C4;3188.
+(rerunfilecheck)             Checksum: 59E301B85210C17FFE4526CF55168A83;3715.
  ) 
 Here is how much of TeX's memory you used:
- 11465 strings out of 478268
- 182380 string characters out of 5846347
- 494402 words of memory out of 5000000
- 29496 multiletter control sequences out of 15000+600000
+ 11609 strings out of 478268
+ 188832 string characters out of 5846347
+ 496404 words of memory out of 5000000
+ 29597 multiletter control sequences out of 15000+600000
  472335 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,6n,63p,877b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 60i,6n,63p,877b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (9 pages, 891663 bytes).
+Output written on main.pdf (17 pages, 5288769 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 149 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 269 words of extra memory for PDF output out of 10000 (max. 10000000)
 

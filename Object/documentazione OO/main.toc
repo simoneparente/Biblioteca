@@ -15,4 +15,20 @@
 \contentsline {section}{\numberline {3.3}Sequence Diagram del metodo checPermessiNotifiche}{8}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Features e Controlli}{9}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Spiegazione}{9}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}LoginPage etc}{9}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.1}LoginPage}{9}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}RegisterPage}{10}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}SearchPage}{10}{subsection.4.1.3}%
+\contentsline {subsubsection}{Filtri Libri}{11}{section*.2}%
+\contentsline {subsubsection}{Filtri Serie}{11}{section*.3}%
+\contentsline {subsubsection}{Filtri Articoli}{12}{section*.4}%
+\contentsline {subsubsection}{Filtri Riviste}{12}{section*.5}%
+\contentsline {subsection}{\numberline {4.1.4}ResultPage}{13}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}InsertPage}{13}{subsection.4.1.5}%
+\contentsline {subsubsection}{Libro}{14}{section*.6}%
+\contentsline {subsubsection}{Libro in Serie}{14}{section*.7}%
+\contentsline {subsubsection}{Articolo}{15}{section*.8}%
+\contentsline {subsubsection}{Articolo in Rivista}{15}{section*.9}%
+\contentsline {subsubsection}{Articolo in Conferenza}{16}{section*.10}%
+\contentsline {subsection}{\numberline {4.1.6}Utente}{16}{subsection.4.1.6}%
+\contentsline {subsubsection}{Notifiche}{16}{section*.11}%
+\contentsline {subsubsection}{Richiesta di disponibilit\'a Serie}{17}{section*.12}%
