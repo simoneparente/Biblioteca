@@ -3,7 +3,7 @@
 \contentsline {chapter}{\numberline {1}Descrizione e Analisi del Progetto}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Obiettivo}{3}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Analisi del problema}{3}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Individuazione delle Responsabilità}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.3}Individuazione delle Responsabilit\'a}{4}{section.1.3}%
 \contentsline {chapter}{\numberline {2}Progettazione concettuale}{5}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Class Diagram del dominio del problema}{5}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Dizionario delle classi}{5}{section.2.2}%
