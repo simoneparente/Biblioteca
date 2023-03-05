@@ -594,6 +594,11 @@ INPUT ./Argomenti/Capitolo3.tex
 INPUT Argomenti/Capitolo3.tex
 INPUT ./Argomenti/Capitolo3.tex
 INPUT Argomenti/Capitolo3.tex
+INPUT ./Immagini/PDiagram.png
+INPUT ./Immagini/PDiagram.png
+INPUT Immagini/PDiagram.png
+INPUT ./Immagini/PDiagram.png
+INPUT ./Immagini/PDiagram.png
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./Immagini/AddArtConf_SD.png

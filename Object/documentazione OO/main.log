@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  4 MAR 2023 17:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  5 MAR 2023 15:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -418,26 +418,28 @@ Capitolo 2.
 
  (./Argomenti/Capitolo3.tex
 Capitolo 3.
-<Immagini/AddArtConf_SD.png, id=114, 2142.0025pt x 1834.855pt>
+<Immagini/PDiagram.png, id=114, 6208.19376pt x 3326.4275pt>
+File: Immagini/PDiagram.png Graphic file (type png)
+<use Immagini/PDiagram.png>
+Package pdftex.def Info: Immagini/PDiagram.png  used on input line 4.
+(pdftex.def)             Requested size: 310.42787pt x 166.33112pt.
+<Immagini/AddArtConf_SD.png, id=115, 2142.0025pt x 1834.855pt>
 File: Immagini/AddArtConf_SD.png Graphic file (type png)
 <use Immagini/AddArtConf_SD.png>
-Package pdftex.def Info: Immagini/AddArtConf_SD.png  used on input line 6.
+Package pdftex.def Info: Immagini/AddArtConf_SD.png  used on input line 7.
 (pdftex.def)             Requested size: 321.28651pt x 275.21637pt.
 [6
 
 
 
 
-]
-Overfull \vbox (25.4802pt too high) has occurred while \output is active []
-
- [7 <./Immagini/AddArtConf_SD.png>]
-<Immagini/checkPermNot_SD.jpg, id=125, 1216.545pt x 865.2325pt>
+ <./Immagini/PDiagram.png>]
+<Immagini/checkPermNot_SD.jpg, id=121, 1216.545pt x 865.2325pt>
 File: Immagini/checkPermNot_SD.jpg Graphic file (type jpg)
 <use Immagini/checkPermNot_SD.jpg>
-Package pdftex.def Info: Immagini/checkPermNot_SD.jpg  used on input line 8.
+Package pdftex.def Info: Immagini/checkPermNot_SD.jpg  used on input line 9.
 (pdftex.def)             Requested size: 340.63028pt x 242.26344pt.
-) [8 <./Immagini/checkPermNot_SD.jpg>]
+) [7 <./Immagini/AddArtConf_SD.png>] [8 <./Immagini/checkPermNot_SD.jpg>]
 \openout2 = `Argomenti/Capitolo4.aux'.
 
  (./Argomenti/Capitolo4.tex
@@ -452,18 +454,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 4647699C90DFF29CA87129C1B664DD04;3190.
  ) 
 Here is how much of TeX's memory you used:
- 11457 strings out of 478268
- 182203 string characters out of 5846347
+ 11464 strings out of 478268
+ 182372 string characters out of 5846347
  494402 words of memory out of 5000000
- 29489 multiletter control sequences out of 15000+600000
+ 29495 multiletter control sequences out of 15000+600000
  472335 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,6n,63p,877b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (9 pages, 281078 bytes).
+Output written on main.pdf (9 pages, 891480 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
+ 164 PDF objects out of 1000 (max. 8388607)
  136 compressed objects within 2 object streams
  28 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 149 words of extra memory for PDF output out of 10000 (max. 10000000)
 
