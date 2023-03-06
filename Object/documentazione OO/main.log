@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  5 MAR 2023 16:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  6 MAR 2023 09:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -441,12 +441,12 @@ Capitolo 4.
 <Immagini/Schermate/Login_Register/LoginPage.png, id=157, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Login_Register/LoginPage.png Graphic file (type png)
 <use Immagini/Schermate/Login_Register/LoginPage.png>
-Package pdftex.def Info: Immagini/Schermate/Login_Register/LoginPage.png  used on input line 4.
+Package pdftex.def Info: Immagini/Schermate/Login_Register/LoginPage.png  used on input line 6.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 <Immagini/Schermate/Login_Register/RegisterPage.png, id=158, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Login_Register/RegisterPage.png Graphic file (type png)
 <use Immagini/Schermate/Login_Register/RegisterPage.png>
-Package pdftex.def Info: Immagini/Schermate/Login_Register/RegisterPage.png  used on input line 7.
+Package pdftex.def Info: Immagini/Schermate/Login_Register/RegisterPage.png  used on input line 10.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 [9
 
@@ -457,78 +457,78 @@ Package pdftex.def Info: Immagini/Schermate/Login_Register/RegisterPage.png  use
 <Immagini/Schermate/Search/SearchPage.png, id=164, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage.png  used on input line 10.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage.png  used on input line 13.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 <Immagini/Schermate/Search/SearchPage-FiltriLibro.png, id=165, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriLibro.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriLibro.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriLibro.png  used on input line 12.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriLibro.png  used on input line 15.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
  [10 <./Immagini/Schermate/Login_Register/RegisterPage.png> <./Immagini/Schermate/Search/SearchPage.png>]
 <Immagini/Schermate/Search/SearchPage-FiltriSerie.png, id=172, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriSerie.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriSerie.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriSerie.png  used on input line 14.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriSerie.png  used on input line 17.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 <Immagini/Schermate/Search/SearchPage-FiltriArticoli.png, id=173, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriArticoli.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png  used on input line 16.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png  used on input line 19.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
  [11 <./Immagini/Schermate/Search/SearchPage-FiltriLibro.png> <./Immagini/Schermate/Search/SearchPage-FiltriSerie.png>]
 <Immagini/Schermate/Search/SearchPage-FiltriRiviste.png, id=182, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png  used on input line 18.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png  used on input line 21.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 <Immagini/Schermate/Search/ResultPage.png, id=183, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/ResultPage.png Graphic file (type png)
 <use Immagini/Schermate/Search/ResultPage.png>
-Package pdftex.def Info: Immagini/Schermate/Search/ResultPage.png  used on input line 21.
+Package pdftex.def Info: Immagini/Schermate/Search/ResultPage.png  used on input line 24.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
  [12 <./Immagini/Schermate/Search/SearchPage-FiltriArticoli.png> <./Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>]
 <Immagini/Schermate/Insert/InserisciRisorsaPage.png, id=192, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage.png  used on input line 24.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage.png  used on input line 27.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 <Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png, id=193, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png  used on input line 27.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png  used on input line 30.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
  [13 <./Immagini/Schermate/Search/ResultPage.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage.png>]
 <Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png, id=201, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png  used on input line 29.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png  used on input line 32.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 <Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png, id=202, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png  used on input line 32.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png  used on input line 35.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
  [14 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>]
 <Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png, id=211, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png  used on input line 34.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png  used on input line 37.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 <Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png, id=212, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png  used on input line 36.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png  used on input line 39.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
  [15 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>]
 <Immagini/Schermate/Utente/NotificheUtente.png, id=221, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Utente/NotificheUtente.png Graphic file (type png)
 <use Immagini/Schermate/Utente/NotificheUtente.png>
-Package pdftex.def Info: Immagini/Schermate/Utente/NotificheUtente.png  used on input line 40.
+Package pdftex.def Info: Immagini/Schermate/Utente/NotificheUtente.png  used on input line 43.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
 <Immagini/Schermate/Utente/RichiediDisponibilità.png, id=222, 334.24875pt x 239.89626pt>
 File: Immagini/Schermate/Utente/RichiediDisponibilità.png Graphic file (type png)
 <use Immagini/Schermate/Utente/RichiediDisponibilità.png>
-Package pdftex.def Info: Immagini/Schermate/Utente/RichiediDisponibilità.png  used on input line 42.
+Package pdftex.def Info: Immagini/Schermate/Utente/RichiediDisponibilità.png  used on input line 45.
 (pdftex.def)             Requested size: 167.12396pt x 119.94783pt.
 ) [16 <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png> <./Immagini/Schermate/Utente/NotificheUtente.png>] [17 <./Immagini/Schermate/Utente/RichiediDisponibilità.png>] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
@@ -543,7 +543,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  60i,6n,63p,877b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (17 pages, 5288769 bytes).
+Output written on main.pdf (17 pages, 5288805 bytes).
 PDF statistics:
  271 PDF objects out of 1000 (max. 8388607)
  202 compressed objects within 3 object streams
