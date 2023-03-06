@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  6 MAR 2023 09:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  6 MAR 2023 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -243,52 +243,128 @@ Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 \AP@output=\toks21
 \AP@partial=\box57
 \AP@footins=\box58
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2020/08/19 v1.3 Adjusting TeX boxes (trim, clip, ...)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks22
+\XKV@tempa@toks=\toks23
+)
+\XKV@depth=\count293
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box59
+)
+\tc@llx=\dimen164
+\tc@lly=\dimen165
+\tc@urx=\dimen166
+\tc@ury=\dimen167
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen168
+\adjbox@Height=\dimen169
+\adjbox@Depth=\dimen170
+\adjbox@Totalheight=\dimen171
+\adjbox@pwidth=\dimen172
+\adjbox@pheight=\dimen173
+\adjbox@pdepth=\dimen174
+\adjbox@ptotalheight=\dimen175
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count294
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box60
+\sift@deathcycles=\count295
+\@vwid@loff=\dimen176
+\@vwid@roff=\dimen177
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen178
+\captionmargin=\dimen179
+\caption@leftmargin=\dimen180
+\caption@rightmargin=\dimen181
+\caption@width=\dimen182
+\caption@indent=\dimen183
+\caption@parindent=\dimen184
+\caption@hangindent=\dimen185
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count296
+\c@continuedfloat=\count297
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+))
+\c@subfigure=\count298
+\c@subtable=\count299
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen186
+\WF@size=\dimen187
+\c@WF@wrappedlines=\count300
+\WF@box=\box61
+\WF@everypar=\toks24
+Package: wrapfig 2003/01/31  v 3.6
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count293
-\l__pdf_internal_box=\box59
+\l__color_backend_stack_int=\count301
+\l__pdf_internal_box=\box62
 ) (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
  (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count294
-\scratchdimen=\dimen164
-\scratchbox=\box60
-\nofMPsegments=\count295
-\nofMParguments=\count296
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count297
-\MPscratchDim=\dimen165
-\MPnumerator=\count298
-\makeMPintoPDFobject=\count299
-\everyMPtoPDFconversion=\toks23
+\scratchcounter=\count302
+\scratchdimen=\dimen188
+\scratchbox=\box63
+\nofMPsegments=\count303
+\nofMParguments=\count304
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count305
+\MPscratchDim=\dimen189
+\MPnumerator=\count306
+\makeMPintoPDFobject=\count307
+\everyMPtoPDFconversion=\toks26
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \it@ocap on input line 19.
-LaTeX Info: Redefining \it@ccap on input line 19.
+LaTeX Info: Redefining \it@ocap on input line 23.
+LaTeX Info: Redefining \it@ccap on input line 23.
 
 
 File italian.ldf warning: 
@@ -296,9 +372,9 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 19.
+italian.ldf    on input line 23.
 
-Package hyperref Info: Link coloring OFF on input line 19.
+Package hyperref Info: Link coloring OFF on input line 23.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
@@ -306,20 +382,23 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count300
+\c@section@level=\count308
 )
-LaTeX Info: Redefining \ref on input line 19.
-LaTeX Info: Redefining \pageref on input line 19.
-LaTeX Info: Redefining \nameref on input line 19.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
+LaTeX Info: Redefining \nameref on input line 23.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-\c@lstlisting=\count301
+\c@lstlisting=\count309
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
 <Immagini/FedericoII.png, id=88, 134.75343pt x 139.27031pt>
 File: Immagini/FedericoII.png Graphic file (type png)
 <use Immagini/FedericoII.png>
-Package pdftex.def Info: Immagini/FedericoII.png  used on input line 26.
+Package pdftex.def Info: Immagini/FedericoII.png  used on input line 30.
 (pdftex.def)             Requested size: 86.25pt x 89.14117pt.
  [1
 
@@ -412,12 +491,12 @@ Capitolo 2.
 
  (./Argomenti/Capitolo3.tex
 Capitolo 3.
-<Immagini/PDiagram.png, id=138, 6208.19376pt x 3326.4275pt>
+<Immagini/PDiagram.png, id=139, 6208.19376pt x 3326.4275pt>
 File: Immagini/PDiagram.png Graphic file (type png)
 <use Immagini/PDiagram.png>
 Package pdftex.def Info: Immagini/PDiagram.png  used on input line 4.
 (pdftex.def)             Requested size: 310.42787pt x 166.33112pt.
-<Immagini/AddArtConf_SD.png, id=139, 2142.0025pt x 1834.855pt>
+<Immagini/AddArtConf_SD.png, id=140, 2142.0025pt x 1834.855pt>
 File: Immagini/AddArtConf_SD.png Graphic file (type png)
 <use Immagini/AddArtConf_SD.png>
 Package pdftex.def Info: Immagini/AddArtConf_SD.png  used on input line 7.
@@ -428,7 +507,7 @@ Package pdftex.def Info: Immagini/AddArtConf_SD.png  used on input line 7.
 
 
  <./Immagini/PDiagram.png>]
-<Immagini/checkPermNot_SD.jpg, id=145, 1216.545pt x 865.2325pt>
+<Immagini/checkPermNot_SD.jpg, id=146, 1216.545pt x 865.2325pt>
 File: Immagini/checkPermNot_SD.jpg Graphic file (type jpg)
 <use Immagini/checkPermNot_SD.jpg>
 Package pdftex.def Info: Immagini/checkPermNot_SD.jpg  used on input line 9.
@@ -438,115 +517,149 @@ Package pdftex.def Info: Immagini/checkPermNot_SD.jpg  used on input line 9.
 
  (./Argomenti/Capitolo4.tex
 Capitolo 4.
-<Immagini/Schermate/Login_Register/LoginPage.png, id=157, 835.12pt x 835.12pt>
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ² in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no   in font cmr10!
+<Immagini/Schermate/Login_Register/LoginPage.png, id=158, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Login_Register/LoginPage.png Graphic file (type png)
 <use Immagini/Schermate/Login_Register/LoginPage.png>
-Package pdftex.def Info: Immagini/Schermate/Login_Register/LoginPage.png  used on input line 6.
+Package pdftex.def Info: Immagini/Schermate/Login_Register/LoginPage.png  used on input line 14.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
-<Immagini/Schermate/Login_Register/RegisterPage.png, id=158, 835.12pt x 835.12pt>
+<Immagini/Schermate/Login_Register/RegisterPage.png, id=159, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Login_Register/RegisterPage.png Graphic file (type png)
 <use Immagini/Schermate/Login_Register/RegisterPage.png>
-Package pdftex.def Info: Immagini/Schermate/Login_Register/RegisterPage.png  used on input line 10.
+Package pdftex.def Info: Immagini/Schermate/Login_Register/RegisterPage.png  used on input line 20.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
+
+Underfull \hbox (badness 2799) in paragraph at lines 17--21
+\OT1/cmr/m/n/10 Nella Re-gi-ster-Pa-ge l'u-ten-te de-ve riem-pi-re i cam-pi "User-na-me", "Pas-
+ []
+
+
+Underfull \hbox (badness 3449) in paragraph at lines 17--21
+\OT1/cmr/m/n/10 sword", "Con-fer-ma Pas-sword" per crea-re un nuo-vo ac-count. Qua-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--21
+\OT1/cmr/m/n/10 lo-ra un ac-count con quel-lo User-na-me do-ves-se gi^^Sa esi-ste-re, op-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--21
+\OT1/cmr/m/n/10 pu-re le due Pas-sword non do-ves-se-ro es-se-re ugua-li, l'ap-pil-ca-ti-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--21
+\OT1/cmr/m/n/10 vo se-gna-ler^^Sa l'er-ro-re e co-lo-rer^^Sa il bor-do del Jtext-field di ros-so.
+ []
+
 [9
 
 
 
 
  <./Immagini/Schermate/Login_Register/LoginPage.png>]
-<Immagini/Schermate/Search/SearchPage.png, id=164, 835.12pt x 835.12pt>
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¨ in font cmr10!
+<Immagini/Schermate/Search/SearchPage.png, id=165, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage.png  used on input line 13.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage.png  used on input line 27.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
-<Immagini/Schermate/Search/SearchPage-FiltriLibro.png, id=165, 835.12pt x 835.12pt>
+[10 <./Immagini/Schermate/Login_Register/RegisterPage.png>]
+<Immagini/Schermate/Search/SearchPage-FiltriLibro.png, id=171, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriLibro.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriLibro.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriLibro.png  used on input line 15.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriLibro.png  used on input line 29.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
- [10 <./Immagini/Schermate/Login_Register/RegisterPage.png> <./Immagini/Schermate/Search/SearchPage.png>]
 <Immagini/Schermate/Search/SearchPage-FiltriSerie.png, id=172, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriSerie.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriSerie.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriSerie.png  used on input line 17.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriSerie.png  used on input line 31.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
-<Immagini/Schermate/Search/SearchPage-FiltriArticoli.png, id=173, 835.12pt x 835.12pt>
+ [11 <./Immagini/Schermate/Search/SearchPage.png> <./Immagini/Schermate/Search/SearchPage-FiltriLibro.png>]
+<Immagini/Schermate/Search/SearchPage-FiltriArticoli.png, id=180, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriArticoli.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png  used on input line 19.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png  used on input line 33.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
- [11 <./Immagini/Schermate/Search/SearchPage-FiltriLibro.png> <./Immagini/Schermate/Search/SearchPage-FiltriSerie.png>]
-<Immagini/Schermate/Search/SearchPage-FiltriRiviste.png, id=182, 835.12pt x 835.12pt>
+<Immagini/Schermate/Search/SearchPage-FiltriRiviste.png, id=181, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>
-Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png  used on input line 21.
+Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png  used on input line 35.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
-<Immagini/Schermate/Search/ResultPage.png, id=183, 835.12pt x 835.12pt>
+ [12 <./Immagini/Schermate/Search/SearchPage-FiltriSerie.png> <./Immagini/Schermate/Search/SearchPage-FiltriArticoli.png>]
+<Immagini/Schermate/Search/ResultPage.png, id=190, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/ResultPage.png Graphic file (type png)
 <use Immagini/Schermate/Search/ResultPage.png>
-Package pdftex.def Info: Immagini/Schermate/Search/ResultPage.png  used on input line 24.
+Package pdftex.def Info: Immagini/Schermate/Search/ResultPage.png  used on input line 38.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
- [12 <./Immagini/Schermate/Search/SearchPage-FiltriArticoli.png> <./Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>]
-<Immagini/Schermate/Insert/InserisciRisorsaPage.png, id=192, 835.12pt x 835.12pt>
+<Immagini/Schermate/Insert/InserisciRisorsaPage.png, id=191, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage.png  used on input line 27.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage.png  used on input line 41.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
-<Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png, id=193, 835.12pt x 835.12pt>
+ [13 <./Immagini/Schermate/Search/SearchPage-FiltriRiviste.png> <./Immagini/Schermate/Search/ResultPage.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png, id=200, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png  used on input line 30.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png  used on input line 44.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
- [13 <./Immagini/Schermate/Search/ResultPage.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage.png>]
 <Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png, id=201, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png  used on input line 32.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png  used on input line 46.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
-<Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png, id=202, 835.12pt x 835.12pt>
+ [14 <./Immagini/Schermate/Insert/InserisciRisorsaPage.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png, id=209, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png  used on input line 35.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png  used on input line 49.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
- [14 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>]
-<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png, id=211, 835.12pt x 835.12pt>
+<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png, id=210, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png  used on input line 37.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png  used on input line 51.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
-<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png, id=212, 835.12pt x 835.12pt>
+ [15 <./Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png, id=219, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png>
-Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png  used on input line 39.
+Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png  used on input line 53.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
- [15 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>]
-<Immagini/Schermate/Utente/NotificheUtente.png, id=221, 835.12pt x 835.12pt>
+<Immagini/Schermate/Utente/NotificheUtente.png, id=220, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Utente/NotificheUtente.png Graphic file (type png)
 <use Immagini/Schermate/Utente/NotificheUtente.png>
-Package pdftex.def Info: Immagini/Schermate/Utente/NotificheUtente.png  used on input line 43.
+Package pdftex.def Info: Immagini/Schermate/Utente/NotificheUtente.png  used on input line 57.
 (pdftex.def)             Requested size: 208.77948pt x 208.77948pt.
-<Immagini/Schermate/Utente/RichiediDisponibilitaÌ€.png, id=222, 334.24875pt x 239.89626pt>
+ [16 <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png> <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png>]
+<Immagini/Schermate/Utente/RichiediDisponibilitaÌ€.png, id=229, 334.24875pt x 239.89626pt>
 File: Immagini/Schermate/Utente/RichiediDisponibilitaÌ€.png Graphic file (type png)
 <use Immagini/Schermate/Utente/RichiediDisponibilitaÌ€.png>
-Package pdftex.def Info: Immagini/Schermate/Utente/RichiediDisponibilitaÌ€.png  used on input line 45.
+Package pdftex.def Info: Immagini/Schermate/Utente/RichiediDisponibilitaÌ€.png  used on input line 59.
 (pdftex.def)             Requested size: 167.12396pt x 119.94783pt.
-) [16 <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png> <./Immagini/Schermate/Utente/NotificheUtente.png>] [17 <./Immagini/Schermate/Utente/RichiediDisponibilitaÌ€.png>] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
+) [17 <./Immagini/Schermate/Utente/NotificheUtente.png> <./Immagini/Schermate/Utente/RichiediDisponibilitaÌ€.png>] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 59E301B85210C17FFE4526CF55168A83;3715.
  ) 
 Here is how much of TeX's memory you used:
- 11609 strings out of 478268
- 188832 string characters out of 5846347
- 496404 words of memory out of 5000000
- 29597 multiletter control sequences out of 15000+600000
+ 14257 strings out of 478268
+ 239059 string characters out of 5846347
+ 540179 words of memory out of 5000000
+ 32193 multiletter control sequences out of 15000+600000
  472335 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,6n,63p,877b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,7n,131p,877b,499s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (17 pages, 5288805 bytes).
+Output written on main.pdf (17 pages, 5292296 bytes).
 PDF statistics:
- 271 PDF objects out of 1000 (max. 8388607)
- 202 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 500000)
+ 272 PDF objects out of 1000 (max. 8388607)
+ 203 compressed objects within 3 object streams
+ 52 named destinations out of 1000 (max. 500000)
  269 words of extra memory for PDF output out of 10000 (max. 10000000)
 
