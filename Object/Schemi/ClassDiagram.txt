@@ -177,6 +177,7 @@ class org.Bibliotech.Model.Autore {
 class org.Bibliotech.Main {
 + {static} void main(String[])
 }
+
 class org.Bibliotech.DAOimplementazione.ImplementazioneUtente {
 - Connection connection
 + boolean checkUserExistInDatabase(JTextField)

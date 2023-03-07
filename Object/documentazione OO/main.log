@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.5)  6 MAR 2023 18:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.15)  7 MAR 2023 11:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Universit√†/Corsi/Basi_di_Dati/GitHub/Biblioteca/Biblioteca/Object/documentazione OO/main.tex"
-(c:/Universit√†/Corsi/Basi_di_Dati/GitHub/Biblioteca/Biblioteca/Object/documentazione OO/main.tex
-LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-10-26> (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+**"/Users/bickpenna/Documents/GitHub/Biblioteca/Object/documentazione OO/main.tex"
+(/Users/bickpenna/Documents/GitHub/Biblioteca/Object/documentazione OO/main.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
-(C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count185
@@ -23,11 +23,11 @@ File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen139
 \lightrulewidth=\dimen140
@@ -46,144 +46,124 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count196
 \@lastruleclass=\count197
 \@thisrulewidth=\dimen151
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks18
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
-\stockwidth=\dimen152
-\stockheight=\dimen153
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen154
-\Gin@req@width=\dimen155
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2022/10/23 3.82 The Babel package
+\Gin@req@height=\dimen152
+\Gin@req@width=\dimen153
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2022/02/26 3.73 The Babel package
 \babel@savecnt=\count198
-\U@D=\dimen156
-\l@unhyphenated=\language79
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\U@D=\dimen154
+\l@unhyphenated=\language87
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count199
-
-*************************************
-* Local config file bblopts.cfg used
-*
-(C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/babel-italian\italian.ldf
-Language: italian 2022/03/27 v.1.4.07 Italian support for the babel system
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/babel-italian/italian.ldf
+Language: italian 2020/05/21 v.1.4.04 Italian support for the babel system
 \it@lettering=\count266
 \it@doublequoteactive=\count267
 \it@ISOcompliance=\count268
-)) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/it\babel-italian.tex
-Package babel Info: Importing font and identification data for italian
-(babel)             from babel-it.ini. Reported on input line 11.
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count269
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
-Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 227.
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
-Package xcolor Info: Model `RGB' extended on input line 1369.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
-Package: hyperref 2022-09-22 v7.00t Hypertext links for LaTeX
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
-Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
-Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
-Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-))
-\c@section@level=\count270
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
-\@linkdim=\dimen157
-\Hy@linkcounter=\count271
-\Hy@pagecounter=\count272
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2022-09-22 v7.00t Hyperref: PDFDocEncoding definition (HO)
+\@linkdim=\dimen155
+\Hy@linkcounter=\count270
+\Hy@pagecounter=\count271
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count273
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2022-09-22 v7.00t Hyperref: PDF Unicode definition (HO)
+\Hy@SavedSpaceFactor=\count272
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4162.
-Package hyperref Info: Link nesting OFF on input line 4167.
-Package hyperref Info: Hyper index ON on input line 4170.
-Package hyperref Info: Plain pages OFF on input line 4177.
-Package hyperref Info: Backreferencing OFF on input line 4182.
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4410.
-\c@Hy@tempcnt=\count274
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+Package hyperref Info: Bookmarks ON on input line 4390.
+\c@Hy@tempcnt=\count273
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4748.
-\XeTeXLinkMargin=\dimen158
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+LaTeX Info: Redefining \url on input line 4749.
+\XeTeXLinkMargin=\dimen156
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count275
-\Field@Width=\dimen159
-\Fld@charsize=\dimen160
+\Fld@menulength=\count274
+\Field@Width=\dimen157
+\Fld@charsize=\dimen158
 Package hyperref Info: Hyper figures OFF on input line 6027.
 Package hyperref Info: Link nesting OFF on input line 6032.
 Package hyperref Info: Hyper index ON on input line 6035.
@@ -191,122 +171,293 @@ Package hyperref Info: backreferencing OFF on input line 6042.
 Package hyperref Info: Link coloring OFF on input line 6047.
 Package hyperref Info: Link coloring with OCG OFF on input line 6052.
 Package hyperref Info: PDF/A mode OFF on input line 6057.
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count276
-\c@Item=\count277
-\c@Hfootnote=\count278
+\Hy@abspage=\count275
+\c@Item=\count276
+\c@Hfootnote=\count277
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2022-09-22 v7.00t Hyperref driver for pdfTeX
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2022-02-21 v7.00n Hyperref driver for pdfTeX
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count279
-\c@bookmark@seq@number=\count280
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+\Fld@listcount=\count278
+\c@bookmark@seq@number=\count279
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
 \Hy@SectionHShift=\skip49
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LTleft=\skip50
 \LTright=\skip51
 \LTpre=\skip52
 \LTpost=\skip53
-\LTchunksize=\count281
-\LTcapwidth=\dimen161
-\LT@head=\box51
-\LT@firsthead=\box52
-\LT@foot=\box53
-\LT@lastfoot=\box54
-\LT@gbox=\box55
-\LT@cols=\count282
-\LT@rows=\count283
-\c@LT@tables=\count284
-\c@LT@chunks=\count285
+\LTchunksize=\count280
+\LTcapwidth=\dimen159
+\LT@head=\box50
+\LT@firsthead=\box51
+\LT@foot=\box52
+\LT@lastfoot=\box53
+\LT@gbox=\box54
+\LT@cols=\count281
+\LT@rows=\count282
+\c@LT@tables=\count283
+\c@LT@chunks=\count284
 \LT@p@ftn=\toks19
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count286
-\lst@gtempboxa=\box56
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count285
+\lst@gtempboxa=\box55
 \lst@token=\toks20
-\lst@length=\count287
-\lst@currlwidth=\dimen162
-\lst@column=\count288
-\lst@pos=\count289
-\lst@lostspace=\dimen163
-\lst@width=\dimen164
-\lst@newlines=\count290
-\lst@lineno=\count291
-\lst@maxwidth=\dimen165
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+\lst@length=\count286
+\lst@currlwidth=\dimen160
+\lst@column=\count287
+\lst@pos=\count288
+\lst@lostspace=\dimen161
+\lst@width=\dimen162
+\lst@newlines=\count289
+\lst@lineno=\count290
+\lst@maxwidth=\dimen163
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count292
-\lst@skipnumbers=\count293
-\lst@framebox=\box57
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+\c@lstnumber=\count291
+\lst@skipnumbers=\count292
+\lst@framebox=\box56
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/afterpage.sty
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 \AP@output=\toks21
-\AP@partial=\box58
-\AP@footins=\box59
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count294
-\l__pdf_internal_box=\box60
-) (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux) (Argomenti/Capitolo4.aux))
+\AP@partial=\box57
+\AP@footins=\box58
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2020/08/19 v1.3 Adjusting TeX boxes (trim, clip, ...)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks22
+\XKV@tempa@toks=\toks23
+)
+\XKV@depth=\count293
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box59
+)
+\tc@llx=\dimen164
+\tc@lly=\dimen165
+\tc@urx=\dimen166
+\tc@ury=\dimen167
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen168
+\adjbox@Height=\dimen169
+\adjbox@Depth=\dimen170
+\adjbox@Totalheight=\dimen171
+\adjbox@pwidth=\dimen172
+\adjbox@pheight=\dimen173
+\adjbox@pdepth=\dimen174
+\adjbox@ptotalheight=\dimen175
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count294
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box60
+\sift@deathcycles=\count295
+\@vwid@loff=\dimen176
+\@vwid@roff=\dimen177
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen178
+\captionmargin=\dimen179
+\caption@leftmargin=\dimen180
+\caption@rightmargin=\dimen181
+\caption@width=\dimen182
+\caption@indent=\dimen183
+\caption@parindent=\dimen184
+\caption@hangindent=\dimen185
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count296
+\c@continuedfloat=\count297
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+))
+\c@subfigure=\count298
+\c@subtable=\count299
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen186
+\WF@size=\dimen187
+\c@WF@wrappedlines=\count300
+\WF@box=\box61
+\WF@everypar=\toks24
+Package: wrapfig 2003/01/31  v 3.6
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tabularray/tabularray.sty (/usr/local/texlive/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2022-02-24 L3 programming layer (loader) 
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count301
+\l__pdf_internal_box=\box62
+))
+Package: tabularray 2022-03-01 v2022A Typeset tabulars and arrays with LaTeX3
+\l__tblr_a_int=\count302
+\l__tblr_c_int=\count303
+\l__tblr_r_int=\count304
+\l__tblr_d_dim=\dimen188
+\l__tblr_h_dim=\dimen189
+\l__tblr_o_dim=\dimen190
+\l__tblr_p_dim=\dimen191
+\l__tblr_q_dim=\dimen192
+\l__tblr_r_dim=\dimen193
+\l__tblr_s_dim=\dimen194
+\l__tblr_t_dim=\dimen195
+\l__tblr_v_dim=\dimen196
+\l__tblr_w_dim=\dimen197
+\l__tblr_a_box=\box63
+\l__tblr_b_box=\box64
+\l__tblr_c_box=\box65
+\l__tblr_d_box=\box66
+\g__tblr_table_count_int=\count305
+\c@rownum=\count306
+\c@colnum=\count307
+\c@rowcount=\count308
+\c@colcount=\count309
+\abovesep=\dimen198
+\belowsep=\dimen199
+\leftsep=\dimen256
+\rightsep=\dimen257
+\g_tblr_level_int=\count310
+\g__tblr_data_row_key_count_int=\count311
+\g__tblr_data_column_key_count_int=\count312
+\g__tblr_data_cell_key_count_int=\count313
+\g__tblr_array_int=\count314
+\l__tblr_key_count_int=\count315
+\l__tblr_key_quotient_int=\count316
+\l__tblr_key_quotient_two_int=\count317
+\l__tblr_key_remainder_int=\count318
+\g__tblr_data_str_value_count_int=\count319
+\rulewidth=\dimen258
+\l__tblr_strut_ht_box=\box67
+\l__tblr_strut_dp_box=\box68
+\g__tblr_cell_wd_dim=\dimen259
+\g__tblr_cell_ht_dim=\dimen260
+\g__tblr_cell_head_dim=\dimen261
+\g__tblr_cell_foot_dim=\dimen262
+\l__column_target_dim=\dimen263
+\l__tblr_caption_box=\box69
+\l__tblr_caption_left_box=\box70
+\l__tblr_row_head_box=\box71
+\l__tblr_row_foot_box=\box72
+\l__tblr_row_head_foot_dim=\dimen264
+\tablewidth=\dimen265
+\l__tblr_table_firsthead_box=\box73
+\l__tblr_table_middlehead_box=\box74
+\l__tblr_table_lasthead_box=\box75
+\l__tblr_table_firstfoot_box=\box76
+\l__tblr_table_middlefoot_box=\box77
+\l__tblr_table_lastfoot_box=\box78
+\l__tblr_remain_height_dim=\dimen266
+\l__tblr_long_from_int=\count320
+\l__tblr_long_to_int=\count321
+\l__tblr_curr_i_int=\count322
+\l__tblr_prev_i_int=\count323
+\l__tblr_table_page_int=\count324
+\l__tblr_table_head_box=\box79
+\l__tblr_table_foot_box=\box80
+\l__tblr_table_head_foot_dim=\dimen267
+\l__tblr_table_head_body_foot_dim=\dimen268
+\l__tblr_table_box=\box81
+\l__tblr_table_hlines_box=\box82
+\l__tblr_hline_box=\box83
+\l__tblr_row_box=\box84
+\l__tblr_col_o_wd_dim=\dimen269
+\l__tblr_col_b_wd_dim=\dimen270
+\l__tblr_hline_leftskip_dim=\dimen271
+\l__tblr_hline_rightskip_dim=\dimen272
+\l__tblr_row_ht_dim=\dimen273
+\l__tblr_row_dp_dim=\dimen274
+\l__tblr_row_abovesep_dim=\dimen275
+\l__tblr_row_belowsep_dim=\dimen276
+\l__tblr_row_vlines_box=\box85
+\l__tblr_vline_box=\box86
+\l__tblr_cell_box=\box87
+\l__row_upper_dim=\dimen277
+\l__row_lower_dim=\dimen278
+\l__row_vpace_dim=\dimen279
+\l__tblr_vline_aboveskip_dim=\dimen280
+\l__tblr_vline_belowskip_dim=\dimen281
+\l__tblr_cell_wd_dim=\dimen282
+\l__tblr_cell_ht_dim=\dimen283
+\l__tblr_diag_box=\box88
+) (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+ (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count295
-\scratchdimen=\dimen166
-\scratchbox=\box61
-\nofMPsegments=\count296
-\nofMParguments=\count297
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count298
-\MPscratchDim=\dimen167
-\MPnumerator=\count299
-\makeMPintoPDFobject=\count300
-\everyMPtoPDFconversion=\toks23
-) (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+\scratchcounter=\count325
+\scratchdimen=\dimen284
+\scratchbox=\box89
+\nofMPsegments=\count326
+\nofMParguments=\count327
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count328
+\MPscratchDim=\dimen285
+\MPnumerator=\count329
+\makeMPintoPDFobject=\count330
+\everyMPtoPDFconversion=\toks26
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\Simone\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \it@ocap on input line 19.
-LaTeX Info: Redefining \it@ccap on input line 19.
+LaTeX Info: Redefining \it@ocap on input line 24.
+LaTeX Info: Redefining \it@ccap on input line 24.
 
 
 File italian.ldf warning: 
@@ -314,22 +465,42 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 19.
+italian.ldf    on input line 24.
 
-Package hyperref Info: Link coloring OFF on input line 19.
-(main.out) (main.out)
+Package hyperref Info: Link coloring OFF on input line 24.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count331
+)
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \nameref on input line 24.
+ (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-\c@lstlisting=\count301
-<Immagini/FedericoII.png, id=127, 134.75343pt x 139.27031pt>
+\c@lstlisting=\count332
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/ninecolors/ninecolors.sty
+Package: ninecolors 2022-02-13 vv2022D Select colors with proper color contrast
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2022-01-12 L3 Experimental document command parser
+))
+<Immagini/FedericoII.png, id=128, 134.75343pt x 139.27031pt>
 File: Immagini/FedericoII.png Graphic file (type png)
 <use Immagini/FedericoII.png>
-Package pdftex.def Info: Immagini/FedericoII.png  used on input line 26.
+Package pdftex.def Info: Immagini/FedericoII.png  used on input line 31.
 (pdftex.def)             Requested size: 86.25pt x 89.14117pt.
  [1
 
-{C:/Users/Simone/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Immagini/FedericoII.png>] (main.toc
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Immagini/FedericoII.png>] (./main.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -347,7 +518,7 @@ Missing character: There is no π in font cmr10!
 ]
 \openout2 = `Argomenti/Capitolo1.aux'.
 
- (Argomenti/Capitolo1.tex
+ (./Argomenti/Capitolo1.tex
 Capitolo 1.
 Missing character: There is no √ in font cmr10!
 Missing character: There is no † in font cmr10!
@@ -409,7 +580,7 @@ Missing character: There is no ® in font cmr10!
 ]) [4]
 \openout2 = `Argomenti/Capitolo2.aux'.
 
- (Argomenti/Capitolo2.tex
+ (./Argomenti/Capitolo2.tex
 Capitolo 2.
 ) [5
 
@@ -419,35 +590,571 @@ Capitolo 2.
 ]
 \openout2 = `Argomenti/Capitolo3.aux'.
 
- (Argomenti/Capitolo3.tex
+ (./Argomenti/Capitolo3.tex
 Capitolo 3.
-<Immagini/PDiagram.png, id=187, 6208.19376pt x 3326.4275pt>
+<Immagini/PDiagram.png, id=190, 6208.19376pt x 3326.4275pt>
 File: Immagini/PDiagram.png Graphic file (type png)
 <use Immagini/PDiagram.png>
 Package pdftex.def Info: Immagini/PDiagram.png  used on input line 4.
 (pdftex.def)             Requested size: 310.42787pt x 166.33112pt.
-<Immagini/AddArtConf_SD.png, id=188, 2142.0025pt x 1834.855pt>
-File: Immagini/AddArtConf_SD.png Graphic file (type png)
-<use Immagini/AddArtConf_SD.png>
-Package pdftex.def Info: Immagini/AddArtConf_SD.png  used on input line 7.
-(pdftex.def)             Requested size: 321.28651pt x 275.21637pt.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 35.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
+
+Overfull \hbox (22.07297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RisorsaController[] 
+ []
+
+
+Overfull \hbox (22.07297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RisorsaController[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-dRi-vi-
+ []
+
+
+Overfull \hbox (163.43387pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 staInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Ri-vi-
+ []
+
+
+Overfull \hbox (17.37793pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 sta(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-d-Con-fe-ren-
+ []
+
+
+Overfull \hbox (131.87825pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Con-fe-ren-
+ []
+
+
+Overfull \hbox (13.98903pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Overfull \hbox (157.54497pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + void add-Li-broInDB(String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-dRi-vi-
+ []
+
+
+Overfull \hbox (163.43387pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 staInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Ri-vi-
+ []
+
+
+Overfull \hbox (17.37793pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 sta(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-d-Con-fe-ren-
+ []
+
+
+Overfull \hbox (131.87825pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Con-fe-ren-
+ []
+
+
+Overfull \hbox (13.98903pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Overfull \hbox (157.54497pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + void add-Li-broInDB(String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Overfull \hbox (51.7397pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ImplementazioneRisorsa[] 
+ []
+
+
+Overfull \hbox (51.7397pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ImplementazioneRisorsa[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Ri-vi-
+ []
+
+
+Overfull \hbox (17.37793pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 sta(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-dRi-vi-
+ []
+
+
+Overfull \hbox (163.43387pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 staInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Con-fe-ren-
+ []
+
+
+Overfull \hbox (13.98903pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-d-Con-fe-ren-
+ []
+
+
+Overfull \hbox (131.87825pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Ri-vi-
+ []
+
+
+Overfull \hbox (17.37793pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 sta(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-dRi-vi-
+ []
+
+
+Overfull \hbox (163.43387pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 staInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Con-fe-ren-
+ []
+
+
+Overfull \hbox (13.98903pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-d-Con-fe-ren-
+ []
+
+
+Overfull \hbox (131.87825pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Overfull \hbox (3.62846pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RegisterView[] 
+ []
+
+
+Overfull \hbox (3.62846pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RegisterView[] 
+ []
+
+
+Overfull \hbox (14.71188pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 LoginController[] 
+ []
+
+
+Overfull \hbox (14.71188pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 LoginController[] 
+ []
+
+
+Overfull \hbox (49.2397pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ImplementazioneUtente[] 
+ []
+
+
+Overfull \hbox (49.2397pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ImplementazioneUtente[] 
+ []
+
+
+Overfull \hbox (14.07297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ConnessioneDB[] 
+ []
+
+
+Overfull \hbox (14.07297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ConnessioneDB[] 
+ []
+
+
+Overfull \hbox (7.85075pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 AggiuntaView[] 
+ []
+
+
+Overfull \hbox (7.85075pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 AggiuntaView[] 
+ []
+
+
+Overfull \hbox (7.76736pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RichiestaView[] 
+ []
+
+
+Overfull \hbox (7.76736pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RichiestaView[] 
+ []
+
+
+Overfull \hbox (19.57297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 UtenteController[] 
+ []
+
+
+Overfull \hbox (19.57297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 UtenteController[] 
+ []
+
+> Step: build the whole table.
 [6
 
 
 
 
  <./Immagini/PDiagram.png>]
-<Immagini/checkPermNot_SD.jpg, id=194, 1216.545pt x 865.2325pt>
+Overfull \hbox (22.07297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RisorsaController[] 
+ []
+
+
+Overfull \hbox (22.07297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RisorsaController[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-dRi-vi-
+ []
+
+
+Overfull \hbox (163.43387pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 staInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Ri-vi-
+ []
+
+
+Overfull \hbox (17.37793pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 sta(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-d-Con-fe-ren-
+ []
+
+
+Overfull \hbox (131.87825pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Con-fe-ren-
+ []
+
+
+Overfull \hbox (13.98903pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Overfull \hbox (157.54497pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + void add-Li-broInDB(String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-dRi-vi-
+ []
+
+
+Overfull \hbox (163.43387pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 staInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Ri-vi-
+ []
+
+
+Overfull \hbox (17.37793pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 sta(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-d-Con-fe-ren-
+ []
+
+
+Overfull \hbox (131.87825pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Con-fe-ren-
+ []
+
+
+Overfull \hbox (13.98903pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Overfull \hbox (157.54497pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + void add-Li-broInDB(String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+[7]
+Overfull \hbox (51.7397pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ImplementazioneRisorsa[] 
+ []
+
+
+Overfull \hbox (51.7397pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ImplementazioneRisorsa[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Ri-vi-
+ []
+
+
+Overfull \hbox (17.37793pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 sta(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-dRi-vi-
+ []
+
+
+Overfull \hbox (163.43387pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 staInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Con-fe-ren-
+ []
+
+
+Overfull \hbox (13.98903pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-d-Con-fe-ren-
+ []
+
+
+Overfull \hbox (131.87825pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Ri-vi-
+ []
+
+
+Overfull \hbox (17.37793pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 sta(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-dRi-vi-
+ []
+
+
+Overfull \hbox (163.43387pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 staInDB(String,String,String,String,String,String,String,String,String,String,String,String,Double) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-lo-Con-fe-ren-
+ []
+
+
+Overfull \hbox (13.98903pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 + boo-lean ad-dAr-ti-co-loAd-d-Con-fe-ren-
+ []
+
+
+Overfull \hbox (131.87825pt too wide) in paragraph at lines 35--35
+\OT1/cmr/m/n/10 za(String,String,String,String,String,String,String,String,String,String,String,String,String) 
+ []
+
+
+Overfull \vbox (1.14445pt too high) has occurred while \output is active []
+
+ [8]
+Overfull \hbox (3.62846pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RegisterView[] 
+ []
+
+
+Overfull \hbox (3.62846pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RegisterView[] 
+ []
+
+
+Overfull \hbox (14.71188pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 LoginController[] 
+ []
+
+
+Overfull \hbox (14.71188pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 LoginController[] 
+ []
+
+
+Overfull \hbox (49.2397pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ImplementazioneUtente[] 
+ []
+
+
+Overfull \hbox (49.2397pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ImplementazioneUtente[] 
+ []
+
+
+Overfull \hbox (14.07297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ConnessioneDB[] 
+ []
+
+
+Overfull \hbox (14.07297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 ConnessioneDB[] 
+ []
+
+[9]
+Overfull \hbox (7.85075pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 AggiuntaView[] 
+ []
+
+
+Overfull \hbox (7.85075pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 AggiuntaView[] 
+ []
+
+[10]
+Overfull \hbox (7.76736pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RichiestaView[] 
+ []
+
+
+Overfull \hbox (7.76736pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 RichiestaView[] 
+ []
+
+[11]
+Overfull \hbox (19.57297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 UtenteController[] 
+ []
+
+
+Overfull \hbox (19.57297pt too wide) in paragraph at lines 35--35
+[][]\OT1/cmr/m/n/10 UtenteController[] 
+ []
+
+<Immagini/AddArtConf_SD.png, id=218, 2142.0025pt x 1834.855pt>
+File: Immagini/AddArtConf_SD.png Graphic file (type png)
+<use Immagini/AddArtConf_SD.png>
+Package pdftex.def Info: Immagini/AddArtConf_SD.png  used on input line 39.
+(pdftex.def)             Requested size: 321.28651pt x 275.21637pt.
+<Immagini/checkPermNot_SD.jpg, id=219, 1216.545pt x 865.2325pt>
 File: Immagini/checkPermNot_SD.jpg Graphic file (type jpg)
 <use Immagini/checkPermNot_SD.jpg>
-Package pdftex.def Info: Immagini/checkPermNot_SD.jpg  used on input line 9.
+Package pdftex.def Info: Immagini/checkPermNot_SD.jpg  used on input line 42.
 (pdftex.def)             Requested size: 340.63028pt x 242.26344pt.
-) [7 <./Immagini/AddArtConf_SD.png>] [8 <./Immagini/checkPermNot_SD.jpg>]
+) [12 <./Immagini/AddArtConf_SD.png>] [13 <./Immagini/checkPermNot_SD.jpg>]
 \openout2 = `Argomenti/Capitolo4.aux'.
 
- (Argomenti/Capitolo4.tex
+ (./Argomenti/Capitolo4.tex
 Capitolo 4.
-<Immagini/Schermate/Login_Register/LoginPage.png, id=205, 835.12pt x 835.12pt>
+<Immagini/Schermate/Login_Register/LoginPage.png, id=230, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Login_Register/LoginPage.png Graphic file (type png)
 <use Immagini/Schermate/Login_Register/LoginPage.png>
 Package pdftex.def Info: Immagini/Schermate/Login_Register/LoginPage.png  used on input line 5.
@@ -457,7 +1164,7 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 5--6
 [] 
  []
 
-[9
+[14
 
 
 
@@ -465,8 +1172,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 5--6
 ]
 Overfull \vbox (32.50327pt too high) has occurred while \output is active []
 
- [10 <./Immagini/Schermate/Login_Register/LoginPage.png>]
-<Immagini/Schermate/Login_Register/RegisterPage.png, id=215, 835.12pt x 835.12pt>
+ [15 <./Immagini/Schermate/Login_Register/LoginPage.png>]
+<Immagini/Schermate/Login_Register/RegisterPage.png, id=240, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Login_Register/RegisterPage.png Graphic file (type png)
 <use Immagini/Schermate/Login_Register/RegisterPage.png>
 Package pdftex.def Info: Immagini/Schermate/Login_Register/RegisterPage.png  used on input line 9.
@@ -476,7 +1183,7 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 9--10
 [] 
  []
 
-<Immagini/Schermate/Search/SearchPage.png, id=216, 835.12pt x 835.12pt>
+<Immagini/Schermate/Search/SearchPage.png, id=241, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage.png>
 Package pdftex.def Info: Immagini/Schermate/Search/SearchPage.png  used on input line 12.
@@ -486,8 +1193,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 12--13
 [] 
  []
 
-[11 <./Immagini/Schermate/Login_Register/RegisterPage.png>]
-<Immagini/Schermate/Search/SearchPage-FiltriLibro.png, id=222, 835.12pt x 835.12pt>
+[16 <./Immagini/Schermate/Login_Register/RegisterPage.png>]
+<Immagini/Schermate/Search/SearchPage-FiltriLibro.png, id=247, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriLibro.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriLibro.png>
 Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriLibro.png  used on input line 14.
@@ -497,8 +1204,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 14--15
 [] 
  []
 
-[12 <./Immagini/Schermate/Search/SearchPage.png>]
-<Immagini/Schermate/Search/SearchPage-FiltriSerie.png, id=228, 835.12pt x 835.12pt>
+[17 <./Immagini/Schermate/Search/SearchPage.png>]
+<Immagini/Schermate/Search/SearchPage-FiltriSerie.png, id=253, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriSerie.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriSerie.png>
 Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriSerie.png  used on input line 16.
@@ -508,8 +1215,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 16--17
 [] 
  []
 
-[13 <./Immagini/Schermate/Search/SearchPage-FiltriLibro.png>]
-<Immagini/Schermate/Search/SearchPage-FiltriArticoli.png, id=235, 835.12pt x 835.12pt>
+[18 <./Immagini/Schermate/Search/SearchPage-FiltriLibro.png>]
+<Immagini/Schermate/Search/SearchPage-FiltriArticoli.png, id=259, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriArticoli.png>
 Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriArticoli.png  used on input line 18.
@@ -519,8 +1226,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 18--19
 [] 
  []
 
-[14 <./Immagini/Schermate/Search/SearchPage-FiltriSerie.png>]
-<Immagini/Schermate/Search/SearchPage-FiltriRiviste.png, id=241, 835.12pt x 835.12pt>
+[19 <./Immagini/Schermate/Search/SearchPage-FiltriSerie.png>]
+<Immagini/Schermate/Search/SearchPage-FiltriRiviste.png, id=266, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png Graphic file (type png)
 <use Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>
 Package pdftex.def Info: Immagini/Schermate/Search/SearchPage-FiltriRiviste.png  used on input line 20.
@@ -530,8 +1237,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 20--21
 [] 
  []
 
-[15 <./Immagini/Schermate/Search/SearchPage-FiltriArticoli.png>]
-<Immagini/Schermate/Search/ResultPage.png, id=247, 835.12pt x 835.12pt>
+[20 <./Immagini/Schermate/Search/SearchPage-FiltriArticoli.png>]
+<Immagini/Schermate/Search/ResultPage.png, id=272, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Search/ResultPage.png Graphic file (type png)
 <use Immagini/Schermate/Search/ResultPage.png>
 Package pdftex.def Info: Immagini/Schermate/Search/ResultPage.png  used on input line 23.
@@ -541,8 +1248,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 23--24
 [] 
  []
 
-[16 <./Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>]
-<Immagini/Schermate/Insert/InserisciRisorsaPage.png, id=253, 835.12pt x 835.12pt>
+[21 <./Immagini/Schermate/Search/SearchPage-FiltriRiviste.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage.png, id=278, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage.png>
 Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage.png  used on input line 26.
@@ -552,8 +1259,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 26--27
 [] 
  []
 
-[17 <./Immagini/Schermate/Search/ResultPage.png>]
-<Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png, id=259, 835.12pt x 835.12pt>
+[22 <./Immagini/Schermate/Search/ResultPage.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png, id=284, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png>
 Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png  used on input line 29.
@@ -563,8 +1270,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 29--30
 [] 
  []
 
-[18 <./Immagini/Schermate/Insert/InserisciRisorsaPage.png>]
-<Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png, id=265, 835.12pt x 835.12pt>
+[23 <./Immagini/Schermate/Insert/InserisciRisorsaPage.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png, id=290, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>
 Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png  used on input line 31.
@@ -574,8 +1281,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 31--32
 [] 
  []
 
-[19 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png>]
-<Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png, id=272, 835.12pt x 835.12pt>
+[24 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Libro.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png, id=296, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png>
 Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png  used on input line 34.
@@ -585,8 +1292,8 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 34--35
 [] 
  []
 
-[20 <./Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>]
-<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png, id=278, 835.12pt x 835.12pt>
+[25 <./Immagini/Schermate/Insert/InserisciRisorsaPage-LibroSerie.png>]
+<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png, id=303, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>
 Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png  used on input line 36.
@@ -596,12 +1303,12 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 36--37
 [] 
  []
 
-[21 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png>]
+[26 <./Immagini/Schermate/Insert/InserisciRisorsaPage-Articolo.png>]
 Underfull \hbox (badness 6725) in paragraph at lines 37--37
 []\OT1/cmr/bx/n/12 Inserimento di un Ar-ti-co-lo e del-la re-la-ti-va
  []
 
-<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png, id=284, 835.12pt x 835.12pt>
+<Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png, id=310, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png Graphic file (type png)
 <use Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png>
 Package pdftex.def Info: Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png  used on input line 38.
@@ -611,10 +1318,10 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 38--39
 [] 
  []
 
-[22 <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>]
+[27 <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoloRivista.png>]
 Missing character: There is no √ in font cmbx12!
 Missing character: There is no π in font cmbx12!
-<Immagini/Schermate/Utente/NotificheUtente.png, id=290, 835.12pt x 835.12pt>
+<Immagini/Schermate/Utente/NotificheUtente.png, id=316, 835.12pt x 835.12pt>
 File: Immagini/Schermate/Utente/NotificheUtente.png Graphic file (type png)
 <use Immagini/Schermate/Utente/NotificheUtente.png>
 Package pdftex.def Info: Immagini/Schermate/Utente/NotificheUtente.png  used on input line 42.
@@ -624,28 +1331,29 @@ Overfull \hbox (30.80052pt too wide) in paragraph at lines 42--43
 [] 
  []
 
-[23 <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png>]
-<Immagini/Schermate/Utente/RichiediDisponibilita.png, id=296, 334.24875pt x 239.89626pt>
+[28 <./Immagini/Schermate/Insert/InserisciRisorsaPage-ArticoliConferenza.png>]
+<Immagini/Schermate/Utente/RichiediDisponibilita.png, id=322, 334.24875pt x 239.89626pt>
 File: Immagini/Schermate/Utente/RichiediDisponibilita.png Graphic file (type png)
 <use Immagini/Schermate/Utente/RichiediDisponibilita.png>
 Package pdftex.def Info: Immagini/Schermate/Utente/RichiediDisponibilita.png  used on input line 44.
 (pdftex.def)             Requested size: 150.41054pt x 107.9523pt.
-) [24 <./Immagini/Schermate/Utente/NotificheUtente.png>] [25 <./Immagini/Schermate/Utente/RichiediDisponibilita.png>] (main.aux (Argomenti/Capitolo1.aux) (Argomenti/Capitolo2.aux) (Argomenti/Capitolo3.aux) (Argomenti/Capitolo4.aux))
+) [29 <./Immagini/Schermate/Utente/NotificheUtente.png>] [30 <./Immagini/Schermate/Utente/RichiediDisponibilita.png>] (./main.aux (./Argomenti/Capitolo1.aux) (./Argomenti/Capitolo2.aux) (./Argomenti/Capitolo3.aux) (./Argomenti/Capitolo4.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 994B4D8263F1476E455310D488EB2CBB;6227.
  ) 
 Here is how much of TeX's memory you used:
- 11754 strings out of 475380
- 196020 string characters out of 2776300
- 555175 words of memory out of 3000000
- 32897 multiletter control sequences out of 15000+600000
- 472335 words of font info for 38 fonts, out of 8000000 for 9000
+ 16792 strings out of 478268
+ 305712 string characters out of 5846347
+ 920109 words of memory out of 5000000
+ 34699 multiletter control sequences out of 15000+600000
+ 473890 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,6n,77p,895b,607s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Simone/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (25 pages, 5322855 bytes).
+ 83i,7n,131p,3791b,1184s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on main.pdf (30 pages, 5308282 bytes).
 PDF statistics:
- 341 PDF objects out of 1000 (max. 8388607)
- 58 named destinations out of 1000 (max. 500000)
+ 372 PDF objects out of 1000 (max. 8388607)
+ 288 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
  349 words of extra memory for PDF output out of 10000 (max. 10000000)
 
