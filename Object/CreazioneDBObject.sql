@@ -1392,7 +1392,7 @@ INSERT INTO b.utente(username, password) VALUES ('Mario', 'hello456');
 INSERT INTO b.utente(username, password) VALUES ('Giovanni', 'saludo789');
 INSERT INTO b.utente(username, password) VALUES ('Giuseppe', 'hola123');
 INSERT INTO b.utente(username, password) VALUES ('Antonio', 'ciao456');
-INSERT INTO b.utente(username, password, permessi) VALUES ('Tramontana', 'progetto');
+INSERT INTO b.utente(username, password) VALUES ('Tramontana', 'progetto');
 
 
 

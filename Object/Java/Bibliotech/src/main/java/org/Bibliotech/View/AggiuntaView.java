@@ -3,6 +3,7 @@ package org.Bibliotech.View;
 import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.RisorsaController;
 import org.Bibliotech.DAOimplementazione.ImplementazioneRisorsa;
+import org.Bibliotech.Model.Articolo;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -332,10 +333,11 @@ public class AggiuntaView extends View {
     }
 
     private void addArticoloConferenza() {
-        if(RisorsaController.getInstance().addArticoloConferenza(titoloArticoliField.getText(),
+        Articolo articolo=new Articolo(titoloArticoliField.getText(),
                 autoriArticoloField.getText(), editoreArticoliField.getText(), disciplinaArticoloField.getText(),
                 String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
-                linguaArticoloField.getText(), String.valueOf(conferenzaComboBox.getSelectedItem()),
+                linguaArticoloField.getText());
+        if(RisorsaController.getInstance().addArticoloConferenza(articolo, String.valueOf(conferenzaComboBox.getSelectedItem()),
                 String.valueOf(conferenzaDataInizioComboBox.getSelectedItem()))){
                 JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
             } else {
@@ -362,9 +364,11 @@ public class AggiuntaView extends View {
     private void addArticoloAddConferenza() {
         if (checkConferenzaFields()) {
             ImplementazioneRisorsa ifl= new ImplementazioneRisorsa();
-            if( ifl.addArticoloAddConferenza(titoloArticoliField.getText(), autoriArticoloField.getText(), editoreArticoliField.getText(),
-                    disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
-                    linguaArticoloField.getText(), nomeConferenzaField.getText(), responsabileConferenzaField.getText(),
+            Articolo articolo= new Articolo(titoloArticoliField.getText(), autoriArticoloField.getText(),
+                    editoreArticoliField.getText(), disciplinaArticoloField.getText(),
+                    String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
+                    linguaArticoloField.getText());
+            if( ifl.addArticoloAddConferenza(articolo, nomeConferenzaField.getText(), responsabileConferenzaField.getText(),
                     strutturaConferenzaField.getText(), indirizzoConferenzaField.getText(), dataDaConferenzaField.getText(),
                     dataAConferenzaField.getText())) {
                 JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
@@ -421,18 +425,20 @@ public class AggiuntaView extends View {
     }
 
     private void addArticoloRivista() { //aggiunge articolo in rivista già presente
-        if (RisorsaController.getInstance().addArticoloRivista(titoloArticoliField.getText(), autoriArticoloField.getText(),
+        Articolo articolo = new Articolo(titoloArticoliField.getText(), autoriArticoloField.getText(),
                 editoreArticoliField.getText(), disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()),
-                doiField.getText(), linguaArticoloField.getText(), String.valueOf(rivistaComboBox.getSelectedItem()), String.valueOf(rivistaISSNComboBox.getSelectedItem()))) {
+                doiField.getText(), linguaArticoloField.getText());
+        if (RisorsaController.getInstance().addArticoloRivista(articolo, String.valueOf(rivistaComboBox.getSelectedItem()), String.valueOf(rivistaISSNComboBox.getSelectedItem()))) {
             JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
         }
     }
 
     private void addArticoloAddRivista() { //aggiunge sia articolo che rivista
         if (checkRivistaFields()) {
-            RisorsaController.getInstance().addArticoloAddRivistaInDB(titoloArticoliField.getText(), autoriArticoloField.getText(),
+            Articolo articolo = new Articolo(titoloArticoliField.getText(), autoriArticoloField.getText(),
                     editoreArticoliField.getText(), disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()),
-                    doiField.getText(), linguaArticoloField.getText(), nomeRivistaField.getText(), issnRivistaField.getText(), argomentoRivistaField.getText(),
+                    doiField.getText(), linguaArticoloField.getText());
+            RisorsaController.getInstance().addArticoloAddRivistaInDB(articolo, nomeRivistaField.getText(), issnRivistaField.getText(), argomentoRivistaField.getText(),
                     datapubblicazioneRivistaField.getText(), responsabileRivistaField.getText(), Double.parseDouble(prezzoRivistaField.getText()));
             JOptionPane.showMessageDialog(null, "Articolo e rivista aggiunti con successo");
         } else {

@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Downloads" />
+    <option name="OPTION_SCOPE" value="private" />
     <option name="OPTION_INCLUDE_LIBS" value="true" />
   </component>
   <component name="MavenProjectsManager">

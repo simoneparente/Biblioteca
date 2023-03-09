@@ -2,6 +2,7 @@ package org.Bibliotech.DAOimplementazione;
 
 import org.Bibliotech.ConnessioneDB;
 import org.Bibliotech.DAO.risorsaDao;
+import org.Bibliotech.Model.Articolo;
 import org.Bibliotech.Model.Libro;
 
 import java.sql.*;
@@ -462,18 +463,18 @@ public class ImplementazioneRisorsa implements risorsaDao {
     }
 
     @Override
-    public boolean addArticoloRivista(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeRivista, String issn) {
+    public boolean addArticoloRivista(Articolo articolo, String nomeRivista, String issn) {
         String query = "INSERT INTO b.ins_ArticoliRivista(titolo, autorinome_cognome, datapubblicazione, editore, disciplina, formato, doi, lingua, nomerivista, issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, titoloArticolo);
-            preparedStatement.setString(2, autori);
+            preparedStatement.setString(1, articolo.getTitolo());
+            preparedStatement.setString(2, articolo.getAutori());
             preparedStatement.setDate(3, getDateByISSN(issn));
-            preparedStatement.setString(4, editore);
-            preparedStatement.setString(5, disciplina);
-            preparedStatement.setString(6, formato);
-            preparedStatement.setString(7, doi);
-            preparedStatement.setString(8, lingua);
+            preparedStatement.setString(4, articolo.getEditore());
+            preparedStatement.setString(5, articolo.getDisciplina());
+            preparedStatement.setString(6, articolo.getFormato());
+            preparedStatement.setString(7, articolo.getDoi());
+            preparedStatement.setString(8, articolo.getLingua());
             preparedStatement.setString(9, nomeRivista);
             preparedStatement.setString(10, issn);
             preparedStatement.setString(11, getArgomentoByISSN(issn));
@@ -489,18 +490,18 @@ public class ImplementazioneRisorsa implements risorsaDao {
 
 
     @Override
-    public boolean addArticoloAddRivistaInDB(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeRivista, String issn, String argomento, String dataPubblicazione, String responsabile, Double prezzo) {
+    public boolean addArticoloAddRivistaInDB(Articolo articolo, String nomeRivista, String issn, String argomento, String dataPubblicazione, String responsabile, Double prezzo) {
         String query = "INSERT INTO b.ins_ArticoliRivista(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, " + "editore, lingua, formato, nomerivista, " + "issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES" + "(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, titoloArticolo);
-            preparedStatement.setString(2, doi);
-            preparedStatement.setString(3, autori);
+            preparedStatement.setString(1, articolo.getTitolo());
+            preparedStatement.setString(2, articolo.getDoi());
+            preparedStatement.setString(3, articolo.getAutori());
             preparedStatement.setDate(4, Date.valueOf(dataPubblicazione));
-            preparedStatement.setString(5, disciplina);
-            preparedStatement.setString(6, editore);
-            preparedStatement.setString(7, lingua);
-            preparedStatement.setString(8, formato);
+            preparedStatement.setString(5, articolo.getDisciplina());
+            preparedStatement.setString(6, articolo.getEditore());
+            preparedStatement.setString(7, articolo.getLingua());
+            preparedStatement.setString(8, articolo.getFormato());
             preparedStatement.setString(9, nomeRivista);
             preparedStatement.setString(10, issn);
             preparedStatement.setString(11, argomento);
@@ -531,7 +532,7 @@ public class ImplementazioneRisorsa implements risorsaDao {
         }
     }
 
-    public boolean addArticoloConferenza(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeConferenza, String dataInizioConferenza) {
+    public boolean addArticoloConferenza(Articolo articolo, String nomeConferenza, String dataInizioConferenza) {
         String responsabileConferenza = getResponsabileConferenza(nomeConferenza, dataInizioConferenza);
         String strutturaOspitanteConferenza = getStrutturaOspitanteConferenza(nomeConferenza, dataInizioConferenza);
         String indirizzoConferenza = getIndirizzoConferenza(nomeConferenza, dataInizioConferenza);
@@ -539,14 +540,14 @@ public class ImplementazioneRisorsa implements risorsaDao {
         String query = "INSERT INTO b.ins_ArticoliConferenze(titolo, doi, autorinome_cognome, datapubblicazione, " + "disciplina, editore, lingua, formato, nomeconferenza, indirizzoconferenza, datainizioconferenza, " + "datafineconferenza, strutturaospitanteconferenza, responsabileconferenza) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, titoloArticolo);
-            preparedStatement.setString(2, doi);
-            preparedStatement.setString(3, autori);
+            preparedStatement.setString(1, articolo.getTitolo());
+            preparedStatement.setString(2, articolo.getDoi());
+            preparedStatement.setString(3, articolo.getAutori());
             preparedStatement.setDate(4, Date.valueOf(dataInizioConferenza));
-            preparedStatement.setString(5, disciplina);
-            preparedStatement.setString(6, editore);
-            preparedStatement.setString(7, lingua);
-            preparedStatement.setString(8, formato);
+            preparedStatement.setString(5, articolo.getDisciplina());
+            preparedStatement.setString(6, articolo.getEditore());
+            preparedStatement.setString(7, articolo.getLingua());
+            preparedStatement.setString(8, articolo.getFormato());
             preparedStatement.setString(9, nomeConferenza);
             preparedStatement.setString(10, indirizzoConferenza);
             preparedStatement.setDate(11, Date.valueOf(dataInizioConferenza));
@@ -618,18 +619,18 @@ public class ImplementazioneRisorsa implements risorsaDao {
     }
 
 
-    public boolean addArticoloAddConferenza(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeConferenza, String responsabileConferenza, String strutturaOspitanteConferenza, String indirizzoConferenza, String dataInizioConferenza, String dataFineConferenza) {
+    public boolean addArticoloAddConferenza(Articolo articolo, String nomeConferenza, String responsabileConferenza, String strutturaOspitanteConferenza, String indirizzoConferenza, String dataInizioConferenza, String dataFineConferenza) {
         String query = "INSERT INTO b.ins_ArticoliConferenze(titolo, doi, autorinome_cognome, datapubblicazione, " + "disciplina, editore, lingua, formato, nomeconferenza, indirizzoconferenza, datainizioconferenza, " + "datafineconferenza, strutturaospitanteconferenza, responsabileconferenza) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, titoloArticolo);
-            preparedStatement.setString(2, doi);
-            preparedStatement.setString(3, autori);
+            preparedStatement.setString(1, articolo.getTitolo());
+            preparedStatement.setString(2, articolo.getDoi());
+            preparedStatement.setString(3, articolo.getAutori());
             preparedStatement.setDate(4, Date.valueOf(dataInizioConferenza));
-            preparedStatement.setString(5, disciplina);
-            preparedStatement.setString(6, editore);
-            preparedStatement.setString(7, lingua);
-            preparedStatement.setString(8, formato);
+            preparedStatement.setString(5, articolo.getDisciplina());
+            preparedStatement.setString(6, articolo.getEditore());
+            preparedStatement.setString(7, articolo.getLingua());
+            preparedStatement.setString(8, articolo.getFormato());
             preparedStatement.setString(9, nomeConferenza);
             preparedStatement.setString(10, indirizzoConferenza);
             preparedStatement.setDate(11, Date.valueOf(dataInizioConferenza));

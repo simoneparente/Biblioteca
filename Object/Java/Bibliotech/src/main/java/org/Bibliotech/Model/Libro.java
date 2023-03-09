@@ -18,8 +18,6 @@ public class Libro {
 
     private String ISSNSerieDiAppartenenza;
 
-    public Libro() {
-    }
 
     public Libro(String titolo, String genere, ArrayList<Autore> autori, String editore, String prezzo,
                  String isbn, String dataPubblicazioneIn, String formato, String lingua, String serieDiAppartenenza, String ISSNSerieDiAppartenenza) {

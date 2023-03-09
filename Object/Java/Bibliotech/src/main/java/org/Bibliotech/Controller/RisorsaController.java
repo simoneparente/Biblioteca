@@ -1,6 +1,7 @@
 package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneRisorsa;
+import org.Bibliotech.Model.Articolo;
 import org.Bibliotech.Model.Autore;
 import org.Bibliotech.Model.Libro;
 import org.apache.commons.lang3.StringUtils;
@@ -125,22 +126,22 @@ public class RisorsaController {
         return filtri.getConferenze();
     }
 
-    public boolean addArticoloAddRivistaInDB(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeRivista, String issn, String argomento, String dataPubblicazione, String responsabile, Double prezzo) {
-        return filtri.addArticoloAddRivistaInDB(titoloArticolo, autori, editore, disciplina, formato, doi, lingua, nomeRivista, issn, argomento, dataPubblicazione, responsabile, prezzo);
+    public boolean addArticoloAddRivistaInDB(Articolo articolo, String nomeRivista, String issn, String argomento, String dataPubblicazione, String responsabile, Double prezzo) {
+        return filtri.addArticoloAddRivistaInDB(articolo, nomeRivista, issn, argomento, dataPubblicazione, responsabile, prezzo);
     }
 
     //public boolean addArticoloAddConferenzaInDB(
 
-    public boolean addArticoloRivista(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeRivista, String issn) {
-        return filtri.addArticoloRivista(titoloArticolo, autori, editore, disciplina, formato, doi, lingua, nomeRivista, issn);
+    public boolean addArticoloRivista(Articolo articolo, String nomeRivista, String issn) {
+        return filtri.addArticoloRivista(articolo, nomeRivista, issn);
     }
 
-    public boolean addArticoloAddConferenza(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeConferenza, String responsabileConferenza, String strutturaOspitanteConferenza, String indirizzoConferenza, String dataInizioConferenza, String dataFineConferenza) {
-        return filtri.addArticoloAddConferenza(titoloArticolo, autori, editore, disciplina, formato, doi, lingua, nomeConferenza, responsabileConferenza, strutturaOspitanteConferenza, indirizzoConferenza, dataInizioConferenza, dataFineConferenza);
+    public boolean addArticoloAddConferenza(Articolo articolo, String nomeConferenza, String responsabileConferenza, String strutturaOspitanteConferenza, String indirizzoConferenza, String dataInizioConferenza, String dataFineConferenza) {
+        return filtri.addArticoloAddConferenza(articolo, nomeConferenza, responsabileConferenza, strutturaOspitanteConferenza, indirizzoConferenza, dataInizioConferenza, dataFineConferenza);
     }
 
-    public boolean addArticoloConferenza(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua, String nomeConferenza, String dataInizioConferenza) {
-        return filtri.addArticoloConferenza(titoloArticolo, autori, editore, disciplina, formato, doi, lingua, nomeConferenza, dataInizioConferenza);
+    public boolean addArticoloConferenza(Articolo articolo, String nomeConferenza, String dataInizioConferenza) {
+        return filtri.addArticoloConferenza(articolo, nomeConferenza, dataInizioConferenza);
 
     }
 
