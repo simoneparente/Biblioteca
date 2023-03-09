@@ -1,0 +1,33 @@
+@startuml
+class Risorsa{
+    titolo: String
+    dataPubblicazione: Date
+    
+
+}
+
+class Articolo extends Risorsa
+class Libro extends Risorsa
+class Autore
+class Evento
+class Presentazione extends Evento
+class Conferenza extends Evento
+class Rivista
+class Serie
+class Negozio
+
+class Utente
+class Notifica
+
+Risorsa "1,N"-left-"1,N" Autore
+Articolo "1,N"--"0,1" Rivista
+Articolo "1,N"--"0,1" Conferenza
+Libro "1"--"0,1" Presentazione
+Libro "1,N"--"0,1" Serie
+Libro "0,N"--"0,N" Negozio
+Risorsa "0,N"-right-"1" Utente
+Utente "1"-right-"O,N" Notifica
+
+
+
+@enduml
