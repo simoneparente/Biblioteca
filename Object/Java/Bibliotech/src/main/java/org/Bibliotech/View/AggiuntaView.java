@@ -4,6 +4,8 @@ import org.Bibliotech.Controller.Controller;
 import org.Bibliotech.Controller.RisorsaController;
 import org.Bibliotech.DAOimplementazione.ImplementazioneRisorsa;
 import org.Bibliotech.Model.Articolo;
+import org.Bibliotech.Model.Conferenza;
+import org.Bibliotech.Model.Rivista;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -337,6 +339,7 @@ public class AggiuntaView extends View {
                 autoriArticoloField.getText(), editoreArticoliField.getText(), disciplinaArticoloField.getText(),
                 String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
                 linguaArticoloField.getText());
+
         if(RisorsaController.getInstance().addArticoloConferenza(articolo, String.valueOf(conferenzaComboBox.getSelectedItem()),
                 String.valueOf(conferenzaDataInizioComboBox.getSelectedItem()))){
                 JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
@@ -363,14 +366,14 @@ public class AggiuntaView extends View {
 
     private void addArticoloAddConferenza() {
         if (checkConferenzaFields()) {
-            ImplementazioneRisorsa ifl= new ImplementazioneRisorsa();
             Articolo articolo= new Articolo(titoloArticoliField.getText(), autoriArticoloField.getText(),
                     editoreArticoliField.getText(), disciplinaArticoloField.getText(),
                     String.valueOf(formatoArticoliComboBox.getSelectedItem()), doiField.getText(),
                     linguaArticoloField.getText());
-            if( ifl.addArticoloAddConferenza(articolo, nomeConferenzaField.getText(), responsabileConferenzaField.getText(),
+            Conferenza conferenza = new Conferenza(nomeConferenzaField.getText(), responsabileConferenzaField.getText(),
                     strutturaConferenzaField.getText(), indirizzoConferenzaField.getText(), dataDaConferenzaField.getText(),
-                    dataAConferenzaField.getText())) {
+                    dataAConferenzaField.getText());
+            if(RisorsaController.getInstance().addArticoloAddConferenza(articolo, conferenza)) {
                 JOptionPane.showMessageDialog(null, "Articolo aggiunto con successo");
             } else {
                 JOptionPane.showMessageDialog(null, "Errore nell'aggiunta dell'articolo");
@@ -438,8 +441,9 @@ public class AggiuntaView extends View {
             Articolo articolo = new Articolo(titoloArticoliField.getText(), autoriArticoloField.getText(),
                     editoreArticoliField.getText(), disciplinaArticoloField.getText(), String.valueOf(formatoArticoliComboBox.getSelectedItem()),
                     doiField.getText(), linguaArticoloField.getText());
-            RisorsaController.getInstance().addArticoloAddRivistaInDB(articolo, nomeRivistaField.getText(), issnRivistaField.getText(), argomentoRivistaField.getText(),
+            Rivista rivista= new Rivista(nomeRivistaField.getText(), issnRivistaField.getText(), argomentoRivistaField.getText(),
                     datapubblicazioneRivistaField.getText(), responsabileRivistaField.getText(), Double.parseDouble(prezzoRivistaField.getText()));
+            RisorsaController.getInstance().addArticoloAddRivistaInDB(articolo, rivista);
             JOptionPane.showMessageDialog(null, "Articolo e rivista aggiunti con successo");
         } else {
             JOptionPane.showMessageDialog(null, "Errore nell'inserimento");

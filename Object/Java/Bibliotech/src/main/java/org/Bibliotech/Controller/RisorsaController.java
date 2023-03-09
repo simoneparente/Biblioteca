@@ -1,9 +1,7 @@
 package org.Bibliotech.Controller;
 
 import org.Bibliotech.DAOimplementazione.ImplementazioneRisorsa;
-import org.Bibliotech.Model.Articolo;
-import org.Bibliotech.Model.Autore;
-import org.Bibliotech.Model.Libro;
+import org.Bibliotech.Model.*;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
@@ -126,8 +124,8 @@ public class RisorsaController {
         return filtri.getConferenze();
     }
 
-    public boolean addArticoloAddRivistaInDB(Articolo articolo, String nomeRivista, String issn, String argomento, String dataPubblicazione, String responsabile, Double prezzo) {
-        return filtri.addArticoloAddRivistaInDB(articolo, nomeRivista, issn, argomento, dataPubblicazione, responsabile, prezzo);
+    public boolean addArticoloAddRivistaInDB(Articolo articolo, Rivista rivista) {
+        return filtri.addArticoloAddRivistaInDB(articolo, rivista);
     }
 
     //public boolean addArticoloAddConferenzaInDB(
@@ -136,8 +134,8 @@ public class RisorsaController {
         return filtri.addArticoloRivista(articolo, nomeRivista, issn);
     }
 
-    public boolean addArticoloAddConferenza(Articolo articolo, String nomeConferenza, String responsabileConferenza, String strutturaOspitanteConferenza, String indirizzoConferenza, String dataInizioConferenza, String dataFineConferenza) {
-        return filtri.addArticoloAddConferenza(articolo, nomeConferenza, responsabileConferenza, strutturaOspitanteConferenza, indirizzoConferenza, dataInizioConferenza, dataFineConferenza);
+    public boolean addArticoloAddConferenza(Articolo articolo, Conferenza conferenza) {
+        return filtri.addArticoloAddConferenza(articolo, conferenza);
     }
 
     public boolean addArticoloConferenza(Articolo articolo, String nomeConferenza, String dataInizioConferenza) {

@@ -3,7 +3,9 @@ package org.Bibliotech.DAOimplementazione;
 import org.Bibliotech.ConnessioneDB;
 import org.Bibliotech.DAO.risorsaDao;
 import org.Bibliotech.Model.Articolo;
+import org.Bibliotech.Model.Conferenza;
 import org.Bibliotech.Model.Libro;
+import org.Bibliotech.Model.Rivista;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -490,23 +492,23 @@ public class ImplementazioneRisorsa implements risorsaDao {
 
 
     @Override
-    public boolean addArticoloAddRivistaInDB(Articolo articolo, String nomeRivista, String issn, String argomento, String dataPubblicazione, String responsabile, Double prezzo) {
+    public boolean addArticoloAddRivistaInDB(Articolo articolo, Rivista rivista) {
         String query = "INSERT INTO b.ins_ArticoliRivista(titolo, doi, autorinome_cognome, datapubblicazione, disciplina, " + "editore, lingua, formato, nomerivista, " + "issnrivista, argomentorivista, responsabilerivista, prezzorivista) VALUES" + "(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, articolo.getTitolo());
             preparedStatement.setString(2, articolo.getDoi());
             preparedStatement.setString(3, articolo.getAutori());
-            preparedStatement.setDate(4, Date.valueOf(dataPubblicazione));
+            preparedStatement.setDate(4, rivista.getDataPubblicazione());
             preparedStatement.setString(5, articolo.getDisciplina());
             preparedStatement.setString(6, articolo.getEditore());
             preparedStatement.setString(7, articolo.getLingua());
             preparedStatement.setString(8, articolo.getFormato());
-            preparedStatement.setString(9, nomeRivista);
-            preparedStatement.setString(10, issn);
-            preparedStatement.setString(11, argomento);
-            preparedStatement.setString(12, responsabile);
-            preparedStatement.setDouble(13, prezzo);
+            preparedStatement.setString(9, rivista.getNome());
+            preparedStatement.setString(10, rivista.getIssn());
+            preparedStatement.setString(11, rivista.getArgomento());
+            preparedStatement.setString(12, rivista.getResponsabile());
+            preparedStatement.setDouble(13, rivista.getPrezzo());
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -619,24 +621,24 @@ public class ImplementazioneRisorsa implements risorsaDao {
     }
 
 
-    public boolean addArticoloAddConferenza(Articolo articolo, String nomeConferenza, String responsabileConferenza, String strutturaOspitanteConferenza, String indirizzoConferenza, String dataInizioConferenza, String dataFineConferenza) {
+    public boolean addArticoloAddConferenza(Articolo articolo, Conferenza conferenza) {
         String query = "INSERT INTO b.ins_ArticoliConferenze(titolo, doi, autorinome_cognome, datapubblicazione, " + "disciplina, editore, lingua, formato, nomeconferenza, indirizzoconferenza, datainizioconferenza, " + "datafineconferenza, strutturaospitanteconferenza, responsabileconferenza) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, articolo.getTitolo());
             preparedStatement.setString(2, articolo.getDoi());
             preparedStatement.setString(3, articolo.getAutori());
-            preparedStatement.setDate(4, Date.valueOf(dataInizioConferenza));
+            preparedStatement.setDate(4, conferenza.getDataInizio());
             preparedStatement.setString(5, articolo.getDisciplina());
             preparedStatement.setString(6, articolo.getEditore());
             preparedStatement.setString(7, articolo.getLingua());
             preparedStatement.setString(8, articolo.getFormato());
-            preparedStatement.setString(9, nomeConferenza);
-            preparedStatement.setString(10, indirizzoConferenza);
-            preparedStatement.setDate(11, Date.valueOf(dataInizioConferenza));
-            preparedStatement.setDate(12, Date.valueOf(dataFineConferenza));
-            preparedStatement.setString(13, strutturaOspitanteConferenza);
-            preparedStatement.setString(14, responsabileConferenza);
+            preparedStatement.setString(9, conferenza.getNome());
+            preparedStatement.setString(10, conferenza.getIndirizzo());
+            preparedStatement.setDate(11, conferenza.getDataInizio());
+            preparedStatement.setDate(12, conferenza.getDataFine());
+            preparedStatement.setString(13, conferenza.getStrutturaOspitante());
+            preparedStatement.setString(14, conferenza.getResponsabile());
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
