@@ -1,11 +1,33 @@
 \chapter{Descrizione e Analisi del Progetto}
 \section{Obiettivo}
-Si vuole sviluppare un applicativo in linguaggio java dotato di GUI Swing che consenta di gestire una Biblioteca Digitale
+Si vuole sviluppare un applicativo in linguaggio java dotato di GUI Swing che 
+consenta di gestire una Biblioteca Digitale.
 \section{Analisi del problema}
-Si svilupperà una piattaforma (\textbf{BiblIOTech}) utilizzabile da utenti che, previa registrazione, potranno accedere ai servizi offerti dall'applicazione.
-\\ \indent La \textbf{Registrazione} è effettuabile tramite l'inserimento di dati di tipo generale come Username e Password, il livello di autorizzazione per i nuovi utenti sarà il più basso, di default (livello 0), il che offrirà delle possibilità di gestione limitate (per esempio l'aggiunta di una risorsa al database non sarà possibile per utenti di livello 0, in quanto si vuole concedere la possibilità di aggiungere risorse al database solo ad utenti verificati, che inseriranno i dati in maniera corretta e coerente con la realtà).
-\\ \indent Il \textbf{Login} permette l'accesso alla piattaforma agli utenti già registrati, tramite Username e Password.
-\\ \indent Le \textbf{Risorse}: Libri, Serie letterarie, Atricoli Scientifici e Riviste; potranno essere visionate e aggiunte dall'utente.
-\\ \indent Per i \textbf{Libri} devono essere specificati il \emph{titolo}, l' \emph{ISBN}, la \emph{data di publicazione}, l' \emph{autore (o autori)}, l' \emph{editore}, la \emph{modalità di fruizione (cartaceo, digitale o audiolibro)}, la \emph{sala/libreria}dov'è stato presentato e in quali \emph{negozi (libreria o online)} può essere acquistato.\\ Un libro può avere anche uno o più seguiti. In tal caso, è importante prevedere un’interrogazione che permette di recuperare tutte le librerie (o siti internet) dai quali è possibile acquistare l’intera \textbf{serie} dei libri.\\ Non appena una serie sarà disponibile per l’acquisto da almeno una libreria, il sistema notificherà la disponibilità all’utente.
-\\ \indent Per gli \textbf{Articoli Scientifici} devono essere specificati il \emph{titolo}, il \emph{DOI}, la \emph{data di publicazione}, l' \emph{autore (o autori)}, l' \emph{editore}, in quale \textbf{rivista} \emph{(nome, argomento, anno di pubblicazione, responsabile della rivista)} o in quale \textbf{conferenza} \emph{(luogo della conferenza, data di inizio e data fine, struttura organizzatrice e responsabile della conferenza)} è stato pubblicato.
+Si svilupper\`a una piattaforma di nome (\textbf{BiblIOTech}) utilizzabile da utenti
+che, previa registrazione, potranno accedere ai servizi offerti dall'applicazione.
+\\ \indent La \textbf{Registrazione} \`e effettuabile tramite l'inserimento di dati
+generici come Username e Password, il livello di autorizzazione per i nuovi utenti sar\`a
+il più basso, di default (livello 0), che offrir\`a delle possibilit\`a di gestione limitate 
+(per esempio l'aggiunta di una risorsa al database non sar\`a possibile per utenti di livello 0).
+\\ \indent Il \textbf{Login} permette l'accesso alla piattaforma agli utenti gi\`a registrati,
+ tramite Username e Password.
+\\ \indent Le \textbf{Risorse}: Libri, Serie letterarie, Articoli Scientifici e Riviste, 
+potranno essere visionate e aggiunte a un database.
+\\ \indent Per i \textbf{Libri} devono essere specificati il \emph{titolo}, l' \emph{ISBN}, la
+\emph{data di publicazione}, l' \emph{autore (o gli autori)}, l' \emph{editore}, la 
+\emph{modalit\`a di fruizione (cartaceo, digitale o audiolibro)} e la \emph{sala/libreria} 
+ove il libro sia stato eventualmente presentato.\\ 
+
+Un libro pu\`o avere anche uno o pi\`u seguiti. In tal caso, \`e 
+importante prevedere un'interrogazione che permetta di recuperare tutte le librerie dalle quali
+sia possibile acquistare l'intera \textbf{serie} dei libri.
+\\
+Non appena una serie sar\`a disponibile per l'acquisto in almeno una libreria, il sistema 
+invier\`a una notifica all'utente che, accedendo alla propria area personale, potr\`a visualizzare
+i nomi delle librerie da cui acquistare la serie.
+\\ \indent Per gli \textbf{Articoli Scientifici} devono essere specificati il \emph{titolo}, 
+il \emph{DOI}, la \emph{data di publicazione}, l' \emph{autore (o autori)}, l' \emph{editore}, 
+in quale \textbf{rivista} \emph{(nome, argomento, anno di pubblicazione, responsabile della 
+rivista)} o in quale \textbf{conferenza} \emph{(luogo della conferenza, data di inizio e data 
+fine, struttura organizzatrice e responsabile della conferenza)} \`e stato pubblicato.
 \section{Individuazione delle Responsabilit\'a}

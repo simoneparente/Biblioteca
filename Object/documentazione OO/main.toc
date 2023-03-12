@@ -10,24 +10,24 @@
 \contentsline {section}{\numberline {2.3}Dizionario delle associazioni}{5}{section.2.3}%
 \contentsline {chapter}{\numberline {3}Progettazione della Soluzione}{6}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Class Diagram del dominio della soluzione}{6}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Dizionario dei Metodi}{6}{subsection.3.1.1}%
-\contentsline {section}{\numberline {3.2}Sequence Diagram del metodo addArticoloConferenza}{12}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Sequence Diagram del metodo checPermessiNotifiche}{13}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Features e Controlli}{14}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Pagina di Login}{15}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Pagina di Registrazione}{16}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Pagina di Ricerca}{17}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Filtri Libri}{18}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Filtri Serie}{19}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Filtri Articoli}{20}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Filtri Riviste}{21}{subsection.4.3.4}%
-\contentsline {section}{\numberline {4.4}Pagina del Risultato della Ricerca}{22}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Pagina di Inserimento Risorsa}{23}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Inserimento di un Libro}{24}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Inserimento di un Libro e della relativa Serie}{25}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Inserimento di un Articolo}{26}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}Inserimento di un Articolo e della relativa Rivista}{27}{subsection.4.5.4}%
-\contentsline {subsection}{\numberline {4.5.5}Inserimento di un Articolo e della relativa Conferenza}{28}{subsection.4.5.5}%
-\contentsline {section}{\numberline {4.6}Menù Utente}{29}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Notifiche}{29}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Richiesta di disponibilit\'a Serie}{30}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {3.1.1}Dizionario dei Metodi}{7}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Sequence Diagram del metodo addArticoloConferenza}{7}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Sequence Diagram del metodo checPermessiNotifiche}{8}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Features e Controlli}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Pagina di Login}{10}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Pagina di Registrazione}{11}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Pagina di Ricerca}{12}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Filtri Libri}{13}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Filtri Serie}{14}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Filtri Articoli}{15}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Filtri Riviste}{16}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Pagina del Risultato della Ricerca}{17}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Pagina di Inserimento Risorsa}{18}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Inserimento di un Libro}{19}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Inserimento di un Libro e della relativa Serie}{20}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Inserimento di un Articolo}{21}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Inserimento di un Articolo e della relativa Rivista}{22}{subsection.4.5.4}%
+\contentsline {subsection}{\numberline {4.5.5}Inserimento di un Articolo e della relativa Conferenza}{23}{subsection.4.5.5}%
+\contentsline {section}{\numberline {4.6}Menù Utente}{24}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Notifiche}{24}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Richiesta di disponibilit\'a Serie}{25}{subsection.4.6.2}%
