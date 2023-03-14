@@ -1,22 +1,64 @@
-@startuml
+@startuml Dominio_del_problema
 class Risorsa{
     titolo: String
     dataPubblicazione: Date
-    
+    Editore: String
+    Lingua: String
+    Formato: String
+}
+
+class Articolo extends Risorsa{
+    DOI: String
+    Disciplina: String
+}
+class Libro extends Risorsa{
+    ISBN: String
+    Genere: String
+    Tipo: String
+    Prezzo: Double
+}
+class Autore{
+    Nome: String
+    Cognome: String
+}
+class Evento{
+    Indirizzo: String
+    StrutturaOspitante: String
+    DataInizio: Date
+    DataFine: Date
+    Responsabile: String
+}
+class Presentazione extends Evento
+class Conferenza extends Evento{
+    Nome: String
+}
+class Rivista{
+    Nome: String
+    Argomento: String
+    DataPubblicazione: Date
+    Responsabile: String
+    Prezzo: Double
+
+}
+class Serie{
+    Nome: String
+    ISSN: String
+}
+class Negozio{
+    Nome: String
+    Tipo: String
+}
+
+class Utente{
+        Username: String 
+        Password: String
+        Permessi: Int
+}
+
+class Richiesta{
 
 }
 
-class Articolo extends Risorsa
-class Libro extends Risorsa
-class Autore
-class Evento
-class Presentazione extends Evento
-class Conferenza extends Evento
-class Rivista
-class Serie
-class Negozio
-
-class Utente
 class Notifica
 
 Risorsa "1,N"-left-"1,N" Autore

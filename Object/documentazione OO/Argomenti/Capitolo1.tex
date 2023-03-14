@@ -1,13 +1,13 @@
 \chapter{Descrizione e Analisi del Progetto}
 \section{Obiettivo}
-Si vuole sviluppare un applicativo in linguaggio java dotato di GUI Swing che 
+Si vuole sviluppare un applicativo in linguaggio Java dotato di GUI Swing che 
 consenta di gestire una Biblioteca Digitale.
 \section{Analisi del problema}
-Si svilupper\`a una piattaforma di nome (\textbf{BiblIOTech}) utilizzabile da utenti
-che, previa registrazione, potranno accedere ai servizi offerti dall'applicazione.
+Si svilupper\`a una piattaforma di nome (\textbf{BiblIOTech}) che permette a degli utenti,
+previa registrazione, di accedere ai servizi offerti dall'applicazione.
 \\ \indent La \textbf{Registrazione} \`e effettuabile tramite l'inserimento di dati
 generici come Username e Password, il livello di autorizzazione per i nuovi utenti sar\`a
-il più basso, di default (livello 0), che offrir\`a delle possibilit\`a di gestione limitate 
+il pi\`u basso (livello 0), che offrir\`a delle possibilit\`a di gestione limitate 
 (per esempio l'aggiunta di una risorsa al database non sar\`a possibile per utenti di livello 0).
 \\ \indent Il \textbf{Login} permette l'accesso alla piattaforma agli utenti gi\`a registrati,
  tramite Username e Password.
@@ -30,4 +30,28 @@ il \emph{DOI}, la \emph{data di publicazione}, l' \emph{autore (o autori)}, l' \
 in quale \textbf{rivista} \emph{(nome, argomento, anno di pubblicazione, responsabile della 
 rivista)} o in quale \textbf{conferenza} \emph{(luogo della conferenza, data di inizio e data 
 fine, struttura organizzatrice e responsabile della conferenza)} \`e stato pubblicato.
-\section{Individuazione delle Responsabilit\'a}
+\section{Individuazione delle Responsabilit\`a}
+
+\begin{longtable}[c]{|l|l|}
+  \hline
+  \textbf{Classe} & \textbf{Responsabilit\`a}                                                                                                    \\ \hline
+  \endfirsthead
+  %
+  \endhead
+  %
+  Articolo        & Eredita da Pubblicazione.                                                                                                  \\ \hline
+  Autore &
+    \begin{tabular}[c]{@{}l@{}}Inserimento, modifica e rimozione di \\ un autore e recupero dei dati di \\ quest'ultimo.\end{tabular} \\ \hline
+  Conferenza &
+    \begin{tabular}[c]{@{}l@{}}Eredita da Evento: inserimento,\\ modifica, rimozione di articoli relativi\\ a una conferenza.\end{tabular} \\ \hline
+  Evento          & \begin{tabular}[c]{@{}l@{}}Inserimento di un Evento. Un Evento \`e \\ una  conferenza oppure una presentazione.\end{tabular} \\ \hline
+  Libro           & Eredita da Pubblicazione.                                                                                                  \\ \hline
+  Negozio         & \begin{tabular}[c]{@{}l@{}}Recupero dati dei Libri acquistabili\\ in un negozio.\end{tabular}                              \\ \hline
+  Presentazione   & \begin{tabular}[c]{@{}l@{}}Eredita da Evento. Un Libro può o meno\\ avere una presentazione.\end{tabular}                  \\ \hline
+  Pubblicazione &
+    \begin{tabular}[c]{@{}l@{}}Inserimento di una pubblicazione e\\ recupero dei dati ad essa associata. \\ Tipi di pubblicazione sono Libri e Articoli\\ scientifici.\end{tabular} \\ \hline
+  Richiesta       & \begin{tabular}[c]{@{}l@{}}Inserimento di una richiesta di una\\ specifica Serie da parte di un Utente.\end{tabular}       \\ \hline
+  Rivista         & \begin{tabular}[c]{@{}l@{}}Inserimento di una Rivista. Una Rivista \`e \\ un insieme di Articoli scientifici.\end{tabular}   \\ \hline
+  Serie           & Inserimento di una Serie.                                                                                                  \\ \hline
+  Utente          & \begin{tabular}[c]{@{}l@{}}Registrazione di un Utente alla\\ piattaforma e recupero dei relativi dati.\end{tabular}        \\ \hline
+  \end{longtable}
