@@ -445,7 +445,7 @@ public class ImplementazioneRisorsa implements risorsaDao {
             if (libro.getPrezzo().equals("")) {
                 preparedStatement.setNull(9, Types.DOUBLE);
             } else {
-                preparedStatement.setDouble(9, Double.parseDouble(libro.getPrezzo()));
+                preparedStatement.setDouble(9, libro.getPrezzo());
             }
 
             //se il libro non appartiene a una serie (il checkobox è disabilitato) allora il nome e l'issn della serie sono null

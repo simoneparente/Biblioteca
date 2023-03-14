@@ -9,8 +9,6 @@ public class Articolo {
     private String doi;
     private String lingua;
 
-    private String rivistaOConferenza;
-
     public Articolo(String titoloArticolo, String autori, String editore, String disciplina, String formato, String doi, String lingua){
         this.titolo = titoloArticolo;
         this.autori = autori;

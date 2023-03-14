@@ -147,7 +147,7 @@ public class RisorsaController {
         return filtri.getConferenzaDataInizio(nomeConferenza);
     }
 
-    public void addLibroInDB(String titolo, String genere, String autori, String editore, String prezzo,
+    public void addLibroInDB(String titolo, String genere, String autori, String editore, Double prezzo,
                                     String isbn, String dataPubblicazione, String formato, String lingua, String nomeSerie, String ISSNSerie) {
         ArrayList<Autore> al_autori;
         if (autori.contains(",")) {

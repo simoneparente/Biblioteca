@@ -575,7 +575,7 @@ public class AggiuntaView extends View {
         if (check == 0) {
             RisorsaController.getInstance().addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
                     autoriLibroField.getText(), editoreLibroField.getText(),
-                    prezzoLibroField.getText(), isbnLibroField.getText(),
+                    Double.parseDouble(prezzoLibroField.getText()), isbnLibroField.getText(),
                     dataPublicazioneLibroField.getText(),
                     String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
                     null, null);
@@ -588,7 +588,7 @@ public class AggiuntaView extends View {
         if (check == 0) {
             RisorsaController.getInstance().addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
                     autoriLibroField.getText(), editoreLibroField.getText(),
-                    prezzoLibroField.getText(), isbnLibroField.getText(),
+                    Double.parseDouble(prezzoLibroField.getText()), isbnLibroField.getText(),
                     dataPublicazioneLibroField.getText(),
                     String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
                     String.valueOf(String.valueOf(serieLibroBox.getSelectedItem())), String.valueOf(issnSerieLibroBox.getSelectedItem()));
@@ -600,7 +600,7 @@ public class AggiuntaView extends View {
         if (check == 0) {
             RisorsaController.getInstance().addLibroInDB(titoloLibroField.getText(), genereLibroField.getText(),
                     autoriLibroField.getText(), editoreLibroField.getText(),
-                    prezzoLibroField.getText(), isbnLibroField.getText(),
+                    Double.parseDouble(prezzoLibroField.getText()), isbnLibroField.getText(),
                     dataPublicazioneLibroField.getText(),
                     String.valueOf(formatoLibroComboBox.getSelectedItem()), linguaLibroField.getText(),
                     nomeSerieField.getText(), issnSerieField.getText());

@@ -12,14 +12,14 @@ public class Libro {
     private String isbn;
     private String formato;
     private String lingua;
-    private String prezzo;
+    private Double prezzo;
     private String serieDiAppartenenza;
 
 
     private String ISSNSerieDiAppartenenza;
 
 
-    public Libro(String titolo, String genere, ArrayList<Autore> autori, String editore, String prezzo,
+    public Libro(String titolo, String genere, ArrayList<Autore> autori, String editore, Double prezzo,
                  String isbn, String dataPubblicazioneIn, String formato, String lingua, String serieDiAppartenenza, String ISSNSerieDiAppartenenza) {
         Date dataPubblicazione = Date.valueOf(dataPubblicazioneIn);
         this.titolo = titolo;
@@ -72,7 +72,7 @@ public class Libro {
         return formato;
     }
 
-    public String getPrezzo() {
+    public Double getPrezzo() {
         return prezzo;
     }
 
