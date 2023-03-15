@@ -39,4 +39,38 @@
         \begin{tabular}[c]{@{}l@{}}Username (String): Nome utente di un\\ account.\\ Password (String): Password di un account.\end{tabular} \\ \hline
       \end{longtable}
         
+      \newpage
+
     \section{Dizionario delle associazioni}
+
+    \begin{longtable}[c]{|l|l|l|}
+      \hline
+      \textbf{Relazione} &
+        \textbf{Classi coinvolte} &
+        \textbf{Descrizione} \\ \hline
+      \endfirsthead
+      %
+      \endhead
+      %
+      presentato ... di &
+        Libro ... Presentazione &
+        \begin{tabular}[c]{@{}l@{}}Un libro può avere una\\ Presentazione.\\ Una Presentazione è associata\\ ad un unico Libro.\end{tabular} \\ \hline
+      presentato ... presenta &
+        Articolo ... Conferenza &
+        \begin{tabular}[c]{@{}l@{}}Un Articolo può essere\\ presentato in una Conferenza.\\ Una Conferenza presenta\\ almeno un Articolo.\end{tabular} \\ \hline
+      raggruppa ... appartiene &
+        Serie ... Libro &
+        \begin{tabular}[c]{@{}l@{}}Una Serie raggruppa Libri\\ con caratteristiche simili.\\ Un Libro può appartenere al\\ più a una Serie.\end{tabular} \\ \hline
+      raggruppa ... in &
+        Rivista ... Articolo &
+        \begin{tabular}[c]{@{}l@{}}Una Rivista raggruppa diversi\\ Articoli.\\ Un Articolo può apparire in\\ una Rivista.\end{tabular} \\ \hline
+      richiesta ... richiede &
+        Serie ... Utente &
+        \begin{tabular}[c]{@{}l@{}}Una Serie può essere richiesta\\ da  parte di Utenti.\\ Un Utente può richiedere delle\\ Serie.\end{tabular} \\ \hline
+      scrive ... scritto &
+        \begin{tabular}[c]{@{}l@{}}Autore ... Libro\\ Autore ... Articolo\end{tabular} &
+        \begin{tabular}[c]{@{}l@{}}Uno o più Autori possono\\ scrivere uno o più Libri o\\ Articoli.\\ Un Libro o un Articolo\\ possono essere scritti da\\ uno o più Autori.\end{tabular} \\ \hline
+      venduto ... vende &
+        Libro ... Negozio &
+        \begin{tabular}[c]{@{}l@{}}Un Libro può essere venduto\\ in un Negozio.\\ Un Negozio vende almeno\\ un Libro.\end{tabular} \\ \hline
+      \end{longtable}
