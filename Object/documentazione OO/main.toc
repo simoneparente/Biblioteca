@@ -29,6 +29,6 @@
 \contentsline {subsubsection}{Articolo}{17}{section*.10}%
 \contentsline {subsubsection}{Articolo in Rivista}{18}{section*.11}%
 \contentsline {subsubsection}{Articolo in Conferenza}{18}{section*.12}%
-\contentsline {subsection}{\numberline {4.1.6}Utente}{19}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.6}Utente}{18}{subsection.4.1.6}%
 \contentsline {subsubsection}{Notifiche}{19}{section*.13}%
 \contentsline {subsubsection}{Richiesta di disponibilit\'a Serie}{19}{section*.14}%
