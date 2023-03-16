@@ -8,9 +8,9 @@ import java.awt.*;
 
 public class View extends JFrame {
     final static Toolkit defaultToolkit = Toolkit.getDefaultToolkit(); //TaskBar per mac
-    private final static Image imageIconaFinestre = defaultToolkit.getImage("src/main/Immagini/iconaFinestre.png");
+    private final static Image imageIconaFinestre = defaultToolkit.getImage("/Users/davidesanti/Documents/GitHub/Biblioteca/Object/Java/Bibliotech/src/main/resources/iconaFinestre.png");
     private static final ImageIcon iconaFinestre = new ImageIcon(imageIconaFinestre);
-    final ImageIcon logoLabelIcon = new ImageIcon("src/main/Immagini/logoIcon.png");
+    final ImageIcon logoLabelIcon = new ImageIcon("/Users/davidesanti/Documents/GitHub/Biblioteca/Object/Java/Bibliotech/src/main/resources/logoIcon.png");
     final Taskbar taskbar = Taskbar.getTaskbar();  //TaskBar per mac
     private JPanel rootPanel;
     private JPanel logoPanel;
